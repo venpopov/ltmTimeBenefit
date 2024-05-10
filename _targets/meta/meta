@@ -1,0 +1,5 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+extract_object_from_rdata|function|239b8d194f405d0d
+data_files|stem|bccf00113e7aba7e|b5629474ec2dcad2|2c530c1562a7fbd1|22696647|data-raw/Exp1.Rdata*data-raw/Exp2.Rdata|t19853.846652368s|3fc3967b578777e3|749001|file|local|vector|||0.002||
+exp2_data|stem|7aa6cd8e768b6aec|6a99f25d39f11ad2|126f38625d8c0ba1|310731861||t19853.903149133s|60f47c2381834940|400762|rds|local|vector|||0.019||
+exp1_data|stem|ad93c46533dcdcb8|3103a98346bff002|126f38625d8c0ba1|-1079929147||t19853.9031498919s|f4311ce7329f5592|348188|rds|local|vector|||0.019||
