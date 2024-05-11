@@ -44,6 +44,25 @@ serial_recall <- function(
 }
 
 
+#' Calculate the deviance of a model
+#'
+#' This function calculates the deviance of a serial_recall model given a set of parameters and data.
+#' The deviance is a measure of how well the model fits the data.
+#'
+#' @param params A named vector of model parameters
+#' @param dat A data frame containing the data
+#'
+#' @return The deviance of the model
+#'
+#' @examples
+#' params <- c(prop = 0.5, prop_ltm = 0.3, tau = 0.2, gain = 1, rate = 0.4)
+#' data <- data.frame(
+#'   ISI = c(100, 200, 300), item_in_ltm = c(TRUE, FALSE, TRUE),
+#'   n_correct = c(10, 15, 20), n_total = c(20, 20, 20)
+#' )
+#' calcdev(params, data)
+#'
+#' @export
 calcdev <- function(params, dat) {
   pred <- serial_recall(
     setsize = nrow(dat),
@@ -57,4 +76,23 @@ calcdev <- function(params, dat) {
   )
   log_lik <- dbinom(dat$n_correct, dat$n_total, prob = pred, log = TRUE)
   -sum(log_lik)
+}
+
+
+#' Calculate the overall deviance
+#'
+#' This function calculates the overall deviance for a given set of parameters and data.
+#' It splits the dataset by the interaction of the chunk and gap columns and calculates the deviance for each subset.
+#' The overall deviance is the sum of the deviances for each subset.
+#'
+#' @param params A vector of parameters.
+#' @param data A data frame containing the data.
+#'
+#' @return The overall deviance.
+#' @export
+overall_deviance <- function(params, data, by = c("chunk", "gap")) {
+  by <- interaction(data[, by])
+  data <- split(data, by)
+  dev <- unlist(lapply(data, function(x) calcdev(params, x)))
+  sum(dev)
 }
