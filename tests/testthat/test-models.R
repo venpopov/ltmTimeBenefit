@@ -1,5 +1,5 @@
-test_that("SerialRecall works", {
-  out <- SerialRecall(
+test_that("serial_recall works", {
+  out <- serial_recall(
     setsize = 3, ISI = c(0.5, 0.5, 0.5),
     prop = 0.2, prop_ltm = 0.5, tau = 0.14, gain = 25, rate = 0.1, r_max = 1
   )
@@ -11,21 +11,24 @@ test_that("SerialRecall works", {
 
 
 test_that("calcdev works", {
-  probs <- SerialRecall(
-    setsize = 3, ISI = c(0.5, 0.5, 0.5),
+  ISI <- c(0.5, 0.5, 0.5)
+  item_in_ltm <- rep(TRUE, 3)
+
+  probs <- serial_recall(
+    setsize = 3, ISI = ISI, item_in_ltm = item_in_ltm,
     prop = 0.2, prop_ltm = 0.5, tau = 0.14, gain = 25, rate = 0.1, r_max = 1
   )
 
   n_trials <- 100
   n_correct <- rbinom(3, size = n_trials, prob = probs)
-  dat <- data.frame(n_total = rep(n_trials, 3), n_correct = n_correct)
+  dat <- data.frame(n_total = rep(n_trials, 3), n_correct = n_correct, ISI = ISI, item_in_ltm = item_in_ltm)
 
   params <- c(
     prop = logit(0.2),
     prop_ltm = logit(0.5),
     tau = logit(0.14),
     gain = 25,
-    rate = log(0.1)
+    rate = logit(0.1)
   )
 
   parscales <- c(
@@ -36,7 +39,7 @@ test_that("calcdev works", {
     rate = 1
   )
 
-  out <- calcdev(params, setsize = 3, ISI = c(0.5, 0.5, 0.5), dat)
+  out <- calcdev(params, dat)
   expect_true(length(out) == 1)
   expect_true(is.numeric(out))
 
@@ -44,7 +47,7 @@ test_that("calcdev works", {
   fit <- optim(
     par = params,
     fn = calcdev,
-    setsize = 3, ISI = c(0.5, 0.5, 0.5), dat = dat,
+    dat = dat,
     control = list(maxit = 1e6, parscale = parscales)
   )
 
@@ -53,11 +56,11 @@ test_that("calcdev works", {
     inv_logit(fit$par["prop_ltm"]),
     inv_logit(fit$par["tau"]),
     fit$par["gain"],
-    exp(fit$par["rate"])
+    inv_logit(fit$par["rate"])
   )
 
-  SerialRecall(
-    setsize = 3, ISI = c(0.5, 0.5, 0.5),
+  serial_recall(
+    setsize = 3, ISI = ISI, item_in_ltm = item_in_ltm,
     prop = est_pars["prop"], prop_ltm = est_pars["prop_ltm"], tau = est_pars["tau"],
     gain = est_pars["gain"], rate = est_pars["rate"], r_max = 1
   )

@@ -74,14 +74,16 @@ get_data <- function(path, ...) {
 #'
 #' @export
 aggregate_data <- function(data) {
-  group_by <- dplyr::group_by
-  summarise <- dplyr::summarise
-
   data |>
-    group_by(chunk, gap, itemtype) |>
-    summarise(
+    dplyr::group_by(chunk, gap, itemtype) |>
+    dplyr::summarise(
       n_total = dplyr::n(),
       n_correct = sum(cor),
       p_correct = mean(cor)
+    ) |>
+    dplyr::group_by(chunk, gap) |>
+    dplyr::mutate(
+      ISI = c(unique(gap) / 1000, rep(0.5, dplyr::n() - 1)),
+      item_in_ltm = ifelse(itemtype == "SP1-3", chunk == "known", TRUE)
     )
 }
