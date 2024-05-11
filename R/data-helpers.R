@@ -84,6 +84,7 @@ aggregate_data <- function(data) {
     dplyr::group_by(chunk, gap) |>
     dplyr::mutate(
       ISI = c(unique(gap) / 1000, rep(0.5, dplyr::n() - 1)),
-      item_in_ltm = ifelse(itemtype == "SP1-3", chunk == "known", TRUE)
-    )
+      item_in_ltm = ifelse(itemtype == "SP1-3", chunk == "known", FALSE)
+    ) |>
+    dplyr::ungroup()
 }
