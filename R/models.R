@@ -14,6 +14,8 @@
 #'
 #' @return A numeric vector representing the recall probability for each item.
 #'
+#' @details The function uses a simulation approach. It loops over trials
+#'
 #' @examples
 #' SerialRecall(setsize = 3, ISI = rep(0.5, 3))
 SerialRecall <- function(setsize, ISI, prop = 0.2, prop_ltm = 0.5, tau = 0.15,
@@ -36,4 +38,17 @@ SerialRecall <- function(setsize, ISI, prop = 0.2, prop_ltm = 0.5, tau = 0.15,
   }
 
   p_recall
+}
+
+
+calcdev <- function(params, setsize, ISI, dat) {
+  prop <- inv_logit(params["prop"])
+  prop_ltm <- inv_logit(params["prop_ltm"])
+  tau <- inv_logit(params["tau"])
+  gain <- params["gain"]
+  rate <- inv_logit(params["rate"])
+
+  pred <- SerialRecall(setsize, ISI, prop, prop_ltm, tau, gain, rate)
+  log_lik <- dbinom(dat$n_correct, dat$n_total, prob = pred, log = TRUE)
+  -sum(log_lik)
 }

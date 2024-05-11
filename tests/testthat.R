@@ -7,3 +7,5 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
+targets::tar_source()
+targets::tar_load_everything()
