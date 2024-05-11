@@ -68,11 +68,11 @@ calcdev <- function(params, dat) {
     setsize = nrow(dat),
     ISI = dat$ISI,
     item_in_ltm = dat$item_in_ltm,
-    prop = inv_logit(params["prop"]),
-    prop_ltm = inv_logit(params["prop_ltm"]),
-    tau = inv_logit(params["tau"]),
+    prop = params["prop"],
+    prop_ltm = params["prop_ltm"],
+    tau = params["tau"],
     gain = params["gain"],
-    rate = inv_logit(params["rate"])
+    rate = params["rate"]
   )
   log_lik <- dbinom(dat$n_correct, dat$n_total, prob = pred, log = TRUE)
   -sum(log_lik)
@@ -82,11 +82,12 @@ calcdev <- function(params, dat) {
 #' Calculate the overall deviance
 #'
 #' This function calculates the overall deviance for a given set of parameters and data.
-#' It splits the dataset by the interaction of the chunk and gap columns and calculates the deviance for each subset.
+#' It splits the dataset by the given column and calculates the deviance for each subset.
 #' The overall deviance is the sum of the deviances for each subset.
 #'
 #' @param params A vector of parameters.
 #' @param data A data frame containing the data.
+#' @param by The column(s) to split the data by.
 #'
 #' @return The overall deviance.
 #' @export
@@ -95,4 +96,36 @@ overall_deviance <- function(params, data, by = c("chunk", "gap")) {
   data <- split(data, by)
   dev <- unlist(lapply(data, function(x) calcdev(params, x)))
   sum(dev)
+}
+
+
+estimate_model <- function(start, data) {
+  constrain_pars <- function(par) {
+    par[c("prop", "prop_ltm", "tau", "rate")] <- inv_logit(par[c("prop", "prop_ltm", "tau", "rate")])
+    par
+  }
+
+  unconstrain_pars <- function(par) {
+    par[c("prop", "prop_ltm", "tau", "rate")] <- logit(par[c("prop", "prop_ltm", "tau", "rate")])
+    par
+  }
+
+  fn <- function(par, data, ...) {
+    par <- constrain_pars(par)
+    overall_deviance(par, data)
+  }
+
+  fit <- optim(
+    par = unconstrain_pars(start),
+    fn = fn,
+    data = data,
+    control = list(maxit = 1e6, parscale = c(1, 1, 1, 0.1, 1))
+  )
+
+  est_pars <- c(
+    constrain_pars(fit$par),
+    convergence = fit$convergence,
+    deviance = fit$value
+  )
+  round(est_pars, 3)
 }
