@@ -148,7 +148,12 @@ predict.serial_recall_pars <- function(object, data, group_by) {
     return(pred)
   }
 
-  by <- interaction(data[, group_by])
-  data <- split(data, by)
-  unname(unlist(lapply(data, function(x) predict(object, x))))
+  by <- do.call(paste, c(data[, group_by], sep = "_"))
+  out <- lapply(split(data, by), function(x) {
+    x$pred <- predict(object, x)
+    x
+  })
+  out <- do.call(rbind, out)
+  out <- suppressMessages(dplyr::left_join(data, out))
+  out$pred
 }
