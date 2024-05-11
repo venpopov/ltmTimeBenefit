@@ -122,10 +122,33 @@ estimate_model <- function(start, data) {
     control = list(maxit = 1e6, parscale = c(1, 1, 1, 0.1, 1))
   )
 
-  est_pars <- c(
-    constrain_pars(fit$par),
-    convergence = fit$convergence,
-    deviance = fit$value
+  est_pars <- structure(
+    c(
+      constrain_pars(fit$par),
+      convergence = fit$convergence,
+      deviance = fit$value
+    ),
+    class = "serial_recall_pars"
   )
   round(est_pars, 3)
+}
+
+predict.serial_recall_pars <- function(object, data, group_by) {
+  if (missing(group_by)) {
+    pred <- serial_recall(
+      setsize = nrow(data),
+      ISI = data$ISI,
+      item_in_ltm = data$item_in_ltm,
+      prop = object["prop"],
+      prop_ltm = object["prop_ltm"],
+      tau = object["tau"],
+      gain = object["gain"],
+      rate = object["rate"]
+    )
+    return(pred)
+  }
+
+  by <- interaction(data[, group_by])
+  data <- split(data, by)
+  unname(unlist(lapply(data, function(x) predict(object, x))))
 }
