@@ -8,3 +8,4 @@ docs
 dev
 _site
 /.quarto/
+.vscode
