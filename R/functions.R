@@ -40,6 +40,14 @@ preprocess_data <- function(data) {
            ))
 }
 
+#' get_data function
+#'
+#' This function takes a file path as input and returns preprocessed data.
+#'
+#' @param path The file path to the RData file.
+#' @return The preprocessed data.
+#' @export
+#' @seealso extract_object_from_rdata preprocess_data
 get_data <- function(path) {
   data <- extract_object_from_rdata(path)
   preprocess_data(data)
