@@ -2,7 +2,7 @@
 #'
 #' This function implements the model currently described in the draft on page 19.
 #' It gives the predicted recall probability for each item in a set of items.
-#' 
+#'
 #' @param setsize The number of items in the set.
 #' @param ISI A numeric vector representing the inter-stimulus interval for each item.
 #' @param prop The proportion of resources allocated to each item.
@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' SerialRecall(setsize = 3, ISI = rep(0.5, 3))
-SerialRecall <- function(setsize, ISI, prop = 0.2, prop_ltm = 0.5, tau = 0.15, 
+SerialRecall <- function(setsize, ISI, prop = 0.2, prop_ltm = 0.5, tau = 0.15,
                          gain = 25, rate = 0.1, r_max = 1) {
   R <- r_max
   p_recall <- vector("numeric", length = setsize)
@@ -32,7 +32,7 @@ SerialRecall <- function(setsize, ISI, prop = 0.2, prop_ltm = 0.5, tau = 0.15,
 
     # deplete and recover resources
     R <- R - r_cost + rate * ISI[item]
-    R <- min(r_max, R))
+    R <- min(r_max, R)
   }
 
   p_recall
