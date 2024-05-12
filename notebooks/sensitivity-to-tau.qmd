@@ -18,12 +18,9 @@ Here are the predictions using the parameters reported in the paper:
 
 ```{r}
 #| label: predictions
-paper_params <- structure(
-  c(prop = 0.21, prop_ltm = 0.55, tau = 0.14, gain = 25, rate = 0.02),
-  class = "serial_recall_pars"
-)
+start <- paper_params()
 
-exp1_data_agg$pred <- predict(paper_params, data = exp1_data_agg, group_by = c("chunk", "gap"))
+exp1_data_agg$pred <- predict(start, data = exp1_data_agg, group_by = c("chunk", "gap"))
 
 exp1_data_agg |>
   ggplot(aes(x = gap, y = p_correct, color = chunk)) +
@@ -38,7 +35,7 @@ Strangely, there is a mismatch between these results and what is reported in the
 This is because the predictions are extremely sensitive to small changes in tau:
 
 ```{r}
-params <- list(paper_params, paper_params, paper_params)
+params <- list(start, start, start)
 params[[2]][["tau"]] <- 0.15
 params[[3]][["tau"]] <- 0.13
 
