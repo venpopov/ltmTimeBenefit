@@ -80,3 +80,51 @@ optim2 <- function(par, fn, ..., lower = -Inf, upper = Inf, control = list()) {
   res$par <- constrain(res$par, lower, upper)
   res
 }
+
+
+print.serial_recall_pars <- function(x, ...) {
+  class(x) <- NULL
+  print(x, ...)
+}
+
+print.serial_recall_fit <- function(x, ...) {
+  class(x) <- NULL
+  print(x, ...)
+}
+
+
+paper_params <- function() {
+  structure(
+    c(prop = 0.21, prop_ltm = 0.55, tau = 0.14, gain = 25, rate = 0.02),
+    class = "serial_recall_pars"
+  )
+}
+
+start_fun <- function(seed = sample(1:1e6)) {
+  withr::with_seed(
+    seed,
+    {
+      par <- c(
+        prop = runif(1, 0.1, 0.8),
+        prop_ltm = runif(1, 0.3, 0.8),
+        rate = runif(1, 0.01, 0.3),
+        gain = runif(1, 1, 30)
+      )
+      par["tau"] <- par["prop"] * 0.5
+      par
+    }
+  )
+}
+
+
+optimfit_to_df <- function(fit) {
+  par <- fit$par
+  names <- names(par)
+  if (is.null(names)) {
+    names(par) <- paste0("V", 1:length(par))
+  }
+  out <- tibble::as_tibble(as.list(par))
+  out$deviance <- fit$value
+  out$convergence <- fit$convergence
+  out
+}

@@ -95,48 +95,113 @@ calcdev <- function(params, dat, exclude_sp1 = FALSE) {
 #'
 #' @return The overall deviance.
 #' @export
-overall_deviance <- function(params, data, by = c("chunk", "gap"), ...) {
+overall_deviance <- function(params, data, by = c("chunk", "gap"), ...,
+                             priors = list()) {
   groups <- interaction(data[, by])
   split_data <- split(data, groups)
   dev <- unlist(lapply(split_data, function(x) calcdev(params, x, ...)))
-  sum(dev)
+  out <- sum(dev)
+
+  if (length(priors) > 0) {
+    pnames <- names(priors)
+    for (i in seq_along(priors)) {
+      out <- out - dnorm(params[pnames[i]], mean = priors[[i]]$mean, sd = priors[[i]]$sd, log = TRUE)
+    }
+  }
+  out
 }
 
 
-estimate_model <- function(start, data, ...) {
+estimate_model <- function(start, data, two_step = FALSE, priors = list(), simplify = FALSE, ...) {
+  # internal helper functions
   constrain_pars <- function(par) {
     par[c("prop", "prop_ltm", "tau", "rate")] <- inv_logit(par[c("prop", "prop_ltm", "tau", "rate")])
+    par["gain"] <- inv_logit(par["gain"], lb = 0, ub = 100)
     par
   }
 
   unconstrain_pars <- function(par) {
     par[c("prop", "prop_ltm", "tau", "rate")] <- logit(par[c("prop", "prop_ltm", "tau", "rate")])
+    par["gain"] <- logit(par["gain"], lb = 0, ub = 100)
     par
   }
 
-  fn <- function(par, data, ...) {
+  fn <- function(par, data, par2 = NULL, ...) {
+    par <- c(par, par2)
     par <- constrain_pars(par)
     overall_deviance(par, data, ...)
   }
 
+  start_uc <- unconstrain_pars(start)
+
+  # if two_step is TRUE, nest the optimization (prop, prop_ltm, and rate) within the outer optimization (tau, gain)
+  if (two_step) {
+    start1 <- start_uc[c("prop", "prop_ltm", "rate")]
+    start2 <- start_uc[c("tau", "gain")]
+
+    fn2 <- function(par, data, par2, ...) {
+      fit <- optim(
+        par = par2,
+        fn = fn,
+        data = data,
+        control = list(maxit = 1e6),
+        par2 = par,
+        ...
+      )
+      environment(fn)$fit_inner <- fit
+      fit$value
+    }
+  } else {
+    start1 <- start_uc
+    start2 <- NULL
+    fn2 <- fn
+  }
+
+
   fit <- optim(
-    par = unconstrain_pars(start),
-    fn = fn,
+    par = start1,
+    fn = fn2,
     data = data,
-    control = list(maxit = 1e6, parscale = c(1, 1, 1, 0.1, 1)),
+    control = list(maxit = 1e6),
+    par2 = start2,
+    priors = priors,
     ...
   )
 
-  est_pars <- structure(
-    c(
-      constrain_pars(fit$par),
-      convergence = fit$convergence,
-      deviance = fit$value
+  est <- fit$par
+  convergence <- fit$convergence
+  value <- fit$value
+  counts <- fit$counts
+  if (two_step) {
+    est <- c(est, fit_inner$par)
+    concergence <- convergence + fit_inner$convergence
+    counts <- counts + fit_inner$counts
+  }
+
+  # return the estimated parameters
+  est <- constrain_pars(est)
+  class(est) <- "serial_recall_pars"
+  fit <- structure(
+    list(
+      start = start,
+      par = est,
+      convergence = convergence,
+      counts = counts,
+      value = value
     ),
-    class = "serial_recall_pars"
+    class = "serial_recall_fit"
   )
-  round(est_pars, 4)
+
+  if (simplify) {
+    out <- optimfit_to_df(fit)
+    out$fit <- list(fit)
+    return(out)
+  }
+
+  fit
 }
+
+
 
 predict.serial_recall_pars <- function(object, data, group_by) {
   if (missing(group_by)) {
@@ -161,4 +226,8 @@ predict.serial_recall_pars <- function(object, data, group_by) {
   out <- do.call(rbind, out)
   out <- suppressMessages(dplyr::left_join(data, out))
   out$pred_tmp_col295
+}
+
+predict.serial_recall_fit <- function(object, data, group_by) {
+  predict(object$par, data, group_by)
 }
