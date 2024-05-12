@@ -51,6 +51,7 @@ serial_recall <- function(
 #'
 #' @param params A named vector of model parameters
 #' @param dat A data frame containing the data
+#' @param exclude_sp1 A logical indicating whether to exclude the first item from the likelihood calculation
 #'
 #' @return The deviance of the model
 #'
@@ -63,7 +64,7 @@ serial_recall <- function(
 #' calcdev(params, data)
 #'
 #' @export
-calcdev <- function(params, dat) {
+calcdev <- function(params, dat, exclude_sp1 = FALSE) {
   pred <- serial_recall(
     setsize = nrow(dat),
     ISI = dat$ISI,
@@ -75,6 +76,9 @@ calcdev <- function(params, dat) {
     rate = params["rate"]
   )
   log_lik <- dbinom(dat$n_correct, dat$n_total, prob = pred, log = TRUE)
+  if (exclude_sp1) {
+    log_lik <- log_lik[-1]
+  }
   -sum(log_lik)
 }
 
@@ -91,15 +95,15 @@ calcdev <- function(params, dat) {
 #'
 #' @return The overall deviance.
 #' @export
-overall_deviance <- function(params, data, by = c("chunk", "gap")) {
-  by <- interaction(data[, by])
-  data <- split(data, by)
-  dev <- unlist(lapply(data, function(x) calcdev(params, x)))
+overall_deviance <- function(params, data, by = c("chunk", "gap"), ...) {
+  groups <- interaction(data[, by])
+  split_data <- split(data, groups)
+  dev <- unlist(lapply(split_data, function(x) calcdev(params, x, ...)))
   sum(dev)
 }
 
 
-estimate_model <- function(start, data) {
+estimate_model <- function(start, data, ...) {
   constrain_pars <- function(par) {
     par[c("prop", "prop_ltm", "tau", "rate")] <- inv_logit(par[c("prop", "prop_ltm", "tau", "rate")])
     par
@@ -112,14 +116,15 @@ estimate_model <- function(start, data) {
 
   fn <- function(par, data, ...) {
     par <- constrain_pars(par)
-    overall_deviance(par, data)
+    overall_deviance(par, data, ...)
   }
 
   fit <- optim(
     par = unconstrain_pars(start),
     fn = fn,
     data = data,
-    control = list(maxit = 1e6, parscale = c(1, 1, 1, 0.1, 1))
+    control = list(maxit = 1e6, parscale = c(1, 1, 1, 0.1, 1)),
+    ...
   )
 
   est_pars <- structure(
@@ -130,7 +135,7 @@ estimate_model <- function(start, data) {
     ),
     class = "serial_recall_pars"
   )
-  round(est_pars, 3)
+  round(est_pars, 4)
 }
 
 predict.serial_recall_pars <- function(object, data, group_by) {
@@ -150,10 +155,10 @@ predict.serial_recall_pars <- function(object, data, group_by) {
 
   by <- do.call(paste, c(data[, group_by], sep = "_"))
   out <- lapply(split(data, by), function(x) {
-    x$pred <- predict(object, x)
+    x$pred_tmp_col295 <- predict(object, x)
     x
   })
   out <- do.call(rbind, out)
   out <- suppressMessages(dplyr::left_join(data, out))
-  out$pred
+  out$pred_tmp_col295
 }
