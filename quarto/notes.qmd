@@ -28,8 +28,7 @@ It's the combination with serial position that makes it difficult for the model.
 
 ## Questions
 
-- There are missing observations in the data.
+- There are missing observations in the data?
 
-### How to treat recovery?
-
-- do we include the encoding duration in the recovery time or not?
+Do we include the encoding duration in the recovery time or not?
+:  Doesn't matter, similar estimates. See [here](notebooks/model_v2.qmd)

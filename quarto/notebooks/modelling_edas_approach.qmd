@@ -154,7 +154,7 @@ exp1_data |>
   facet_wrap(~itemtype)
 ```
 
-Paraneters seem consistent with the data (see [my notes](../notes.md)).
+Paraneters seem consistent with the data (see [my notes](../notes.qmd)).
 
 ## Including the first chunk in the optimization
 

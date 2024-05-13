@@ -42,10 +42,14 @@ website:
      - index.qmd
      - section: "Development notes"
        contents: 
-       - "quarto/notes.md"
+       - "quarto/notes.qmd"
        - auto: "quarto/dev-notebooks/*"
      - section: "Notebooks"
        contents: 
+         - section: "Data"
+           contents:
+             - "quarto/notebooks/data_structure.qmd"
+             - "quarto/notebooks/EDA.qmd"
          - section: "Model 1: Original model"
            contents:
             - "quarto/notebooks/modelling_edas_approach.qmd"
