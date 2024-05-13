@@ -1,0 +1,15 @@
+---
+title: "About"
+format: html
+---
+
+The current website is a collection of development notes and reports related to the modelling of free time and chunking.
+
+In the side bar you will find:
+
+- **Development notes:** an unorganized collection of notebooks. These are mostly for my own reference during model development.
+- **Notebooks:** a collection of notebooks that are more organized and presentable. These are intended to be shared with others.
+- **Reports:** a collection of reports that summarize the development of the model and the results of the model.
+- **Function reference:** documentation of custom functions used in the project.
+
+PS: I am experimenting with quarto websites for project documentation and reporting. This is a first attempt!

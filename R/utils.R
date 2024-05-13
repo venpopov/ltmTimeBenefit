@@ -93,10 +93,20 @@ print.serial_recall_fit <- function(x, ...) {
 }
 
 
-paper_params <- function() {
-  structure(
+paper_params <- function(exp = 1) {
+  exp1 <- structure(
     c(prop = 0.21, prop_ltm = 0.55, tau = 0.14, gain = 25, rate = 0.02),
     class = "serial_recall_pars"
+  )
+
+  exp2 <- structure(
+    c(prop = 0.17, prop_ltm = 0.4, tau = 0.135, gain = 25, rate = 0.025),
+    class = "serial_recall_pars"
+  )
+
+  switch(exp,
+    exp1,
+    exp2
   )
 }
 
@@ -127,4 +137,17 @@ optimfit_to_df <- function(fit) {
   out$deviance <- fit$value
   out$convergence <- fit$convergence
   out
+}
+
+rd2md_docs <- function(rd_dir = "man", md_dir = "quarto/reference") {
+  rd_files <- list.files(rd_dir, pattern = "\\.Rd$", full.names = TRUE)
+  if (!dir.exists(md_dir)) {
+    dir.create(md_dir)
+  }
+  for (rd_file in rd_files) {
+    rdtext <- Rd2md::read_rdfile(rd_file, ".")
+    mdtext <- Rd2md::as_markdown(rdtext)
+    md_file <- gsub("\\.Rd$", ".md", rd_file)
+    writeLines(mdtext, file.path(md_dir, basename(md_file)))
+  }
 }

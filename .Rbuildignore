@@ -1,0 +1,13 @@
+^renv$
+^renv\.lock$
+^_freeze$
+^_site$
+^.quarto$
+^.vscode$
+^docs$
+^noteboosk$
+^output$
+^_targets.R$
+^_quarto.yml$
+^.Rprofile$
+^quarto$

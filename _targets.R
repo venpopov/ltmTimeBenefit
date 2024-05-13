@@ -23,9 +23,15 @@ sim1_hyperparameters <- tidyr::expand_grid(
     quote(list()),
     quote(list(gain = list(mean = 25, sd = 0.1))),
     quote(list(rate = list(mean = 0.1, sd = 0.01)))
-  )
-) |>
-  mutate(priors_scenario = map_chr(priors, \(x) paste(names(x), collapse = "")))
+  ),
+  data = list(quote(exp1_data_agg), quote(exp2_data_agg))
+)
+
+sim1_hyperparameters <- mutate(
+  sim1_hyperparameters,
+  priors_scenario = map_chr(priors, \(x) paste(names(x), collapse = "")),
+  exp = stringr::str_extract(map_chr(data, as.character), "[0-9]")
+)
 
 # Pipeline
 list(
@@ -42,7 +48,7 @@ list(
     values = sim1_hyperparameters,
     command = estimate_model(
       start = start_fun(),
-      data = exp1_data_agg,
+      data = data,
       exclude_sp1 = exclude_sp1,
       priors = priors,
       two_step = TRUE,

@@ -1,0 +1,220 @@
+---
+title: "Modeling with the approach reported in the draft"
+format: html
+---
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+tar_source()
+tar_load_everything()
+```
+
+## Ignoring first chunk in the optimiziation
+
+### Basic estimation of Exp1
+
+Let's apply the modeling approach reported in the paper. We ignore the first chunk (SP1-3) while evaluating the likelihood. Eda did this because the model as implemented predicts the same performance for known and random chunks.
+
+```{r}
+#| label: model 1
+start <- paper_params()
+(est <- estimate_model(start, data = exp1_data_agg, exclude_sp1 = TRUE))
+exp1_data_agg$pred <- predict(est, exp1_data_agg, group_by = c("chunk", "gap"))
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+I get startlingly different paramemter estimates. Much lower `prop` and `rate` and `tau`, higher `gain`.
+
+### Trying different starting values
+
+I've run this with many different starting values. We tend to end up in different regions of the parameter space (the top result close to the paper's estimates):
+
+```{r}
+fits1 |>
+  filter(priors_scenario == "", exclude_sp1 == TRUE, exp == 1, deviance <= 50, convergence == 0) |>
+  select(prop:convergence) |>
+  arrange(gain) |>
+  mutate_all(round, 3) |>
+  print(n = 100)
+```
+
+### Trying priors of the gain parameter
+
+One way to deal with that is to put a prior on the gain parameter to keep it near 25. I know priors are usually a bayesian thing, but they work with ML optimization just as well. On the next set of simulations, I used a Normal(25, 0.1) prior on the gain parameter (could have also fixed it to this value, but this gives me mroe control).
+
+```{r}
+fits1 |>
+  filter(priors_scenario == "gain", exclude_sp1 == TRUE, exp == 1, deviance <= 50, convergence == 0) |>
+  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
+    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
+  })) |>
+  select(prop:convergence) |>
+  arrange(gain) |>
+  mutate_all(round, 3) |>
+  print(n = 100)
+```
+
+So we do get at least some parameters that are close to that reported in the paper. The predictions with those parameters:
+
+```{r}
+fit <- fits1 |>
+  filter(priors_scenario == "gain", exclude_sp1 == TRUE, exp == 1, convergence == 0) |>
+  arrange(deviance) |>
+  pluck("fit", 1)
+
+exp1_data_agg$pred <- predict(fit, exp1_data_agg, group_by = c("chunk", "gap"))
+
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+### Trying priors on the rate parameter
+
+Maybe there is a region with a higher rate that we have not explored? Let's try a prior on the rate parameter, ~ Normal(0.1, 0.01).
+
+```{r}
+fits1 |>
+  filter(priors_scenario == "rate", exclude_sp1 == TRUE, exp == 1, convergence == 0) |>
+  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
+    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
+  })) |>
+  select(prop:convergence) |>
+  arrange(deviance) |>
+  mutate_all(round, 3) |>
+  print(n = 100)
+```
+
+Deviance is quite much higher. Predictions?
+
+```{r}
+fit <- fits1 |>
+  filter(priors_scenario == "rate", exclude_sp1 == TRUE, exp == 1, convergence == 0) |>
+  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
+    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
+  })) |>
+  arrange(deviance) |>
+  pluck("fit", 1)
+
+fit$par
+
+exp1_data_agg$pred <- predict(fit, exp1_data_agg, group_by = c("chunk", "gap"))
+
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+Geater mismatch. Let's include error bars of the data:
+
+```{r}
+exp1_data |>
+  group_by(id, chunk, gap, itemtype) |>
+  summarise(
+    n_total = dplyr::n(),
+    n_correct = sum(cor),
+    p_correct = mean(cor)
+  ) |>
+  ungroup() |>
+  left_join(
+    select(exp1_data_agg, chunk, gap, itemtype, pred),
+    by = c("chunk", "gap", "itemtype")
+  ) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  stat_summary() +
+  stat_summary(aes(y = pred), linetype = "dashed", geom = "line") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+Paraneters seem consistent with the data (see [my notes](../notes.md)).
+
+## Including the first chunk in the optimization
+
+The reports above followed the approach in the current draft and excluded the first chunk from the calculation of the likelihood when optimizing the parameters. Let's include it:
+
+```{r}
+start <- paper_params()
+(est <- estimate_model(start, data = exp1_data_agg, exclude_sp1 = FALSE))
+exp1_data_agg$pred <- predict(est, exp1_data_agg, group_by = c("chunk", "gap"))
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+In this case I didn't have to use many starting values - the result is reached from almost everywhere:
+
+```{r}
+fits1 |>
+  filter(priors_scenario == "", exclude_sp1 == FALSE, exp == 1, convergence == 0) |>
+  arrange(deviance) |>
+  select(prop:convergence) |>
+  print(n = 100)
+```
+
+
+### With prior on rate
+
+```{r}
+fits1 |>
+  filter(priors_scenario == "rate", exclude_sp1 == FALSE, exp == 1, convergence == 0) |>
+  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
+    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
+  })) |>
+  select(prop:convergence) |>
+  arrange(deviance) |>
+  mutate_all(round, 3) |>
+  print(n = 100)
+
+fit <- fits1 |>
+  filter(priors_scenario == "rate", exclude_sp1 == FALSE, exp == 1, convergence == 0) |>
+  arrange(deviance) |>
+  pluck("fit", 1)
+
+exp1_data_agg$pred <- predict(fit, exp1_data_agg, group_by = c("chunk", "gap"))
+
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+## Experiment 2
+
+
+```{r}
+start <- paper_params(exp = 2)
+(est <- estimate_model(start, data = exp2_data_agg, exclude_sp1 = TRUE))
+exp2_data_agg$pred <- predict(est, exp2_data_agg, group_by = c("chunk", "gap"))
+exp2_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```

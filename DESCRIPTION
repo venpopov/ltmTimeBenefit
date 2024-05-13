@@ -1,0 +1,11 @@
+Package: ltmTimeBenefit
+Title: Simulations and modeling for the time vs chunk benefit project
+Version: 0.0.0.9000
+Authors@R: 
+    person("Ven", "Popov", , "vencislav.popov@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-8073-4199"))
+Description: A minipackage for the time vs chunk benefit project. It contains the simulations and modeling code.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1

@@ -1,0 +1,56 @@
+---
+title: "View the data structure"
+format: 
+  html: 
+    code-fold: true
+---
+
+## Overview
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+tar_source()
+tar_load_everything()
+```
+
+The datafiles for the two experiments are in objects `exp1_data` and `exp2_data`. Let's first look at the structure of the data for experiment 1.
+
+```{r}
+#| label: exp1_data
+head(exp1_data)
+```
+
+From Eda I know that the condition column is coded like this:
+
+| condition | LTM      | ISI   |
+|-----------|----------|-------|
+| 1         | chunk    | short |
+| 2         | no-chunk | short |
+| 3         | chunk    | long  |
+| 4         | no-chunk | long  |
+
+Let's confirm this:
+
+```{r}
+exp1_data |>
+  select(condition, chunk, gap) |>
+  unique() |>
+  arrange(condition)
+```
+
+there are this many trials per participant:
+
+```{r}
+max(as.numeric(exp1_data$trial)) + 1
+```
+
+## Aggregate data
+
+This is what the aggregated data looks like:
+
+```{r}
+exp1_data_agg
+```

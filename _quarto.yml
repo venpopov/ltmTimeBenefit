@@ -1,27 +1,55 @@
 project: 
   type: website
   execute-dir: project
+  
 
 execute: 
   freeze: true
   engine: knitr
 
+freeze: true
+
 knitr:
   opts_chunk:
-    comment: "#>"
-    collapse: true
     R.options:
       width: 120
 
 format:
   html:
     theme: cosmo
-    css: styles.css
     toc: true
     code-link: true
     code-copy: true
+    code-tools: true
+    code-fold: true
     code-overflow: wrap
     grid:
-      sidebar-width: 250px
+      sidebar-width: 300px
       body-width: 900px
       margin-width: 300px
+
+website:
+  title: "Free time & chunking modeling"
+  description: "A project about..."
+  back-to-top-navigation: true
+  page-navigation: true
+  search: true
+  repo-subdir: quarto
+  sidebar: 
+   collapse-level: 1
+   style: "docked"
+   contents: 
+     - index.qmd
+     - section: "Development notes"
+       contents: 
+       - "quarto/notes.md"
+       - auto: "quarto/dev-notebooks/*"
+     - section: "Notebooks"
+       contents: 
+       - "quarto/notebooks/sensitivity-to-tau.qmd"
+       - "quarto/notebooks/modelling_edas_approach.qmd"
+     - section: "Function reference"
+       contents: quarto/reference/*
+
+editor:
+  render-on-save: true
