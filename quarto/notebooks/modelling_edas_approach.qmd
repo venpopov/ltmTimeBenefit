@@ -1,5 +1,5 @@
 ---
-title: "Sim 1: Modeling with the approach reported in the draft"
+title: "Main results"
 format: html
 ---
 
@@ -14,6 +14,10 @@ library(kableExtra)
 tar_source()
 tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, fits1))
 ```
+
+## Overview
+
+Here I apply the model described in the May 13th draft of the paper to the data. I will first ignore the first chunk in the optimization, then include it. I will also try different priors on the parameters to understand the paramater space. Final results from different choices summarized at the end.
 
 ## Ignoring first chunk in the optimiziation
 

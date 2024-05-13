@@ -1,0 +1,31 @@
+---
+title: "Main results"
+format: html
+---
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+library(GGally)
+library(kableExtra)
+# load "R/*" scripts and saved R objects from the targets pi
+tar_source()
+tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, fits3))
+```
+
+
+## Overview
+
+Here I employ the same model as in [the basic modeling](modelling_edas_approach.qmd) with one difference. In the previous model, the encoding time was not included. It assumed that during encoding of the triplets (0.9 seconds), nothing happened, and recovery of resources only started after the encoding was completed. In Popov & Reder (2020), we assumed that depletion happens instantaneously, and recovery continuous thoughout the encoding and inter-stimulus interval.
+
+So here we just add the 0.9 seconds of encoding time to the ISI. 
+
+## Exp1
+
+### Basic model
+
+```{r}
+
+```

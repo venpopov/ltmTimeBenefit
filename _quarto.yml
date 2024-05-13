@@ -46,9 +46,14 @@ website:
        - auto: "quarto/dev-notebooks/*"
      - section: "Notebooks"
        contents: 
-       - "quarto/notebooks/sensitivity-to-tau.qmd"
-       - "quarto/notebooks/modelling_edas_approach.qmd"
-       - "quarto/notebooks/par-identifiability.qmd"
+         - section: "Model 1: Original model"
+           contents:
+            - "quarto/notebooks/modelling_edas_approach.qmd"
+            - "quarto/notebooks/par-identifiability.qmd"
+            - "quarto/notebooks/sensitivity-to-tau.qmd"
+         - section: "Model 2: Include encoding time"
+           contents:
+            - "quarto/notebooks/model_v2.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
 

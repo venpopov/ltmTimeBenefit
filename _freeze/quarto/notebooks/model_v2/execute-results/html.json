@@ -1,0 +1,15 @@
+{
+  "hash": "484889206c676a23f5246810ebfcc951",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Main results\"\nformat: html\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\n# load \"R/*\" scripts and saved R objects from the targets pi\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, fits3))\n```\n:::\n\n\n\n## Overview\n\nHere I employ the same model as in [the basic modeling](modelling_edas_approach.qmd) with one difference. In the previous model, the encoding time was not included. It assumed that during encoding of the triplets (0.9 seconds), nothing happened, and recovery of resources only started after the encoding was completed. In Popov & Reder (2020), we assumed that depletion happens instantaneously, and recovery continuous thoughout the encoding and inter-stimulus interval.\n\nSo here we just add the 0.9 seconds of encoding time to the ISI. \n\n## Exp1\n\n### Basic model\n\n\n::: {.cell}\n\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
