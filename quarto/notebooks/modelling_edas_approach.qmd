@@ -409,6 +409,7 @@ fit |>
 Given the different modeling choices (ignoring the first chunk or not, priors on the parameters)
 
 ```{r}
+#| label: best-params
 #| message: false
 final <- fits1 |>
   filter(convergence == 0) |>

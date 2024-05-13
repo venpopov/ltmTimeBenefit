@@ -105,7 +105,7 @@ list(
   tar_target(exp2_data_agg_enc, mutate(exp2_data_agg, ISI = ISI + 0.9), deployment = "main"),
   tar_map_rep(
     fits3,
-    values = sim1_hyperparameters,
+    values = sim3_hyperparameters,
     command = estimate_model(
       start = start_fun(),
       data = data,
@@ -114,18 +114,8 @@ list(
       two_step = TRUE,
       simplify = TRUE
     ),
-    batches = 10,
-    reps = 10,
+    batches = 8,
+    reps = 5,
     names = tidyselect::any_of(c("priors_scenario", "exclude_sp1"))
-  ),
-
-  # Predictions
-  tar_map(
-    values = list(fits = c(quote(fits1), quote(fits2), quote(fits3))),
-    tar_target(
-      predictions,
-      command = map2(fits$fit, fits$data, ~ predict(.x, data = .y, group_by = c("chunk", "gap"))),
-      pattern = map(fits)
-    )
   )
 )
