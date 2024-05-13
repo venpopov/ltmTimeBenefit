@@ -36,7 +36,7 @@ sim1_hyperparameters <- mutate(
 
 sim2_hyperparameters <- expand_grid(
   exclude_sp1 = c(TRUE, FALSE),
-  rate = seq(0.005, 0.2, by = 0.005),
+  rate = seq(0.005, 0.1, by = 0.005),
   data = c(quote(exp1_data_agg), quote(exp2_data_agg))
 )
 
