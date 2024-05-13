@@ -31,7 +31,7 @@ preprocess_data <- function(data, longgap) {
   mutate <- dplyr::mutate
   case_when <- dplyr::case_when
 
-  data |>
+  data <- data |>
     mutate(
       trial = as.numeric(trial),
       gap = ifelse(gap == "short", 500, longgap),
@@ -41,6 +41,19 @@ preprocess_data <- function(data, longgap) {
         serpos %in% 7:9 ~ "SP7-9"
       )
     )
+
+  # remove bad subjects
+  bad_subj_id <- get_bad_subj_id(data)
+  data[!(data$id %in% bad_subj_id), ]
+}
+
+get_bad_subj_id <- function(data) {
+  data |>
+    dplyr::group_by(id) |>
+    dplyr::mutate(subj_acc = mean(cor)) |>
+    dplyr::filter(subj_acc <= 0.1) |>
+    dplyr::pull(id) |>
+    unique()
 }
 
 #' get_data function
