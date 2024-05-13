@@ -1,0 +1,57 @@
+---
+title: "Exploratory data analysis"
+format: html
+---
+
+## Overview
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+tar_source()
+tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg))
+
+data_agg <- bind_rows(
+  mutate(exp1_data_agg, exp = "Exp 1"),
+  mutate(exp2_data_agg, exp = "Exp 2")
+)
+```
+
+Here I have a bunch of plots to help me understand the data for the later modeling.
+
+## Overall performance
+
+```{r}
+#| label: overall_performance_exp1
+#| fig-width: 8.5
+#| fig-height: 5
+data_agg |>
+  mutate(gap = as.factor(gap)) |>
+  ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +
+  geom_point() +
+  geom_line() +
+  scale_color_discrete("1st chunk LTM?") +
+  facet_grid(exp ~ itemtype) +
+  theme_pub()
+```
+
+Together to compare shared levels:
+
+```{r}
+#| label: overall_performance_exp1_shared_levels
+#| fig-width: 8.5
+#| fig-height: 3.2
+data_agg |>
+  ggplot(aes(gap, p_correct, color = chunk, linetype = exp)) +
+  geom_point() +
+  geom_line() +
+  scale_color_discrete("1st chunk LTM?") +
+  scale_x_continuous(breaks = c(500, 3000, 6000)) +
+  coord_cartesian(xlim = c(300, 6200)) +
+  facet_wrap(~itemtype) +
+  theme_pub()
+```
+
+Overall performance is a bit lower in experiment 2, but not by much. Still, it might be an issue if trying to model the two experiments together. The effect size of the chunk is also smaller.
