@@ -7,6 +7,7 @@ library(tarchetypes)
 library(crew)
 library(purrr)
 library(dplyr)
+library(tidyr)
 
 # Set target options:
 tar_option_set(
@@ -17,7 +18,7 @@ tar_option_set(
 tar_source()
 
 # use quote because of https://github.com/ropensci/tarchetypes/discussions/105
-sim1_hyperparameters <- tidyr::expand_grid(
+sim1_hyperparameters <- expand_grid(
   exclude_sp1 = c(TRUE, FALSE),
   priors = c(
     quote(list()),

@@ -1,0 +1,81 @@
+---
+title: "Parameter identifiability"
+format: 
+  html:
+    html-table-processing: none
+---
+
+## Overview
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+library(GGally)
+library(kableExtra)
+tar_source()
+tar_load_everything()
+```
+
+In [the initial modeling notebook](modelling_edas_approach.qmd#problem-with-parameter-identifiability), I discovered some problems with parameter identifiability. Here I will explore this issue further.
+
+Initially I ran the model described in the May 13, 2024 draft with 100 different starting parameters. Here are 5 sets of very different best-fitting parameters that produce nearly identical fits as measured by the negative log-likelihood (deviance):
+
+```{r}
+#| label: parsets
+fits <- readRDS("output/five_parsets_exp2.rds")
+fits$set <- paste0("set", 1:5)
+
+fits[, 1:6] |>
+  as.data.frame() |>
+  `rownames<-`(fits$set) |>
+  kbl() %>%
+  kable_styling()
+```
+
+We can see that they all produce nearly identical predictions (the lines are the model predictions, the points are the data):
+
+```{r}
+#| label: plot five fits
+#| fig-width: 8.5
+#| fig-height: 4
+fits |>
+  mutate(pred = map2(fit, data, \(x, y) predict(x, y, group_by = c("chunk", "gap")))) |>
+  unnest(c(data, pred)) |>
+  mutate(gap = as.factor(gap)) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line(aes(y = pred, linetype = set, group = interaction(chunk, set))) +
+  scale_color_discrete("First chunk LTM?") +
+  scale_linetype_discrete("Parameter set") +
+  facet_grid(~itemtype) +
+  theme_pub()
+```
+
+The plot below shows the strong nearly linear trade-offs between the parameters.
+
+```{r}
+#| label: plot par correlations
+#| fig-width: 8.5
+#| fig-height: 8.5
+fits |>
+  select(prop, rate, tau, gain) |>
+  ggpairs(
+    diag = list(continuous = "blankDiag"),
+    upper = list(continuous = "points")
+  ) +
+  theme_pub() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+lm(rate ~ prop, data = fits) |>
+  summary()
+```
+
+## Highest rate for which the model fit is still good
+
+```{r}
+#| label: rate fits
+

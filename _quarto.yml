@@ -25,7 +25,7 @@ format:
     code-overflow: wrap
     grid:
       sidebar-width: 300px
-      body-width: 900px
+      body-width: 700px
       margin-width: 300px
 
 website:
@@ -48,6 +48,7 @@ website:
        contents: 
        - "quarto/notebooks/sensitivity-to-tau.qmd"
        - "quarto/notebooks/modelling_edas_approach.qmd"
+       - "quarto/notebooks/par-identifiability.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
 

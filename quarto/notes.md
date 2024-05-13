@@ -7,7 +7,8 @@ title: Notes
 - I finally understand the argument for freeing capacity
   - But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?
   
-- there are many different parameter estimates reaching similar likelihoods using eda's approach to exp 1
+- there are many different parameter estimates reaching similar likelihoods using the existing model
+  - for an example, see [here](notebooks/modelling_edas_approach.qmd#problem-with-parameter-identifiability)
 
 ### Best fitting parameters vs consistent parameters
 
