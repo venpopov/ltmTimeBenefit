@@ -10,6 +10,7 @@ format: html
 #| message: false
 library(tidyverse)
 library(targets)
+library(ggdist)
 tar_source()
 tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg))
 
@@ -55,3 +56,63 @@ data_agg |>
 ```
 
 Overall performance is a bit lower in experiment 2, but not by much. Still, it might be an issue if trying to model the two experiments together. The effect size of the chunk is also smaller.
+
+## Individual performance
+
+```{r}
+#| label: agg_data_subj
+#| message: false
+data_agg_subj <- bind_rows(
+  mutate(exp1_data, exp = "Exp 1"),
+  mutate(exp2_data, exp = "Exp 2")
+) |>
+  group_by(id, exp) |>
+  nest() |>
+  mutate(data = map(data, aggregate_data)) |>
+  unnest(data)
+```
+
+print overall accuracy for each subject:
+
+```{r}
+#| label: overall_accuracy
+#| fig-width: 4
+#| fig-height: 3.5
+#| message: false
+data_agg_subj |>
+  group_by(exp, id) |>
+  summarize(p_correct = mean(p_correct)) |>
+  ggplot(aes(exp, p_correct)) +
+  geom_dotsinterval(side = "both") +
+  theme_pub()
+
+```
+
+Hmm, there is one subject in Experiment 2 with 0 accuracy? I will need to redo all the E2 modeling (discovered at 19:00, May 13). 
+
+How many subjects are there in each experiment?
+
+```{r}
+#| message: false
+data_agg_subj |>
+  group_by(exp) |>
+  summarize(n = n_distinct(id))
+```
+
+In the current draft we report this:
+
+> **Thirty-two, 35,** and 120 young adults participated in Experiments **1, 2,** and 3 respectively. For the first two experiments, sample sizes were chosen on the basis of previous experiments that have shown beneficial effects of longer inter-item intervals. Data collection was stopped when a pre-specified target N (or a few more, in case exclusion of data is needed during analysis) was reached. N was 32 for Experiments 1 and 2. We increased the number of participants in Experiment 3 due to a lower number of trials per condition. We recruited participants through Prolific for each experiment, who completed the experiment online. Participants were paid an hourly rate of 7 GBP. Participants were between 18 and 35 years old, with no visual impairment and were German speakers from Germany. **We excluded participants who did not do the task appropriately (i.e. had on average serial recall accuracy below 0.1 – 1, 2** , and 2 participants from Experiments 1, 2, and 3, respectively).
+
+This doesn't match what I see above. Exp 1 has 31 subjects in the data I have, so that matches the post-exclusion number. But Exp 2 has 36 subjects in the data I have. 
+
+```{r}
+#| label: individual_performance
+#| fig-width: 8.5
+#| fig-height: 20
+# ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +
+#   geom_point() +
+#   geom_line() +
+#   scale_color_discrete("1st chunk LTM?") +
+#   facet_wrap(~ subject + itemtype) +
+#   theme_pub()
+```
