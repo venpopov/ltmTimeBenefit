@@ -12,6 +12,8 @@
 #' @param gain The gain parameter for the recall probability function.
 #' @param rate The rate at which resources are recovered.
 #' @param r_max The maximum amount of resources.
+#' @param lambda The exponent converting resources to strength.
+#' @param growth The growth function for resource recovery. Either 'linear' or 'asy'.
 #'
 #' @return A numeric vector representing the recall probability for each item.
 #'
@@ -21,23 +23,26 @@
 #' serial_recall(setsize = 3, ISI = rep(0.5, 3))
 serial_recall <- function(
     setsize, ISI = rep(0.5, setsize), item_in_ltm = rep(TRUE, setsize),
-    prop = 0.2, prop_ltm = 0.5, tau = 0.15,
-    gain = 25, rate = 0.1, r_max = 1) {
+    prop = 0.2, prop_ltm = 0.5, tau = 0.15, gain = 25, rate = 0.1,
+    r_max = 1, lambda = 1, growth = "linear") {
   R <- r_max
   p_recall <- vector("numeric", length = setsize)
   prop_ltm <- ifelse(item_in_ltm, prop_ltm, 1)
 
   for (item in 1:setsize) {
     # strength of the item and recall probability
-    strength <- prop * R
+    strength <- (prop * R)^lambda
     p_recall[item] <- 1 / (1 + exp(-(strength - tau) * gain))
 
     # amount of resources consumed by the item
-    r_cost <- strength * prop_ltm[item]
+    r_cost <- strength^(1 / lambda) * prop_ltm[item]
+    R <- R - r_cost
 
-    # deplete and recover resources
-    R <- R - r_cost + rate * ISI[item]
-    R <- min(r_max, R)
+    # recover resources
+    R <- switch(growth,
+      "linear" = min(r_max, R + rate * ISI[item]),
+      "asy" = R + (r_max - R) * (1 - exp(-rate * ISI[item]))
+    )
   }
 
   p_recall

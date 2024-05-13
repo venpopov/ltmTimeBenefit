@@ -19,7 +19,7 @@ test_that("calcdev works", {
     prop = 0.2, prop_ltm = 0.5, tau = 0.14, gain = 25, rate = 0.1, r_max = 1
   )
 
-  n_trials <- 100
+  n_trials <- 10000
   n_correct <- rbinom(3, size = n_trials, prob = probs)
   dat <- data.frame(n_total = rep(n_trials, 3), n_correct = n_correct, ISI = ISI, item_in_ltm = item_in_ltm)
 
@@ -27,7 +27,7 @@ test_that("calcdev works", {
     prop = logit(0.2),
     prop_ltm = logit(0.5),
     tau = logit(0.14),
-    gain = 25,
+    gain = logit(25, 0, 100),
     rate = logit(0.1)
   )
 
@@ -46,8 +46,10 @@ test_that("calcdev works", {
   # recover parameters?
   fit <- optim(
     par = params,
-    fn = calcdev,
-    dat = dat,
+    fn = \(x) {
+      x <- inv_logit(x, lb = c(0, 0, 0, 0, 0), ub = c(1, 1, 1, 100, 1))
+      calcdev(x, dat)
+    },
     control = list(maxit = 1e6, parscale = parscales)
   )
 
@@ -55,7 +57,7 @@ test_that("calcdev works", {
     inv_logit(fit$par["prop"]),
     inv_logit(fit$par["prop_ltm"]),
     inv_logit(fit$par["tau"]),
-    fit$par["gain"],
+    inv_logit(fit$par["gain"], 0, 100),
     inv_logit(fit$par["rate"])
   )
 
