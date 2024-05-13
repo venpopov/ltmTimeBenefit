@@ -117,5 +117,15 @@ list(
     batches = 10,
     reps = 10,
     names = tidyselect::any_of(c("priors_scenario", "exclude_sp1"))
+  ),
+
+  # Predictions
+  tar_map(
+    values = list(fits = c(quote(fits1), quote(fits2), quote(fits3))),
+    tar_target(
+      predictions,
+      command = map2(fits$fit, fits$data, ~ predict(.x, data = .y, group_by = c("chunk", "gap"))),
+      pattern = map(fits)
+    )
   )
 )

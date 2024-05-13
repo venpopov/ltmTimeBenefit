@@ -1,5 +1,5 @@
 ---
-title: "Modeling with the approach reported in the draft"
+title: "Sim 1: Modeling with the approach reported in the draft"
 format: html
 ---
 
@@ -9,8 +9,10 @@ format: html
 library(tidyverse)
 library(targets)
 library(GGally)
+library(kableExtra)
+# load "R/*" scripts and saved R objects from the targets pi
 tar_source()
-tar_load_everything()
+tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, fits1))
 ```
 
 ## Ignoring first chunk in the optimiziation
@@ -21,6 +23,7 @@ Let's apply the modeling approach reported in the paper. We ignore the first chu
 
 ```{r}
 #| label: model 1
+tar_load(exp1_data_agg)
 start <- paper_params()
 (est <- estimate_model(start, data = exp1_data_agg, exclude_sp1 = TRUE))
 exp1_data_agg$pred <- predict(est, exp1_data_agg, group_by = c("chunk", "gap"))
@@ -36,6 +39,19 @@ exp1_data_agg |>
 I get startlingly different paramemter estimates. Much lower `prop` and `rate` and `tau`, higher `gain`.
 
 ### Trying different starting values
+
+```{r}
+# load the fits of the first simulation, calculate the deviance(s) and predictions
+tar_load(fits1)
+fits1 <- fits1 |>
+  mutate(
+    deviance = pmap_dbl(
+      list(fit, data, exclude_sp1),
+      ~ overall_deviance(params = `..1`$par, data = `..2`, exclude_sp1 = `..3`)
+    ),
+    pred = map2(fit, data, ~ predict(.x, .y, group_by = c("chunk", "gap")))
+  )
+```
 
 I've run this with many different starting values. We tend to end up in different regions of the parameter space (the top result close to the paper's estimates):
 
@@ -55,9 +71,6 @@ One way to deal with that is to put a prior on the gain parameter to keep it nea
 ```{r}
 fits1 |>
   filter(priors_scenario == "gain", exclude_sp1 == TRUE, exp == 1, deviance <= 50, convergence == 0) |>
-  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
-    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
-  })) |>
   select(prop:convergence) |>
   arrange(gain) |>
   mutate_all(round, 3) |>
@@ -67,12 +80,10 @@ fits1 |>
 So we do get at least some parameters that are close to that reported in the paper. The predictions with those parameters:
 
 ```{r}
-fit <- fits1 |>
+exp1_data_agg$pred <- fits1 |>
   filter(priors_scenario == "gain", exclude_sp1 == TRUE, exp == 1, convergence == 0) |>
   arrange(deviance) |>
-  pluck("fit", 1)
-
-exp1_data_agg$pred <- predict(fit, exp1_data_agg, group_by = c("chunk", "gap"))
+  pluck("pred", 1)
 
 exp1_data_agg |>
   ggplot(aes(x = gap, y = p_correct, color = chunk)) +
@@ -90,9 +101,6 @@ Maybe there is a region with a higher rate that we have not explored? Let's try 
 ```{r}
 fits1 |>
   filter(priors_scenario == "rate", exclude_sp1 == TRUE, exp == 1, convergence == 0) |>
-  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
-    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
-  })) |>
   select(prop:convergence) |>
   arrange(deviance) |>
   mutate_all(round, 3) |>
@@ -104,9 +112,6 @@ Deviance is quite much higher. Predictions?
 ```{r}
 fit <- fits1 |>
   filter(priors_scenario == "rate", exclude_sp1 == TRUE, exp == 1, convergence == 0) |>
-  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {
-    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)
-  })) |>
   arrange(deviance) |>
   pluck("fit", 1)
 
@@ -209,6 +214,7 @@ exp1_data_agg |>
 Basic estimation (ignoring first chunk):
 
 ```{r}
+tar_load(exp2_data_agg)
 start <- paper_params(exp = 2)
 (est <- estimate_model(start, data = exp2_data_agg, exclude_sp1 = TRUE))
 exp2_data_agg$pred <- predict(est, exp2_data_agg, group_by = c("chunk", "gap"))
@@ -386,4 +392,107 @@ fit |>
   geom_line(aes(y = pred, linetype = as.factor(round(prop, 3)))) +
   scale_color_discrete("First chunk LTM?") +
   facet_grid(~itemtype)
+```
+
+## Summary
+
+- The parameters reported in the paper are not the best fitting
+- When I start from 100 different starting values, I get better fitting parameters, but with an even lower `rate`
+- I can reproduce the parameters from the paper if I fix the gain parameter to 25
+
+### Best fitting parameters
+
+Given the different modeling choices (ignoring the first chunk or not, priors on the parameters)
+
+```{r}
+#| message: false
+final <- fits1 |>
+  filter(convergence == 0) |>
+  group_by(exp, priors_scenario, exclude_sp1) |>
+  arrange(deviance) |>
+  slice(1) |>
+  arrange(desc(exclude_sp1), exp, priors_scenario) |>
+  mutate(
+    deviance = round(deviance, 1),
+    priors_scenario = case_when(
+      priors_scenario == "" ~ "None",
+      priors_scenario == "gain" ~ "Gain ~ N(25, 0.1)",
+      priors_scenario == "rate" ~ "Rate ~ N(0.1, 0.01)"
+    )
+  )
+
+final |>
+  select(exp, priors_scenario, exclude_sp1, prop:gain, deviance) |>
+  mutate_all(round, 3) |>
+  kbl() |>
+  kable_styling()
+```
+
+- prop_ltm very different between the two experiments (overfitting...)
+
+### Predictions
+
+(the two experiments are modeled separately)
+
+### All predictions
+
+```{r}
+#| fig.width: 8.5
+#| fig.height: 5
+#| message: false
+final |>
+  select(exp, rate, data, pred) |>
+  mutate(exp = paste0("Exp ", exp)) |>
+  unnest(c(data, pred)) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line(aes(y = pred, linetype = as.factor(round(rate, 3)))) +
+  scale_color_discrete("1st chunk LTM?") +
+  scale_linetype_discrete("Rate") +
+  facet_grid(exp ~ itemtype) +
+  theme_pub()
+```
+
+### Experiment 1
+
+```{r}
+#| fig.width: 8.5
+#| fig.height: 12
+#| message: false
+
+final |>
+  filter(exp == 1) |>
+  arrange(rate) |>
+  select(rate, data, pred) |>
+  unnest(c(data, pred)) |>
+  mutate(rate = as.character(round(rate, 4))) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line(aes(y = pred, linetype = )) +
+  scale_color_discrete("1st chunk LTM?") +
+  scale_linetype_discrete("Rate") +
+  facet_grid(rate ~ itemtype) +
+  theme_pub()
+```
+
+### Experiment 2
+
+```{r}
+#| fig.width: 8.5
+#| fig.height: 12
+#| message: false
+
+final |>
+  filter(exp == 2) |>
+  arrange(rate) |>
+  select(rate, data, pred) |>
+  unnest(c(data, pred)) |>
+  mutate(rate = as.character(round(rate, 4))) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line(aes(y = pred, linetype = )) +
+  scale_color_discrete("1st chunk LTM?") +
+  scale_linetype_discrete("Rate") +
+  facet_grid(rate ~ itemtype) +
+  theme_pub()
 ```

@@ -265,3 +265,86 @@ myplot(filter(pred_data, rate > 0.079, rate < 0.101))
 ```
 
 :::
+
+## What about experiment 1?
+
+I will now repeat the same analysis for experiment 1.
+
+```{r}
+#| label: exp1
+best_subset <- filter(best, exp == 1, exclude_sp1)
+
+best_subset |>
+  select(rate, prop, prop_ltm, tau, gain, deviance) |>
+  mutate_all(round, 3) |>
+  kbl() %>%
+  kable_styling()
+```
+
+similar switch at 0.075 to a different region of the parameter space. 
+
+Here are the plots for rates 0.005-0.10:
+
+```{r}
+#| label: plot rate fits exp1
+#| fig-width: 8.5
+#| fig-height: 20
+
+pred_data <- best_subset |>
+  unnest(c(data, pred)) |>
+  mutate(
+    gap = as.factor(gap),
+    rate = round(rate, 3)
+  )
+```
+
+
+::: {.panel-tabset}
+
+## Rate [0.005, 0.025]
+
+```{r}
+#| label: plot rate fits 1 (exp1)
+#| fig-width: 8
+#| fig-height: 12
+myplot(filter(pred_data, rate < 0.026))
+```
+
+## Rate [0.03, 0.05]
+
+```{r}
+#| label: plot rate fits 2 (exp1)
+#| fig-width: 8
+#| fig-height: 12
+#| message: false
+myplot(filter(pred_data, rate < 0.051 & rate > 0.029))
+```
+
+## Rate [0.055, 0.75]
+
+```{r}
+#| label: plot rate fits 3 (exp1)
+#| fig-width: 8
+#| fig-height: 12
+#| message: false
+myplot(filter(pred_data, rate < 0.076 & rate > 0.054))
+```
+
+## Rate [0.08, 0.10]
+
+```{r}
+#| label: plot rate fits 4 (exp1)
+#| fig-width: 8
+#| fig-height: 12
+#| message: false
+myplot(filter(pred_data, rate > 0.079, rate < 0.101))
+```
+
+:::
+
+so even a rate of 0.07 does not necessarily predict a big interaction
+
+## Summary
+
+- The parameter space is not smooth, but rather jumps between regions when rate is fixed to different values
+- There are ridges in the parameter space where the fits are very similar
