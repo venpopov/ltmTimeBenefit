@@ -10,7 +10,7 @@ title: Notes
   
 - there are many different parameter estimates reaching similar likelihoods using the existing model
   - for an example, see [here](notebooks/modelling_edas_approach.qmd#problem-with-parameter-identifiability)
-  - more details linked [here](notebooks/parameter_identifiability.qmd)
+  - more details linked [here](notebooks/par_identifiability.qmd)
 
 ### Best fitting parameters vs consistent parameters
 
