@@ -28,7 +28,14 @@ It's the combination with serial position that makes it difficult for the model.
 
 ## Questions
 
-- There are missing observations in the data?
-
 Do we include the encoding duration in the recovery time or not?
 :  Doesn't matter, similar estimates. See [here](notebooks/model_v2.qmd)
+
+## Log
+
+#### 2021-05-13 19:00
+
+- Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.
+- I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.
+- I tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy
+- The _targets folder is not tracked by git, so I backed it up and tagged it manually under `~/_targets_backup`
