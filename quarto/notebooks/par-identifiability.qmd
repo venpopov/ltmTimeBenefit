@@ -15,7 +15,6 @@ library(targets)
 library(GGally)
 library(kableExtra)
 tar_source()
-tar_load_everything()
 ```
 
 In [the initial modeling notebook](modelling_edas_approach.qmd#problem-with-parameter-identifiability), I discovered some problems with parameter identifiability. Here I will explore this issue further.
@@ -69,13 +68,200 @@ fits |>
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+## Fix rate to different values and explore the parameter space
+
+I ran a simulation in which I fix[^1] the rate parameter to values in the range 0.005 to 0.2. I want to see if the identical fits extend to higher rates.
+
+[^1]: technically, I put a really narrow prior Normal(value, 0.0001) on the rate parameter rather than fixing it just because I can do it in the existing code.
+
+We first extract the best-fitting parameters for each rate from the 100 random start fits.
+
 ```{r}
-lm(rate ~ prop, data = fits) |>
-  summary()
+#| label: rate scan
+tar_load(fits2)
+fits2 <- fits2 |>
+  mutate(
+    deviance = pmap_dbl(list(fit, data, exclude_sp1), function(x, y, z) {
+      overall_deviance(x$par, data = y, exclude_sp1 = z)
+    }),
+    rate = round(rate, 3)
+  )
+
+
+best <- fits2 |>
+  group_by(rate, exp, exclude_sp1) |>
+  filter(deviance == min(deviance)) |>
+  slice(1) |>
+  select(rate, prop, prop_ltm, tau, gain, deviance, fit, data) |>
+  mutate(pred = map2(fit, data, \(x, y) predict(x, y, group_by = c("chunk", "gap")))) |>
+  ungroup()
 ```
 
-## Highest rate for which the model fit is still good
+subset for exp2 and exclude_sp1 = TRUE
 
 ```{r}
-#| label: rate fits
+#| label: subset best
+best_subset <- filter(best, exp == 2, exclude_sp1)
+```
 
+From the deviance it's already clear that the fits get wose once we get above 0.020 rate. Here are the best-fitting parameters for each rate:
+
+```{r}
+#| label: best fits
+best_subset |>
+  select(rate, prop, prop_ltm, tau, gain, deviance) |>
+  mutate_all(round, 3) |>
+  kbl() %>%
+  kable_styling()
+```
+
+A few observations:
+
+1) with recovery rates higher than 0.07 the fits do no change much
+2) when the rate changes from 0.04 to 0.045, we switch to a different region of the parameter space. Similarly from 0.065 to 0.07
+3) looks like we have four ranges of rates with qualitative shifts:
+     - ***0.005 to 0.02:*** the fits are very similar and prop_ltm is ~ 0.8. The other parameters change proportionally to the rate
+     - ***0.025 to 0.04:*** fits get progressively worse. the other parameters still changes similarly to the first group, but tau is not stable. Seems like tau can no longer compensate, leading to worsening fits
+     - ***0.045 to 0.07:*** prop_ltm drops to ~0.45 and stays there. The other parameters again change proportionally to the rate, but they are now in a different region of the parameter space. Fits gradually worsen as we increase the rates
+     - ***0.07 to 0.2:*** prop is now stable at ~0.255. The other parameters change but with very small increments. Fits are identical
+
+Here's a pairs plot with colors indicating the rate group. The plot indicates that the parameter space does not have a smooth gradient, but rather jumps between regions when rate is fixed to different values.
+
+```{r}
+#| label: plot rate correlations
+#| message: false
+#| fig-width: 8.5
+#| fig-height: 8.5
+best_subset <- best_subset |>
+  mutate(par_groups = case_when(
+    rate <= 0.02 ~ "0.005-0.02",
+    rate <= 0.04 ~ "0.025-0.04",
+    rate <= 0.07 ~ "0.045-0.07",
+    TRUE ~ "0.07-0.2"
+  ))
+
+best_subset |>
+  select(prop, prop_ltm, rate, tau, gain, par_groups) |>
+  ggpairs(
+    aes(color = par_groups),
+    diag = list(continuous = "blankDiag"),
+    upper = list(continuous = "points")
+  ) +
+  theme_pub() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Let's see how this affects the predictions for the different rate groups. It would be too much to plot all the predictions, so I will first plot the predictions for the first and last parameters for each rate group.
+
+```{r}
+#| label: plot rate fits
+#| fig-width: 8.5
+#| fig-height: 20
+best_subset |>
+  group_by(par_groups) |>
+  slice(c(1, n())) |>
+  unnest(c(data, pred)) |>
+  mutate(
+    gap = as.factor(gap),
+    rate = as.factor(round(rate, 3))
+  ) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line(aes(y = pred, linetype = par_groups, group = interaction(chunk, rate))) +
+  scale_color_discrete("First chunk LTM?") +
+  scale_linetype_discrete("Rate") +
+  facet_grid(rate ~ itemtype) +
+  theme_pub()
+```
+
+A few observations:
+
+- Rates above 0.045 lead to the same fit, because they cause full recovery from first item to the second with 6 s ISI. We can see that from he plots because the prediction for SP1-3 and sp4-6 (6000 ISI) are the same for all rates above 0.045, meaning no serial position effect from the first to the second chunk. This is completely implausible, so we can rule out rates above 0.045.
+
+### Including SP1-3 in the fits
+
+I will now include SP1-3 in the fits and see if this changes the parameter space.
+
+```{r}
+#| label: include sp1
+best_subset <- filter(best, exp == 2, exclude_sp1 == FALSE)
+```
+
+Here are the best-fitting parameters for each rate:
+
+```{r}
+#| label: best fits sp1
+best_subset |>
+  select(rate, prop, prop_ltm, tau, gain, deviance) |>
+  mutate_all(round, 3) |>
+  kbl() %>%
+  kable_styling()
+```
+
+This now looks much more stable. Until 0.130 we don't have switchest in the parameter region. Still, rates 0.005-0.03 are very similar.
+
+Here are the plots for rates 0.005-0.10:
+
+```{r}
+#| label: plot rate fits sp1
+#| fig-width: 8.5
+#| fig-height: 20
+pred_data <- best_subset |>
+  unnest(c(data, pred)) |>
+  mutate(
+    gap = as.factor(gap),
+    rate = round(rate, 3)
+  )
+
+myplot <- function(data) {
+  ggplot(data, aes(x = gap, y = p_correct, color = chunk)) +
+    geom_point() +
+    geom_line(aes(y = pred, group = chunk)) +
+    scale_color_discrete("First chunk LTM?") +
+    facet_grid(rate ~ itemtype) +
+    theme_pub()
+}
+```
+
+::: {.panel-tabset}
+
+## Rate [0.005, 0.025]
+
+```{r}
+#| label: plot rate fits sp1 1
+#| fig-width: 8
+#| fig-height: 12
+myplot(filter(pred_data, rate < 0.026))
+```
+
+## Rate [0.03, 0.05]
+
+```{r}
+#| label: plot rate fits sp1 2
+#| fig-width: 8
+#| fig-height: 12
+#| message: false
+myplot(filter(pred_data, rate < 0.051 & rate > 0.029))
+```
+
+## Rate [0.055, 0.75]
+
+```{r}
+#| label: plot rate fits sp1 3
+#| fig-width: 8
+#| fig-height: 12
+#| message: false
+myplot(filter(pred_data, rate < 0.076 & rate > 0.054))
+```
+
+## Rate [0.08, 0.10]
+
+```{r}
+#| label: plot rate fits sp1 4
+#| fig-width: 8
+#| fig-height: 12
+#| message: false
+myplot(filter(pred_data, rate > 0.079, rate < 0.101))
+```
+
+:::

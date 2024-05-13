@@ -6,13 +6,17 @@ title: Notes
 
 - I finally understand the argument for freeing capacity
   - But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?
+- difficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can't account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.
   
 - there are many different parameter estimates reaching similar likelihoods using the existing model
   - for an example, see [here](notebooks/modelling_edas_approach.qmd#problem-with-parameter-identifiability)
+  - more details linked [here](notebooks/parameter_identifiability.qmd)
 
 ### Best fitting parameters vs consistent parameters
 
 The argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are *consistent* with the data? And are there parameter values consistent with the data that are reasonably fast?
+
+For experiment 2, the model can predict an interaction, but at the cost of overall fit.
 
 ### Serial position
 
