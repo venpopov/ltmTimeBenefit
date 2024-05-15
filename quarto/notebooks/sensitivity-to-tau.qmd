@@ -9,7 +9,7 @@ format: html
 library(tidyverse)
 library(targets)
 tar_source()
-tar_load_everything()
+tar_load(exp1_data_agg)
 ```
 
 In the current draft (May 12th), Eda modelled the data by ignoring the first chunk when calculating the likelihood.

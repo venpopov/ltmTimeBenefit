@@ -31,6 +31,7 @@ sim1_hyperparameters <- expand_grid(
 sim1_hyperparameters <- mutate(
   sim1_hyperparameters,
   priors_scenario = map_chr(priors, \(x) paste(names(x), collapse = "")),
+  priors_scenario = ifelse(priors_scenario == "", "none", priors_scenario),
   exp = stringr::str_extract(map_chr(data, as.character), "[0-9]")
 )
 
@@ -79,7 +80,7 @@ list(
     ),
     batches = 10,
     reps = 10,
-    names = tidyselect::any_of(c("priors_scenario", "exclude_sp1"))
+    names = c("exclude_sp1", "priors_scenario", "exp")
   ),
   ## fits2 is similar to fits 1 but has a very narrow prior on a range of rates. Goal is to
   ##   check for parameter identifiability trade-offs
@@ -96,7 +97,7 @@ list(
     ),
     batches = 10,
     reps = 10,
-    names = tidyselect::any_of(c("rate", "exclude_sp1"))
+    names = c("exclude_sp1", "rate", "exp")
   ),
   ## fits3 is similar to fits 1, but we include the encodingtime of 0.9s in the recovery time.
   ##  This assumes that resources are depleted immediately upon presentation of the item (as in
@@ -114,8 +115,25 @@ list(
       two_step = TRUE,
       simplify = TRUE
     ),
-    batches = 8,
-    reps = 5,
-    names = tidyselect::any_of(c("priors_scenario", "exclude_sp1"))
+    batches = 10,
+    reps = 10,
+    names = c("exclude_sp1", "priors_scenario", "exp")
+  ),
+  ## fits4 is similar to fits 1, but with lambda = 0.5
+  tar_map_rep(
+    fits4,
+    values = sim1_hyperparameters,
+    command = estimate_model(
+      start = start_fun(),
+      data = data,
+      exclude_sp1 = exclude_sp1,
+      priors = priors,
+      two_step = TRUE,
+      simplify = TRUE,
+      lambda = 0.5
+    ),
+    batches = 10,
+    reps = 10,
+    names = c("exclude_sp1", "priors_scenario", "exp")
   )
 )

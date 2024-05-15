@@ -6,6 +6,7 @@ project:
 execute: 
   freeze: true
   engine: knitr
+  port: 8877
 
 freeze: true
 
@@ -50,6 +51,7 @@ website:
            contents:
              - "quarto/notebooks/data_structure.qmd"
              - "quarto/notebooks/EDA.qmd"
+             - "quarto/notebooks/subject_data.qmd"
          - section: "Model 1: Original model"
            contents:
             - "quarto/notebooks/modelling_edas_approach.qmd"

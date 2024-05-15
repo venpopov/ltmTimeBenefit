@@ -69,7 +69,7 @@ serial_recall <- function(
 #' calcdev(params, data)
 #'
 #' @export
-calcdev <- function(params, dat, exclude_sp1 = FALSE) {
+calcdev <- function(params, dat, exclude_sp1 = FALSE, ...) {
   pred <- serial_recall(
     setsize = nrow(dat),
     ISI = dat$ISI,
@@ -78,7 +78,8 @@ calcdev <- function(params, dat, exclude_sp1 = FALSE) {
     prop_ltm = params["prop_ltm"],
     tau = params["tau"],
     gain = params["gain"],
-    rate = params["rate"]
+    rate = params["rate"],
+    ...
   )
   log_lik <- dbinom(dat$n_correct, dat$n_total, prob = pred, log = TRUE)
   if (exclude_sp1) {
@@ -208,7 +209,7 @@ estimate_model <- function(start, data, two_step = FALSE, priors = list(), simpl
 
 
 
-predict.serial_recall_pars <- function(object, data, group_by) {
+predict.serial_recall_pars <- function(object, data, group_by, ...) {
   if (missing(group_by)) {
     pred <- serial_recall(
       setsize = nrow(data),
@@ -218,14 +219,15 @@ predict.serial_recall_pars <- function(object, data, group_by) {
       prop_ltm = object["prop_ltm"],
       tau = object["tau"],
       gain = object["gain"],
-      rate = object["rate"]
+      rate = object["rate"],
+      ...
     )
     return(pred)
   }
 
   by <- do.call(paste, c(data[, group_by], sep = "_"))
   out <- lapply(split(data, by), function(x) {
-    x$pred_tmp_col295 <- predict(object, x)
+    x$pred_tmp_col295 <- predict(object, x, ...)
     x
   })
   out <- do.call(rbind, out)
@@ -233,6 +235,6 @@ predict.serial_recall_pars <- function(object, data, group_by) {
   out$pred_tmp_col295
 }
 
-predict.serial_recall_fit <- function(object, data, group_by) {
-  predict(object$par, data, group_by)
+predict.serial_recall_fit <- function(object, data, group_by, ...) {
+  predict(object$par, data, group_by, ...)
 }

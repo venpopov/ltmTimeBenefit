@@ -61,7 +61,7 @@ I've run this with many different starting values. We tend to end up in differen
 
 ```{r}
 fits1 |>
-  filter(priors_scenario == "", exclude_sp1 == TRUE, exp == 1, deviance <= 50, convergence == 0) |>
+  filter(priors_scenario == "none", exclude_sp1 == TRUE, exp == 1, deviance <= 50, convergence == 0) |>
   select(prop:convergence) |>
   arrange(gain) |>
   mutate_all(round, 3) |>
@@ -177,7 +177,7 @@ In this case I didn't have to use many starting values - the result is reached f
 
 ```{r}
 fits1 |>
-  filter(priors_scenario == "", exclude_sp1 == FALSE, exp == 1, convergence == 0) |>
+  filter(priors_scenario == "none", exclude_sp1 == FALSE, exp == 1, convergence == 0) |>
   arrange(deviance) |>
   select(prop:convergence) |>
   print(n = 100)
@@ -237,7 +237,7 @@ Here are from multiple starting values:
 
 ```{r}
 fits <- fits1 |>
-  filter(priors_scenario == "", exclude_sp1 == TRUE, exp == 2, convergence == 0) |>
+  filter(priors_scenario == "none", exclude_sp1 == TRUE, exp == 2, convergence == 0) |>
   select(prop:convergence, fit, data) |>
   arrange(deviance) |>
   mutate_if(is.numeric, round, 3) |>
@@ -331,7 +331,7 @@ fit <- fits1 |>
 plots
 
 ```{r}
-fits <- fit[c(28, 83), ]
+fits <- fit[c(28, 43), ] # previous 83
 fits
 
 fits |>
@@ -363,7 +363,7 @@ from multiple starting values:
 
 ```{r}
 fits <- fits1 |>
-  filter(priors_scenario == "", exclude_sp1 == FALSE, exp == 2, convergence == 0) |>
+  filter(priors_scenario == "none", exclude_sp1 == FALSE, exp == 2, convergence == 0) |>
   select(prop:convergence, fit, data) |>
   arrange(deviance) |>
   mutate_if(is.numeric, round, 3)
@@ -420,7 +420,7 @@ final <- fits1 |>
   mutate(
     deviance = round(deviance, 1),
     priors_scenario = case_when(
-      priors_scenario == "" ~ "None",
+      priors_scenario == "none" ~ "None",
       priors_scenario == "gain" ~ "Gain ~ N(25, 0.1)",
       priors_scenario == "rate" ~ "Rate ~ N(0.1, 0.01)"
     )

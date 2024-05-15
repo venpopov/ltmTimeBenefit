@@ -57,7 +57,7 @@ final3 <- fits3 |>
   mutate(
     deviance = round(deviance, 1),
     priors_scenario = case_when(
-      priors_scenario == "" ~ "None",
+      priors_scenario == "none" ~ "None",
       priors_scenario == "gain" ~ "Gain ~ N(25, 0.1)",
       priors_scenario == "rate" ~ "Rate ~ N(0.1, 0.01)"
     )

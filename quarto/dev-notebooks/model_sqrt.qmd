@@ -1,0 +1,83 @@
+---
+title: "Model with sqrt scaled strength"
+format: html
+---
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+tar_source()
+tar_load(c(exp1_data_agg, exp2_data_agg))
+```
+
+let's fit the sqrt version of the model
+
+```{r}
+#| label: fit_sqrt
+
+est <- estimate_model(
+  start = paper_params(),
+  data = exp1_data_agg,
+  two_step = TRUE,
+  simplify = TRUE,
+  lambda = 0.5
+)
+
+est
+
+exp1_data_agg$pred <- predict(est$fit[[1]], data = exp1_data_agg, group_by = c("chunk", "gap"), lambda = 0.5)
+
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  facet_wrap(~itemtype)
+```
+
+exclude sp1
+
+```{r}
+#| label: fit_sqrt)0.3
+
+est <- estimate_model(
+  start = paper_params(),
+  data = exp1_data_agg,
+  two_step = TRUE,
+  simplify = TRUE,
+  exclude_sp1 = TRUE,
+  lambda = 0.5
+)
+
+est
+```
+
+predict
+
+```{r}
+#| label: predict_sqrt
+
+exp1_data_agg$pred <- predict(est$fit[[1]], data = exp1_data_agg, group_by = c("chunk", "gap"), lambda = 0.5)
+
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  facet_wrap(~itemtype)
+
+```
+
+replicate with different starting params
+
+```{r}
+est_rep <- replicate(20, estimate_model(
+  start = start_fun(),
+  data = exp1_data_agg,
+  two_step = TRUE,
+  simplify = TRUE,
+  lambda = 0.5
+))
+```

@@ -13,7 +13,7 @@ format:
 library(tidyverse)
 library(targets)
 tar_source()
-tar_load_everything()
+tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg))
 ```
 
 The datafiles for the two experiments are in objects `exp1_data` and `exp2_data`. Let's first look at the structure of the data for experiment 1.
