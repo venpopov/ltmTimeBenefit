@@ -16,6 +16,7 @@ extract_object_from_rdata <- function(path, object_name = "data_an") {
   env[[object_name]]
 }
 
+# TODO: add an experiment label
 #' Preprocesses the data
 #'
 #' This function preprocesses the input data by converting the trial column to numeric,
@@ -34,13 +35,18 @@ preprocess_data <- function(data, longgap) {
   data <- data |>
     mutate(
       trial = as.numeric(trial),
-      gap = ifelse(gap == "short", 500, longgap),
       itemtype = case_when(
         serpos %in% 1:3 ~ "SP1-3",
         serpos %in% 4:6 ~ "SP4-6",
         serpos %in% 7:9 ~ "SP7-9"
       )
     )
+
+  if ("gap" %in% colnames(data)) {
+    data$gap <- ifelse(data$gap == "short", 500, longgap)
+  } else {
+    data$gap <- data$gapdur
+  }
 
   # remove bad subjects
   bad_subj_id <- get_bad_subj_id(data)
@@ -101,3 +107,20 @@ aggregate_data <- function(data) {
     ) |>
     dplyr::ungroup()
 }
+
+# temporary - this only works if the data is already loaded
+aggregate_by_subject <- function() {
+  targets::tar_load(c("exp1_data", "exp2_data"))
+  suppressMessages(
+    dplyr::bind_rows(
+      dplyr::mutate(exp1_data, exp = "Exp 1"),
+      dplyr::mutate(exp2_data, exp = "Exp 2")
+    ) |>
+      dplyr::group_by(id, exp) |>
+      tidyr::nest() |>
+      dplyr::mutate(data = purrr::map(data, aggregate_data)) |>
+      tidyr::unnest(data)
+  ) |>
+    dplyr::ungroup()
+}
+

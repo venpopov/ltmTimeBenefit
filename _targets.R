@@ -57,11 +57,17 @@ sim3_hyperparameters <- sim1_hyperparameters |>
 # Pipeline
 list(
   # Data preprocessing
-  tar_target(data_files, c("data-raw/Exp1.Rdata", "data-raw/Exp2.Rdata"), format = "file", deployment = "main"),
+  tar_target(
+    name = data_files,
+    command = c("data-raw/Exp1.Rdata", "data-raw/Exp2.Rdata", "data-raw/Exp3.Rdata"),
+    format = "file", deployment = "main"
+  ),
   tar_target(exp1_data, get_data(data_files[1], longgap = 3000), deployment = "main"),
   tar_target(exp2_data, get_data(data_files[2], longgap = 6000), deployment = "main"),
+  tar_target(exp3_data, get_data(data_files[3]), deployment = "main"),
   tar_target(exp1_data_agg, aggregate_data(exp1_data), deployment = "main"),
   tar_target(exp2_data_agg, aggregate_data(exp2_data), deployment = "main"),
+  tar_target(exp3_data_agg, aggregate_data(exp3_data), deployment = "main"),
 
   # Models
   ## fits1 simulates the model reported in the draft varying whether the first chunk is excluded

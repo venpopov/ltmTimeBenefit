@@ -1,0 +1,17 @@
+{
+  "hash": "18632dcbf9a784765882e0d253554f2c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Experiment 3\"\nformat: html\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp3_data_agg))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nest <- estimate_model(\n  start = paper_params(),\n  data = exp3_data_agg,\n  two_step = TRUE,\n  exclude_sp1 = TRUE,\n  simplify = TRUE,\n  prior = list(\n    gain = list(mean = 25, sd = 1)\n  )\n)\n\nest\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 1 × 8\n   prop prop_ltm    rate   tau  gain deviance convergence fit       \n  <dbl>    <dbl>   <dbl> <dbl> <dbl>    <dbl>       <int> <list>    \n1 0.203    0.811 0.00951 0.132  25.0     766.           0 <srl_rcl_>\n```\n\n\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nexp3_data_agg$pred <- predict(est$fit[[1]], data = exp3_data_agg, group_by = c(\"chunk\", \"gap\"))\n\nexp3_data_agg |>\n  ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +\n  geom_point() +\n  stat_smooth(method = \"lm\", se = FALSE) +\n  geom_line(aes(y = pred), color = \"black\") +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  facet_wrap(~itemtype) +\n  theme_pub()\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n`geom_smooth()` using formula = 'y ~ x'\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](exp3_model1_files/figure-html/exp3_performance-1.png){width=816}\n:::\n:::\n",
+    "supporting": [
+      "exp3_model1_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

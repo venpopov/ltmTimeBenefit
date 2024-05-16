@@ -57,6 +57,7 @@ website:
             - "quarto/notebooks/modelling_edas_approach.qmd"
             - "quarto/notebooks/par_identifiability.qmd"
             - "quarto/notebooks/sensitivity-to-tau.qmd"
+            - "./quarto/notebooks/exp3_model1.qmd"
          - section: "Model 2: Include encoding time"
            contents:
             - "quarto/notebooks/model_v2.qmd"

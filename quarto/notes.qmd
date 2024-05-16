@@ -15,6 +15,8 @@ title: Notes
 ### Best fitting parameters vs consistent parameters
 
 The argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are *consistent* with the data? And are there parameter values consistent with the data that are reasonably fast?
+  
+  - how to measure "consistency" with the data?
 
 For experiment 2, the model can predict an interaction, but at the cost of overall fit.
 
@@ -32,6 +34,10 @@ Do we include the encoding duration in the recovery time or not?
 :  Doesn't matter, similar estimates. See [here](notebooks/model_v2.qmd)
 
 ## Log
+
+#### 2021-05-16 14:24
+
+- add the `sqrt` relation between resources and memory strength does not change much the outcome
 
 #### 2021-05-13 19:00
 

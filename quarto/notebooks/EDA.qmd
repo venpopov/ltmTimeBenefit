@@ -12,7 +12,7 @@ library(tidyverse)
 library(targets)
 library(ggdist)
 tar_source()
-tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg))
+tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, exp3_data, exp3_data_agg))
 
 data_agg <- bind_rows(
   mutate(exp1_data_agg, exp = "Exp 1"),
@@ -89,3 +89,17 @@ data_agg_subj |>
 
 ```
 
+## Experiment 3
+
+```{r}
+#| label: exp3_performance
+#| fig-width: 8.5
+#| fig-height: 5
+exp3_data_agg |>
+  ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +
+  geom_point() +
+  stat_smooth(method = "lm", se = FALSE) +
+  scale_color_discrete("1st chunk LTM?") +
+  facet_wrap(~itemtype) +
+  theme_pub()
+```

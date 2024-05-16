@@ -49,6 +49,7 @@ serial_recall <- function(
 }
 
 
+
 #' Calculate the deviance of a model
 #'
 #' This function calculates the deviance of a serial_recall model given a set of parameters and data.
