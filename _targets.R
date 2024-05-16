@@ -25,7 +25,7 @@ sim1_hyperparameters <- expand_grid(
     quote(list(gain = list(mean = 25, sd = 0.1))),
     quote(list(rate = list(mean = 0.1, sd = 0.01)))
   ),
-  data = list(quote(exp1_data_agg), quote(exp2_data_agg))
+  data = list(quote(exp1_data_agg), quote(exp2_data_agg), quote(exp3_data_agg))
 )
 
 sim1_hyperparameters <- mutate(
@@ -38,7 +38,7 @@ sim1_hyperparameters <- mutate(
 sim2_hyperparameters <- expand_grid(
   exclude_sp1 = c(TRUE, FALSE),
   rate = seq(0.005, 0.1, by = 0.005),
-  data = c(quote(exp1_data_agg), quote(exp2_data_agg))
+  data = c(quote(exp1_data_agg), quote(exp2_data_agg), quote(exp3_data_agg))
 )
 
 sim2_hyperparameters <- mutate(
@@ -52,7 +52,8 @@ sim2_hyperparameters <- mutate(
 )
 
 sim3_hyperparameters <- sim1_hyperparameters |>
-  mutate(data = syms(paste0(data, "_enc")))
+  mutate(data = syms(paste0(data, "_enc"))) |>
+  filter(data != quote(exp3_data_agg_enc))
 
 # Pipeline
 list(
