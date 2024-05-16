@@ -49,6 +49,40 @@ serial_recall <- function(
 }
 
 
+# same as serial_recall, but returns the strength of each item
+# TODO: should just make this an argument to serial_recall, but I
+# don't want to invalidate the targets pipeline
+serial_recall_strength <- function(
+    setsize, ISI = rep(0.5, setsize), item_in_ltm = rep(TRUE, setsize),
+    prop = 0.2, prop_ltm = 0.5, tau = 0.15, gain = 25, rate = 0.1,
+    r_max = 1, lambda = 1, growth = "linear") {
+  R <- r_max
+  strengths <- vector("numeric", length = setsize)
+  prop_ltm <- ifelse(item_in_ltm, prop_ltm, 1)
+
+  for (item in 1:setsize) {
+    # strength of the item and recall probability
+    strength <- (prop * R)^lambda
+    p_recall[item] <- 1 / (1 + exp(-(strength - tau) * gain))
+
+    # amount of resources consumed by the item
+    r_cost <- strength^(1 / lambda) * prop_ltm[item]
+    R <- R - r_cost
+
+    # recover resources
+    R <- switch(growth,
+      "linear" = min(r_max, R + rate * ISI[item]),
+      "asy" = R + (r_max - R) * (1 - exp(-rate * ISI[item]))
+    )
+
+    # save the strength
+    strengths[item] <- strength 
+  }
+
+  strengths
+}
+
+
 
 #' Calculate the deviance of a model
 #'
@@ -210,7 +244,7 @@ estimate_model <- function(start, data, two_step = FALSE, priors = list(), simpl
 
 
 
-predict.serial_recall_pars <- function(object, data, group_by, ...) {
+predict.serial_recall_pars <- function(object, data, group_by, type = "response", ...) {
   if (missing(group_by)) {
     pred <- serial_recall(
       setsize = nrow(data),
