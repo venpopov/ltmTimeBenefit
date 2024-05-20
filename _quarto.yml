@@ -36,10 +36,6 @@ website:
   search: true
   repo-subdir: quarto
   navbar: 
-    title: "Free time & chunking modeling"
-    left:
-      - text: "Home"
-        href: "index.qmd"
     tools:
       - icon: github
         menu:
@@ -72,8 +68,13 @@ website:
            contents:
             - "quarto/notebooks/model_v2.qmd"
          - "quarto/notebooks/model-explore.qmd"
+         - section: "Model 3: Non-linear recovery"
+           contents:
+            - "quarto/notebooks/non_linear_recovery.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
+  # drafts: 
+  draft-mode: unlinked
 
 editor:
   render-on-save: true
