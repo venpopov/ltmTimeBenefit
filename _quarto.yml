@@ -71,6 +71,7 @@ website:
          - section: "Model 3: Non-linear recovery"
            contents:
             - "quarto/notebooks/non_linear_recovery.qmd"
+            - "quarto/notebooks/model3_basic_fits.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
   # drafts: 

@@ -3,3 +3,69 @@ title: "Basic fits"
 format: html
 ---
 
+## Overview
+
+Fit the non-linear resource recovery model to the three experiments. Dashed lines are model predictions. Solid dots are the observed data and solid lines are linear regression lines.
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+library(GGally)
+library(kableExtra)
+# load "R/*" scripts and saved R objects from the targets pi
+tar_source()
+tar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, exp3_data_agg))
+set.seed(213)
+```
+
+## Experiment 1
+
+```{r}
+start <- c(prop = 0.15, prop_ltm = 0.5, rate = 0.25, gain = 30, tau = 0.12)
+est1 <- estimate_model(start, data = exp1_data_agg, exclude_sp1 = TRUE, growth = "asy")
+exp1_data_agg$pred <- predict(est1, exp1_data_agg, group_by = c("chunk", "gap"), growth = "asy")
+exp1_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+## Experiment 2
+
+```{r}
+est2 <- estimate_model(est1$par, data = exp2_data_agg, exclude_sp1 = TRUE, growth = "asy")
+exp2_data_agg$pred <- predict(est2, exp2_data_agg, group_by = c("chunk", "gap"), growth = "asy")
+exp2_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point() +
+  geom_line() +
+  geom_line(aes(y = pred), linetype = "dashed") +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+## Experiment 3
+
+```{r}
+est3 <- estimate_model(est1$par, data = exp3_data_agg, exclude_sp1 = TRUE, growth = "asy")
+exp3_data_agg$pred <- predict(est3, exp3_data_agg, group_by = c("chunk", "gap"), growth = "asy")
+exp3_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point(, alpha = 0.5) +
+  stat_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+  geom_line(aes(y = pred), linetype = "dashed", linewidth = 1.1) +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+parameter estimates for the three experiments:
+
+```{r}
+kable(round(bind_rows(est1$par, est2$par, est3$par), 3)) %>%
+  kable_styling()
+```
