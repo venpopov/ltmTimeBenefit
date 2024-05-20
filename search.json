@@ -1,0 +1,1116 @@
+[
+  {
+    "objectID": "quarto/reference/aggregate_data.html",
+    "href": "quarto/reference/aggregate_data.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceAggregate Data Code",
+    "crumbs": [
+      "Function reference",
+      "Aggregate Data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/aggregate_data.html#description",
+    "href": "quarto/reference/aggregate_data.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function aggregates the given data by grouping it based on the chunk, gap, and itemtype columns. It then calculates various summary statistics including the total count, the count of correct values, and the proportion of correct values.",
+    "crumbs": [
+      "Function reference",
+      "Aggregate Data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/aggregate_data.html#usage",
+    "href": "quarto/reference/aggregate_data.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\naggregate_data(data)",
+    "crumbs": [
+      "Function reference",
+      "Aggregate Data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/aggregate_data.html#arguments",
+    "href": "quarto/reference/aggregate_data.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\ndata: The input data frame.",
+    "crumbs": [
+      "Function reference",
+      "Aggregate Data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/aggregate_data.html#value",
+    "href": "quarto/reference/aggregate_data.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nA new data frame with the aggregated data.",
+    "crumbs": [
+      "Function reference",
+      "Aggregate Data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/aggregate_data.html#examples",
+    "href": "quarto/reference/aggregate_data.html#examples",
+    "title": "",
+    "section": "Examples",
+    "text": "Examples\ntar_load(exp1_data)\naggregate_data(exp1_data)",
+    "crumbs": [
+      "Function reference",
+      "Aggregate Data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/get_data.html",
+    "href": "quarto/reference/get_data.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceget_data function Code",
+    "crumbs": [
+      "Function reference",
+      "get_data function"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/get_data.html#description",
+    "href": "quarto/reference/get_data.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function takes a file path as input and returns preprocessed data.",
+    "crumbs": [
+      "Function reference",
+      "get_data function"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/get_data.html#usage",
+    "href": "quarto/reference/get_data.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\nget_data(path, ...)",
+    "crumbs": [
+      "Function reference",
+      "get_data function"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/get_data.html#arguments",
+    "href": "quarto/reference/get_data.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\npath: The file path to the RData file.",
+    "crumbs": [
+      "Function reference",
+      "get_data function"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/get_data.html#seealso",
+    "href": "quarto/reference/get_data.html#seealso",
+    "title": "",
+    "section": "Seealso",
+    "text": "Seealso\nextract_object_from_rdata preprocess_data",
+    "crumbs": [
+      "Function reference",
+      "get_data function"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/get_data.html#value",
+    "href": "quarto/reference/get_data.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe preprocessed data.",
+    "crumbs": [
+      "Function reference",
+      "get_data function"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/logit.html",
+    "href": "quarto/reference/logit.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceLogit Transformation Code",
+    "crumbs": [
+      "Function reference",
+      "Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/logit.html#description",
+    "href": "quarto/reference/logit.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function performs a logit transformation on a given variable.",
+    "crumbs": [
+      "Function reference",
+      "Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/logit.html#usage",
+    "href": "quarto/reference/logit.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\nlogit(x, lb = 0, ub = 1)",
+    "crumbs": [
+      "Function reference",
+      "Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/logit.html#arguments",
+    "href": "quarto/reference/logit.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\nx: The variable to be transformed.\nlb: The lower bound of the variable (default is 0).\nub: The upper bound of the variable (default is 1).",
+    "crumbs": [
+      "Function reference",
+      "Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/logit.html#value",
+    "href": "quarto/reference/logit.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe logit-transformed variable.",
+    "crumbs": [
+      "Function reference",
+      "Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/logit.html#examples",
+    "href": "quarto/reference/logit.html#examples",
+    "title": "",
+    "section": "Examples",
+    "text": "Examples\nlogit(0.5) # returns 0\nlogit(0.25, lb = 0, ub = 0.5) # returns 0\nlogit(0.75, lb = 0.5, ub = 1) # returns 0",
+    "crumbs": [
+      "Function reference",
+      "Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/overall_deviance.html",
+    "href": "quarto/reference/overall_deviance.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceCalculate the overall deviance Code",
+    "crumbs": [
+      "Function reference",
+      "Calculate the overall deviance"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/overall_deviance.html#description",
+    "href": "quarto/reference/overall_deviance.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function calculates the overall deviance for a given set of parameters and data. It splits the dataset by the given column and calculates the deviance for each subset. The overall deviance is the sum of the deviances for each subset.",
+    "crumbs": [
+      "Function reference",
+      "Calculate the overall deviance"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/overall_deviance.html#usage",
+    "href": "quarto/reference/overall_deviance.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\noverall_deviance(params, data, by = c(\"chunk\", \"gap\"), ..., priors = list())",
+    "crumbs": [
+      "Function reference",
+      "Calculate the overall deviance"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/overall_deviance.html#arguments",
+    "href": "quarto/reference/overall_deviance.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\nparams: A vector of parameters.\ndata: A data frame containing the data.\nby: The column(s) to split the data by.",
+    "crumbs": [
+      "Function reference",
+      "Calculate the overall deviance"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/overall_deviance.html#value",
+    "href": "quarto/reference/overall_deviance.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe overall deviance.",
+    "crumbs": [
+      "Function reference",
+      "Calculate the overall deviance"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/calcdev.html",
+    "href": "quarto/reference/calcdev.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceCalculate the deviance of a model Code",
+    "crumbs": [
+      "Function reference",
+      "Calculate the deviance of a model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/calcdev.html#description",
+    "href": "quarto/reference/calcdev.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function calculates the deviance of a serial_recall model given a set of parameters and data. The deviance is a measure of how well the model fits the data.",
+    "crumbs": [
+      "Function reference",
+      "Calculate the deviance of a model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/calcdev.html#usage",
+    "href": "quarto/reference/calcdev.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\ncalcdev(params, dat, exclude_sp1 = FALSE)",
+    "crumbs": [
+      "Function reference",
+      "Calculate the deviance of a model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/calcdev.html#arguments",
+    "href": "quarto/reference/calcdev.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\nparams: A named vector of model parameters\ndat: A data frame containing the data\nexclude_sp1: A logical indicating whether to exclude the first item from the likelihood calculation",
+    "crumbs": [
+      "Function reference",
+      "Calculate the deviance of a model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/calcdev.html#value",
+    "href": "quarto/reference/calcdev.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe deviance of the model",
+    "crumbs": [
+      "Function reference",
+      "Calculate the deviance of a model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/calcdev.html#examples",
+    "href": "quarto/reference/calcdev.html#examples",
+    "title": "",
+    "section": "Examples",
+    "text": "Examples\nparams &lt;- c(prop = 0.5, prop_ltm = 0.3, tau = 0.2, gain = 1, rate = 0.4)\ndata &lt;- data.frame(\n  ISI = c(100, 200, 300), item_in_ltm = c(TRUE, FALSE, TRUE),\n  n_correct = c(10, 15, 20), n_total = c(20, 20, 20)\n)\ncalcdev(params, data)",
+    "crumbs": [
+      "Function reference",
+      "Calculate the deviance of a model"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/data_structure.html",
+    "href": "quarto/notebooks/data_structure.html",
+    "title": "View the data structure",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg))\n\n\nThe datafiles for the two experiments are in objects exp1_data and exp2_data. Let’s first look at the structure of the data for experiment 1.\n\nCodehead(exp1_data)\n\n    id trial condition enccons serpos response duration cor  chunk  gap      rt itemtype\n1 7504     0         4       D      1        D  2576.88   1 random 3000 2.57688    SP1-3\n2 7504     0         4       P      2            309.44   0 random 3000 0.30944    SP1-3\n3 7504     0         4       Q      3        D   760.36   0 random 3000 0.76036    SP1-3\n4 7504     0         4       J      4        D  1939.52   0 random 3000 1.93952    SP4-6\n5 7504     0         4       G      5        D  3935.02   0 random 3000 3.93502    SP4-6\n6 7504     0         4       W      6        W  2010.84   1 random 3000 2.01084    SP4-6\n\n\nFrom Eda I know that the condition column is coded like this:\n\n\ncondition\nLTM\nISI\n\n\n\n1\nchunk\nshort\n\n\n2\nno-chunk\nshort\n\n\n3\nchunk\nlong\n\n\n4\nno-chunk\nlong\n\n\n\nLet’s confirm this:\n\nCodeexp1_data |&gt;\n  select(condition, chunk, gap) |&gt;\n  unique() |&gt;\n  arrange(condition)\n\n  condition  chunk  gap\n1         1  known  500\n2         2 random  500\n3         3  known 3000\n4         4 random 3000\n\n\nthere are this many trials per participant:\n\nCodemax(as.numeric(exp1_data$trial)) + 1\n\n[1] 80",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "View the data structure"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/data_structure.html#overview",
+    "href": "quarto/notebooks/data_structure.html#overview",
+    "title": "View the data structure",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg))\n\n\nThe datafiles for the two experiments are in objects exp1_data and exp2_data. Let’s first look at the structure of the data for experiment 1.\n\nCodehead(exp1_data)\n\n    id trial condition enccons serpos response duration cor  chunk  gap      rt itemtype\n1 7504     0         4       D      1        D  2576.88   1 random 3000 2.57688    SP1-3\n2 7504     0         4       P      2            309.44   0 random 3000 0.30944    SP1-3\n3 7504     0         4       Q      3        D   760.36   0 random 3000 0.76036    SP1-3\n4 7504     0         4       J      4        D  1939.52   0 random 3000 1.93952    SP4-6\n5 7504     0         4       G      5        D  3935.02   0 random 3000 3.93502    SP4-6\n6 7504     0         4       W      6        W  2010.84   1 random 3000 2.01084    SP4-6\n\n\nFrom Eda I know that the condition column is coded like this:\n\n\ncondition\nLTM\nISI\n\n\n\n1\nchunk\nshort\n\n\n2\nno-chunk\nshort\n\n\n3\nchunk\nlong\n\n\n4\nno-chunk\nlong\n\n\n\nLet’s confirm this:\n\nCodeexp1_data |&gt;\n  select(condition, chunk, gap) |&gt;\n  unique() |&gt;\n  arrange(condition)\n\n  condition  chunk  gap\n1         1  known  500\n2         2 random  500\n3         3  known 3000\n4         4 random 3000\n\n\nthere are this many trials per participant:\n\nCodemax(as.numeric(exp1_data$trial)) + 1\n\n[1] 80",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "View the data structure"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/data_structure.html#aggregate-data",
+    "href": "quarto/notebooks/data_structure.html#aggregate-data",
+    "title": "View the data structure",
+    "section": "Aggregate data",
+    "text": "Aggregate data\nThis is what the aggregated data looks like:\n\nCodeexp1_data_agg\n\n# A tibble: 12 × 8\n   chunk    gap itemtype n_total n_correct p_correct   ISI item_in_ltm\n   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;      \n 1 known    500 SP1-3       1855      1715     0.925   0.5 TRUE       \n 2 known    500 SP4-6       1858      1368     0.736   0.5 FALSE      \n 3 known    500 SP7-9       1851       943     0.509   0.5 FALSE      \n 4 known   3000 SP1-3       1859      1721     0.926   3   TRUE       \n 5 known   3000 SP4-6       1858      1443     0.777   0.5 FALSE      \n 6 known   3000 SP7-9       1856      1032     0.556   0.5 FALSE      \n 7 random   500 SP1-3       1853      1495     0.807   0.5 FALSE      \n 8 random   500 SP4-6       1856      1177     0.634   0.5 FALSE      \n 9 random   500 SP7-9       1855       727     0.392   0.5 FALSE      \n10 random  3000 SP1-3       1856      1553     0.837   3   FALSE      \n11 random  3000 SP4-6       1858      1287     0.693   0.5 FALSE      \n12 random  3000 SP7-9       1856       838     0.452   0.5 FALSE",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "View the data structure"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/exp3_model1.html",
+    "href": "quarto/notebooks/exp3_model1.html",
+    "title": "Experiment 3",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp3_data_agg))\n\n\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp3_data_agg,\n  two_step = TRUE,\n  exclude_sp1 = TRUE,\n  simplify = TRUE,\n  prior = list(\n    rate = list(mean = 0.05, sd = 0.01)\n  )\n)\n\nest\n\n# A tibble: 1 × 8\n   prop prop_ltm   rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.296    0.819 0.0143 0.153  12.9     769.           0 &lt;srl_rcl_&gt;\n\n\n\nCodeexp3_data_agg$pred &lt;- predict(est$fit[[1]], data = exp3_data_agg, group_by = c(\"chunk\", \"gap\"))\n\nexp3_data_agg |&gt;\n  ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +\n  geom_point() +\n  stat_smooth(method = \"lm\", se = FALSE) +\n  geom_line(aes(y = pred), color = \"black\") +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  facet_wrap(~itemtype) +\n  theme_pub()\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Experiment 3"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/EDA.html",
+    "href": "quarto/notebooks/EDA.html",
+    "title": "Exploratory data analysis",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(ggdist)\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, exp3_data, exp3_data_agg))\n\ndata_agg &lt;- bind_rows(\n  mutate(exp1_data_agg, exp = \"Exp 1\"),\n  mutate(exp2_data_agg, exp = \"Exp 2\")\n)\n\n\nHere I have a bunch of plots to help me understand the data for the later modeling.",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "Exploratory data analysis"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/EDA.html#overview",
+    "href": "quarto/notebooks/EDA.html#overview",
+    "title": "Exploratory data analysis",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(ggdist)\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, exp3_data, exp3_data_agg))\n\ndata_agg &lt;- bind_rows(\n  mutate(exp1_data_agg, exp = \"Exp 1\"),\n  mutate(exp2_data_agg, exp = \"Exp 2\")\n)\n\n\nHere I have a bunch of plots to help me understand the data for the later modeling.",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "Exploratory data analysis"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/EDA.html#overall-performance",
+    "href": "quarto/notebooks/EDA.html#overall-performance",
+    "title": "Exploratory data analysis",
+    "section": "Overall performance",
+    "text": "Overall performance\n\nCodedata_agg |&gt;\n  mutate(gap = as.factor(gap)) |&gt;\n  ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +\n  geom_point() +\n  geom_line() +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  facet_grid(exp ~ itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nTogether to compare shared levels:\n\nCodedata_agg |&gt;\n  ggplot(aes(gap, p_correct, color = chunk, linetype = exp)) +\n  geom_point() +\n  geom_line() +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  scale_x_continuous(breaks = c(500, 3000, 6000)) +\n  coord_cartesian(xlim = c(300, 6200)) +\n  facet_wrap(~itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nOverall performance is a bit lower in experiment 2, but not by much. Still, it might be an issue if trying to model the two experiments together. The effect size of the chunk is also smaller.",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "Exploratory data analysis"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/EDA.html#individual-performance",
+    "href": "quarto/notebooks/EDA.html#individual-performance",
+    "title": "Exploratory data analysis",
+    "section": "Individual performance",
+    "text": "Individual performance\n\nCodedata_agg_subj &lt;- bind_rows(\n  mutate(exp1_data, exp = \"Exp 1\"),\n  mutate(exp2_data, exp = \"Exp 2\")\n) |&gt;\n  group_by(id, exp) |&gt;\n  nest() |&gt;\n  mutate(data = map(data, aggregate_data)) |&gt;\n  unnest(data)\n\n\nprint overall accuracy for each subject:\n\nCodedata_agg_subj |&gt;\n  group_by(exp, id) |&gt;\n  summarize(p_correct = mean(p_correct)) |&gt;\n  ggplot(aes(exp, p_correct)) +\n  geom_dotsinterval(side = \"both\") +\n  theme_pub()",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "Exploratory data analysis"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/EDA.html#experiment-3",
+    "href": "quarto/notebooks/EDA.html#experiment-3",
+    "title": "Exploratory data analysis",
+    "section": "Experiment 3",
+    "text": "Experiment 3\n\nCodeexp3_data_agg |&gt;\n  ggplot(aes(gap, p_correct, color = chunk, group = chunk)) +\n  geom_point() +\n  stat_smooth(method = \"lm\", se = FALSE) +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  facet_wrap(~itemtype) +\n  theme_pub()\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "Exploratory data analysis"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/par_identifiability.html",
+    "href": "quarto/notebooks/par_identifiability.html",
+    "title": "Parameter identifiability",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\ntar_source()\n\n\nIn the initial modeling notebook, I discovered some problems with parameter identifiability. Here I will explore this issue further.\nInitially I ran the model described in the May 13, 2024 draft with 100 different starting parameters. Here are 5 sets of very different best-fitting parameters that produce nearly identical fits as measured by the negative log-likelihood (deviance):\n\nCodefits &lt;- readRDS(\"output/five_parsets_exp2.rds\")\nfits$set &lt;- paste0(\"set\", 1:5)\n\nfits[, 1:6] |&gt;\n  as.data.frame() |&gt;\n  `rownames&lt;-`(fits$set) |&gt;\n  kbl() %&gt;%\n  kable_styling()\n\n\n\n   \n    prop \n    prop_ltm \n    rate \n    tau \n    gain \n    deviance \n  \n\n\n set1 \n    0.098 \n    0.815 \n    0.006 \n    0.084 \n    96.954 \n    40.377 \n  \n\n set2 \n    0.132 \n    0.818 \n    0.009 \n    0.108 \n    54.078 \n    40.429 \n  \n\n set3 \n    0.155 \n    0.820 \n    0.010 \n    0.123 \n    40.135 \n    40.491 \n  \n\n set4 \n    0.173 \n    0.822 \n    0.011 \n    0.133 \n    32.738 \n    40.556 \n  \n\n set5 \n    0.215 \n    0.826 \n    0.013 \n    0.154 \n    21.967 \n    40.772 \n  \n\n\n\n\nWe can see that they all produce nearly identical predictions (the lines are the model predictions, the points are the data):\n\nCodefits |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(gap = as.factor(gap)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = set, group = interaction(chunk, set))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  scale_linetype_discrete(\"Parameter set\") +\n  facet_grid(~itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nThe plot below shows the strong nearly linear trade-offs between the parameters.\n\nCodefits |&gt;\n  select(prop, rate, tau, gain) |&gt;\n  ggpairs(\n    diag = list(continuous = \"blankDiag\"),\n    upper = list(continuous = \"points\")\n  ) +\n  theme_pub() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Parameter identifiability"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/par_identifiability.html#overview",
+    "href": "quarto/notebooks/par_identifiability.html#overview",
+    "title": "Parameter identifiability",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\ntar_source()\n\n\nIn the initial modeling notebook, I discovered some problems with parameter identifiability. Here I will explore this issue further.\nInitially I ran the model described in the May 13, 2024 draft with 100 different starting parameters. Here are 5 sets of very different best-fitting parameters that produce nearly identical fits as measured by the negative log-likelihood (deviance):\n\nCodefits &lt;- readRDS(\"output/five_parsets_exp2.rds\")\nfits$set &lt;- paste0(\"set\", 1:5)\n\nfits[, 1:6] |&gt;\n  as.data.frame() |&gt;\n  `rownames&lt;-`(fits$set) |&gt;\n  kbl() %&gt;%\n  kable_styling()\n\n\n\n   \n    prop \n    prop_ltm \n    rate \n    tau \n    gain \n    deviance \n  \n\n\n set1 \n    0.098 \n    0.815 \n    0.006 \n    0.084 \n    96.954 \n    40.377 \n  \n\n set2 \n    0.132 \n    0.818 \n    0.009 \n    0.108 \n    54.078 \n    40.429 \n  \n\n set3 \n    0.155 \n    0.820 \n    0.010 \n    0.123 \n    40.135 \n    40.491 \n  \n\n set4 \n    0.173 \n    0.822 \n    0.011 \n    0.133 \n    32.738 \n    40.556 \n  \n\n set5 \n    0.215 \n    0.826 \n    0.013 \n    0.154 \n    21.967 \n    40.772 \n  \n\n\n\n\nWe can see that they all produce nearly identical predictions (the lines are the model predictions, the points are the data):\n\nCodefits |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(gap = as.factor(gap)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = set, group = interaction(chunk, set))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  scale_linetype_discrete(\"Parameter set\") +\n  facet_grid(~itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nThe plot below shows the strong nearly linear trade-offs between the parameters.\n\nCodefits |&gt;\n  select(prop, rate, tau, gain) |&gt;\n  ggpairs(\n    diag = list(continuous = \"blankDiag\"),\n    upper = list(continuous = \"points\")\n  ) +\n  theme_pub() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Parameter identifiability"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/par_identifiability.html#fix-rate-to-different-values-and-explore-the-parameter-space",
+    "href": "quarto/notebooks/par_identifiability.html#fix-rate-to-different-values-and-explore-the-parameter-space",
+    "title": "Parameter identifiability",
+    "section": "Fix rate to different values and explore the parameter space",
+    "text": "Fix rate to different values and explore the parameter space\nI ran a simulation in which I fix1 the rate parameter to values in the range 0.005 to 0.2. I want to see if the identical fits extend to higher rates.\nWe first extract the best-fitting parameters for each rate from the 100 random start fits.\n\nCodetar_load(fits2)\nfits2 &lt;- fits2 |&gt;\n  mutate(\n    deviance = pmap_dbl(list(fit, data, exclude_sp1), function(x, y, z) {\n      overall_deviance(x$par, data = y, exclude_sp1 = z)\n    }),\n    rate = round(rate, 3)\n  )\n\n\nbest &lt;- fits2 |&gt;\n  group_by(rate, exp, exclude_sp1) |&gt;\n  filter(deviance == min(deviance)) |&gt;\n  slice(1) |&gt;\n  select(rate, prop, prop_ltm, tau, gain, deviance, fit, data) |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  ungroup()\n\nAdding missing grouping variables: `exp`, `exclude_sp1`\n\n\nsubset for exp2 and exclude_sp1 = TRUE\n\nCodebest_subset &lt;- filter(best, exp == 2, exclude_sp1)\n\n\nFrom the deviance it’s already clear that the fits get wose once we get above 0.020 rate. Here are the best-fitting parameters for each rate:\n\nCodebest_subset |&gt;\n  select(rate, prop, prop_ltm, tau, gain, deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  kbl() %&gt;%\n  kable_styling()\n\n\n\n rate \n    prop \n    prop_ltm \n    tau \n    gain \n    deviance \n  \n\n\n 0.005 \n    0.098 \n    0.812 \n    0.084 \n    100.000 \n    42.689 \n  \n\n 0.010 \n    0.155 \n    0.819 \n    0.121 \n    41.585 \n    40.518 \n  \n\n 0.015 \n    0.235 \n    0.826 \n    0.159 \n    19.374 \n    40.871 \n  \n\n 0.020 \n    0.316 \n    0.835 \n    0.183 \n    11.537 \n    41.687 \n  \n\n 0.025 \n    0.389 \n    0.841 \n    0.194 \n    8.143 \n    43.185 \n  \n\n 0.030 \n    0.451 \n    0.844 \n    0.197 \n    6.359 \n    45.610 \n  \n\n 0.035 \n    0.496 \n    0.842 \n    0.197 \n    5.394 \n    49.069 \n  \n\n 0.040 \n    0.528 \n    0.834 \n    0.196 \n    4.765 \n    53.434 \n  \n\n 0.045 \n    0.324 \n    0.465 \n    0.210 \n    8.718 \n    57.907 \n  \n\n 0.050 \n    0.355 \n    0.459 \n    0.220 \n    7.359 \n    58.648 \n  \n\n 0.055 \n    0.384 \n    0.455 \n    0.228 \n    6.362 \n    59.535 \n  \n\n 0.060 \n    0.412 \n    0.448 \n    0.234 \n    5.559 \n    60.563 \n  \n\n 0.065 \n    0.439 \n    0.442 \n    0.239 \n    4.955 \n    61.729 \n  \n\n 0.070 \n    0.466 \n    0.438 \n    0.244 \n    4.430 \n    63.027 \n  \n\n 0.075 \n    0.271 \n    0.452 \n    0.198 \n    12.494 \n    63.309 \n  \n\n 0.080 \n    0.272 \n    0.457 \n    0.199 \n    12.582 \n    63.309 \n  \n\n 0.085 \n    0.271 \n    0.464 \n    0.200 \n    12.799 \n    63.309 \n  \n\n 0.090 \n    0.271 \n    0.470 \n    0.200 \n    12.950 \n    63.309 \n  \n\n 0.095 \n    0.271 \n    0.476 \n    0.201 \n    13.072 \n    63.309 \n  \n\n 0.100 \n    0.271 \n    0.481 \n    0.202 \n    13.233 \n    63.309 \n  \n\n\n\n\nA few observations:\n\nwith recovery rates higher than 0.07 the fits do no change much\nwhen the rate changes from 0.04 to 0.045, we switch to a different region of the parameter space. Similarly from 0.065 to 0.07\nlooks like we have four ranges of rates with qualitative shifts:\n\n\n0.005 to 0.02: the fits are very similar and prop_ltm is ~ 0.8. The other parameters change proportionally to the rate\n\n0.025 to 0.04: fits get progressively worse. the other parameters still changes similarly to the first group, but tau is not stable. Seems like tau can no longer compensate, leading to worsening fits\n\n0.045 to 0.07: prop_ltm drops to ~0.45 and stays there. The other parameters again change proportionally to the rate, but they are now in a different region of the parameter space. Fits gradually worsen as we increase the rates\n\n0.07 to 0.2: prop is now stable at ~0.255. The other parameters change but with very small increments. Fits are identical\n\n\n\nHere’s a pairs plot with colors indicating the rate group. The plot indicates that the parameter space does not have a smooth gradient, but rather jumps between regions when rate is fixed to different values.\n\nCodebest_subset &lt;- best_subset |&gt;\n  mutate(par_groups = case_when(\n    rate &lt;= 0.02 ~ \"0.005-0.02\",\n    rate &lt;= 0.04 ~ \"0.025-0.04\",\n    rate &lt;= 0.07 ~ \"0.045-0.07\",\n    TRUE ~ \"0.07-0.2\"\n  ))\n\nbest_subset |&gt;\n  select(prop, prop_ltm, rate, tau, gain, par_groups) |&gt;\n  ggpairs(\n    aes(color = par_groups),\n    diag = list(continuous = \"blankDiag\"),\n    upper = list(continuous = \"points\")\n  ) +\n  theme_pub() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n\n\nLet’s see how this affects the predictions for the different rate groups. It would be too much to plot all the predictions, so I will first plot the predictions for the first and last parameters for each rate group.\n\nCodebest_subset |&gt;\n  group_by(par_groups) |&gt;\n  slice(c(1, n())) |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(\n    gap = as.factor(gap),\n    rate = as.factor(round(rate, 3))\n  ) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = par_groups, group = interaction(chunk, rate))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  scale_linetype_discrete(\"Rate\") +\n  facet_grid(rate ~ itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nA few observations:\n\nRates above 0.045 lead to the same fit, because they cause full recovery from first item to the second with 6 s ISI. We can see that from he plots because the prediction for SP1-3 and sp4-6 (6000 ISI) are the same for all rates above 0.045, meaning no serial position effect from the first to the second chunk. This is completely implausible, so we can rule out rates above 0.045.\n\nIncluding SP1-3 in the fits\nI will now include SP1-3 in the fits and see if this changes the parameter space.\n\nCodebest_subset &lt;- filter(best, exp == 2, exclude_sp1 == FALSE)\n\n\nHere are the best-fitting parameters for each rate:\n\nCodebest_subset |&gt;\n  select(rate, prop, prop_ltm, tau, gain, deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  kbl() %&gt;%\n  kable_styling()\n\n\n\n rate \n    prop \n    prop_ltm \n    tau \n    gain \n    deviance \n  \n\n\n 0.005 \n    0.109 \n    0.875 \n    0.091 \n    92.939 \n    119.499 \n  \n\n 0.010 \n    0.216 \n    0.869 \n    0.149 \n    24.963 \n    114.013 \n  \n\n 0.015 \n    0.303 \n    0.867 \n    0.176 \n    13.406 \n    110.780 \n  \n\n 0.020 \n    0.374 \n    0.863 \n    0.189 \n    9.213 \n    109.681 \n  \n\n 0.025 \n    0.432 \n    0.860 \n    0.193 \n    7.153 \n    110.370 \n  \n\n 0.030 \n    0.481 \n    0.859 \n    0.193 \n    5.961 \n    112.559 \n  \n\n 0.035 \n    0.527 \n    0.857 \n    0.191 \n    5.106 \n    116.055 \n  \n\n 0.040 \n    0.567 \n    0.853 \n    0.187 \n    4.514 \n    120.700 \n  \n\n 0.045 \n    0.602 \n    0.853 \n    0.183 \n    4.074 \n    126.391 \n  \n\n 0.050 \n    0.640 \n    0.852 \n    0.177 \n    3.679 \n    133.024 \n  \n\n 0.055 \n    0.667 \n    0.853 \n    0.172 \n    3.429 \n    140.578 \n  \n\n 0.060 \n    0.697 \n    0.852 \n    0.166 \n    3.181 \n    148.930 \n  \n\n 0.065 \n    0.723 \n    0.852 \n    0.161 \n    2.992 \n    158.062 \n  \n\n 0.070 \n    0.749 \n    0.851 \n    0.155 \n    2.811 \n    167.905 \n  \n\n 0.075 \n    0.773 \n    0.853 \n    0.148 \n    2.660 \n    178.428 \n  \n\n 0.080 \n    0.793 \n    0.854 \n    0.143 \n    2.537 \n    189.595 \n  \n\n 0.085 \n    0.816 \n    0.852 \n    0.136 \n    2.405 \n    201.389 \n  \n\n 0.090 \n    0.836 \n    0.854 \n    0.130 \n    2.300 \n    213.730 \n  \n\n 0.095 \n    0.855 \n    0.855 \n    0.124 \n    2.203 \n    226.585 \n  \n\n 0.100 \n    0.873 \n    0.855 \n    0.118 \n    2.115 \n    239.930 \n  \n\n\n\n\nThis now looks much more stable. Until 0.130 we don’t have switchest in the parameter region. Still, rates 0.005-0.03 are very similar.\nHere are the plots for rates 0.005-0.10:\n\nCodepred_data &lt;- best_subset |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(\n    gap = as.factor(gap),\n    rate = round(rate, 3)\n  )\n\nmyplot &lt;- function(data) {\n  ggplot(data, aes(x = gap, y = p_correct, color = chunk)) +\n    geom_point() +\n    geom_line(aes(y = pred, group = chunk)) +\n    scale_color_discrete(\"First chunk LTM?\") +\n    facet_grid(rate ~ itemtype) +\n    theme_pub()\n}\n\n\n\n\nRate [0.005, 0.025]\nRate [0.03, 0.05]\nRate [0.055, 0.75]\nRate [0.08, 0.10]\n\n\n\n\nCodemyplot(filter(pred_data, rate &lt; 0.026))\n\n\n\n\n\n\n\n\n\n\nCodemyplot(filter(pred_data, rate &lt; 0.051 & rate &gt; 0.029))\n\n\n\n\n\n\n\n\n\n\nCodemyplot(filter(pred_data, rate &lt; 0.076 & rate &gt; 0.054))\n\n\n\n\n\n\n\n\n\n\nCodemyplot(filter(pred_data, rate &gt; 0.079, rate &lt; 0.101))",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Parameter identifiability"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/par_identifiability.html#what-about-experiment-1",
+    "href": "quarto/notebooks/par_identifiability.html#what-about-experiment-1",
+    "title": "Parameter identifiability",
+    "section": "What about experiment 1?",
+    "text": "What about experiment 1?\nI will now repeat the same analysis for experiment 1.\n\nCodebest_subset &lt;- filter(best, exp == 1, exclude_sp1)\n\nbest_subset |&gt;\n  select(rate, prop, prop_ltm, tau, gain, deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  kbl() %&gt;%\n  kable_styling()\n\n\n\n rate \n    prop \n    prop_ltm \n    tau \n    gain \n    deviance \n  \n\n\n 0.005 \n    0.106 \n    0.573 \n    0.089 \n    100.000 \n    36.273 \n  \n\n 0.010 \n    0.115 \n    0.576 \n    0.096 \n    85.610 \n    31.959 \n  \n\n 0.015 \n    0.170 \n    0.579 \n    0.129 \n    40.879 \n    32.380 \n  \n\n 0.020 \n    0.223 \n    0.587 \n    0.154 \n    24.841 \n    33.079 \n  \n\n 0.025 \n    0.270 \n    0.593 \n    0.172 \n    17.465 \n    34.078 \n  \n\n 0.030 \n    0.314 \n    0.600 \n    0.184 \n    13.397 \n    35.384 \n  \n\n 0.035 \n    0.351 \n    0.602 \n    0.192 \n    11.022 \n    37.002 \n  \n\n 0.040 \n    0.384 \n    0.605 \n    0.197 \n    9.416 \n    38.918 \n  \n\n 0.045 \n    0.413 \n    0.607 \n    0.200 \n    8.305 \n    41.117 \n  \n\n 0.050 \n    0.439 \n    0.608 \n    0.202 \n    7.448 \n    43.575 \n  \n\n 0.055 \n    0.457 \n    0.603 \n    0.204 \n    6.888 \n    46.274 \n  \n\n 0.060 \n    0.481 \n    0.603 \n    0.205 \n    6.310 \n    49.177 \n  \n\n 0.065 \n    0.497 \n    0.598 \n    0.206 \n    5.889 \n    52.249 \n  \n\n 0.070 \n    0.510 \n    0.594 \n    0.207 \n    5.570 \n    55.470 \n  \n\n 0.075 \n    0.405 \n    0.374 \n    0.221 \n    7.375 \n    56.971 \n  \n\n 0.080 \n    0.423 \n    0.369 \n    0.225 \n    6.802 \n    58.529 \n  \n\n 0.085 \n    0.441 \n    0.367 \n    0.228 \n    6.311 \n    60.169 \n  \n\n 0.090 \n    0.457 \n    0.364 \n    0.230 \n    5.910 \n    61.889 \n  \n\n 0.095 \n    0.474 \n    0.360 \n    0.232 \n    5.534 \n    63.682 \n  \n\n 0.100 \n    0.490 \n    0.357 \n    0.234 \n    5.222 \n    65.541 \n  \n\n\n\n\nsimilar switch at 0.075 to a different region of the parameter space.\nHere are the plots for rates 0.005-0.10:\n\nCodepred_data &lt;- best_subset |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(\n    gap = as.factor(gap),\n    rate = round(rate, 3)\n  )\n\n\n\n\nRate [0.005, 0.025]\nRate [0.03, 0.05]\nRate [0.055, 0.75]\nRate [0.08, 0.10]\n\n\n\n\nCodemyplot(filter(pred_data, rate &lt; 0.026))\n\n\n\n\n\n\n\n\n\n\nCodemyplot(filter(pred_data, rate &lt; 0.051 & rate &gt; 0.029))\n\n\n\n\n\n\n\n\n\n\nCodemyplot(filter(pred_data, rate &lt; 0.076 & rate &gt; 0.054))\n\n\n\n\n\n\n\n\n\n\nCodemyplot(filter(pred_data, rate &gt; 0.079, rate &lt; 0.101))\n\n\n\n\n\n\n\n\n\n\nso even a rate of 0.07 does not necessarily predict a big interaction",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Parameter identifiability"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/par_identifiability.html#summary",
+    "href": "quarto/notebooks/par_identifiability.html#summary",
+    "title": "Parameter identifiability",
+    "section": "Summary",
+    "text": "Summary\n\nThe parameter space is not smooth, but rather jumps between regions when rate is fixed to different values\nThere are ridges in the parameter space where the fits are very similar",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Parameter identifiability"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/par_identifiability.html#footnotes",
+    "href": "quarto/notebooks/par_identifiability.html#footnotes",
+    "title": "Parameter identifiability",
+    "section": "Footnotes",
+    "text": "Footnotes\n\ntechnically, I put a really narrow prior Normal(value, 0.0001) on the rate parameter rather than fixing it just because I can do it in the existing code.↩︎",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Parameter identifiability"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model-explore.html",
+    "href": "quarto/dev-notebooks/model-explore.html",
+    "title": "Exploring model predictions",
+    "section": "",
+    "text": "The motivation for the paper was based on the assumption that the resource model should predict an interaction between the proactive benefits of free time and chunking:\n\n“If the LTM benefit arises because encoding a chunk consumes less of an encoding resource, then that benefit should diminish with longer free time, because over time the resource grows back towards its maximal level regardless of how much of it has been consumed by encoding the initial triplet of letters.”\n\nAs we discussed, I was not sure if the model actually predicts this. Exploring the model’s predictions for the memory strength latent variable reveals that this is not what the model predicts. As long as resources have not recovered to their maximum level, the model predicts only additive effects of chunking and free time.",
+    "crumbs": [
+      "Development notes",
+      "Exploring model predictions"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model-explore.html#overview",
+    "href": "quarto/dev-notebooks/model-explore.html#overview",
+    "title": "Exploring model predictions",
+    "section": "",
+    "text": "The motivation for the paper was based on the assumption that the resource model should predict an interaction between the proactive benefits of free time and chunking:\n\n“If the LTM benefit arises because encoding a chunk consumes less of an encoding resource, then that benefit should diminish with longer free time, because over time the resource grows back towards its maximal level regardless of how much of it has been consumed by encoding the initial triplet of letters.”\n\nAs we discussed, I was not sure if the model actually predicts this. Exploring the model’s predictions for the memory strength latent variable reveals that this is not what the model predicts. As long as resources have not recovered to their maximum level, the model predicts only additive effects of chunking and free time.",
+    "crumbs": [
+      "Development notes",
+      "Exploring model predictions"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model-explore.html#an-example",
+    "href": "quarto/dev-notebooks/model-explore.html#an-example",
+    "title": "Exploring model predictions",
+    "section": "An example",
+    "text": "An example\nThe plot below shows the predicted recall probability (top panels) and memory strength (bottom panels) as a function of the gap between the presentation of the first and second triplet of letters.\n\nCodelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(\"exp3_data_agg\")\n\nplot_predictions &lt;- function(params, data) {\n  class(params) &lt;- \"serial_recall_pars\"\n  data |&gt;\n    mutate(\n      Probability = predict(params, data, group_by = c(\"gap\", \"chunk\")),\n      Strength = predict(params, data, group_by = c(\"gap\", \"chunk\"), type = \"strength\")\n    ) |&gt;\n    pivot_longer(c(Probability, Strength), names_to = \"type\", values_to = \"value\") |&gt;\n    ggplot(aes(gap, value, color = chunk, group = chunk)) +\n    geom_line() +\n    scale_color_discrete(\"1st chunk LTM?\") +\n    facet_grid(type~itemtype, scales = \"free\") +\n    theme_test(base_size = 14)\n}\n\nparams &lt;- c(prop = 0.4, prop_ltm = 0.55, tau = 0.25, gain = 25, rate = 0.05)\nplot_predictions(params, exp3_data_agg)\n\n\n\n\n\n\n\nLook first at the bottom panels showing raw memory strength. The lines are exactly parallel until a gap ~ 4500 ms. At that point the model has recovered all the resources consumed by encoding the chunked first triplet of letters. An interaction only occurs after this, because there are still resources left to recover from encoding the random first triplet of letters.\nIn contrast, we see an interaction in the predicted recall probability (top panels) because the model predicts a sigmoidal relationship between memory strength and recall probability. This is a consequence of the logistic function used to map memory strength to recall probability. And as you can see, the interaction actually goes in the opposite direction when performance is low in the third tripplet.",
+    "crumbs": [
+      "Development notes",
+      "Exploring model predictions"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model-explore.html#the-math",
+    "href": "quarto/dev-notebooks/model-explore.html#the-math",
+    "title": "Exploring model predictions",
+    "section": "The math",
+    "text": "The math\nWe didn’t need a simulation to tell us - we should have done simple math with the model a long time ago. Assuming no upper limit for simplicity, here is the predicted memory strength for the second tripplet:\n\n\nChunk type\nGap\nMemory strength\n\n\n\nrandom\nshortgap\n\\(p \\cdot (1-p + r \\cdot t_{short})\\)\n\n\nknown\nshortgap\n\\(p \\cdot (1-p \\cdot p_{ltm} + r \\cdot t_{short})\\)\n\n\nrandom\nlonggap\n\\(p \\cdot (1-p + r \\cdot t_{long})\\)\n\n\nknown\nlonggap\n\\(p \\cdot (1-p \\cdot p_{ltm} + r \\cdot t_{long})\\)\n\n\n\nTherefore the difference between known and random chunks separately for short and long gaps is the same:\n\nshortgap: \\(p^2 \\cdot (1 - p_{ltm})\\)\n\nlonggap: \\(p^2 \\cdot (1 - p_{ltm})\\)\n\n\nbecause the terms \\(r \\cdot t_{short}\\) and \\(r \\cdot t_{long}\\) cancel out if resources have not fully recovered. This is why the model predicts only additive effects of chunking and free time.\nThe model does predict an interaction if resources recover fully before the second tripplet is presented. But this also means that there will be no primacy effect from the first to the second tripplet, which is not what we observe in the data.\nIn summary, the premise on which our introduction is currently built is not supported by the model.",
+    "crumbs": [
+      "Development notes",
+      "Exploring model predictions"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model-explore.html#an-interactive-shiny-app",
+    "href": "quarto/dev-notebooks/model-explore.html#an-interactive-shiny-app",
+    "title": "Exploring model predictions",
+    "section": "An interactive shiny app",
+    "text": "An interactive shiny app\nI found it very useful to be able to quickly explore the model’s predictions. I created a shiny app that allows you to explore the model’s predictions for the proactive benefits of chunking and free time. You can use the sliders below to control the parameters of the model and see how the predicted probability of recall changes as a function of the conditions in the experiment.\n\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\nlibrary(shinylive)\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\n\n# define functions\npred_prob &lt;- function(\n    setsize, ISI = rep(0.5, setsize), item_in_ltm = rep(TRUE, setsize),\n    prop = 0.2, prop_ltm = 0.5, tau = 0.15, gain = 25, rate = 0.1,\n    r_max = 1, lambda = 1, growth = \"linear\", type = \"response\") {\n  R &lt;- r_max\n  strengths &lt;- vector(\"numeric\", length = setsize)\n  p_recall &lt;- vector(\"numeric\", length = setsize)\n  prop_ltm &lt;- ifelse(item_in_ltm, prop_ltm, 1)\n\n  for (item in 1:setsize) {\n    # strength of the item and recall probability\n    strengths[item] &lt;- (prop * R)^lambda\n\n    # amount of resources consumed by the item\n    r_cost &lt;- strengths[item]^(1 / lambda) * prop_ltm[item]\n    R &lt;- R - r_cost\n\n    # recover resources\n    R &lt;- switch(growth,\n      \"linear\" = min(r_max, R + rate * ISI[item]),\n      \"asy\" = R + (r_max - R) * (1 - exp(-rate * ISI[item]))\n    )\n  }\n\n  if (type == \"response\") {\n    1 / (1 + exp(-(strengths - tau) * gain))\n  } else {\n    strengths\n  }\n}\n\npredict_resmodel &lt;- function(object, data, group_by, type = \"response\", ...) {\n  if (missing(group_by)) {\n    pred &lt;- pred_prob(\n        setsize = nrow(data),\n        ISI = data$ISI,\n        item_in_ltm = data$item_in_ltm,\n        prop = object[\"prop\"],\n        prop_ltm = object[\"prop_ltm\"],\n        tau = object[\"tau\"],\n        gain = object[\"gain\"],\n        rate = object[\"rate\"],\n        type = type,\n        ...\n      )\n    return(pred)\n  }\n\n  by &lt;- do.call(paste, c(data[, group_by], sep = \"_\"))\n  out &lt;- lapply(split(data, by), function(x) {\n    x$pred_tmp_col295 &lt;- predict_resmodel(object, x, type = type, ...)\n    x\n  })\n  out &lt;- do.call(rbind, out)\n  out &lt;- suppressMessages(dplyr::left_join(data, out))\n  out$pred_tmp_col295\n}\n\ndata &lt;- expand.grid(chunk = c(\"known\", \"random\"),\n                    gap = seq(500, 6000, by = 225),\n                    itemtype = c(\"SP1-3\", \"SP4-6\", \"SP7-9\"))\n\ndata$ISI &lt;- ifelse(data$itemtype == \"SP1-3\", data$gap/1000, 0.5)\ndata$item_in_ltm &lt;- ifelse(data$itemtype == \"SP1-3\", data$chunk == \"known\", FALSE)                     \nshinyApp(\n  ui = fluidPage(\n    titlePanel(\"Interactive Plot\"),\n    sidebarLayout(\n      sidebarPanel(\n        sliderInput(\"prop\", \"prop:\", min = 0, max = 1, value = 0.2),\n        sliderInput(\"prop_ltm\", \"prop_ltm:\", min = 0, max = 1, value = 0.55),\n        sliderInput(\"rate\", \"rate:\", min = 0, max = 1, value = 0.02),\n        sliderInput(\"gain\", \"gain:\", min = 1, max = 100, value = 25),\n        sliderInput(\"tau\", \"tau:\", min = 0, max = 1, value = 0.14),\n      ),\n      mainPanel(\n        plotOutput(\"distPlot\")\n      )\n    )\n  ),\n  server = function(input, output) {\n    output$distPlot &lt;- renderPlot({\n      par &lt;- c(prop = input$prop, prop_ltm = input$prop_ltm, rate = input$rate, gain = input$gain, tau = input$tau)\n      data |&gt;\n        # TODO: can I reuse the computation?\n        mutate(\n          Probability = predict_resmodel(par, data = data, group_by = c(\"gap\", \"chunk\")),\n          Strength = predict_resmodel(par, data = data, group_by = c(\"gap\", \"chunk\"), type = \"strength\")\n        ) |&gt;\n        pivot_longer(c(Probability, Strength), names_to = \"type\", values_to = \"value\") |&gt;\n        ggplot(aes(gap, value, color = chunk, group = chunk)) +\n        geom_line() +\n        scale_color_discrete(\"1st chunk LTM?\") +\n        facet_grid(type~itemtype, scales = \"free\") +\n        theme_classic(base_size = 14)\n    })\n  }\n)",
+    "crumbs": [
+      "Development notes",
+      "Exploring model predictions"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model-explore.html#why-the-best-fitting-model-has-a-very-low-recovery",
+    "href": "quarto/dev-notebooks/model-explore.html#why-the-best-fitting-model-has-a-very-low-recovery",
+    "title": "Exploring model predictions",
+    "section": "Why the best fitting model has a very low recovery?",
+    "text": "Why the best fitting model has a very low recovery?\nBoth in this experiment and in Mizrak & Oberauer (2022), the proactive benefit of time is global - it affects all subsequent items. With a couple of more simulations, we can see that the degree of local vs global benefit depends on the the prop depletion parameter.\n\nWith very high prop = 1, the second tripplet will depelete all remaining resources, and then resources will be equivalent for all subsequent items. This is the most local benefit.\n\nCodeparams &lt;- c(prop = 1, prop_ltm = 0.7, tau = 0.15, gain = 5, rate = 0.1)\nplot_predictions(params, exp3_data_agg) + coord_cartesian(ylim = c(0, 1))\n\n\n\n\n\n\n\n\nWith very low prop = 0.1, the second tripplet will depelete only 10% of the remaining resources, and the proactive benefit will propagate to all subsequent items. This is the most global benefit.\n\nCodeparams &lt;- c(prop = 0.1, prop_ltm = 0.5, tau = 0.08, gain = 80, rate = 0.007)\nplot_predictions(params, exp3_data_agg) \n\n\n\n\n\n\n\n\nAnd with a middle range prop = 0.5, the second tripplet will depelete 50% of the remaining resources, and preserving some of the proactive benefit, but reducing it for subsequent items:\n\nCodeparams &lt;- c(prop = 0.6, prop_ltm = 0.5, tau = 0.3, gain = 10, rate = 0.05)\nplot_predictions(params, exp3_data_agg)\n\n\n\n\n\n\n\nSo what?\nsince we see mostly a global benefit in the data, in order for the model to fit well, it estimates a very low depletion rate (~ 0.2). But then to account for the primacy effect, and to prevent full recovery of resources between items with such low depletion, it also needs to estimate a very low recovery rate. Thus, all of our fits having slow recovery rates, are not related to accounting for the small interaction between chunking and free time, but rather to account for the global proactive benefits and primacy.",
+    "crumbs": [
+      "Development notes",
+      "Exploring model predictions"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/model_sqrt.html",
+    "href": "quarto/dev-notebooks/model_sqrt.html",
+    "title": "Model with sqrt scaled strength",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp1_data_agg, exp2_data_agg))\n\n\nlet’s fit the sqrt version of the model\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp1_data_agg,\n  two_step = TRUE,\n  simplify = TRUE,\n  lambda = 0.5\n)\n\nest\n\n# A tibble: 1 × 8\n   prop prop_ltm   rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.490    0.662 0.0317 0.427  6.98     145.           0 &lt;srl_rcl_&gt;\n\nCodeexp1_data_agg$pred &lt;- predict(est$fit[[1]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"), lambda = 0.5)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nexclude sp1\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp1_data_agg,\n  two_step = TRUE,\n  simplify = TRUE,\n  exclude_sp1 = TRUE,\n  lambda = 0.5\n)\n\nest\n\n# A tibble: 1 × 8\n    prop prop_ltm    rate   tau  gain deviance convergence fit       \n   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.0978    0.575 0.00842 0.290  69.2     31.7           0 &lt;srl_rcl_&gt;\n\n\npredict\n\nCodeexp1_data_agg$pred &lt;- predict(est$fit[[1]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"), lambda = 0.5)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nreplicate with different starting params\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp1_data_agg,\n  two_step = TRUE,\n  simplify = TRUE,\n  exclude_sp1 = TRUE,\n  lambda = 0.5,\n  priors = list(rate = list(mean = 0.2, sd = 0.01))\n)\n\nest\n\n# A tibble: 1 × 8\n   prop prop_ltm  rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.688    0.352 0.156 0.468  3.51     83.4           0 &lt;srl_rcl_&gt;\n\nCodeexp1_data_agg$pred &lt;- predict(est$fit[[1]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"), lambda = 0.5)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Development notes",
+      "Model with sqrt scaled strength"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About",
+    "section": "",
+    "text": "The current website is a collection of development notes and reports related to the modelling of free time and chunking.\nIn the side bar you will find:\n\nDevelopment notes: an unorganized collection of notebooks. These are mostly for my own reference during model development.\nNotebooks: a collection of notebooks that are more organized and presentable. These are intended to be shared with others.\nReports: a collection of reports that summarize the development of the model and the results of the model.\nFunction reference: documentation of custom functions used in the project.\n\nPS: I am experimenting with quarto websites for project documentation and reporting. This is a first attempt!\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "quarto/notes.html",
+    "href": "quarto/notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "I finally understand the argument for freeing capacity\n\nBut now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?\n\ndifficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can’t account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.\nthere are many different parameter estimates reaching similar likelihoods using the existing model\n\nfor an example, see here\nmore details linked here\n\n\n\n\nThe argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are consistent with the data? And are there parameter values consistent with the data that are reasonably fast?\n\nhow to measure “consistency” with the data?\n\nFor experiment 2, the model can predict an interaction, but at the cost of overall fit.\n\n\n\nIt’s the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery…",
+    "crumbs": [
+      "Development notes",
+      "Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/notes.html#to-report",
+    "href": "quarto/notes.html#to-report",
+    "title": "Notes",
+    "section": "",
+    "text": "I finally understand the argument for freeing capacity\n\nBut now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?\n\ndifficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can’t account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.\nthere are many different parameter estimates reaching similar likelihoods using the existing model\n\nfor an example, see here\nmore details linked here\n\n\n\n\nThe argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are consistent with the data? And are there parameter values consistent with the data that are reasonably fast?\n\nhow to measure “consistency” with the data?\n\nFor experiment 2, the model can predict an interaction, but at the cost of overall fit.\n\n\n\nIt’s the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery…",
+    "crumbs": [
+      "Development notes",
+      "Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/notes.html#problems-in-current-modeling",
+    "href": "quarto/notes.html#problems-in-current-modeling",
+    "title": "Notes",
+    "section": "Problems in current modeling",
+    "text": "Problems in current modeling\n\nline 78: ISI is 0.5, encoding duration is 0.9, this results in depletion not recovery",
+    "crumbs": [
+      "Development notes",
+      "Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/notes.html#questions",
+    "href": "quarto/notes.html#questions",
+    "title": "Notes",
+    "section": "Questions",
+    "text": "Questions\n\nDo we include the encoding duration in the recovery time or not?\n\nDoesn’t matter, similar estimates. See here",
+    "crumbs": [
+      "Development notes",
+      "Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/notes.html#log",
+    "href": "quarto/notes.html#log",
+    "title": "Notes",
+    "section": "Log",
+    "text": "Log\n\n2021-05-17 0:30\n\nPlaying with the shiny app is very useful for understanding the model. I should have done this earlier. For example:\n\nprop is determined by the effect size of the proactive benefit at the second vs third chunk. With prop = 1, the effect is entirely local\nprop needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect\nthe model does not actually predict an interaction at the latent variable level unless resources completely recovered\n\nExample for the four conditions:\n\n0.5 * (0.5 + r * t1) // random, shortgap\n0.5 * (0.75 + r * t1) // known, shortgap\n0.5 * (0.5 + r * t2) // random, longgap\n0.5 * (0.75 + r * t2) // known, longgap\n\n\nKS-RS: 0.5 * 0.25\nKL-RL: 0.5 * 0.25\n\nI could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, unless resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)\n\n\n\n2021-05-16 14:24\n\nadd the sqrt relation between resources and memory strength does not change much the outcome\n\n\n\n2021-05-13 19:00\n\nDiscovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.\nI took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.\nI tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy\nThe _targets folder is not tracked by git, so I backed it up and tagged it manually under ~/_targets_backup",
+    "crumbs": [
+      "Development notes",
+      "Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/2021-05-16-meeting.html",
+    "href": "quarto/dev-notebooks/2021-05-16-meeting.html",
+    "title": "2021-05-16 Meeting Notes",
+    "section": "",
+    "text": "Parameter identifiability and trade-offs (more details linked here)\n\nThe parameter space geometry is complicated\nBest-fitting parameters differ from the paper reported values\nI started from 100 different values\nPossible overfitting?\n\nArgument is about best-fitting parameters. But question is more about “reasonable parameters” (related to overfitting)\n\nhow to determine what range of parameter values are consistent with the data?\n\nWhat is “too slow?”. Comparison with estimates from Popov & Reder (2020) & Ma et al (In press)\n\n(!) just model it trial by trial allowing resource to recover however much they can in the time between trials\n\nCaputring the primacy effect is to “blame”. Model with multiple contributions to primacy?\n\nIn experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery.\n\nShould we model the first chunk?\n\nIf so, how?\n\nHow much modeling is enough\n\nI need to be convinced that most reasonable versions of the model require very slow rates\n\nConclusions\n\nI finally understand the argument for freeing capacity. But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?",
+    "crumbs": [
+      "Development notes",
+      "2021-05-16 Meeting Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/2021-05-16-meeting.html#to-discuss",
+    "href": "quarto/dev-notebooks/2021-05-16-meeting.html#to-discuss",
+    "title": "2021-05-16 Meeting Notes",
+    "section": "",
+    "text": "Parameter identifiability and trade-offs (more details linked here)\n\nThe parameter space geometry is complicated\nBest-fitting parameters differ from the paper reported values\nI started from 100 different values\nPossible overfitting?\n\nArgument is about best-fitting parameters. But question is more about “reasonable parameters” (related to overfitting)\n\nhow to determine what range of parameter values are consistent with the data?\n\nWhat is “too slow?”. Comparison with estimates from Popov & Reder (2020) & Ma et al (In press)\n\n(!) just model it trial by trial allowing resource to recover however much they can in the time between trials\n\nCaputring the primacy effect is to “blame”. Model with multiple contributions to primacy?\n\nIn experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery.\n\nShould we model the first chunk?\n\nIf so, how?\n\nHow much modeling is enough\n\nI need to be convinced that most reasonable versions of the model require very slow rates\n\nConclusions\n\nI finally understand the argument for freeing capacity. But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?",
+    "crumbs": [
+      "Development notes",
+      "2021-05-16 Meeting Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/2021-05-16-meeting.html#models-ive-tried",
+    "href": "quarto/dev-notebooks/2021-05-16-meeting.html#models-ive-tried",
+    "title": "2021-05-16 Meeting Notes",
+    "section": "Models I’ve tried",
+    "text": "Models I’ve tried\n\nModel 1a: same as in the paper (with many different starting values)\nModel 1b: same as 1a but also accounting for the first chunk\nModel 1c: putting prior on parameters. Particularly on the rate parameter over a grid\nModel 2: including the encoding time for the recovery\nModel 3: strength = sqrt(resource_cost)\n\nConclusions so far: - Despite the complicated geometry and parameter trade-offs, recovery rates do need to be slow with this model group",
+    "crumbs": [
+      "Development notes",
+      "2021-05-16 Meeting Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/2021-05-16-meeting.html#modeling-left-to-do",
+    "href": "quarto/dev-notebooks/2021-05-16-meeting.html#modeling-left-to-do",
+    "title": "2021-05-16 Meeting Notes",
+    "section": "Modeling left to do",
+    "text": "Modeling left to do\n\nExperiment 3\nApply model from Ma et al (In press) just replacing LF and HF with random and known chunks\n\nanalytical likelihood, should be fast, maybe even bayesian\ncan be applied on a trial-by-trial basis\n(!) just model it trial by trial allowing resource to recover however much they can in the time between trials",
+    "crumbs": [
+      "Development notes",
+      "2021-05-16 Meeting Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/2021-05-16-meeting.html#next-steps",
+    "href": "quarto/dev-notebooks/2021-05-16-meeting.html#next-steps",
+    "title": "2021-05-16 Meeting Notes",
+    "section": "Next steps",
+    "text": "Next steps\n\nBootstrap participants and trials to and fit the model too get distribution\n\nif possible bayesian\n\nFit the Ma et al (In press) model to the trail level data with actual inter-trail intervals\nWhat does the model predict - interaction for introduction\nFraming - we are testing this model as a potential new comprehensive explanation. Do not embrace alternative conclusion just because (if) this models fails to pass",
+    "crumbs": [
+      "Development notes",
+      "2021-05-16 Meeting Notes"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/playground.html",
+    "href": "quarto/dev-notebooks/playground.html",
+    "title": "Playground 1: Optim stuff",
+    "section": "",
+    "text": "I want to build a constrain/unconstrain function. Here’ are two versions. The second one is vectorized\n\nCodesource(\"R/utils.R\")\n\nconstrain &lt;- function(x, lb, ub) {\n  if (is.infinite(lb) && is.infinite(ub)) {\n    x\n  } else if (is.infinite(ub)) {\n    exp(x) + lb\n  } else if (is.infinite(lb)) {\n    ub - exp(x)\n  } else {\n    inv_logit(x, lb = lb, ub = ub)\n  }\n}\n\nconstrain_vec &lt;- function(x, lb, ub) {\n  ifelse(is.infinite(lb) & is.infinite(ub), x,\n    ifelse(is.infinite(ub), exp(x) + lb,\n      ifelse(is.infinite(lb), ub - exp(x),\n        inv_logit(x, lb = lb, ub = ub)\n      )\n    )\n  )\n}\n\nconstrain_vec2 &lt;- function(x, lb, ub) {\n  if (length(lb) == 1 && length(ub) == 1 && is.infinite(lb) && is.infinite(ub)) {\n    return(x)\n  }\n\n  dplyr::case_when(\n    is.infinite(lb) & is.infinite(ub) ~ x,\n    is.infinite(ub) ~ exp(x) + lb,\n    is.infinite(lb) ~ ub - exp(x),\n    .default = inv_logit(x, lb = lb, ub = ub)\n  )\n}\n\n\nLet’s test them\n\nCodelibrary(purrr)\nlibrary(microbenchmark)\nN &lt;- 1000\nx &lt;- c(log(rexp(N)), logit(runif(N)), rnorm(N))\nlb &lt;- c(rep(0, N), rep(0, N), rep(-Inf, N))\nub &lt;- c(rep(Inf, N), rep(1, N), rep(Inf, N))\n\nmicrobenchmark(\n  pmap_dbl(list(x, lb, ub), constrain),\n  constrain_vec(x, lb, ub),\n  constrain_vec2(x, lb, ub),\n  times = 100,\n  check = \"equivalent\"\n)\n\nWarning in microbenchmark(pmap_dbl(list(x, lb, ub), constrain), constrain_vec(x, : less accurate nanosecond times to\navoid potential integer overflows\n\n\nUnit: microseconds\n                                 expr      min        lq      mean    median       uq      max neval\n pmap_dbl(list(x, lb, ub), constrain) 2811.903 2923.2590 3195.1485 3017.9075 3150.091 5383.997   100\n             constrain_vec(x, lb, ub)  119.802  124.3325  165.7605  136.2430  159.654 2125.604   100\n            constrain_vec2(x, lb, ub)  154.406  174.2295  236.5261  188.9895  211.519 2426.462   100\n\n\nYes, the vectorized version is much faster. But it’s not as readable as the first one. The dplyr version is cleanest and just as fast.\nWhat about if the bounds were fixed?\n\nCodemicrobenchmark(\n  (function(x) x)(x),\n  pmap_dbl(list(x, -Inf, Inf), constrain),\n  constrain_vec2(x, -Inf, Inf),\n  times = 100,\n  check = \"equivalent\"\n)\n\nUnit: nanoseconds\n                                    expr     min      lq       mean    median      uq     max neval\n                      (function(x) x)(x)      82     123     350.55     164.0     369    7503   100\n pmap_dbl(list(x, -Inf, Inf), constrain) 2319247 2415105 2582184.10 2456986.5 2567830 3874623   100\n            constrain_vec2(x, -Inf, Inf)     369     451     783.10     594.5     984    3116   100",
+    "crumbs": [
+      "Development notes",
+      "Playground 1: Optim stuff"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/playground.html#contraintunconstrain-vectorizing-tests",
+    "href": "quarto/dev-notebooks/playground.html#contraintunconstrain-vectorizing-tests",
+    "title": "Playground 1: Optim stuff",
+    "section": "",
+    "text": "I want to build a constrain/unconstrain function. Here’ are two versions. The second one is vectorized\n\nCodesource(\"R/utils.R\")\n\nconstrain &lt;- function(x, lb, ub) {\n  if (is.infinite(lb) && is.infinite(ub)) {\n    x\n  } else if (is.infinite(ub)) {\n    exp(x) + lb\n  } else if (is.infinite(lb)) {\n    ub - exp(x)\n  } else {\n    inv_logit(x, lb = lb, ub = ub)\n  }\n}\n\nconstrain_vec &lt;- function(x, lb, ub) {\n  ifelse(is.infinite(lb) & is.infinite(ub), x,\n    ifelse(is.infinite(ub), exp(x) + lb,\n      ifelse(is.infinite(lb), ub - exp(x),\n        inv_logit(x, lb = lb, ub = ub)\n      )\n    )\n  )\n}\n\nconstrain_vec2 &lt;- function(x, lb, ub) {\n  if (length(lb) == 1 && length(ub) == 1 && is.infinite(lb) && is.infinite(ub)) {\n    return(x)\n  }\n\n  dplyr::case_when(\n    is.infinite(lb) & is.infinite(ub) ~ x,\n    is.infinite(ub) ~ exp(x) + lb,\n    is.infinite(lb) ~ ub - exp(x),\n    .default = inv_logit(x, lb = lb, ub = ub)\n  )\n}\n\n\nLet’s test them\n\nCodelibrary(purrr)\nlibrary(microbenchmark)\nN &lt;- 1000\nx &lt;- c(log(rexp(N)), logit(runif(N)), rnorm(N))\nlb &lt;- c(rep(0, N), rep(0, N), rep(-Inf, N))\nub &lt;- c(rep(Inf, N), rep(1, N), rep(Inf, N))\n\nmicrobenchmark(\n  pmap_dbl(list(x, lb, ub), constrain),\n  constrain_vec(x, lb, ub),\n  constrain_vec2(x, lb, ub),\n  times = 100,\n  check = \"equivalent\"\n)\n\nWarning in microbenchmark(pmap_dbl(list(x, lb, ub), constrain), constrain_vec(x, : less accurate nanosecond times to\navoid potential integer overflows\n\n\nUnit: microseconds\n                                 expr      min        lq      mean    median       uq      max neval\n pmap_dbl(list(x, lb, ub), constrain) 2811.903 2923.2590 3195.1485 3017.9075 3150.091 5383.997   100\n             constrain_vec(x, lb, ub)  119.802  124.3325  165.7605  136.2430  159.654 2125.604   100\n            constrain_vec2(x, lb, ub)  154.406  174.2295  236.5261  188.9895  211.519 2426.462   100\n\n\nYes, the vectorized version is much faster. But it’s not as readable as the first one. The dplyr version is cleanest and just as fast.\nWhat about if the bounds were fixed?\n\nCodemicrobenchmark(\n  (function(x) x)(x),\n  pmap_dbl(list(x, -Inf, Inf), constrain),\n  constrain_vec2(x, -Inf, Inf),\n  times = 100,\n  check = \"equivalent\"\n)\n\nUnit: nanoseconds\n                                    expr     min      lq       mean    median      uq     max neval\n                      (function(x) x)(x)      82     123     350.55     164.0     369    7503   100\n pmap_dbl(list(x, -Inf, Inf), constrain) 2319247 2415105 2582184.10 2456986.5 2567830 3874623   100\n            constrain_vec2(x, -Inf, Inf)     369     451     783.10     594.5     984    3116   100",
+    "crumbs": [
+      "Development notes",
+      "Playground 1: Optim stuff"
+    ]
+  },
+  {
+    "objectID": "quarto/dev-notebooks/playground.html#a-better-version-of-optim",
+    "href": "quarto/dev-notebooks/playground.html#a-better-version-of-optim",
+    "title": "Playground 1: Optim stuff",
+    "section": "A better version of optim",
+    "text": "A better version of optim\n\nCodesource(\"R/utils.R\")\nfn &lt;- function(par, x) {\n  tryCatch(\n    {\n      -sum(bmm::dmixture2p(x, mu = 0, kappa = par[1], pMem = par[2], log = TRUE))\n    },\n    error = function(e) NA\n  )\n}\nx &lt;- bmm::rmixture2p(100)\n\nmicrobenchmark(\n  optim(c(5, 0.1), fn, x = x),\n  optim2(c(5, 0.1), fn, x = x, lower = c(0, 0), upper = c(Inf, 1)),\n  times = 100\n)\n\nUnit: microseconds\n                                                                  expr      min        lq      mean    median       uq\n                                           optim(c(5, 0.1), fn, x = x)  632.671  666.1885  768.5782  703.2935  743.371\n optim2(c(5, 0.1), fn, x = x, lower = c(0, 0), upper = c(Inf,      1)) 6555.736 6794.9505 7308.1221 6986.8510 7400.807\n       max neval\n  3834.279   100\n 11758.267   100\n\n\nHow well does it work for different starting values?\n\nCodeoptim3 &lt;- function(par, fn, ...) {\n  fn2 &lt;- function(par, ...) {\n    par &lt;- c(exp(par[1]), inv_logit(par[2]))\n    fn(par, ...)\n  }\n\n  start &lt;- c(log(par[1]), logit(par[2]))\n  res &lt;- optim(start, fn2, ..., control = list(parscale = c(1, 0.1)))\n  c(exp(res$par[1]), inv_logit(res$par[2]))\n}\n\nset.seed(123)\nx &lt;- bmm::rmixture2p(100)\nstart &lt;- as.matrix(expand.grid(\n  kappa = c(1, 5, 10),\n  pMem = c(0.6, 0.9, 0.99)\n))\n\nres &lt;- apply(start, 1, optim3, fn = fn, x = x)\nres\n\n           [,1]      [,2]      [,3]     [,4]      [,5]      [,6]      [,7]      [,8]      [,9]\nkappa 4.7261620 4.7263468 4.7270363 4.725718 4.7286134 4.7273205 4.7257450 4.7265932 4.7260440\npMem  0.6122896 0.6123198 0.6122103 0.612269 0.6122014 0.6122376 0.6122722 0.6123254 0.6123247\n\nCodemixtur::fit_mixtur(data.frame(response = x, target = 0, id = 1), model = \"2_component\", unit = \"radians\")\n\nModel fit running. Please wait...\n\n\nModel fit finished.\n\n\n  id kappa   p_t   p_u\n1  1 4.726 0.612 0.388\n\nCodemicrobenchmark(\n  apply(start, 1, optim3, fn = fn, x = x),\n  apply(start, 1, optim2, fn = fn, x = x, lower = c(0, 0), upper = c(Inf, 1)),\n  times = 100\n)\n\nUnit: milliseconds\n                                                                             expr      min       lq     mean   median\n                                          apply(start, 1, optim3, fn = fn, x = x) 13.59798 14.06780 14.78477 14.28514\n apply(start, 1, optim2, fn = fn, x = x, lower = c(0, 0), upper = c(Inf,      1)) 72.94609 76.93465 80.14172 78.92127\n       uq       max neval\n 14.87449  21.12189   100\n 81.38789 182.95069   100",
+    "crumbs": [
+      "Development notes",
+      "Playground 1: Optim stuff"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/subject_data.html",
+    "href": "quarto/notebooks/subject_data.html",
+    "title": "Subject-level data",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp1_data, exp2_data))\n\n\nAggregate data at the subject level\n\nCodedata_agg_subj &lt;- bind_rows(\n  mutate(exp1_data, exp = \"Exp 1\"),\n  mutate(exp2_data, exp = \"Exp 2\")\n) |&gt;\n  group_by(id, exp) |&gt;\n  nest() |&gt;\n  mutate(data = map(data, aggregate_data)) |&gt;\n  unnest(data)\n\n\nPlot data for each subject\n\nCodedata_agg_subj |&gt;\n  mutate(gap = as.factor(gap)) |&gt;\n  ggplot(aes(gap, p_correct, color = chunk, group = interaction(chunk, id))) +\n  geom_point() +\n  geom_line() +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  facet_grid(id ~ itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Notebooks",
+      "Data",
+      "Subject-level data"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/model_v2.html",
+    "href": "quarto/notebooks/model_v2.html",
+    "title": "Main results",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\n# load \"R/*\" scripts and saved R objects from the targets pi\ntar_source()\ntar_load(c(exp1_data_agg_enc, exp2_data_agg_enc, fits3))\n\n\nHere I employ the same model as in Model 1 with one difference. In the previous model, the encoding time was not included. It assumed that during encoding of the triplets (0.9 seconds), nothing happened, and recovery of resources only started after the encoding was completed. In Popov & Reder (2020), we assumed that depletion happens instantaneously, and recovery continuous thoughout the encoding and inter-stimulus interval.\nSo here we just add the 0.9 seconds of encoding time to the ISI. For example, this is coded in the ISI column:\n\nCodeexp1_data_agg_enc |&gt;\n  kbl() |&gt;\n  kable_styling()\n\n\n\nchunk\ngap\nitemtype\nn_total\nn_correct\np_correct\nISI\nitem_in_ltm\n\n\n\nknown\n500\nSP1-3\n1855\n1715\n0.9245283\n1.4\nTRUE\n\n\nknown\n500\nSP4-6\n1858\n1368\n0.7362756\n1.4\nFALSE\n\n\nknown\n500\nSP7-9\n1851\n943\n0.5094543\n1.4\nFALSE\n\n\nknown\n3000\nSP1-3\n1859\n1721\n0.9257665\n3.9\nTRUE\n\n\nknown\n3000\nSP4-6\n1858\n1443\n0.7766416\n1.4\nFALSE\n\n\nknown\n3000\nSP7-9\n1856\n1032\n0.5560345\n1.4\nFALSE\n\n\nrandom\n500\nSP1-3\n1853\n1495\n0.8067998\n1.4\nFALSE\n\n\nrandom\n500\nSP4-6\n1856\n1177\n0.6341595\n1.4\nFALSE\n\n\nrandom\n500\nSP7-9\n1855\n727\n0.3919137\n1.4\nFALSE\n\n\nrandom\n3000\nSP1-3\n1856\n1553\n0.8367457\n3.9\nFALSE\n\n\nrandom\n3000\nSP4-6\n1858\n1287\n0.6926803\n1.4\nFALSE\n\n\nrandom\n3000\nSP7-9\n1856\n838\n0.4515086\n1.4\nFALSE\n\n\n\n\n\n\nCode# calculate deviance and predictions\nfits3 &lt;- fits3 |&gt;\n  mutate(\n    deviance = pmap_dbl(\n      list(fit, data, exclude_sp1),\n      ~ overall_deviance(params = `..1`$par, data = `..2`, exclude_sp1 = `..3`)\n    ),\n    pred = map2(fit, data, ~ predict(.x, .y, group_by = c(\"chunk\", \"gap\")))\n  )\n\n\n(just like in Model 1, I fit the data by either excluding the first serial position or not, and including priors on the gain and rate parameters or not).",
+    "crumbs": [
+      "Notebooks",
+      "Model 2: Include encoding time",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/model_v2.html#overview",
+    "href": "quarto/notebooks/model_v2.html#overview",
+    "title": "Main results",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\n# load \"R/*\" scripts and saved R objects from the targets pi\ntar_source()\ntar_load(c(exp1_data_agg_enc, exp2_data_agg_enc, fits3))\n\n\nHere I employ the same model as in Model 1 with one difference. In the previous model, the encoding time was not included. It assumed that during encoding of the triplets (0.9 seconds), nothing happened, and recovery of resources only started after the encoding was completed. In Popov & Reder (2020), we assumed that depletion happens instantaneously, and recovery continuous thoughout the encoding and inter-stimulus interval.\nSo here we just add the 0.9 seconds of encoding time to the ISI. For example, this is coded in the ISI column:\n\nCodeexp1_data_agg_enc |&gt;\n  kbl() |&gt;\n  kable_styling()\n\n\n\nchunk\ngap\nitemtype\nn_total\nn_correct\np_correct\nISI\nitem_in_ltm\n\n\n\nknown\n500\nSP1-3\n1855\n1715\n0.9245283\n1.4\nTRUE\n\n\nknown\n500\nSP4-6\n1858\n1368\n0.7362756\n1.4\nFALSE\n\n\nknown\n500\nSP7-9\n1851\n943\n0.5094543\n1.4\nFALSE\n\n\nknown\n3000\nSP1-3\n1859\n1721\n0.9257665\n3.9\nTRUE\n\n\nknown\n3000\nSP4-6\n1858\n1443\n0.7766416\n1.4\nFALSE\n\n\nknown\n3000\nSP7-9\n1856\n1032\n0.5560345\n1.4\nFALSE\n\n\nrandom\n500\nSP1-3\n1853\n1495\n0.8067998\n1.4\nFALSE\n\n\nrandom\n500\nSP4-6\n1856\n1177\n0.6341595\n1.4\nFALSE\n\n\nrandom\n500\nSP7-9\n1855\n727\n0.3919137\n1.4\nFALSE\n\n\nrandom\n3000\nSP1-3\n1856\n1553\n0.8367457\n3.9\nFALSE\n\n\nrandom\n3000\nSP4-6\n1858\n1287\n0.6926803\n1.4\nFALSE\n\n\nrandom\n3000\nSP7-9\n1856\n838\n0.4515086\n1.4\nFALSE\n\n\n\n\n\n\nCode# calculate deviance and predictions\nfits3 &lt;- fits3 |&gt;\n  mutate(\n    deviance = pmap_dbl(\n      list(fit, data, exclude_sp1),\n      ~ overall_deviance(params = `..1`$par, data = `..2`, exclude_sp1 = `..3`)\n    ),\n    pred = map2(fit, data, ~ predict(.x, .y, group_by = c(\"chunk\", \"gap\")))\n  )\n\n\n(just like in Model 1, I fit the data by either excluding the first serial position or not, and including priors on the gain and rate parameters or not).",
+    "crumbs": [
+      "Notebooks",
+      "Model 2: Include encoding time",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/model_v2.html#overall-best-parameters-by-experiment-and-scenarious",
+    "href": "quarto/notebooks/model_v2.html#overall-best-parameters-by-experiment-and-scenarious",
+    "title": "Main results",
+    "section": "Overall best parameters by experiment and scenarious",
+    "text": "Overall best parameters by experiment and scenarious\nThese are the best fitting parameters for each experiment, prior scenario, and whether the first serial position was excluded or not:\n\nCodefinal3 &lt;- fits3 |&gt;\n  filter(convergence == 0) |&gt;\n  group_by(exp, priors_scenario, exclude_sp1) |&gt;\n  arrange(deviance) |&gt;\n  slice(1) |&gt;\n  arrange(desc(exclude_sp1), exp, priors_scenario) |&gt;\n  mutate(\n    deviance = round(deviance, 1),\n    priors_scenario = case_when(\n      priors_scenario == \"none\" ~ \"None\",\n      priors_scenario == \"gain\" ~ \"Gain ~ N(25, 0.1)\",\n      priors_scenario == \"rate\" ~ \"Rate ~ N(0.1, 0.01)\"\n    )\n  )\n\nfinal3 |&gt;\n  select(exp, priors_scenario, exclude_sp1, prop:gain, deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  kbl() |&gt;\n  kable_styling()\n\n\n\nexp\npriors_scenario\nexclude_sp1\nprop\nprop_ltm\nrate\ntau\ngain\ndeviance\n\n\n\n1\nGain ~ N(25, 0.1)\nTRUE\n0.231\n0.617\n0.018\n0.162\n25.001\n33.1\n\n\n1\nNone\nTRUE\n0.110\n0.606\n0.009\n0.094\n99.996\n31.9\n\n\n1\nRate ~ N(0.1, 0.01)\nTRUE\n0.435\n0.646\n0.043\n0.222\n8.364\n42.4\n\n\n2\nGain ~ N(25, 0.1)\nTRUE\n0.211\n0.834\n0.013\n0.153\n25.000\n40.7\n\n\n2\nNone\nTRUE\n0.106\n0.826\n0.006\n0.091\n91.036\n40.5\n\n\n2\nRate ~ N(0.1, 0.01)\nTRUE\n0.473\n0.855\n0.030\n0.212\n6.286\n46.5\n\n\n1\nGain ~ N(25, 0.1)\nFALSE\n0.239\n0.660\n0.016\n0.163\n24.998\n145.4\n\n\n1\nNone\nFALSE\n0.302\n0.658\n0.020\n0.184\n16.186\n144.9\n\n\n1\nRate ~ N(0.1, 0.01)\nFALSE\n0.472\n0.673\n0.044\n0.220\n7.604\n152.2\n\n\n2\nGain ~ N(25, 0.1)\nFALSE\n0.222\n0.879\n0.011\n0.155\n24.998\n113.3\n\n\n2\nNone\nFALSE\n0.379\n0.868\n0.019\n0.198\n9.421\n109.7\n\n\n2\nRate ~ N(0.1, 0.01)\nFALSE\n0.497\n0.865\n0.030\n0.209\n5.950\n113.4\n\n\n\n\n\nfor comparison, here are the results of Model 1\n\n\nModel 1 Results\n\nDoesn’t make much of a difference. Do not pursue further.",
+    "crumbs": [
+      "Notebooks",
+      "Model 2: Include encoding time",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/sensitivity-to-tau.html",
+    "href": "quarto/notebooks/sensitivity-to-tau.html",
+    "title": "Sensitivity to tau",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(exp1_data_agg)\n\n\nIn the current draft (May 12th), Eda modelled the data by ignoring the first chunk when calculating the likelihood.\nHere are the predictions using the parameters reported in the paper:\n\nCodestart &lt;- paper_params()\n\nexp1_data_agg$pred &lt;- predict(start, data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nStrangely, there is a mismatch between these results and what is reported in the paper.\nThis is because the predictions are extremely sensitive to small changes in tau:\n\nCodeparams &lt;- list(start, start, start)\nparams[[2]][[\"tau\"]] &lt;- 0.15\nparams[[3]][[\"tau\"]] &lt;- 0.13\n\n\noverall_deviance(params[[1]], exp1_data_agg, by = c(\"chunk\", \"gap\"), exclude_sp1 = TRUE)\n\n[1] 116.5524\n\nCodeoverall_deviance(params[[2]], exp1_data_agg, by = c(\"chunk\", \"gap\"), exclude_sp1 = TRUE)\n\n[1] 38.11554\n\nCodeoverall_deviance(params[[3]], exp1_data_agg, by = c(\"chunk\", \"gap\"), exclude_sp1 = TRUE)\n\n[1] 395.7678\n\nCodeexp1_data_agg$pred2 &lt;- predict(params[[2]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\nexp1_data_agg$pred3 &lt;- predict(params[[3]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\n\nexp1_data_agg |&gt;\n  pivot_longer(cols = starts_with(\"pred\"), names_to = \"tau\", values_to = \"pred\") |&gt;\n  mutate(tau = case_when(\n    tau == \"pred\" ~ \"0.14\",\n    tau == \"pred2\" ~ \"0.15\",\n    tau == \"pred3\" ~ \"0.13\"\n  )) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_grid(tau ~ itemtype)\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Sensitivity to tau"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/modelling_edas_approach.html",
+    "href": "quarto/notebooks/modelling_edas_approach.html",
+    "title": "Main results",
+    "section": "",
+    "text": "Codelibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\n# load \"R/*\" scripts and saved R objects from the targets pi\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, fits1))",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/modelling_edas_approach.html#overview",
+    "href": "quarto/notebooks/modelling_edas_approach.html#overview",
+    "title": "Main results",
+    "section": "Overview",
+    "text": "Overview\nHere I apply the model described in the May 13th draft of the paper to the data. I will first ignore the first chunk in the optimization, then include it. I will also try different priors on the parameters to understand the paramater space. Final results from different choices summarized at the end.",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/modelling_edas_approach.html#ignoring-first-chunk-in-the-optimiziation",
+    "href": "quarto/notebooks/modelling_edas_approach.html#ignoring-first-chunk-in-the-optimiziation",
+    "title": "Main results",
+    "section": "Ignoring first chunk in the optimiziation",
+    "text": "Ignoring first chunk in the optimiziation\nBasic estimation of Exp1\nLet’s apply the modeling approach reported in the paper. We ignore the first chunk (SP1-3) while evaluating the likelihood. Eda did this because the model as implemented predicts the same performance for known and random chunks.\n\nCodetar_load(exp1_data_agg)\nstart &lt;- paper_params()\n(est &lt;- estimate_model(start, data = exp1_data_agg, exclude_sp1 = TRUE))\n\n$start\n    prop prop_ltm      tau     gain     rate \n    0.21     0.55     0.14    25.00     0.02 \n\n$par\n        prop     prop_ltm          tau         gain         rate \n 0.108898668  0.575632670  0.091783835 95.188660503  0.009362919 \n\n$convergence\n[1] 0\n\n$counts\nfunction gradient \n    2080       NA \n\n$value\n[1] 31.92645\n\nCodeexp1_data_agg$pred &lt;- predict(est, exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nI get startlingly different paramemter estimates. Much lower prop and rate and tau, higher gain.\nTrying different starting values\n\nCode# load the fits of the first simulation, calculate the deviance(s) and predictions\ntar_load(fits1)\nfits1 &lt;- fits1 |&gt;\n  mutate(\n    deviance = pmap_dbl(\n      list(fit, data, exclude_sp1),\n      ~ overall_deviance(params = `..1`$par, data = `..2`, exclude_sp1 = `..3`)\n    ),\n    pred = map2(fit, data, ~ predict(.x, .y, group_by = c(\"chunk\", \"gap\")))\n  )\n\n\nI’ve run this with many different starting values. We tend to end up in different regions of the parameter space (the top result close to the paper’s estimates):\n\nCodefits1 |&gt;\n  filter(priors_scenario == \"none\", exclude_sp1 == TRUE, exp == 1, deviance &lt;= 50, convergence == 0) |&gt;\n  select(prop:convergence) |&gt;\n  arrange(gain) |&gt;\n  mutate_all(round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 55 × 7\n    prop prop_ltm  rate   tau  gain deviance convergence\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n 1 0.176    0.582 0.015 0.133  38.2     32.4           0\n 2 0.175    0.578 0.015 0.132  38.8     32.4           0\n 3 0.171    0.582 0.015 0.13   40.3     32.4           0\n 4 0.165    0.581 0.014 0.127  43.1     32.3           0\n 5 0.137    0.578 0.012 0.11   61.8     32.1           0\n 6 0.126    0.577 0.011 0.103  71.8     32.0           0\n 7 0.125    0.577 0.011 0.103  72.6     32.0           0\n 8 0.123    0.577 0.011 0.101  75.2     32.0           0\n 9 0.118    0.576 0.01  0.098  81.8     32.0           0\n10 0.118    0.577 0.01  0.098  82.0     32.0           0\n11 0.117    0.576 0.01  0.097  83.3     32.0           0\n12 0.106    0.575 0.009 0.09   99.4     31.9           0\n13 0.106    0.575 0.009 0.09   99.6     31.9           0\n14 0.106    0.576 0.009 0.09   99.7     31.9           0\n15 0.106    0.575 0.009 0.09   99.8     31.9           0\n16 0.106    0.576 0.009 0.09   99.8     31.9           0\n17 0.106    0.576 0.009 0.09   99.9     31.9           0\n18 0.106    0.575 0.009 0.09   99.9     31.9           0\n19 0.106    0.576 0.009 0.09   99.9     31.9           0\n20 0.106    0.575 0.009 0.09   99.9     31.9           0\n21 0.106    0.575 0.009 0.09   99.9     31.9           0\n22 0.106    0.575 0.009 0.09  100.      31.9           0\n23 0.106    0.576 0.009 0.09  100.      31.9           0\n24 0.106    0.576 0.009 0.09  100.      31.9           0\n25 0.106    0.576 0.009 0.09  100.      31.9           0\n26 0.106    0.576 0.009 0.09  100.      31.9           0\n27 0.106    0.576 0.009 0.09  100.      31.9           0\n28 0.106    0.577 0.009 0.09  100.      31.9           0\n29 0.106    0.575 0.009 0.09  100.      31.9           0\n30 0.106    0.576 0.009 0.09  100.      31.9           0\n31 0.106    0.574 0.009 0.09  100.      31.9           0\n32 0.106    0.575 0.009 0.09  100.      31.9           0\n33 0.106    0.576 0.009 0.09  100.      31.9           0\n34 0.106    0.575 0.009 0.09  100.      31.9           0\n35 0.106    0.575 0.009 0.09  100.      31.9           0\n36 0.106    0.576 0.009 0.09  100.      31.9           0\n37 0.106    0.574 0.009 0.09  100.      31.9           0\n38 0.106    0.576 0.009 0.09  100.      31.9           0\n39 0.106    0.576 0.009 0.09  100.      31.9           0\n40 0.106    0.575 0.009 0.09  100.      31.9           0\n41 0.106    0.576 0.009 0.09  100.      31.9           0\n42 0.106    0.575 0.009 0.09  100.      31.9           0\n43 0.106    0.575 0.009 0.09  100.      31.9           0\n44 0.106    0.574 0.009 0.09  100.      31.9           0\n45 0.106    0.576 0.009 0.09  100.      31.9           0\n46 0.106    0.576 0.009 0.09  100.      31.9           0\n47 0.106    0.575 0.009 0.09  100       31.9           0\n48 0.106    0.575 0.009 0.09  100       31.9           0\n49 0.106    0.575 0.009 0.09  100       31.9           0\n50 0.106    0.575 0.009 0.09  100       31.9           0\n51 0.106    0.576 0.009 0.09  100       31.9           0\n52 0.106    0.576 0.009 0.09  100       31.9           0\n53 0.106    0.576 0.009 0.09  100       31.9           0\n54 0.106    0.575 0.009 0.09  100       31.9           0\n55 0.106    0.571 0.009 0.09  100       31.9           0\n\n\nTrying priors of the gain parameter\nOne way to deal with that is to put a prior on the gain parameter to keep it near 25. I know priors are usually a bayesian thing, but they work with ML optimization just as well. On the next set of simulations, I used a Normal(25, 0.1) prior on the gain parameter (could have also fixed it to this value, but this gives me mroe control).\n\nCodefits1 |&gt;\n  filter(priors_scenario == \"gain\", exclude_sp1 == TRUE, exp == 1, deviance &lt;= 50, convergence == 0) |&gt;\n  select(prop:convergence) |&gt;\n  arrange(gain) |&gt;\n  mutate_all(round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 23 × 7\n    prop prop_ltm  rate   tau  gain deviance convergence\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n 1 0.222    0.587 0.019 0.154  25.0     33.0           0\n 2 0.222    0.588 0.018 0.154  25.0     33.0           0\n 3 0.222    0.588 0.019 0.154  25       33.0           0\n 4 0.222    0.588 0.019 0.154  25       33.0           0\n 5 0.222    0.588 0.019 0.154  25       33.0           0\n 6 0.222    0.588 0.019 0.154  25       33.0           0\n 7 0.222    0.588 0.019 0.154  25       33.0           0\n 8 0.222    0.588 0.019 0.154  25       33.0           0\n 9 0.222    0.588 0.019 0.154  25.0     33.0           0\n10 0.222    0.588 0.019 0.154  25.0     33.0           0\n11 0.222    0.588 0.019 0.154  25.0     33.0           0\n12 0.222    0.588 0.019 0.154  25.0     33.0           0\n13 0.222    0.588 0.019 0.154  25.0     33.0           0\n14 0.208    0.398 0.031 0.154  25.0     47.7           0\n15 0.222    0.587 0.019 0.154  25.0     33.0           0\n16 0.222    0.587 0.019 0.154  25.0     33.0           0\n17 0.222    0.587 0.019 0.154  25.0     33.0           0\n18 0.222    0.588 0.019 0.154  25.0     33.0           0\n19 0.222    0.588 0.019 0.154  25.0     33.0           0\n20 0.222    0.588 0.019 0.154  25.0     33.0           0\n21 0.222    0.588 0.019 0.154  25.0     33.0           0\n22 0.222    0.588 0.019 0.154  25.0     33.0           0\n23 0.222    0.588 0.019 0.154  25.0     33.0           0\n\n\nSo we do get at least some parameters that are close to that reported in the paper. The predictions with those parameters:\n\nCodeexp1_data_agg$pred &lt;- fits1 |&gt;\n  filter(priors_scenario == \"gain\", exclude_sp1 == TRUE, exp == 1, convergence == 0) |&gt;\n  arrange(deviance) |&gt;\n  pluck(\"pred\", 1)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nTrying priors on the rate parameter\nMaybe there is a region with a higher rate that we have not explored? Let’s try a prior on the rate parameter, ~ Normal(0.1, 0.01).\n\nCodefits1 |&gt;\n  filter(priors_scenario == \"rate\", exclude_sp1 == TRUE, exp == 1, convergence == 0) |&gt;\n  select(prop:convergence) |&gt;\n  arrange(deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 100 × 7\n     prop prop_ltm  rate   tau  gain deviance convergence\n    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n  1 0.435    0.608 0.049 0.202  7.59     43.1           0\n  2 0.434    0.607 0.049 0.202  7.60     43.1           0\n  3 0.435    0.607 0.049 0.202  7.59     43.1           0\n  4 0.435    0.608 0.049 0.202  7.59     43.1           0\n  5 0.435    0.607 0.049 0.202  7.59     43.1           0\n  6 0.435    0.608 0.049 0.202  7.59     43.1           0\n  7 0.434    0.607 0.049 0.202  7.59     43.1           0\n  8 0.435    0.607 0.049 0.202  7.58     43.1           0\n  9 0.435    0.607 0.049 0.202  7.59     43.1           0\n 10 0.435    0.607 0.049 0.202  7.59     43.1           0\n 11 0.435    0.608 0.049 0.202  7.59     43.1           0\n 12 0.435    0.607 0.049 0.202  7.59     43.1           0\n 13 0.435    0.607 0.049 0.202  7.58     43.1           0\n 14 0.435    0.607 0.049 0.202  7.59     43.1           0\n 15 0.435    0.607 0.049 0.202  7.59     43.1           0\n 16 0.435    0.607 0.049 0.202  7.58     43.1           0\n 17 0.435    0.607 0.049 0.202  7.58     43.1           0\n 18 0.435    0.607 0.049 0.202  7.59     43.1           0\n 19 0.435    0.607 0.049 0.202  7.59     43.1           0\n 20 0.435    0.607 0.049 0.202  7.59     43.1           0\n 21 0.435    0.607 0.049 0.202  7.58     43.1           0\n 22 0.435    0.608 0.049 0.202  7.59     43.1           0\n 23 0.435    0.607 0.049 0.202  7.58     43.1           0\n 24 0.435    0.607 0.049 0.202  7.58     43.1           0\n 25 0.435    0.607 0.049 0.202  7.59     43.1           0\n 26 0.435    0.607 0.049 0.202  7.59     43.1           0\n 27 0.435    0.607 0.049 0.202  7.58     43.1           0\n 28 0.435    0.607 0.049 0.202  7.58     43.1           0\n 29 0.435    0.607 0.049 0.202  7.58     43.1           0\n 30 0.435    0.607 0.049 0.202  7.58     43.1           0\n 31 0.435    0.607 0.049 0.202  7.59     43.1           0\n 32 0.435    0.607 0.049 0.202  7.58     43.1           0\n 33 0.435    0.607 0.049 0.202  7.58     43.1           0\n 34 0.435    0.607 0.049 0.202  7.58     43.1           0\n 35 0.435    0.607 0.049 0.202  7.58     43.1           0\n 36 0.435    0.607 0.049 0.202  7.58     43.1           0\n 37 0.435    0.607 0.049 0.202  7.59     43.1           0\n 38 0.435    0.607 0.049 0.202  7.59     43.1           0\n 39 0.435    0.607 0.049 0.202  7.58     43.1           0\n 40 0.435    0.607 0.049 0.202  7.58     43.1           0\n 41 0.435    0.607 0.049 0.202  7.58     43.1           0\n 42 0.435    0.607 0.049 0.202  7.59     43.1           0\n 43 0.435    0.607 0.049 0.202  7.58     43.1           0\n 44 0.435    0.607 0.049 0.202  7.59     43.1           0\n 45 0.435    0.607 0.049 0.202  7.58     43.1           0\n 46 0.435    0.607 0.049 0.202  7.59     43.1           0\n 47 0.435    0.607 0.049 0.202  7.58     43.1           0\n 48 0.435    0.608 0.049 0.202  7.58     43.1           0\n 49 0.435    0.607 0.049 0.202  7.58     43.1           0\n 50 0.435    0.608 0.049 0.202  7.58     43.1           0\n 51 0.435    0.607 0.049 0.202  7.58     43.1           0\n 52 0.435    0.607 0.049 0.202  7.59     43.1           0\n 53 0.435    0.607 0.049 0.202  7.58     43.1           0\n 54 0.435    0.607 0.049 0.202  7.59     43.1           0\n 55 0.435    0.607 0.049 0.202  7.58     43.1           0\n 56 0.435    0.607 0.049 0.202  7.58     43.1           0\n 57 0.435    0.607 0.049 0.202  7.58     43.1           0\n 58 0.435    0.607 0.049 0.202  7.58     43.1           0\n 59 0.435    0.607 0.049 0.202  7.58     43.1           0\n 60 0.435    0.607 0.049 0.202  7.58     43.1           0\n 61 0.435    0.607 0.049 0.202  7.58     43.1           0\n 62 0.435    0.607 0.049 0.202  7.58     43.1           0\n 63 0.435    0.608 0.049 0.202  7.59     43.1           0\n 64 0.435    0.608 0.049 0.202  7.58     43.1           0\n 65 0.435    0.607 0.049 0.202  7.58     43.1           0\n 66 0.435    0.607 0.049 0.202  7.58     43.1           0\n 67 0.435    0.607 0.049 0.202  7.58     43.1           0\n 68 0.435    0.607 0.049 0.202  7.58     43.1           0\n 69 0.435    0.607 0.049 0.202  7.58     43.1           0\n 70 0.435    0.607 0.049 0.202  7.58     43.1           0\n 71 0.435    0.607 0.049 0.202  7.58     43.2           0\n 72 0.435    0.608 0.049 0.202  7.58     43.2           0\n 73 0.435    0.607 0.049 0.202  7.58     43.2           0\n 74 0.435    0.607 0.049 0.202  7.58     43.2           0\n 75 0.435    0.607 0.049 0.202  7.58     43.2           0\n 76 0.435    0.608 0.049 0.202  7.58     43.2           0\n 77 0.435    0.608 0.049 0.202  7.58     43.2           0\n 78 0.435    0.607 0.049 0.202  7.58     43.2           0\n 79 0.435    0.608 0.049 0.202  7.57     43.2           0\n 80 0.435    0.607 0.049 0.202  7.57     43.2           0\n 81 0.39     0.375 0.071 0.218  7.90     55.8           0\n 82 0.39     0.375 0.071 0.218  7.88     55.8           0\n 83 0.39     0.375 0.071 0.218  7.88     55.8           0\n 84 0.39     0.375 0.071 0.218  7.88     55.8           0\n 85 0.39     0.375 0.071 0.218  7.87     55.8           0\n 86 0.39     0.375 0.071 0.218  7.88     55.8           0\n 87 0.39     0.375 0.071 0.218  7.88     55.8           0\n 88 0.39     0.375 0.071 0.218  7.87     55.8           0\n 89 0.39     0.375 0.071 0.218  7.87     55.8           0\n 90 0.39     0.375 0.071 0.218  7.88     55.8           0\n 91 0.39     0.375 0.071 0.218  7.87     55.8           0\n 92 0.39     0.375 0.071 0.218  7.87     55.8           0\n 93 0.39     0.375 0.071 0.218  7.87     55.8           0\n 94 0.39     0.375 0.071 0.218  7.87     55.8           0\n 95 0.39     0.375 0.071 0.218  7.88     55.8           0\n 96 0.39     0.375 0.071 0.218  7.87     55.8           0\n 97 0.39     0.375 0.071 0.218  7.87     55.8           0\n 98 0.391    0.375 0.071 0.218  7.86     55.8           0\n 99 0.39     0.375 0.071 0.218  7.87     55.8           0\n100 0.386    0.017 0.081 0.226  7.39     75.0           0\n\n\nDeviance is quite much higher. Predictions?\n\nCodefit &lt;- fits1 |&gt;\n  filter(priors_scenario == \"rate\", exclude_sp1 == TRUE, exp == 1, convergence == 0) |&gt;\n  arrange(deviance) |&gt;\n  pluck(\"fit\", 1)\n\nfit$par\n\n      prop   prop_ltm       rate        tau       gain \n0.43456497 0.60758909 0.04906632 0.20157962 7.58996852 \n\nCodeexp1_data_agg$pred &lt;- predict(fit, exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nGeater mismatch. Let’s include error bars of the data:\n\nCodeexp1_data |&gt;\n  group_by(id, chunk, gap, itemtype) |&gt;\n  summarise(\n    n_total = dplyr::n(),\n    n_correct = sum(cor),\n    p_correct = mean(cor)\n  ) |&gt;\n  ungroup() |&gt;\n  left_join(\n    select(exp1_data_agg, chunk, gap, itemtype, pred),\n    by = c(\"chunk\", \"gap\", \"itemtype\")\n  ) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  stat_summary() +\n  stat_summary(aes(y = pred), linetype = \"dashed\", geom = \"line\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n`summarise()` has grouped output by 'id', 'chunk', 'gap'. You can override using the `.groups` argument.\nNo summary function supplied, defaulting to `mean_se()`\nNo summary function supplied, defaulting to `mean_se()`\nNo summary function supplied, defaulting to `mean_se()`\nNo summary function supplied, defaulting to `mean_se()`\nNo summary function supplied, defaulting to `mean_se()`\nNo summary function supplied, defaulting to `mean_se()`\n\n\n\n\n\n\n\n\nParaneters seem consistent with the data (see my notes).",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/modelling_edas_approach.html#including-the-first-chunk-in-the-optimization",
+    "href": "quarto/notebooks/modelling_edas_approach.html#including-the-first-chunk-in-the-optimization",
+    "title": "Main results",
+    "section": "Including the first chunk in the optimization",
+    "text": "Including the first chunk in the optimization\nThe reports above followed the approach in the current draft and excluded the first chunk from the calculation of the likelihood when optimizing the parameters. Let’s include it:\n\nCodestart &lt;- paper_params()\n(est &lt;- estimate_model(start, data = exp1_data_agg, exclude_sp1 = FALSE))\n\n$start\n    prop prop_ltm      tau     gain     rate \n    0.21     0.55     0.14    25.00     0.02 \n\n$par\n       prop    prop_ltm         tau        gain        rate \n 0.30248729  0.63594776  0.17698525 15.21043755  0.02143605 \n\n$convergence\n[1] 0\n\n$counts\nfunction gradient \n    1276       NA \n\n$value\n[1] 144.8785\n\nCodeexp1_data_agg$pred &lt;- predict(est, exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nIn this case I didn’t have to use many starting values - the result is reached from almost everywhere:\n\nCodefits1 |&gt;\n  filter(priors_scenario == \"none\", exclude_sp1 == FALSE, exp == 1, convergence == 0) |&gt;\n  arrange(deviance) |&gt;\n  select(prop:convergence) |&gt;\n  print(n = 100)\n\n# A tibble: 100 × 7\n     prop prop_ltm   rate    tau  gain deviance convergence\n    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;\n  1 0.303    0.636 0.0214 0.177  15.2      145.           0\n  2 0.302    0.636 0.0214 0.177  15.2      145.           0\n  3 0.302    0.636 0.0214 0.177  15.2      145.           0\n  4 0.302    0.636 0.0214 0.177  15.2      145.           0\n  5 0.302    0.636 0.0214 0.177  15.2      145.           0\n  6 0.302    0.636 0.0214 0.177  15.2      145.           0\n  7 0.302    0.636 0.0214 0.177  15.2      145.           0\n  8 0.302    0.636 0.0214 0.177  15.2      145.           0\n  9 0.302    0.636 0.0214 0.177  15.2      145.           0\n 10 0.303    0.636 0.0214 0.177  15.2      145.           0\n 11 0.302    0.636 0.0214 0.177  15.2      145.           0\n 12 0.302    0.636 0.0214 0.177  15.2      145.           0\n 13 0.303    0.636 0.0214 0.177  15.2      145.           0\n 14 0.303    0.636 0.0214 0.177  15.2      145.           0\n 15 0.302    0.636 0.0214 0.177  15.2      145.           0\n 16 0.302    0.636 0.0214 0.177  15.2      145.           0\n 17 0.302    0.636 0.0214 0.177  15.2      145.           0\n 18 0.302    0.636 0.0214 0.177  15.2      145.           0\n 19 0.302    0.636 0.0214 0.177  15.2      145.           0\n 20 0.302    0.636 0.0214 0.177  15.2      145.           0\n 21 0.302    0.636 0.0214 0.177  15.2      145.           0\n 22 0.303    0.636 0.0215 0.177  15.2      145.           0\n 23 0.302    0.636 0.0214 0.177  15.2      145.           0\n 24 0.302    0.636 0.0214 0.177  15.2      145.           0\n 25 0.302    0.636 0.0214 0.177  15.2      145.           0\n 26 0.303    0.636 0.0214 0.177  15.2      145.           0\n 27 0.303    0.636 0.0215 0.177  15.2      145.           0\n 28 0.303    0.636 0.0214 0.177  15.2      145.           0\n 29 0.303    0.636 0.0215 0.177  15.2      145.           0\n 30 0.303    0.636 0.0215 0.177  15.2      145.           0\n 31 0.303    0.636 0.0214 0.177  15.2      145.           0\n 32 0.302    0.636 0.0214 0.177  15.2      145.           0\n 33 0.302    0.636 0.0214 0.177  15.2      145.           0\n 34 0.302    0.636 0.0214 0.177  15.2      145.           0\n 35 0.302    0.636 0.0214 0.177  15.2      145.           0\n 36 0.303    0.636 0.0214 0.177  15.2      145.           0\n 37 0.303    0.636 0.0214 0.177  15.2      145.           0\n 38 0.302    0.636 0.0214 0.177  15.2      145.           0\n 39 0.302    0.636 0.0214 0.177  15.2      145.           0\n 40 0.303    0.636 0.0214 0.177  15.2      145.           0\n 41 0.303    0.636 0.0214 0.177  15.2      145.           0\n 42 0.302    0.636 0.0214 0.177  15.2      145.           0\n 43 0.302    0.636 0.0214 0.177  15.2      145.           0\n 44 0.303    0.636 0.0215 0.177  15.2      145.           0\n 45 0.303    0.636 0.0214 0.177  15.2      145.           0\n 46 0.302    0.636 0.0214 0.177  15.2      145.           0\n 47 0.302    0.636 0.0214 0.177  15.2      145.           0\n 48 0.302    0.636 0.0214 0.177  15.2      145.           0\n 49 0.303    0.636 0.0214 0.177  15.2      145.           0\n 50 0.302    0.636 0.0214 0.177  15.2      145.           0\n 51 0.302    0.636 0.0214 0.177  15.3      145.           0\n 52 0.303    0.636 0.0215 0.177  15.2      145.           0\n 53 0.303    0.636 0.0215 0.177  15.2      145.           0\n 54 0.302    0.636 0.0214 0.177  15.2      145.           0\n 55 0.302    0.636 0.0214 0.177  15.2      145.           0\n 56 0.303    0.636 0.0214 0.177  15.2      145.           0\n 57 0.303    0.636 0.0215 0.177  15.1      145.           0\n 58 0.302    0.636 0.0214 0.177  15.2      145.           0\n 59 0.302    0.636 0.0214 0.177  15.2      145.           0\n 60 0.302    0.636 0.0214 0.177  15.2      145.           0\n 61 0.303    0.636 0.0214 0.177  15.2      145.           0\n 62 0.303    0.636 0.0215 0.177  15.2      145.           0\n 63 0.302    0.636 0.0214 0.177  15.2      145.           0\n 64 0.302    0.636 0.0214 0.177  15.2      145.           0\n 65 0.302    0.636 0.0214 0.177  15.2      145.           0\n 66 0.302    0.636 0.0214 0.177  15.2      145.           0\n 67 0.302    0.636 0.0214 0.177  15.2      145.           0\n 68 0.302    0.636 0.0214 0.177  15.2      145.           0\n 69 0.303    0.636 0.0214 0.177  15.2      145.           0\n 70 0.303    0.636 0.0214 0.177  15.2      145.           0\n 71 0.303    0.636 0.0214 0.177  15.2      145.           0\n 72 0.302    0.636 0.0214 0.177  15.2      145.           0\n 73 0.302    0.636 0.0214 0.177  15.2      145.           0\n 74 0.302    0.636 0.0214 0.177  15.2      145.           0\n 75 0.302    0.636 0.0214 0.177  15.2      145.           0\n 76 0.303    0.636 0.0214 0.177  15.2      145.           0\n 77 0.302    0.636 0.0214 0.177  15.3      145.           0\n 78 0.548    0.515 0.258  0.285   5.92     381.           0\n 79 0.548    0.534 0.291  0.295   6.16     381.           0\n 80 0.548    0.512 0.253  0.283   5.89     381.           0\n 81 0.548    0.535 0.294  0.296   6.18     381.           0\n 82 0.549    0.551 0.321  0.305   6.40     381.           0\n 83 0.549    0.491 0.217  0.272   5.64     381.           0\n 84 0.549    0.549 0.318  0.304   6.37     381.           0\n 85 0.549    0.569 0.353  0.315   6.67     381.           0\n 86 0.548    0.536 0.294  0.296   6.18     381.           0\n 87 0.548    0.512 0.254  0.283   5.89     381.           0\n 88 0.548    0.575 0.362  0.317   6.76     381.           0\n 89 0.548    0.492 0.220  0.273   5.66     381.           0\n 90 0.548    0.515 0.260  0.285   5.93     381.           0\n 91 0.549    0.554 0.327  0.306   6.44     381.           0\n 92 0.548    0.604 0.413  0.334   7.26     381.           0\n 93 0.548    0.517 0.263  0.286   5.95     381.           0\n 94 0.548    0.565 0.345  0.312   6.60     381.           0\n 95 0.548    0.540 0.303  0.299   6.25     381.           0\n 96 0.548    0.513 0.256  0.284   5.91     381.           0\n 97 0.548    0.560 0.337  0.309   6.53     381.           0\n 98 0.549    0.556 0.330  0.307   6.48     381.           0\n 99 0.548    0.556 0.330  0.308   6.48     381.           0\n100 0.106    0.473 0.275  0.0736 24.3     1663.           0\n\n\nWith prior on rate\n\nCodefits1 |&gt;\n  filter(priors_scenario == \"rate\", exclude_sp1 == FALSE, exp == 1, convergence == 0) |&gt;\n  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {\n    overall_deviance(x$par, exp1_data_agg, exclude_sp1 = y)\n  })) |&gt;\n  select(prop:convergence) |&gt;\n  arrange(deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 98 × 7\n    prop prop_ltm  rate   tau  gain deviance convergence\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n 1 0.475    0.645 0.049 0.197  6.91     153.           0\n 2 0.475    0.645 0.049 0.197  6.91     153.           0\n 3 0.475    0.645 0.049 0.197  6.91     153.           0\n 4 0.475    0.645 0.049 0.197  6.91     153.           0\n 5 0.475    0.645 0.049 0.197  6.91     153.           0\n 6 0.475    0.645 0.049 0.197  6.91     153.           0\n 7 0.475    0.644 0.049 0.197  6.90     153.           0\n 8 0.475    0.644 0.049 0.197  6.91     153.           0\n 9 0.475    0.644 0.049 0.197  6.91     153.           0\n10 0.475    0.645 0.049 0.197  6.90     153.           0\n11 0.475    0.644 0.049 0.197  6.91     153.           0\n12 0.475    0.645 0.049 0.197  6.91     153.           0\n13 0.475    0.645 0.049 0.197  6.91     153.           0\n14 0.475    0.644 0.049 0.197  6.91     153.           0\n15 0.475    0.645 0.049 0.197  6.91     153.           0\n16 0.475    0.645 0.049 0.197  6.91     153.           0\n17 0.475    0.644 0.049 0.197  6.91     153.           0\n18 0.475    0.645 0.049 0.197  6.91     153.           0\n19 0.475    0.645 0.049 0.197  6.91     153.           0\n20 0.475    0.645 0.049 0.197  6.91     153.           0\n21 0.475    0.645 0.049 0.197  6.90     153.           0\n22 0.475    0.644 0.049 0.197  6.91     153.           0\n23 0.475    0.645 0.049 0.197  6.91     153.           0\n24 0.475    0.645 0.049 0.197  6.90     153.           0\n25 0.475    0.645 0.049 0.197  6.90     153.           0\n26 0.475    0.645 0.049 0.197  6.90     153.           0\n27 0.475    0.645 0.049 0.197  6.91     153.           0\n28 0.475    0.645 0.049 0.197  6.90     153.           0\n29 0.475    0.645 0.049 0.197  6.91     153.           0\n30 0.475    0.645 0.049 0.197  6.91     153.           0\n31 0.475    0.644 0.049 0.197  6.91     153.           0\n32 0.475    0.645 0.049 0.197  6.91     153.           0\n33 0.475    0.645 0.049 0.197  6.91     153.           0\n34 0.475    0.645 0.049 0.197  6.91     153.           0\n35 0.475    0.645 0.049 0.197  6.90     153.           0\n36 0.475    0.644 0.049 0.197  6.91     153.           0\n37 0.475    0.645 0.049 0.197  6.91     153.           0\n38 0.475    0.645 0.049 0.197  6.90     153.           0\n39 0.475    0.645 0.049 0.197  6.91     153.           0\n40 0.475    0.644 0.049 0.197  6.90     153.           0\n41 0.475    0.645 0.049 0.197  6.91     153.           0\n42 0.475    0.645 0.049 0.197  6.90     153.           0\n43 0.475    0.644 0.049 0.197  6.91     153.           0\n44 0.475    0.645 0.049 0.197  6.90     153.           0\n45 0.475    0.645 0.049 0.197  6.90     153.           0\n46 0.475    0.645 0.049 0.197  6.90     153.           0\n47 0.475    0.644 0.049 0.197  6.91     153.           0\n48 0.475    0.645 0.049 0.197  6.91     153.           0\n49 0.475    0.645 0.049 0.197  6.90     153.           0\n50 0.475    0.645 0.049 0.197  6.90     153.           0\n51 0.475    0.645 0.049 0.197  6.91     153.           0\n52 0.475    0.645 0.049 0.197  6.91     153.           0\n53 0.475    0.644 0.049 0.197  6.91     153.           0\n54 0.475    0.645 0.049 0.197  6.90     153.           0\n55 0.475    0.645 0.049 0.197  6.91     153.           0\n56 0.475    0.644 0.049 0.197  6.91     153.           0\n57 0.475    0.645 0.049 0.197  6.90     153.           0\n58 0.475    0.644 0.049 0.197  6.91     153.           0\n59 0.475    0.644 0.049 0.197  6.90     153.           0\n60 0.475    0.645 0.049 0.197  6.91     153.           0\n61 0.475    0.645 0.049 0.197  6.90     153.           0\n62 0.475    0.645 0.049 0.197  6.90     153.           0\n63 0.475    0.645 0.049 0.197  6.90     153.           0\n64 0.475    0.645 0.049 0.197  6.90     153.           0\n65 0.475    0.645 0.049 0.197  6.90     153.           0\n66 0.475    0.645 0.049 0.197  6.91     153.           0\n67 0.475    0.645 0.049 0.197  6.90     153.           0\n68 0.475    0.645 0.049 0.197  6.91     153.           0\n69 0.475    0.644 0.049 0.197  6.90     153.           0\n70 0.475    0.645 0.049 0.197  6.90     153.           0\n71 0.475    0.645 0.049 0.197  6.90     153.           0\n72 0.476    0.644 0.049 0.197  6.89     153.           0\n73 0.475    0.645 0.049 0.197  6.91     153.           0\n74 0.475    0.645 0.049 0.197  6.90     153.           0\n75 0.475    0.645 0.049 0.197  6.90     153.           0\n76 0.475    0.645 0.049 0.197  6.90     153.           0\n77 0.475    0.644 0.049 0.197  6.90     153.           0\n78 0.475    0.644 0.049 0.197  6.90     153.           0\n79 0.475    0.644 0.049 0.197  6.91     153.           0\n80 0.475    0.645 0.049 0.197  6.90     153.           0\n81 0.475    0.645 0.049 0.197  6.90     153.           0\n82 0.475    0.644 0.049 0.197  6.90     153.           0\n83 0.475    0.645 0.049 0.197  6.91     153.           0\n84 0.475    0.645 0.049 0.197  6.90     153.           0\n85 0.475    0.645 0.049 0.197  6.91     153.           0\n86 0.475    0.645 0.049 0.197  6.90     153.           0\n87 0.475    0.645 0.049 0.197  6.90     153.           0\n88 0.476    0.644 0.049 0.197  6.90     153.           0\n89 0.475    0.645 0.049 0.197  6.90     153.           0\n90 0.475    0.644 0.049 0.197  6.90     153.           0\n91 0.475    0.645 0.049 0.197  6.90     153.           0\n92 0.476    0.644 0.049 0.197  6.9      153.           0\n93 0.475    0.645 0.049 0.197  6.91     153.           0\n94 0.476    0.645 0.049 0.197  6.90     153.           0\n95 0.475    0.645 0.049 0.197  6.90     153.           0\n96 0.476    0.644 0.049 0.197  6.90     153.           0\n97 0.476    0.645 0.049 0.197  6.89     153.           0\n98 0.476    0.645 0.049 0.197  6.90     153.           0\n\nCodefit &lt;- fits1 |&gt;\n  filter(priors_scenario == \"rate\", exclude_sp1 == FALSE, exp == 1, convergence == 0) |&gt;\n  arrange(deviance) |&gt;\n  pluck(\"fit\", 1)\n\nexp1_data_agg$pred &lt;- predict(fit, exp1_data_agg, group_by = c(\"chunk\", \"gap\"))\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/modelling_edas_approach.html#repeat-for-expereiment-2",
+    "href": "quarto/notebooks/modelling_edas_approach.html#repeat-for-expereiment-2",
+    "title": "Main results",
+    "section": "Repeat for expereiment 2",
+    "text": "Repeat for expereiment 2\nBasic estimation (ignoring first chunk):\n\nCodetar_load(exp2_data_agg)\nstart &lt;- paper_params(exp = 2)\n(est &lt;- estimate_model(start, data = exp2_data_agg, exclude_sp1 = TRUE))\n\n$start\n    prop prop_ltm      tau     gain     rate \n   0.170    0.400    0.135   25.000    0.025 \n\n$par\n       prop    prop_ltm         tau        gain        rate \n 0.16975119  0.48023531  0.13651974 29.75877754  0.02233212 \n\n$convergence\n[1] 0\n\n$counts\nfunction gradient \n     246       NA \n\n$value\n[1] 56.36045\n\nCodeexp2_data_agg$pred &lt;- predict(est, exp2_data_agg, group_by = c(\"chunk\", \"gap\"))\nexp2_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nagain parameter estimates are different from the paper.\nHere are from multiple starting values:\n\nCodefits &lt;- fits1 |&gt;\n  filter(priors_scenario == \"none\", exclude_sp1 == TRUE, exp == 2, convergence == 0) |&gt;\n  select(prop:convergence, fit, data) |&gt;\n  arrange(deviance) |&gt;\n  mutate_if(is.numeric, round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 98 × 9\n    prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n 1 0.105    0.815 0.007 0.089  87.8     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 2 0.105    0.816 0.007 0.089  86.9     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 3 0.105    0.815 0.007 0.089  87.7     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 4 0.105    0.816 0.007 0.089  87.2     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 5 0.105    0.815 0.007 0.089  88.1     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 6 0.106    0.816 0.007 0.09   85.3     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 7 0.109    0.816 0.007 0.092  81.6     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 8 0.128    0.818 0.008 0.105  59.5     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 9 0.135    0.818 0.009 0.109  54.5     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n10 0.152    0.819 0.01  0.119  43.3     40.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n11 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n12 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n13 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n14 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n15 0.162    0.481 0.021 0.132  32.5     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n16 0.162    0.481 0.021 0.132  32.6     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n17 0.163    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n18 0.163    0.48  0.021 0.132  32.1     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n19 0.163    0.48  0.021 0.132  32.3     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n20 0.163    0.48  0.021 0.132  32.3     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n21 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n22 0.271    0.505 0.12  0.205  13.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n23 0.271    0.526 0.138 0.208  14.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n24 0.271    0.656 0.249 0.225  20.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n25 0.271    0.564 0.171 0.213  15.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n26 0.271    0.487 0.105 0.203  13.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n27 0.271    0.521 0.134 0.207  14.3     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n28 0.271    0.795 0.367 0.244  33.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n29 0.271    0.628 0.225 0.222  18.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n30 0.271    0.721 0.304 0.234  24.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n31 0.271    0.787 0.361 0.243  32.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n32 0.271    0.755 0.333 0.238  28.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n33 0.271    0.544 0.154 0.21   15.1     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n34 0.271    0.531 0.143 0.209  14.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n35 0.271    0.723 0.306 0.234  24.7     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n36 0.271    0.645 0.239 0.224  19.3     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n37 0.271    0.591 0.193 0.217  16.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n38 0.271    0.591 0.194 0.217  16.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n39 0.271    0.654 0.247 0.225  19.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n40 0.271    0.645 0.24  0.224  19.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n41 0.271    0.571 0.176 0.214  16.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n42 0.271    0.759 0.336 0.239  28.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n43 0.271    0.635 0.231 0.223  18.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n44 0.271    0.73  0.312 0.235  25.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n45 0.271    0.718 0.302 0.234  24.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n46 0.271    0.593 0.195 0.217  16.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n47 0.271    0.622 0.219 0.221  18.1     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n48 0.271    0.707 0.293 0.232  23.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n49 0.271    0.495 0.111 0.204  13.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n50 0.271    0.643 0.238 0.224  19.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n51 0.271    0.718 0.302 0.234  24.3     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n52 0.271    0.648 0.242 0.224  19.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n53 0.271    0.72  0.304 0.234  24.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n54 0.271    0.666 0.257 0.227  20.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n55 0.271    0.601 0.202 0.218  17.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n56 0.271    0.45  0.073 0.198  12.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n57 0.271    0.561 0.168 0.213  15.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n58 0.271    0.527 0.139 0.208  14.5     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n59 0.271    0.532 0.143 0.209  14.7     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n60 0.271    0.802 0.373 0.245  34.7     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n61 0.271    0.627 0.224 0.221  18.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n62 0.271    0.619 0.218 0.22   18.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n63 0.271    0.62  0.218 0.221  18.1     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n64 0.271    0.575 0.18  0.215  16.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n65 0.271    0.645 0.24  0.224  19.3     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n66 0.271    0.507 0.121 0.205  13.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n67 0.271    0.635 0.23  0.222  18.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n68 0.271    0.724 0.307 0.235  24.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n69 0.271    0.711 0.296 0.233  23.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n70 0.271    0.485 0.104 0.203  13.4     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n71 0.271    0.64  0.236 0.223  19.1     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n72 0.271    0.841 0.406 0.25   43.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n73 0.271    0.684 0.273 0.229  21.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n74 0.271    0.539 0.149 0.21   14.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n75 0.27     0.812 0.381 0.246  36.7     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n76 0.271    0.57  0.175 0.214  16.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n77 0.271    0.852 0.416 0.251  46.3     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n78 0.271    0.425 0.052 0.195  11.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n79 0.271    0.561 0.168 0.213  15.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n80 0.271    0.48  0.099 0.202  13.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n81 0.271    0.656 0.249 0.225  20.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n82 0.271    0.743 0.323 0.237  26.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n83 0.271    0.678 0.268 0.228  21.3     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n84 0.271    0.592 0.194 0.217  16.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n85 0.271    0.624 0.222 0.221  18.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n86 0.271    0.742 0.322 0.237  26.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n87 0.271    0.671 0.262 0.227  20.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n88 0.271    0.508 0.122 0.206  13.9     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n89 0.271    0.537 0.147 0.21   14.8     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n90 0.271    0.572 0.177 0.214  16.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n91 0.271    0.541 0.151 0.21   15.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n92 0.271    0.667 0.258 0.227  20.6     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n93 0.271    0.833 0.4   0.249  41.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n94 0.348    0.266 0.289 0.272  10.7     84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n95 0.348    0.279 0.291 0.272  10.8     84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n96 0.584    0.725 0.218 1       0      623.            0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n97 0.616    0.715 0.273 1       0      623.            0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n98 0.612    0.541 0.248 1       0      623.            0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\n\nProblem with parameter identifiability\nrows 12-16 illustrate the problem with parameter identifiability quite well. They have nearly identical deviance, but very different parameters.\n\nCode(fits &lt;- fits[c(12, 13, 14, 15, 16), ])\n\n# A tibble: 5 × 9\n   prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n1 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n2 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n3 0.162    0.481 0.021 0.132  32.4     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n4 0.162    0.481 0.021 0.132  32.5     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n5 0.162    0.481 0.021 0.132  32.6     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\nCode# saveRDS(fits, \"output/five_parsets_exp2.rds\")\n\n\nPlot the predictions all 5 sets of parameters:\n\nCodefits |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  unnest(c(data, pred)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = as.factor(round(prop, 3)))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_grid(~itemtype)\n\n\n\n\n\n\n\nThe way parameters change suggest that increasing prop can be compensated by increasing rate, taun and decreasing gain. Here’s a pair plot of these parameters\n\nCodefits |&gt;\n  select(prop, rate, tau, gain) |&gt;\n  ggpairs(diag = list(continuous = \"blankDiag\"))\n\nWarning in cor(x, y): the standard deviation is zero\nWarning in cor(x, y): the standard deviation is zero\nWarning in cor(x, y): the standard deviation is zero\nWarning in cor(x, y): the standard deviation is zero\nWarning in cor(x, y): the standard deviation is zero\nWarning in cor(x, y): the standard deviation is zero\n\n\n\n\n\n\n\n\nI’ll investigate this in a separate notebook.\nWith prior on gain\n\nCodefit &lt;- fits1 |&gt;\n  filter(priors_scenario == \"gain\", exclude_sp1 == TRUE, exp == 2, convergence == 0) |&gt;\n  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {\n    overall_deviance(x$par, exp2_data_agg, exclude_sp1 = y)\n  })) |&gt;\n  select(prop:convergence, fit, data) |&gt;\n  arrange(deviance) |&gt;\n  mutate_if(is.numeric, round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 98 × 9\n    prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n 1 0.205    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 2 0.205    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 3 0.205    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 4 0.205    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 5 0.204    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 6 0.205    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 7 0.186    0.479 0.025 0.146  25       56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 8 0.186    0.479 0.025 0.146  25       56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 9 0.186    0.479 0.025 0.146  25.0     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n10 0.186    0.479 0.025 0.146  25.0     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n11 0.186    0.479 0.025 0.146  25       56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n12 0.186    0.48  0.025 0.146  25.0     56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n13 0.271    0.726 0.309 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n14 0.271    0.726 0.308 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n15 0.271    0.725 0.308 0.234  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n16 0.271    0.726 0.308 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n17 0.272    0.727 0.31  0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n18 0.272    0.727 0.31  0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n19 0.272    0.726 0.31  0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n20 0.271    0.725 0.307 0.234  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n21 0.271    0.725 0.308 0.234  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n22 0.271    0.726 0.309 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n23 0.27     0.724 0.306 0.234  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n24 0.271    0.725 0.307 0.234  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n25 0.27     0.724 0.305 0.233  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n26 0.27     0.724 0.305 0.233  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n27 0.269    0.722 0.303 0.233  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n28 0.27     0.723 0.304 0.233  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n29 0.272    0.727 0.309 0.235  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n30 0.269    0.721 0.302 0.232  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n31 0.272    0.727 0.31  0.235  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n32 0.269    0.72  0.302 0.232  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n33 0.276    0.735 0.323 0.24   25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n34 0.264    0.712 0.289 0.228  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n35 0.263    0.709 0.286 0.227  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n36 0.271    0.726 0.308 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n37 0.27     0.724 0.306 0.234  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n38 0.281    0.744 0.337 0.245  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n39 0.271    0.725 0.308 0.234  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n40 0.284    0.749 0.343 0.247  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n41 0.286    0.751 0.348 0.249  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n42 0.255    0.693 0.264 0.219  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n43 0.268    0.719 0.299 0.231  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n44 0.271    0.726 0.309 0.235  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n45 0.253    0.688 0.259 0.217  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n46 0.272    0.728 0.311 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n47 0.289    0.756 0.356 0.252  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n48 0.25     0.681 0.25  0.214  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n49 0.279    0.741 0.331 0.243  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n50 0.292    0.762 0.365 0.255  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n51 0.249    0.678 0.246 0.213  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n52 0.249    0.679 0.247 0.213  25.0     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n53 0.271    0.725 0.307 0.234  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n54 0.246    0.669 0.236 0.209  25.0     63.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n55 0.272    0.727 0.31  0.235  25.0     63.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n56 0.271    0.725 0.308 0.234  25.0     63.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n57 0.271    0.726 0.308 0.234  25       63.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n58 0.231    0.628 0.192 0.195  25.0     63.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n59 0.271    0.725 0.308 0.234  25       63.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n60 0.271    0.725 0.308 0.234  25       63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n61 0.224    0.606 0.17  0.188  25       63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n62 0.222    0.6   0.165 0.186  25       63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n63 0.221    0.596 0.161 0.185  25       63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n64 0.271    0.726 0.308 0.235  25       63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n65 0.204    0.529 0.105 0.167  25.0     63.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n66 0.271    0.725 0.308 0.234  25.0     63.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n67 0.203    0.526 0.102 0.167  25       63.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n68 0.271    0.725 0.308 0.234  25       63.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n69 0.2      0.514 0.094 0.164  25       63.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n70 0.2      0.513 0.093 0.164  25.0     63.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n71 0.195    0.487 0.074 0.159  25.0     63.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n72 0.271    0.725 0.307 0.234  25       63.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n73 0.191    0.468 0.061 0.155  25       63.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n74 0.188    0.451 0.05  0.152  25.0     63.8           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n75 0.271    0.726 0.309 0.236  25.0     63.8           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n76 0.271    0.725 0.307 0.235  25.0     64.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n77 0.271    0.726 0.309 0.234  25       64.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n78 0.271    0.725 0.308 0.236  25.0     66.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n79 0.974    0.994 0.003 0.008  25.0     69.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n80 0.974    0.994 0.003 0.008  25.0     69.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n81 0.348    0.221 0.522 0.315  25       84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n82 0.348    0.721 0.521 0.315  25       84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n83 0.348    0.195 0.521 0.315  25       84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n84 0.348    0.418 0.521 0.315  25.0     84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n85 0.348    0.204 0.522 0.315  25       84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n86 0.348    0.315 0.522 0.315  25.0     84.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n87 0.348    0.237 0.521 0.315  25       84.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n88 0.327    0.704 0.468 0.294  25       84.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n89 0.348    0.112 0.522 0.316  25       84.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n90 0.317    0.637 0.444 0.284  25       84.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n91 0.348    0.303 0.521 0.315  25.0     84.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n92 0.31     0.485 0.426 0.277  25       84.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n93 0.303    0.612 0.409 0.271  25.0     84.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n94 0.347    0.158 0.52  0.315  25.0     84.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n95 0.348    0.58  0.52  0.314  25.0     84.6           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n96 0.347    0.586 0.52  0.316  25.0     86.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n97 0.346    0.505 0.517 0.315  25       88.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n98 0.11     0.733 0.277 0.1    25      473.            0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\n\nI see three sets of parameters that are close in deviance (relatively):\n\nCodefits &lt;- fit[c(1, 11, 13), ]\nfits\n\n# A tibble: 3 × 9\n   prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n1 0.205    0.824 0.013 0.146  25.0     40.7           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n2 0.186    0.479 0.025 0.146  25       56.4           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n3 0.271    0.726 0.309 0.235  25       63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\n\nplots\n\nCodefits |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  unnest(c(data, pred)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = as.factor(round(prop, 3)))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_grid(~itemtype)\n\n\n\n\n\n\n\nthis case is particularly interesting. The bestfitting parameters produce almost no interaction. The other two sets of parameters produce a strong interaction, but misfit the overall data.\nFurther, the parameter set with rate 0.024 and 0.271 have quite similar fits despite very different parameter sets!\nwith prior on rate\n\nCodefit &lt;- fits1 |&gt;\n  filter(priors_scenario == \"rate\", exclude_sp1 == TRUE, exp == 2, convergence == 0) |&gt;\n  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {\n    overall_deviance(x$par, exp2_data_agg, exclude_sp1 = y)\n  })) |&gt;\n  select(prop:convergence, fit, data) |&gt;\n  arrange(deviance) |&gt;\n  mutate_if(is.numeric, round, 3) |&gt;\n  print(n = 100)\n\n# A tibble: 99 × 9\n    prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n 1 0.474    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 2 0.474    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 3 0.474    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 4 0.475    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 5 0.474    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 6 0.475    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 7 0.475    0.845 0.032 0.196  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 8 0.475    0.844 0.032 0.196  5.85     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n 9 0.474    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n10 0.475    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n11 0.475    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n12 0.475    0.844 0.032 0.196  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n13 0.475    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n14 0.475    0.844 0.032 0.197  5.86     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n15 0.475    0.845 0.032 0.196  5.85     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n16 0.475    0.844 0.032 0.196  5.85     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n17 0.475    0.844 0.032 0.197  5.85     47.0           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n18 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n19 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n20 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n21 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n22 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n23 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n24 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n25 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n26 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n27 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n28 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n29 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n30 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n31 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n32 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n33 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n34 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n35 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n36 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n37 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n38 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n39 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n40 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n41 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n42 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n43 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n44 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n45 0.271    0.482 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n46 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n47 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n48 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n49 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n50 0.271    0.481 0.1   0.202 13.3      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n51 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n52 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n53 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n54 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n55 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n56 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n57 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n58 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n59 0.271    0.482 0.1   0.202 13.3      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n60 0.272    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n61 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n62 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n63 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n64 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n65 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n66 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n67 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n68 0.27     0.481 0.1   0.202 13.3      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n69 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n70 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n71 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n72 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n73 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n74 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n75 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n76 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n77 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n78 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n79 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n80 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n81 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n82 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n83 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n84 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n85 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n86 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n87 0.271    0.481 0.1   0.202 13.2      63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n88 0.474    0.435 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n89 0.474    0.435 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n90 0.474    0.434 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n91 0.474    0.434 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n92 0.474    0.435 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n93 0.474    0.435 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n94 0.474    0.434 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n95 0.474    0.435 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n96 0.474    0.434 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n97 0.474    0.435 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n98 0.474    0.434 0.072 0.245  4.28     63.5           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n99 0.509    0.398 0.102 0.258  3.72     68.2           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\n\nplots\n\nCodefits &lt;- fit[c(28, 43), ] # previous 83\nfits\n\n# A tibble: 2 × 9\n   prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n1 0.271    0.481   0.1 0.202  13.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n2 0.271    0.481   0.1 0.202  13.2     63.3           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\nCodefits |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  unnest(c(data, pred)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = as.factor(round(prop, 3)))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_grid(~itemtype)\n\n\n\n\n\n\n\nIncluding the first chunk in the optimization\n\nCodestart &lt;- paper_params(exp = 2)\n(est &lt;- estimate_model(start, data = exp2_data_agg, exclude_sp1 = FALSE))\n\n$start\n    prop prop_ltm      tau     gain     rate \n   0.170    0.400    0.135   25.000    0.025 \n\n$par\n      prop   prop_ltm        tau       gain       rate \n 0.1618193  0.8723027  0.1235086 43.4849440  0.0080991 \n\n$convergence\n[1] 0\n\n$counts\nfunction gradient \n     412       NA \n\n$value\n[1] 116.1887\n\nCodeexp2_data_agg$pred &lt;- predict(est, exp2_data_agg, group_by = c(\"chunk\", \"gap\"))\nexp2_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nfrom multiple starting values:\n\nCodefits &lt;- fits1 |&gt;\n  filter(priors_scenario == \"none\", exclude_sp1 == FALSE, exp == 2, convergence == 0) |&gt;\n  select(prop:convergence, fit, data) |&gt;\n  arrange(deviance) |&gt;\n  mutate_if(is.numeric, round, 3)\nhead(fits)\n\n# A tibble: 6 × 9\n   prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n1 0.38     0.862  0.02 0.189  8.98     110.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n2 0.38     0.862  0.02 0.189  8.98     110.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n3 0.38     0.862  0.02 0.189  8.98     110.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n4 0.379    0.862  0.02 0.189  8.98     110.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n5 0.38     0.862  0.02 0.189  8.98     110.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n6 0.38     0.862  0.02 0.189  8.98     110.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\n\nWith prior on rate\n\nCodefit &lt;- fits1 |&gt;\n  filter(priors_scenario == \"rate\", exclude_sp1 == FALSE, exp == 2, convergence == 0) |&gt;\n  mutate(deviance = map2_dbl(fit, exclude_sp1, function(x, y) {\n    overall_deviance(x$par, exp2_data_agg, exclude_sp1 = y)\n  })) |&gt;\n  select(prop:convergence, fit, data) |&gt;\n  arrange(deviance) |&gt;\n  mutate_if(is.numeric, round, 3)\nhead(fit)\n\n# A tibble: 6 × 9\n   prop prop_ltm  rate   tau  gain deviance convergence fit        data             \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;list&gt;     &lt;list&gt;           \n1 0.501    0.857 0.032 0.192  5.56     114.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n2 0.501    0.857 0.032 0.192  5.55     114.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n3 0.502    0.857 0.032 0.192  5.55     114.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n4 0.501    0.858 0.032 0.192  5.56     114.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n5 0.501    0.857 0.032 0.192  5.55     114.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n6 0.501    0.858 0.032 0.192  5.55     114.           0 &lt;srl_rcl_&gt; &lt;tibble [12 × 8]&gt;\n\n\nplot predictions\n\nCodefit |&gt;\n  slice(1) |&gt;\n  mutate(pred = map2(fit, data, \\(x, y) predict(x, y, group_by = c(\"chunk\", \"gap\")))) |&gt;\n  unnest(c(data, pred)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = as.factor(round(prop, 3)))) +\n  scale_color_discrete(\"First chunk LTM?\") +\n  facet_grid(~itemtype)",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/notebooks/modelling_edas_approach.html#summary",
+    "href": "quarto/notebooks/modelling_edas_approach.html#summary",
+    "title": "Main results",
+    "section": "Summary",
+    "text": "Summary\n\nThe parameters reported in the paper are not the best fitting\nWhen I start from 100 different starting values, I get better fitting parameters, but with an even lower rate\n\nI can reproduce the parameters from the paper if I fix the gain parameter to 25\n\nBest fitting parameters\nGiven the different modeling choices (ignoring the first chunk or not, priors on the parameters)\nTODO: make this into a function for getting the final parameters\n\nCodefinal &lt;- fits1 |&gt;\n  filter(convergence == 0) |&gt;\n  group_by(exp, priors_scenario, exclude_sp1) |&gt;\n  arrange(deviance) |&gt;\n  slice(1) |&gt;\n  arrange(desc(exclude_sp1), exp, priors_scenario) |&gt;\n  mutate(\n    deviance = round(deviance, 1),\n    priors_scenario = case_when(\n      priors_scenario == \"none\" ~ \"None\",\n      priors_scenario == \"gain\" ~ \"Gain ~ N(25, 0.1)\",\n      priors_scenario == \"rate\" ~ \"Rate ~ N(0.1, 0.01)\"\n    )\n  )\n\nfinal |&gt;\n  select(exp, priors_scenario, exclude_sp1, prop:gain, deviance) |&gt;\n  mutate_all(round, 3) |&gt;\n  kbl() |&gt;\n  kable_styling()\n\n\n\nexp\npriors_scenario\nexclude_sp1\nprop\nprop_ltm\nrate\ntau\ngain\ndeviance\n\n\n\n1\nGain ~ N(25, 0.1)\nTRUE\n0.222\n0.588\n0.019\n0.154\n25.002\n33.0\n\n\n1\nNone\nTRUE\n0.106\n0.575\n0.009\n0.090\n100.000\n31.9\n\n\n1\nRate ~ N(0.1, 0.01)\nTRUE\n0.435\n0.608\n0.049\n0.202\n7.590\n43.1\n\n\n2\nGain ~ N(25, 0.1)\nTRUE\n0.205\n0.824\n0.013\n0.146\n25.001\n40.7\n\n\n2\nNone\nTRUE\n0.105\n0.815\n0.007\n0.089\n87.787\n40.5\n\n\n2\nRate ~ N(0.1, 0.01)\nTRUE\n0.474\n0.844\n0.032\n0.197\n5.865\n47.0\n\n\n1\nGain ~ N(25, 0.1)\nFALSE\n0.231\n0.639\n0.016\n0.156\n24.999\n145.5\n\n\n1\nNone\nFALSE\n0.303\n0.636\n0.021\n0.177\n15.206\n144.9\n\n\n1\nRate ~ N(0.1, 0.01)\nFALSE\n0.475\n0.645\n0.049\n0.197\n6.907\n152.8\n\n\n2\nGain ~ N(25, 0.1)\nFALSE\n0.217\n0.874\n0.011\n0.150\n24.997\n113.5\n\n\n2\nNone\nFALSE\n0.380\n0.862\n0.020\n0.189\n8.983\n109.7\n\n\n2\nRate ~ N(0.1, 0.01)\nFALSE\n0.501\n0.857\n0.032\n0.192\n5.557\n113.8\n\n\n\n\n\n\nprop_ltm very different between the two experiments (overfitting…)\nPredictions\n(the two experiments are modeled separately)\nAll predictions\n\nCodefinal |&gt;\n  select(exp, rate, data, pred) |&gt;\n  mutate(exp = paste0(\"Exp \", exp)) |&gt;\n  unnest(c(data, pred)) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = as.factor(round(rate, 3)))) +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  scale_linetype_discrete(\"Rate\") +\n  facet_grid(exp ~ itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nExperiment 1\n\nCodefinal |&gt;\n  filter(exp == 1) |&gt;\n  arrange(rate) |&gt;\n  select(rate, data, pred) |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(rate = as.character(round(rate, 4))) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = )) +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  scale_linetype_discrete(\"Rate\") +\n  facet_grid(rate ~ itemtype) +\n  theme_pub()\n\n\n\n\n\n\n\nExperiment 2\n\nCodefinal |&gt;\n  filter(exp == 2) |&gt;\n  arrange(rate) |&gt;\n  select(rate, data, pred) |&gt;\n  unnest(c(data, pred)) |&gt;\n  mutate(rate = as.character(round(rate, 4))) |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line(aes(y = pred, linetype = )) +\n  scale_color_discrete(\"1st chunk LTM?\") +\n  scale_linetype_discrete(\"Rate\") +\n  facet_grid(rate ~ itemtype) +\n  theme_pub()",
+    "crumbs": [
+      "Notebooks",
+      "Model 1: Original model",
+      "Main results"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html",
+    "href": "quarto/reference/serial_recall.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceSerial Recall Model Code",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html#description",
+    "href": "quarto/reference/serial_recall.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function implements the model currently described in the draft on page 19. It gives the predicted recall probability for each item in a set of items.",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html#usage",
+    "href": "quarto/reference/serial_recall.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\nserial_recall(\n  setsize,\n  ISI = rep(0.5, setsize),\n  item_in_ltm = rep(TRUE, setsize),\n  prop = 0.2,\n  prop_ltm = 0.5,\n  tau = 0.15,\n  gain = 25,\n  rate = 0.1,\n  r_max = 1\n)",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html#arguments",
+    "href": "quarto/reference/serial_recall.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\nsetsize: The number of items in the set.\nISI: A numeric vector representing the inter-stimulus interval for each item.\nitem_in_ltm: A logical vector indicating whether each item is in LTM.\nprop: The proportion of resources allocated to each item.\nprop_ltm: Proportion by which the resources used by LTM items are multiplied.\ntau: The threshold for recall probability.\ngain: The gain parameter for the recall probability function.\nrate: The rate at which resources are recovered.\nr_max: The maximum amount of resources.",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html#details",
+    "href": "quarto/reference/serial_recall.html#details",
+    "title": "",
+    "section": "Details",
+    "text": "Details\nThe function uses a simulation approach. It loops over trials",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html#value",
+    "href": "quarto/reference/serial_recall.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nA numeric vector representing the recall probability for each item.",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/serial_recall.html#examples",
+    "href": "quarto/reference/serial_recall.html#examples",
+    "title": "",
+    "section": "Examples",
+    "text": "Examples\nserial_recall(setsize = 3, ISI = rep(0.5, 3))",
+    "crumbs": [
+      "Function reference",
+      "Serial Recall Model"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/preprocess_data.html",
+    "href": "quarto/reference/preprocess_data.html",
+    "title": "",
+    "section": "",
+    "text": "Function referencePreprocesses the data Code",
+    "crumbs": [
+      "Function reference",
+      "Preprocesses the data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/preprocess_data.html#description",
+    "href": "quarto/reference/preprocess_data.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function preprocesses the input data by converting the trial column to numeric, transforming the gap column values, and categorizing the itemtype based on serpos values.",
+    "crumbs": [
+      "Function reference",
+      "Preprocesses the data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/preprocess_data.html#usage",
+    "href": "quarto/reference/preprocess_data.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\npreprocess_data(data, longgap)",
+    "crumbs": [
+      "Function reference",
+      "Preprocesses the data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/preprocess_data.html#arguments",
+    "href": "quarto/reference/preprocess_data.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\ndata: The input data frame\nlonggap: The value to use for the long gap in ms.",
+    "crumbs": [
+      "Function reference",
+      "Preprocesses the data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/preprocess_data.html#value",
+    "href": "quarto/reference/preprocess_data.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe preprocessed data frame",
+    "crumbs": [
+      "Function reference",
+      "Preprocesses the data"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/extract_object_from_rdata.html",
+    "href": "quarto/reference/extract_object_from_rdata.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceGet data object from a file Code",
+    "crumbs": [
+      "Function reference",
+      "Get data object from a file"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/extract_object_from_rdata.html#description",
+    "href": "quarto/reference/extract_object_from_rdata.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function safely loads the environment from an Rdata file and returns an object from it.",
+    "crumbs": [
+      "Function reference",
+      "Get data object from a file"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/extract_object_from_rdata.html#usage",
+    "href": "quarto/reference/extract_object_from_rdata.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\nextract_object_from_rdata(path, object_name = \"data_an\")",
+    "crumbs": [
+      "Function reference",
+      "Get data object from a file"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/extract_object_from_rdata.html#arguments",
+    "href": "quarto/reference/extract_object_from_rdata.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\npath: The path to the file containing the Rdata file\nobject_name: The name of the object to extract from the Rdata file",
+    "crumbs": [
+      "Function reference",
+      "Get data object from a file"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/extract_object_from_rdata.html#value",
+    "href": "quarto/reference/extract_object_from_rdata.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe loaded data object.",
+    "crumbs": [
+      "Function reference",
+      "Get data object from a file"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/inv_logit.html",
+    "href": "quarto/reference/inv_logit.html",
+    "title": "",
+    "section": "",
+    "text": "Function referenceInverse Logit Transformation Code",
+    "crumbs": [
+      "Function reference",
+      "Inverse Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/inv_logit.html#description",
+    "href": "quarto/reference/inv_logit.html#description",
+    "title": "",
+    "section": "Description",
+    "text": "Description\nThis function applies the inverse logit transformation to a given value.",
+    "crumbs": [
+      "Function reference",
+      "Inverse Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/inv_logit.html#usage",
+    "href": "quarto/reference/inv_logit.html#usage",
+    "title": "",
+    "section": "Usage",
+    "text": "Usage\ninv_logit(x, lb = 0, ub = 1)",
+    "crumbs": [
+      "Function reference",
+      "Inverse Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/inv_logit.html#arguments",
+    "href": "quarto/reference/inv_logit.html#arguments",
+    "title": "",
+    "section": "Arguments",
+    "text": "Arguments\n\nx: The input value to be transformed.\nlb: The lower bound of the transformed value. Default is 0.\nub: The upper bound of the transformed value. Default is 1.",
+    "crumbs": [
+      "Function reference",
+      "Inverse Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/inv_logit.html#value",
+    "href": "quarto/reference/inv_logit.html#value",
+    "title": "",
+    "section": "Value",
+    "text": "Value\nThe transformed value between the lower and upper bounds.",
+    "crumbs": [
+      "Function reference",
+      "Inverse Logit Transformation"
+    ]
+  },
+  {
+    "objectID": "quarto/reference/inv_logit.html#examples",
+    "href": "quarto/reference/inv_logit.html#examples",
+    "title": "",
+    "section": "Examples",
+    "text": "Examples\ninv_logit(0) # returns 0.5\ninv_logit(0, lb = 0, ub = 10) # returns 5",
+    "crumbs": [
+      "Function reference",
+      "Inverse Logit Transformation"
+    ]
+  }
+]
