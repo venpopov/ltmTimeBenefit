@@ -408,6 +408,8 @@ fit |>
 
 Given the different modeling choices (ignoring the first chunk or not, priors on the parameters)
 
+TODO: make this into a function for getting the final parameters
+
 ```{r}
 #| label: best-params
 #| message: false

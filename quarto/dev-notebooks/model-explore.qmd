@@ -1,0 +1,102 @@
+---
+title: "Exploring the model"
+format: html
+---
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+library(plotly)
+tar_source()
+tar_load(c(fits1, exp3_data_agg))
+```
+
+
+Let's take a set of reasonable parameter values from experiment 1, and change the rate to see how the predictions change
+
+```{r}
+#| label: explore
+# extract bestfitting parameters from experiment 1
+init <- fits1 |> 
+  filter(exp == 1, exclude_sp1, priors_scenario == "gain") |> 
+  arrange(deviance) |> 
+  pluck("fit", 1) |>
+  pluck("par")
+
+# vary the rate gradually 
+# sim <- tibble(rates = seq(0, 0.2, 0.001), data = list(exp3_data_agg)) |> 
+#   mutate(par = map(rates, \(x) assign_in(init, 'rate', x)),
+#          pred = map2(par, data, \(x, y) predict(x, data = y, group_by = c("gap", "chunk"))),
+#          data = map2(data, pred, \(x, y) mutate(x, pred = y)))
+
+```
+
+Visualize via plotly with a slider
+TODO: extract this into its own notebook and make a section "Interactive"
+
+```{r}
+#| label: plot
+#| fig.cap: "Explore the effect of rate on the predictions"
+
+# gg <- sim |> 
+#   select(-pred) |>
+#   unnest(data) |> 
+#   ggplot(aes(gap, pred, color = chunk, group = chunk, frame = rates)) +
+#   geom_line() +
+#   scale_color_discrete("1st chunk LTM?") +
+#   facet_wrap(~itemtype) +
+#   theme_pub()
+
+# ggplotly(gg)
+```
+
+
+Based on this it seems that the model doesn't actually predict a strong interaction at all, unless resources recover completely in one case but not the other.
+
+TODO: make this into a full shiny app where I can control all parameters to explore the model
+TODO: add buttons for common parameter sets
+TODO: add a strength panel
+
+## Attempt at a shiny application
+
+```{r}
+library(shiny)
+data <- exp3_data_agg
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Interactive Plot"),
+    sidebarLayout(
+      sidebarPanel(
+        sliderInput("prop", "prop:", min = 0, max = 1, value = 0.2),
+        sliderInput("prop_ltm", "prop_ltm:", min = 0, max = 1, value = 0.5),
+        sliderInput("rate", "rate:", min = 0, max = 1, value = 0.05),
+        sliderInput("gain", "gain:", min = 1, max = 100, value = 25),
+        sliderInput("tau", "tau:", min = 0, max = 1, value = 0.2),
+      ),
+      mainPanel(
+        plotOutput("distPlot")
+      )
+    )
+  ),
+  server = function(input, output) {
+    output$distPlot <- renderPlot({
+      par <- c(prop = input$prop, prop_ltm = input$prop_ltm, rate = input$rate, gain = input$gain, tau = input$tau)
+      class(par) <- "serial_recall_pars"
+      data |>
+        # TODO: can I reuse the computation?
+        mutate(
+          pred = predict(par, data = exp3_data_agg, group_by = c("gap", "chunk")),
+          strength = predict(par, data = exp3_data_agg, group_by = c("gap", "chunk"), type = "strength")
+        ) |>
+        pivot_longer(c(pred, strength), names_to = "type", values_to = "value") |>
+        ggplot(aes(gap, value, color = chunk, group = chunk)) +
+        geom_line() +
+        scale_color_discrete("1st chunk LTM?") +
+        facet_grid(type~itemtype, scales = "free") +
+        theme_pub()
+    })
+  }
+)
+```

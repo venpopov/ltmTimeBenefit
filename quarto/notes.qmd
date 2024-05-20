@@ -35,6 +35,28 @@ Do we include the encoding duration in the recovery time or not?
 
 ## Log
 
+#### 2021-05-17 0:30
+
+- Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:
+   - `prop` is determined by the effect size of the proactive benefit at the second vs third chunk. With `prop = 1`, the effect is entirely local
+   - `prop` needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect
+   - the model does not actually predict an interaction at the latent variable level unless resources completely recovered
+
+- Example for the four conditions:
+
+   1. 0.5 * (0.5 + r * t1)    // random, shortgap 
+   2. 0.5 * (0.75 + r * t1)   // known, shortgap
+   3. 0.5 * (0.5 + r * t2)    // random, longgap
+   4. 0.5 * (0.75 + r * t2)   // known, longgap
+
+   - KS-RS: 0.5 * 0.25 
+   - KL-RL: 0.5 * 0.25
+
+- I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, *unless* resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)
+
+
+
+
 #### 2021-05-16 14:24
 
 - add the `sqrt` relation between resources and memory strength does not change much the outcome

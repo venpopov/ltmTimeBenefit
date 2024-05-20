@@ -12,6 +12,9 @@ tar_source()
 tar_load(c(exp3_data_agg))
 ```
 
+## Basic fit
+
+TODO: Replace this with results from the targets pipeline
 
 ```{r}
 est <- estimate_model(
@@ -21,7 +24,7 @@ est <- estimate_model(
   exclude_sp1 = TRUE,
   simplify = TRUE,
   prior = list(
-    gain = list(mean = 25, sd = 1)
+    rate = list(mean = 0.05, sd = 0.01)
   )
 )
 
