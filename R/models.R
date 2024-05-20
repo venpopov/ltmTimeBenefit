@@ -63,8 +63,6 @@ serial_recall_strength <- function(
   for (item in 1:setsize) {
     # strength of the item and recall probability
     strength <- (prop * R)^lambda
-    p_recall[item] <- 1 / (1 + exp(-(strength - tau) * gain))
-
     # amount of resources consumed by the item
     r_cost <- strength^(1 / lambda) * prop_ltm[item]
     R <- R - r_cost
@@ -246,23 +244,36 @@ estimate_model <- function(start, data, two_step = FALSE, priors = list(), simpl
 
 predict.serial_recall_pars <- function(object, data, group_by, type = "response", ...) {
   if (missing(group_by)) {
-    pred <- serial_recall(
-      setsize = nrow(data),
-      ISI = data$ISI,
-      item_in_ltm = data$item_in_ltm,
-      prop = object["prop"],
-      prop_ltm = object["prop_ltm"],
-      tau = object["tau"],
-      gain = object["gain"],
-      rate = object["rate"],
-      ...
+    pred <- switch(type,
+      "response" = serial_recall(
+        setsize = nrow(data),
+        ISI = data$ISI,
+        item_in_ltm = data$item_in_ltm,
+        prop = object["prop"],
+        prop_ltm = object["prop_ltm"],
+        tau = object["tau"],
+        gain = object["gain"],
+        rate = object["rate"],
+        ...
+      ),
+      "strength" = serial_recall_strength(
+        setsize = nrow(data),
+        ISI = data$ISI,
+        item_in_ltm = data$item_in_ltm,
+        prop = object["prop"],
+        prop_ltm = object["prop_ltm"],
+        tau = object["tau"],
+        gain = object["gain"],
+        rate = object["rate"],
+        ...
+      )
     )
     return(pred)
   }
 
   by <- do.call(paste, c(data[, group_by], sep = "_"))
   out <- lapply(split(data, by), function(x) {
-    x$pred_tmp_col295 <- predict(object, x, ...)
+    x$pred_tmp_col295 <- predict(object, x, type = type, ...)
     x
   })
   out <- do.call(rbind, out)
