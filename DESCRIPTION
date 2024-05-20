@@ -12,3 +12,5 @@ RoxygenNote: 7.3.1
 depends:
     devtools,
     jsonlite
+URL: https://github.com/venpopov/ltmTimeBenefit
+BugReports: https://github.com/venpopov/ltmTimeBenefit/issues
