@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model-explore.html</loc>
-    <lastmod>2024-05-20T12:25:57.776Z</lastmod>
+    <lastmod>2024-05-20T15:27:26.958Z</lastmod>
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/sensitivity-to-tau.html</loc>
@@ -37,28 +37,36 @@
     <lastmod>2024-05-20T12:25:57.777Z</lastmod>
   </url>
   <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/par_identifiability.html</loc>
+    <lastmod>2024-05-20T12:25:57.777Z</lastmod>
+  </url>
+  <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/playground.html</loc>
     <lastmod>2024-05-20T12:25:57.776Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/model_sqrt.html</loc>
-    <lastmod>2024-05-20T12:25:57.776Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/index.html</loc>
-    <lastmod>2024-05-20T12:25:57.775Z</lastmod>
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notes.html</loc>
     <lastmod>2024-05-20T12:48:27.993Z</lastmod>
   </url>
   <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/index.html</loc>
+    <lastmod>2024-05-20T12:25:57.775Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/model_sqrt.html</loc>
+    <lastmod>2024-05-20T12:25:57.776Z</lastmod>
+  </url>
+  <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/2021-05-16-meeting.html</loc>
     <lastmod>2024-05-20T12:25:57.776Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/par_identifiability.html</loc>
-    <lastmod>2024-05-20T12:25:57.777Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_basic_fits.html</loc>
+    <lastmod>2024-05-20T19:01:12.297Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/non_linear_recovery.html</loc>
+    <lastmod>2024-05-20T18:11:06.894Z</lastmod>
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/EDA.html</loc>
@@ -74,7 +82,7 @@
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/modelling_edas_approach.html</loc>
-    <lastmod>2024-05-20T12:25:57.777Z</lastmod>
+    <lastmod>2024-05-20T18:59:45.688Z</lastmod>
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/serial_recall.html</loc>
