@@ -4,7 +4,7 @@
 \alias{calcdev}
 \title{Calculate the deviance of a model}
 \usage{
-calcdev(params, dat, exclude_sp1 = FALSE)
+calcdev(params, dat, exclude_sp1 = FALSE, ...)
 }
 \arguments{
 \item{params}{A named vector of model parameters}
