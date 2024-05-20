@@ -24,10 +24,8 @@ format:
     code-tools: true
     code-fold: true
     code-overflow: wrap
-    grid:
-      sidebar-width: 300px
-      body-width: 700px
-      margin-width: 300px
+    page-layout: full
+    css: styles.css
 
 website:
   title: "Free time & chunking modeling"
@@ -37,9 +35,20 @@ website:
   repo-url: "https://github.com/venpopov/ltmTimeBenefit"
   search: true
   repo-subdir: quarto
+  navbar: 
+    title: "Free time & chunking modeling"
+    left:
+      - text: "Home"
+        href: "index.qmd"
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href: "https://github.com/venpopov/ltmTimeBenefit"
+          - text: Report a Bug
+            href: "https://github.com/venpopov/ltmTimeBenefit/issues"
   sidebar: 
    collapse-level: 1
-   style: "docked"
    contents: 
      - index.qmd
      - section: "Development notes"
@@ -62,6 +71,7 @@ website:
          - section: "Model 2: Include encoding time"
            contents:
             - "quarto/notebooks/model_v2.qmd"
+         - "quarto/notebooks/model-explore.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
 
