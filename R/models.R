@@ -281,6 +281,7 @@ predict.serial_recall_pars <- function(object, data, group_by, type = "response"
   out$pred_tmp_col295
 }
 
+
 predict.serial_recall_fit <- function(object, data, group_by, ...) {
   predict(object$par, data, group_by, ...)
 }

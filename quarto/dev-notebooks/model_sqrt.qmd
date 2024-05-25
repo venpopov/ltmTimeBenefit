@@ -8,8 +8,11 @@ format: html
 #| message: false
 library(tidyverse)
 library(targets)
-tar_source()
-tar_load(c(exp1_data_agg, exp2_data_agg))
+tar_source(here::here("R"))
+tar_load(
+  c(exp1_data_agg, exp2_data_agg),
+  store = here::here("_targets")
+)
 ```
 
 let's fit the sqrt version of the model

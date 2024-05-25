@@ -1,0 +1,15 @@
+{
+  "hash": "c3fbf182a2e99d425cb7e9ed9924fcf1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Bootstrap fits to estimate uncertainty\"\nformat: html\ndraft: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\n# load \"R/*\" scripts and saved R objects from the targets pi\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, exp3_data_agg))\nset.seed(213)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ngen_boot_dataset <- function(data) {\n  suppressMessages({\n    unique_ids <- unique(data$id)\n    boot_ids <- sample(unique_ids, replace = TRUE)\n    boot_data <- data %>% filter(id %in% boot_ids)\n    boot_agg_subj <- boot_data |>\n      group_by(id) |>\n      do({\n        aggregate_data(.)\n      })\n    boot2lvl <- boot_agg_subj |>\n      mutate(\n        n_correct = rbinom(n(), size = n_total, prob = p_correct),\n        p_correct = n_correct / n_total\n      )\n    boot_agg <- boot2lvl |>\n      group_by(chunk, gap, itemtype, ISI, item_in_ltm) |>\n      summarize(\n        p_correct = mean(p_correct),\n        n_total = sum(n_total),\n        n_correct = sum(n_correct)\n      )\n  })\n  boot_agg\n}\n```\n:::\n\n\n\n\nfit the model to the bootstrapped data\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nboot_est <- function(data, start, exclude_sp1 = TRUE, growth = \"asy\", ...) {\n  if (missing(start)) {\n    start <- c(prop = 0.15, prop_ltm = 0.5, rate = 0.25, gain = 90, tau = 0.12)\n  }\n  boot_data <- gen_boot_dataset(data)\n  est <- estimate_model(start, data = boot_data, exclude_sp1 = exclude_sp1, growth = growth, ...)\n  optimfit_to_df(est)\n}\n\nsafe_boot_est <- purrr::safely(boot_est)\n\nres <- replicate(300, safe_boot_est(exp1_data)$result)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
