@@ -1,6 +1,7 @@
 ---
 title: "Model with sqrt scaled strength"
 format: html
+draft: true
 ---
 
 ```{r}

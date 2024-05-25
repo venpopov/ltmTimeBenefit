@@ -2,40 +2,11 @@
 title: Notes
 ---
 
-## To report
+# 2021-05-25
 
-- I finally understand the argument for freeing capacity
-  - But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?
-- difficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can't account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.
-  
-- there are many different parameter estimates reaching similar likelihoods using the existing model
-  - for an example, see [here](notebooks/modelling_edas_approach.qmd#problem-with-parameter-identifiability)
-  - more details linked [here](notebooks/par_identifiability.qmd)
+- Added simulations with the non-linear recovery 
 
-### Best fitting parameters vs consistent parameters
-
-The argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are *consistent* with the data? And are there parameter values consistent with the data that are reasonably fast?
-  
-  - how to measure "consistency" with the data?
-
-For experiment 2, the model can predict an interaction, but at the cost of overall fit.
-
-### Serial position
-
-It's the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery...
-
-## Problems in current modeling
-
-- line 78: ISI is 0.5, encoding duration is 0.9, this results in depletion not recovery
-
-## Questions
-
-Do we include the encoding duration in the recovery time or not?
-:  Doesn't matter, similar estimates. See [here](notebooks/model_v2.qmd)
-
-## Log
-
-#### 2021-05-17 0:30
+# 2021-05-17
 
 - Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:
    - `prop` is determined by the effect size of the proactive benefit at the second vs third chunk. With `prop = 1`, the effect is entirely local
@@ -54,16 +25,15 @@ Do we include the encoding duration in the recovery time or not?
 
 - I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, *unless* resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)
 
-
-
-
-#### 2021-05-16 14:24
+# 2021-05-16
 
 - add the `sqrt` relation between resources and memory strength does not change much the outcome
+- more extensive notes transfered to [2021-05-16 Meeting Notes](dev-notebooks/2021-05-16-meeting.qmd)
 
-#### 2021-05-13 19:00
+# 2021-05-13
 
 - Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.
 - I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.
 - I tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy
 - The _targets folder is not tracked by git, so I backed it up and tagged it manually under `~/_targets_backup`
+
