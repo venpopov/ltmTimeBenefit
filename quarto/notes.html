@@ -182,18 +182,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">2021-05-16 Meeting Notes</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../quarto/dev-notebooks/model_sqrt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Model with sqrt scaled strength</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../quarto/dev-notebooks/playground.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Playground 1: Optim stuff</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -267,6 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Experiment 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/notebooks/model-explore.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring model predictions</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -286,12 +280,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../quarto/notebooks/model-explore.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring model predictions</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -398,14 +386,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#to-report" id="toc-to-report" class="nav-link active" data-scroll-target="#to-report">To report</a>
-  <ul class="collapse">
-  <li><a href="#best-fitting-parameters-vs-consistent-parameters" id="toc-best-fitting-parameters-vs-consistent-parameters" class="nav-link" data-scroll-target="#best-fitting-parameters-vs-consistent-parameters">Best fitting parameters vs consistent parameters</a></li>
-  <li><a href="#serial-position" id="toc-serial-position" class="nav-link" data-scroll-target="#serial-position">Serial position</a></li>
-  </ul></li>
-  <li><a href="#problems-in-current-modeling" id="toc-problems-in-current-modeling" class="nav-link" data-scroll-target="#problems-in-current-modeling">Problems in current modeling</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
-  <li><a href="#log" id="toc-log" class="nav-link" data-scroll-target="#log">Log</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2021-05-25</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2021-05-17</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2021-05-16</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2021-05-13</a></li>
   </ul>
 </nav>
     </div>
@@ -431,52 +415,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="to-report" class="level2">
-<h2 class="anchored" data-anchor-id="to-report">To report</h2>
+<section id="section" class="level1">
+<h1>2021-05-25</h1>
 <ul>
-<li><p>I finally understand the argument for freeing capacity</p>
-<ul>
-<li>But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?</li>
-</ul></li>
-<li><p>difficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can’t account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.</p></li>
-<li><p>there are many different parameter estimates reaching similar likelihoods using the existing model</p>
-<ul>
-<li>for an example, see <a href="../quarto/notebooks/modelling_edas_approach.html#problem-with-parameter-identifiability">here</a></li>
-<li>more details linked <a href="../quarto/notebooks/par_identifiability.html">here</a></li>
-</ul></li>
-</ul>
-<section id="best-fitting-parameters-vs-consistent-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="best-fitting-parameters-vs-consistent-parameters">Best fitting parameters vs consistent parameters</h3>
-<p>The argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are <em>consistent</em> with the data? And are there parameter values consistent with the data that are reasonably fast?</p>
-<ul>
-<li>how to measure “consistency” with the data?</li>
-</ul>
-<p>For experiment 2, the model can predict an interaction, but at the cost of overall fit.</p>
-</section>
-<section id="serial-position" class="level3">
-<h3 class="anchored" data-anchor-id="serial-position">Serial position</h3>
-<p>It’s the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery…</p>
-</section>
-</section>
-<section id="problems-in-current-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="problems-in-current-modeling">Problems in current modeling</h2>
-<ul>
-<li>line 78: ISI is 0.5, encoding duration is 0.9, this results in depletion not recovery</li>
+<li>Added simulations with the non-linear recovery</li>
 </ul>
 </section>
-<section id="questions" class="level2">
-<h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<dl>
-<dt>Do we include the encoding duration in the recovery time or not?</dt>
-<dd>
-Doesn’t matter, similar estimates. See <a href="../quarto/notebooks/model_v2.html">here</a>
-</dd>
-</dl>
-</section>
-<section id="log" class="level2">
-<h2 class="anchored" data-anchor-id="log">Log</h2>
-<section id="section" class="level4">
-<h4 class="anchored" data-anchor-id="section">2021-05-17 0:30</h4>
+<section id="section-1" class="level1">
+<h1>2021-05-17</h1>
 <ul>
 <li><p>Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:</p>
 <ul>
@@ -498,14 +444,15 @@ Doesn’t matter, similar estimates. See <a href="../quarto/notebooks/model_v2.h
 <li><p>I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, <em>unless</em> resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)</p></li>
 </ul>
 </section>
-<section id="section-1" class="level4">
-<h4 class="anchored" data-anchor-id="section-1">2021-05-16 14:24</h4>
+<section id="section-2" class="level1">
+<h1>2021-05-16</h1>
 <ul>
 <li>add the <code>sqrt</code> relation between resources and memory strength does not change much the outcome</li>
+<li>more extensive notes transfered to <a href="../quarto/dev-notebooks/2021-05-16-meeting.html">2021-05-16 Meeting Notes</a></li>
 </ul>
 </section>
-<section id="section-2" class="level4">
-<h4 class="anchored" data-anchor-id="section-2">2021-05-13 19:00</h4>
+<section id="section-3" class="level1">
+<h1>2021-05-13</h1>
 <ul>
 <li>Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.</li>
 <li>I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.</li>
@@ -516,7 +463,6 @@ Doesn’t matter, similar estimates. See <a href="../quarto/notebooks/model_v2.h
 
 <!-- -->
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1007,71 +953,40 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Notes</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## To report</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2021-05-25</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I finally understand the argument for freeing capacity</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>But now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>difficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can't account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>there are many different parameter estimates reaching similar likelihoods using the existing model</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>for an example, see <span class="co">[</span><span class="ot">here</span><span class="co">](notebooks/modelling_edas_approach.qmd#problem-with-parameter-identifiability)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>more details linked <span class="co">[</span><span class="ot">here</span><span class="co">](notebooks/par_identifiability.qmd)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### Best fitting parameters vs consistent parameters</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>The argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are *consistent* with the data? And are there parameter values consistent with the data that are reasonably fast?</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>how to measure "consistency" with the data?</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>For experiment 2, the model can predict an interaction, but at the cost of overall fit.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Added simulations with the non-linear recovery </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2021-05-17</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`prop`</span> is determined by the effect size of the proactive benefit at the second vs third chunk. With <span class="in">`prop = 1`</span>, the effect is entirely local</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`prop`</span> needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>the model does not actually predict an interaction at the latent variable level unless resources completely recovered</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Example for the four conditions:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">   1. </span>0.5 * (0.5 + r * t1)    // random, shortgap </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">   2. </span>0.5 * (0.75 + r * t1)   // known, shortgap</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">   3. </span>0.5 * (0.5 + r * t2)    // random, longgap</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">   4. </span>0.5 * (0.75 + r * t2)   // known, longgap</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Serial position</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>It's the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery...</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problems in current modeling</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>line 78: ISI is 0.5, encoding duration is 0.9, this results in depletion not recovery</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Questions</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>KS-RS: 0.5 * 0.25 </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>KL-RL: 0.5 * 0.25</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, *unless* resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2021-05-16</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add the <span class="in">`sqrt`</span> relation between resources and memory strength does not change much the outcome</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>more extensive notes transfered to <span class="co">[</span><span class="ot">2021-05-16 Meeting Notes</span><span class="co">](dev-notebooks/2021-05-16-meeting.qmd)</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>Do we include the encoding duration in the recovery time or not?</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>:  Doesn't matter, similar estimates. See <span class="co">[</span><span class="ot">here</span><span class="co">](notebooks/model_v2.qmd)</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Log</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2021-05-17 0:30</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`prop`</span> is determined by the effect size of the proactive benefit at the second vs third chunk. With <span class="in">`prop = 1`</span>, the effect is entirely local</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`prop`</span> needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>the model does not actually predict an interaction at the latent variable level unless resources completely recovered</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Example for the four conditions:</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">   1. </span>0.5 * (0.5 + r * t1)    // random, shortgap </span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">   2. </span>0.5 * (0.75 + r * t1)   // known, shortgap</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">   3. </span>0.5 * (0.5 + r * t2)    // random, longgap</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">   4. </span>0.5 * (0.75 + r * t2)   // known, longgap</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>KS-RS: 0.5 * 0.25 </span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>KL-RL: 0.5 * 0.25</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, *unless* resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2021-05-16 14:24</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add the <span class="in">`sqrt`</span> relation between resources and memory strength does not change much the outcome</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2021-05-13 19:00</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The _targets folder is not tracked by git, so I backed it up and tagged it manually under <span class="in">`~/_targets_backup`</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2021-05-13</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The _targets folder is not tracked by git, so I backed it up and tagged it manually under <span class="in">`~/_targets_backup`</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

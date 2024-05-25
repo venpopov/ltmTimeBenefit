@@ -326,6 +326,7 @@
     "text": "The motivation for the paper was based on the assumption that the resource model should predict an interaction between the proactive benefits of free time and chunking:\n\n“If the LTM benefit arises because encoding a chunk consumes less of an encoding resource, then that benefit should diminish with longer free time, because over time the resource grows back towards its maximal level regardless of how much of it has been consumed by encoding the initial triplet of letters.”\n\nAs we discussed, I was not sure if the model actually predicts this. Exploring the model’s predictions for the memory strength latent variable reveals that this is not what the model predicts. As long as resources have not recovered to their maximum level, the model predicts only additive effects of chunking and free time.",
     "crumbs": [
       "Notebooks",
+      "Model 1: Original model",
       "Exploring model predictions"
     ]
   },
@@ -337,6 +338,7 @@
     "text": "The motivation for the paper was based on the assumption that the resource model should predict an interaction between the proactive benefits of free time and chunking:\n\n“If the LTM benefit arises because encoding a chunk consumes less of an encoding resource, then that benefit should diminish with longer free time, because over time the resource grows back towards its maximal level regardless of how much of it has been consumed by encoding the initial triplet of letters.”\n\nAs we discussed, I was not sure if the model actually predicts this. Exploring the model’s predictions for the memory strength latent variable reveals that this is not what the model predicts. As long as resources have not recovered to their maximum level, the model predicts only additive effects of chunking and free time.",
     "crumbs": [
       "Notebooks",
+      "Model 1: Original model",
       "Exploring model predictions"
     ]
   },
@@ -348,6 +350,7 @@
     "text": "An example\nThe plot below shows the predicted recall probability (top panels) and memory strength (bottom panels) as a function of the gap between the presentation of the first and second triplet of letters.\n\nCodelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(\"exp3_data_agg\")\n\nplot_predictions &lt;- function(params, data) {\n  class(params) &lt;- \"serial_recall_pars\"\n  data |&gt;\n    mutate(\n      Probability = predict(params, data, group_by = c(\"gap\", \"chunk\")),\n      Strength = predict(params, data, group_by = c(\"gap\", \"chunk\"), type = \"strength\")\n    ) |&gt;\n    pivot_longer(c(Probability, Strength), names_to = \"type\", values_to = \"value\") |&gt;\n    ggplot(aes(gap, value, color = chunk, group = chunk)) +\n    geom_line() +\n    scale_color_discrete(\"1st chunk LTM?\") +\n    facet_grid(type~itemtype, scales = \"free\") +\n    theme_test(base_size = 14)\n}\n\nparams &lt;- c(prop = 0.4, prop_ltm = 0.55, tau = 0.25, gain = 25, rate = 0.05)\nplot_predictions(params, exp3_data_agg)\n\n\n\n\n\n\n\nLook first at the bottom panels showing raw memory strength. The lines are exactly parallel until a gap ~ 4500 ms. At that point the model has recovered all the resources consumed by encoding the chunked first triplet of letters. An interaction only occurs after this, because there are still resources left to recover from encoding the random first triplet of letters.\nIn contrast, we see an interaction in the predicted recall probability (top panels) because the model predicts a sigmoidal relationship between memory strength and recall probability. This is a consequence of the logistic function used to map memory strength to recall probability. And as you can see, the interaction actually goes in the opposite direction when performance is low in the third tripplet.",
     "crumbs": [
       "Notebooks",
+      "Model 1: Original model",
       "Exploring model predictions"
     ]
   },
@@ -359,6 +362,7 @@
     "text": "The math\nWe didn’t need a simulation to tell us - we should have done simple math with the model a long time ago. Assuming no upper limit for simplicity, here is the predicted memory strength for the second tripplet:\n\n\nChunk type\nGap\nMemory strength\n\n\n\nrandom\nshortgap\n\\(p \\cdot (1-p + r \\cdot t_{short})\\)\n\n\nknown\nshortgap\n\\(p \\cdot (1-p \\cdot p_{ltm} + r \\cdot t_{short})\\)\n\n\nrandom\nlonggap\n\\(p \\cdot (1-p + r \\cdot t_{long})\\)\n\n\nknown\nlonggap\n\\(p \\cdot (1-p \\cdot p_{ltm} + r \\cdot t_{long})\\)\n\n\n\nTherefore the difference between known and random chunks separately for short and long gaps is the same:\n\nshortgap: \\(p^2 \\cdot (1 - p_{ltm})\\)\n\nlonggap: \\(p^2 \\cdot (1 - p_{ltm})\\)\n\n\nbecause the terms \\(r \\cdot t_{short}\\) and \\(r \\cdot t_{long}\\) cancel out if resources have not fully recovered. This is why the model predicts only additive effects of chunking and free time.\nThe model does predict an interaction if resources recover fully before the second tripplet is presented. But this also means that there will be no primacy effect from the first to the second tripplet, which is not what we observe in the data.\nIn summary, the premise on which our introduction is currently built is not supported by the model.",
     "crumbs": [
       "Notebooks",
+      "Model 1: Original model",
       "Exploring model predictions"
     ]
   },
@@ -370,6 +374,7 @@
     "text": "An interactive shiny app\nI found it very useful to be able to quickly explore the model’s predictions. I created a shiny app that allows you to explore the model’s predictions for the proactive benefits of chunking and free time. You can use the sliders below to control the parameters of the model and see how the predicted probability of recall changes as a function of the conditions in the experiment.\n\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\nlibrary(shinylive)\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\n\n# define functions\npred_prob &lt;- function(\n    setsize, ISI = rep(0.5, setsize), item_in_ltm = rep(TRUE, setsize),\n    prop = 0.2, prop_ltm = 0.5, tau = 0.15, gain = 25, rate = 0.1,\n    r_max = 1, lambda = 1, growth = \"linear\", type = \"response\") {\n  R &lt;- r_max\n  strengths &lt;- vector(\"numeric\", length = setsize)\n  p_recall &lt;- vector(\"numeric\", length = setsize)\n  prop_ltm &lt;- ifelse(item_in_ltm, prop_ltm, 1)\n\n  for (item in 1:setsize) {\n    # strength of the item and recall probability\n    strengths[item] &lt;- (prop * R)^lambda\n\n    # amount of resources consumed by the item\n    r_cost &lt;- strengths[item]^(1 / lambda) * prop_ltm[item]\n    R &lt;- R - r_cost\n\n    # recover resources\n    R &lt;- switch(growth,\n      \"linear\" = min(r_max, R + rate * ISI[item]),\n      \"asy\" = R + (r_max - R) * (1 - exp(-rate * ISI[item]))\n    )\n  }\n\n  if (type == \"response\") {\n    1 / (1 + exp(-(strengths - tau) * gain))\n  } else {\n    strengths\n  }\n}\n\npredict_resmodel &lt;- function(object, data, group_by, type = \"response\", ...) {\n  if (missing(group_by)) {\n    pred &lt;- pred_prob(\n        setsize = nrow(data),\n        ISI = data$ISI,\n        item_in_ltm = data$item_in_ltm,\n        prop = object[\"prop\"],\n        prop_ltm = object[\"prop_ltm\"],\n        tau = object[\"tau\"],\n        gain = object[\"gain\"],\n        rate = object[\"rate\"],\n        type = type,\n        ...\n      )\n    return(pred)\n  }\n\n  by &lt;- do.call(paste, c(data[, group_by], sep = \"_\"))\n  out &lt;- lapply(split(data, by), function(x) {\n    x$pred_tmp_col295 &lt;- predict_resmodel(object, x, type = type, ...)\n    x\n  })\n  out &lt;- do.call(rbind, out)\n  out &lt;- suppressMessages(dplyr::left_join(data, out))\n  out$pred_tmp_col295\n}\n\ndata &lt;- expand.grid(chunk = c(\"known\", \"random\"),\n                    gap = seq(500, 6000, by = 225),\n                    itemtype = c(\"SP1-3\", \"SP4-6\", \"SP7-9\"))\n\ndata$ISI &lt;- ifelse(data$itemtype == \"SP1-3\", data$gap/1000, 0.5)\ndata$item_in_ltm &lt;- ifelse(data$itemtype == \"SP1-3\", data$chunk == \"known\", FALSE)                     \nshinyApp(\n  ui = fluidPage(\n    titlePanel(\"Interactive Plot\"),\n    sidebarLayout(\n      sidebarPanel(\n        sliderInput(\"prop\", \"prop:\", min = 0, max = 1, value = 0.2),\n        sliderInput(\"prop_ltm\", \"prop_ltm:\", min = 0, max = 1, value = 0.55),\n        sliderInput(\"rate\", \"rate:\", min = 0, max = 1, value = 0.02),\n        sliderInput(\"gain\", \"gain:\", min = 1, max = 100, value = 25),\n        sliderInput(\"tau\", \"tau:\", min = 0, max = 1, value = 0.14),\n      ),\n      mainPanel(\n        plotOutput(\"distPlot\")\n      )\n    )\n  ),\n  server = function(input, output) {\n    output$distPlot &lt;- renderPlot({\n      par &lt;- c(prop = input$prop, prop_ltm = input$prop_ltm, rate = input$rate, gain = input$gain, tau = input$tau)\n      data |&gt;\n        # TODO: can I reuse the computation?\n        mutate(\n          Probability = predict_resmodel(par, data = data, group_by = c(\"gap\", \"chunk\")),\n          Strength = predict_resmodel(par, data = data, group_by = c(\"gap\", \"chunk\"), type = \"strength\")\n        ) |&gt;\n        pivot_longer(c(Probability, Strength), names_to = \"type\", values_to = \"value\") |&gt;\n        ggplot(aes(gap, value, color = chunk, group = chunk)) +\n        geom_line() +\n        scale_color_discrete(\"1st chunk LTM?\") +\n        facet_grid(type~itemtype, scales = \"free\") +\n        theme_classic(base_size = 14)\n    })\n  }\n)",
     "crumbs": [
       "Notebooks",
+      "Model 1: Original model",
       "Exploring model predictions"
     ]
   },
@@ -381,6 +386,7 @@
     "text": "Why the best fitting model has a very low recovery?\nBoth in this experiment and in Mizrak & Oberauer (2022), the proactive benefit of time is global - it affects all subsequent items. With a couple of more simulations, we can see that the degree of local vs global benefit depends on the the prop depletion parameter.\n\nWith very high prop = 1, the second tripplet will depelete all remaining resources, and then resources will be equivalent for all subsequent items. This is the most local benefit.\n\nCodeparams &lt;- c(prop = 1, prop_ltm = 0.7, tau = 0.15, gain = 5, rate = 0.1)\nplot_predictions(params, exp3_data_agg) + coord_cartesian(ylim = c(0, 1))\n\n\n\n\n\n\n\n\nWith very low prop = 0.1, the second tripplet will depelete only 10% of the remaining resources, and the proactive benefit will propagate to all subsequent items. This is the most global benefit.\n\nCodeparams &lt;- c(prop = 0.1, prop_ltm = 0.5, tau = 0.08, gain = 80, rate = 0.007)\nplot_predictions(params, exp3_data_agg) \n\n\n\n\n\n\n\n\nAnd with a middle range prop = 0.5, the second tripplet will depelete 50% of the remaining resources, and preserving some of the proactive benefit, but reducing it for subsequent items:\n\nCodeparams &lt;- c(prop = 0.6, prop_ltm = 0.5, tau = 0.3, gain = 10, rate = 0.05)\nplot_predictions(params, exp3_data_agg)\n\n\n\n\n\n\n\nSo what?\nsince we see mostly a global benefit in the data, in order for the model to fit well, it estimates a very low depletion rate (~ 0.2). But then to account for the primacy effect, and to prevent full recovery of resources between items with such low depletion, it also needs to estimate a very low recovery rate. Thus, all of our fits having slow recovery rates, are not related to accounting for the small interaction between chunking and free time, but rather to account for the global proactive benefits and primacy.",
     "crumbs": [
       "Notebooks",
+      "Model 1: Original model",
       "Exploring model predictions"
     ]
   },
@@ -680,17 +686,6 @@
     ]
   },
   {
-    "objectID": "quarto/dev-notebooks/model_sqrt.html",
-    "href": "quarto/dev-notebooks/model_sqrt.html",
-    "title": "Model with sqrt scaled strength",
-    "section": "",
-    "text": "Codelibrary(tidyverse)\nlibrary(targets)\ntar_source()\ntar_load(c(exp1_data_agg, exp2_data_agg))\n\n\nlet’s fit the sqrt version of the model\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp1_data_agg,\n  two_step = TRUE,\n  simplify = TRUE,\n  lambda = 0.5\n)\n\nest\n\n# A tibble: 1 × 8\n   prop prop_ltm   rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.490    0.662 0.0317 0.427  6.98     145.           0 &lt;srl_rcl_&gt;\n\nCodeexp1_data_agg$pred &lt;- predict(est$fit[[1]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"), lambda = 0.5)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nexclude sp1\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp1_data_agg,\n  two_step = TRUE,\n  simplify = TRUE,\n  exclude_sp1 = TRUE,\n  lambda = 0.5\n)\n\nest\n\n# A tibble: 1 × 8\n    prop prop_ltm    rate   tau  gain deviance convergence fit       \n   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.0978    0.575 0.00842 0.290  69.2     31.7           0 &lt;srl_rcl_&gt;\n\n\npredict\n\nCodeexp1_data_agg$pred &lt;- predict(est$fit[[1]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"), lambda = 0.5)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\nreplicate with different starting params\n\nCodeest &lt;- estimate_model(\n  start = paper_params(),\n  data = exp1_data_agg,\n  two_step = TRUE,\n  simplify = TRUE,\n  exclude_sp1 = TRUE,\n  lambda = 0.5,\n  priors = list(rate = list(mean = 0.2, sd = 0.01))\n)\n\nest\n\n# A tibble: 1 × 8\n   prop prop_ltm  rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.688    0.352 0.156 0.468  3.51     83.4           0 &lt;srl_rcl_&gt;\n\nCodeexp1_data_agg$pred &lt;- predict(est$fit[[1]], data = exp1_data_agg, group_by = c(\"chunk\", \"gap\"), lambda = 0.5)\n\nexp1_data_agg |&gt;\n  ggplot(aes(x = gap, y = p_correct, color = chunk)) +\n  geom_point() +\n  geom_line() +\n  geom_line(aes(y = pred), linetype = \"dashed\") +\n  facet_wrap(~itemtype)\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Development notes",
-      "Model with sqrt scaled strength"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "About",
@@ -705,98 +700,10 @@
     "href": "quarto/notes.html",
     "title": "Notes",
     "section": "",
-    "text": "I finally understand the argument for freeing capacity\n\nBut now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?\n\ndifficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can’t account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.\nthere are many different parameter estimates reaching similar likelihoods using the existing model\n\nfor an example, see here\nmore details linked here\n\n\n\n\nThe argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are consistent with the data? And are there parameter values consistent with the data that are reasonably fast?\n\nhow to measure “consistency” with the data?\n\nFor experiment 2, the model can predict an interaction, but at the cost of overall fit.\n\n\n\nIt’s the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery…",
+    "text": "2021-05-25\n\nAdded simulations with the non-linear recovery\n\n\n\n2021-05-17\n\nPlaying with the shiny app is very useful for understanding the model. I should have done this earlier. For example:\n\nprop is determined by the effect size of the proactive benefit at the second vs third chunk. With prop = 1, the effect is entirely local\nprop needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect\nthe model does not actually predict an interaction at the latent variable level unless resources completely recovered\n\nExample for the four conditions:\n\n0.5 * (0.5 + r * t1) // random, shortgap\n0.5 * (0.75 + r * t1) // known, shortgap\n0.5 * (0.5 + r * t2) // random, longgap\n0.5 * (0.75 + r * t2) // known, longgap\n\n\nKS-RS: 0.5 * 0.25\nKL-RL: 0.5 * 0.25\n\nI could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, unless resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)\n\n\n\n2021-05-16\n\nadd the sqrt relation between resources and memory strength does not change much the outcome\nmore extensive notes transfered to 2021-05-16 Meeting Notes\n\n\n\n2021-05-13\n\nDiscovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.\nI took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.\nI tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy\nThe _targets folder is not tracked by git, so I backed it up and tagged it manually under ~/_targets_backup\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Development notes",
       "Notes"
-    ]
-  },
-  {
-    "objectID": "quarto/notes.html#to-report",
-    "href": "quarto/notes.html#to-report",
-    "title": "Notes",
-    "section": "",
-    "text": "I finally understand the argument for freeing capacity\n\nBut now the argument seems one-sided. We do formal modeling to reject the resource account, and based on that we conclude that the other capacity account is more plausible without doing any modeling for it?\n\ndifficult to model the first chunk. In experiment 2 we already have evidence for a retroactive benefit of the long gap, but the model can’t account for it. In general, I need to write a more detailed limitations section in which to express my reservations about the conclusions.\nthere are many different parameter estimates reaching similar likelihoods using the existing model\n\nfor an example, see here\nmore details linked here\n\n\n\n\nThe argument is that the best fitting paramteres present a recovery rate that is too slow. But the question in this case needs to be - what parameter values are consistent with the data? And are there parameter values consistent with the data that are reasonably fast?\n\nhow to measure “consistency” with the data?\n\nFor experiment 2, the model can predict an interaction, but at the cost of overall fit.\n\n\n\nIt’s the combination with serial position that makes it difficult for the model. In experiment 2, after 6 seconds gap there is no difference in SP4-6 between known and random chunks, which the model can only account for width full recovery. But performance decreases with serial position, which the model can only account for with not full recovery…",
-    "crumbs": [
-      "Development notes",
-      "Notes"
-    ]
-  },
-  {
-    "objectID": "quarto/notes.html#problems-in-current-modeling",
-    "href": "quarto/notes.html#problems-in-current-modeling",
-    "title": "Notes",
-    "section": "Problems in current modeling",
-    "text": "Problems in current modeling\n\nline 78: ISI is 0.5, encoding duration is 0.9, this results in depletion not recovery",
-    "crumbs": [
-      "Development notes",
-      "Notes"
-    ]
-  },
-  {
-    "objectID": "quarto/notes.html#questions",
-    "href": "quarto/notes.html#questions",
-    "title": "Notes",
-    "section": "Questions",
-    "text": "Questions\n\nDo we include the encoding duration in the recovery time or not?\n\nDoesn’t matter, similar estimates. See here",
-    "crumbs": [
-      "Development notes",
-      "Notes"
-    ]
-  },
-  {
-    "objectID": "quarto/notes.html#log",
-    "href": "quarto/notes.html#log",
-    "title": "Notes",
-    "section": "Log",
-    "text": "Log\n\n2021-05-17 0:30\n\nPlaying with the shiny app is very useful for understanding the model. I should have done this earlier. For example:\n\nprop is determined by the effect size of the proactive benefit at the second vs third chunk. With prop = 1, the effect is entirely local\nprop needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect\nthe model does not actually predict an interaction at the latent variable level unless resources completely recovered\n\nExample for the four conditions:\n\n0.5 * (0.5 + r * t1) // random, shortgap\n0.5 * (0.75 + r * t1) // known, shortgap\n0.5 * (0.5 + r * t2) // random, longgap\n0.5 * (0.75 + r * t2) // known, longgap\n\n\nKS-RS: 0.5 * 0.25\nKL-RL: 0.5 * 0.25\n\nI could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, unless resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)\n\n\n\n2021-05-16 14:24\n\nadd the sqrt relation between resources and memory strength does not change much the outcome\n\n\n\n2021-05-13 19:00\n\nDiscovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.\nI took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.\nI tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy\nThe _targets folder is not tracked by git, so I backed it up and tagged it manually under ~/_targets_backup",
-    "crumbs": [
-      "Development notes",
-      "Notes"
-    ]
-  },
-  {
-    "objectID": "quarto/dev-notebooks/playground.html",
-    "href": "quarto/dev-notebooks/playground.html",
-    "title": "Playground 1: Optim stuff",
-    "section": "",
-    "text": "# A tibble: 1 × 8\n   prop prop_ltm   rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.490    0.662 0.0317 0.427  6.98     145.           0 &lt;srl_rcl_&gt;\n\n\n\n\n\n\n\n\nSource: Model with sqrt scaled strength",
-    "crumbs": [
-      "Development notes",
-      "Playground 1: Optim stuff"
-    ]
-  },
-  {
-    "objectID": "quarto/dev-notebooks/playground.html#embed-a-chunk-from-another-notebook",
-    "href": "quarto/dev-notebooks/playground.html#embed-a-chunk-from-another-notebook",
-    "title": "Playground 1: Optim stuff",
-    "section": "",
-    "text": "# A tibble: 1 × 8\n   prop prop_ltm   rate   tau  gain deviance convergence fit       \n  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    \n1 0.490    0.662 0.0317 0.427  6.98     145.           0 &lt;srl_rcl_&gt;\n\n\n\n\n\n\n\n\nSource: Model with sqrt scaled strength",
-    "crumbs": [
-      "Development notes",
-      "Playground 1: Optim stuff"
-    ]
-  },
-  {
-    "objectID": "quarto/dev-notebooks/playground.html#contraintunconstrain-vectorizing-tests",
-    "href": "quarto/dev-notebooks/playground.html#contraintunconstrain-vectorizing-tests",
-    "title": "Playground 1: Optim stuff",
-    "section": "Contraint/Unconstrain vectorizing tests",
-    "text": "Contraint/Unconstrain vectorizing tests\nI want to build a constrain/unconstrain function. Here’ are two versions. The second one is vectorized\n\nCodesource(\"R/utils.R\")\n\nconstrain &lt;- function(x, lb, ub) {\n  if (is.infinite(lb) && is.infinite(ub)) {\n    x\n  } else if (is.infinite(ub)) {\n    exp(x) + lb\n  } else if (is.infinite(lb)) {\n    ub - exp(x)\n  } else {\n    inv_logit(x, lb = lb, ub = ub)\n  }\n}\n\nconstrain_vec &lt;- function(x, lb, ub) {\n  ifelse(is.infinite(lb) & is.infinite(ub), x,\n    ifelse(is.infinite(ub), exp(x) + lb,\n      ifelse(is.infinite(lb), ub - exp(x),\n        inv_logit(x, lb = lb, ub = ub)\n      )\n    )\n  )\n}\n\nconstrain_vec2 &lt;- function(x, lb, ub) {\n  if (length(lb) == 1 && length(ub) == 1 && is.infinite(lb) && is.infinite(ub)) {\n    return(x)\n  }\n\n  dplyr::case_when(\n    is.infinite(lb) & is.infinite(ub) ~ x,\n    is.infinite(ub) ~ exp(x) + lb,\n    is.infinite(lb) ~ ub - exp(x),\n    .default = inv_logit(x, lb = lb, ub = ub)\n  )\n}\n\n\nLet’s test them\n\nCodelibrary(purrr)\nlibrary(microbenchmark)\nN &lt;- 1000\nx &lt;- c(log(rexp(N)), logit(runif(N)), rnorm(N))\nlb &lt;- c(rep(0, N), rep(0, N), rep(-Inf, N))\nub &lt;- c(rep(Inf, N), rep(1, N), rep(Inf, N))\n\nmicrobenchmark(\n  pmap_dbl(list(x, lb, ub), constrain),\n  constrain_vec(x, lb, ub),\n  constrain_vec2(x, lb, ub),\n  times = 100,\n  check = \"equivalent\"\n)\n\nWarning in microbenchmark(pmap_dbl(list(x, lb, ub), constrain), constrain_vec(x, : less accurate nanosecond times to\navoid potential integer overflows\n\n\nUnit: microseconds\n                                 expr      min        lq      mean    median        uq      max neval\n pmap_dbl(list(x, lb, ub), constrain) 2660.777 2708.2755 2882.3939 2735.9505 2794.5600 6758.809   100\n             constrain_vec(x, lb, ub)  116.276  118.9205  145.8936  120.4785  129.9905 1911.092   100\n            constrain_vec2(x, lb, ub)  149.855  154.1805  181.5259  157.2760  165.2300 2173.738   100\n\n\nYes, the vectorized version is much faster. But it’s not as readable as the first one. The dplyr version is cleanest and just as fast.\nWhat about if the bounds were fixed?\n\nCodemicrobenchmark(\n  (function(x) x)(x),\n  pmap_dbl(list(x, -Inf, Inf), constrain),\n  constrain_vec2(x, -Inf, Inf),\n  times = 100,\n  check = \"equivalent\"\n)\n\nUnit: nanoseconds\n                                    expr     min      lq      mean  median      uq     max neval\n                      (function(x) x)(x)      82     123     155.8     123     164     738   100\n pmap_dbl(list(x, -Inf, Inf), constrain) 2183455 2219350 2333747.1 2245406 2293314 3556504   100\n            constrain_vec2(x, -Inf, Inf)     410     451     594.5     615     656    1558   100",
-    "crumbs": [
-      "Development notes",
-      "Playground 1: Optim stuff"
-    ]
-  },
-  {
-    "objectID": "quarto/dev-notebooks/playground.html#a-better-version-of-optim",
-    "href": "quarto/dev-notebooks/playground.html#a-better-version-of-optim",
-    "title": "Playground 1: Optim stuff",
-    "section": "A better version of optim",
-    "text": "A better version of optim\n\nCodesource(\"R/utils.R\")\nfn &lt;- function(par, x) {\n  tryCatch(\n    {\n      -sum(bmm::dmixture2p(x, mu = 0, kappa = par[1], pMem = par[2], log = TRUE))\n    },\n    error = function(e) NA\n  )\n}\nx &lt;- bmm::rmixture2p(100)\n\nmicrobenchmark(\n  optim(c(5, 0.1), fn, x = x),\n  optim2(c(5, 0.1), fn, x = x, lower = c(0, 0), upper = c(Inf, 1)),\n  times = 100\n)\n\nUnit: microseconds\n                                                                  expr      min        lq      mean   median       uq\n                                           optim(c(5, 0.1), fn, x = x)  670.596  687.3855  733.2112  699.911  729.103\n optim2(c(5, 0.1), fn, x = x, lower = c(0, 0), upper = c(Inf,      1)) 5914.414 6004.6550 6371.1249 6071.772 6285.485\n       max neval\n  2290.465   100\n 10633.637   100\n\n\nHow well does it work for different starting values?\n\nCodeoptim3 &lt;- function(par, fn, ...) {\n  fn2 &lt;- function(par, ...) {\n    par &lt;- c(exp(par[1]), inv_logit(par[2]))\n    fn(par, ...)\n  }\n\n  start &lt;- c(log(par[1]), logit(par[2]))\n  res &lt;- optim(start, fn2, ..., control = list(parscale = c(1, 0.1)))\n  c(exp(res$par[1]), inv_logit(res$par[2]))\n}\n\nset.seed(123)\nx &lt;- bmm::rmixture2p(100)\nstart &lt;- as.matrix(expand.grid(\n  kappa = c(1, 5, 10),\n  pMem = c(0.6, 0.9, 0.99)\n))\n\nres &lt;- apply(start, 1, optim3, fn = fn, x = x)\nres\n\n           [,1]      [,2]      [,3]     [,4]      [,5]      [,6]      [,7]      [,8]      [,9]\nkappa 4.7261620 4.7263468 4.7270363 4.725718 4.7286134 4.7273205 4.7257450 4.7265932 4.7260440\npMem  0.6122896 0.6123198 0.6122103 0.612269 0.6122014 0.6122376 0.6122722 0.6123254 0.6123247\n\nCodemixtur::fit_mixtur(data.frame(response = x, target = 0, id = 1), model = \"2_component\", unit = \"radians\")\n\nModel fit running. Please wait...\n\n\nModel fit finished.\n\n\n  id kappa   p_t   p_u\n1  1 4.726 0.612 0.388\n\nCodemicrobenchmark(\n  apply(start, 1, optim3, fn = fn, x = x),\n  apply(start, 1, optim2, fn = fn, x = x, lower = c(0, 0), upper = c(Inf, 1)),\n  times = 100\n)\n\nUnit: milliseconds\n                                                                             expr      min       lq     mean   median\n                                          apply(start, 1, optim3, fn = fn, x = x) 12.57700 12.74460 13.43638 13.00477\n apply(start, 1, optim2, fn = fn, x = x, lower = c(0, 0), upper = c(Inf,      1)) 69.40168 72.31477 74.84556 73.47360\n       uq       max neval\n 13.38847  20.36634   100\n 74.62646 209.33829   100",
-    "crumbs": [
-      "Development notes",
-      "Playground 1: Optim stuff"
     ]
   },
   {
