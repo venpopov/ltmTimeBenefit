@@ -109,18 +109,58 @@ aggregate_data <- function(data) {
 }
 
 # temporary - this only works if the data is already loaded
-aggregate_by_subject <- function() {
-  targets::tar_load(c("exp1_data", "exp2_data"))
+aggregate_by_subject <- function(data) {
   suppressMessages(
-    dplyr::bind_rows(
-      dplyr::mutate(exp1_data, exp = "Exp 1"),
-      dplyr::mutate(exp2_data, exp = "Exp 2")
-    ) |>
-      dplyr::group_by(id, exp) |>
+    data |>
+      dplyr::group_by(id) |>
       tidyr::nest() |>
       dplyr::mutate(data = purrr::map(data, aggregate_data)) |>
-      tidyr::unnest(data)
-  ) |>
-    dplyr::ungroup()
+      tidyr::unnest(data) |>
+        dplyr::ungroup()
+  ) 
 }
 
+
+#' Generate a bootstrapped dataset
+#'
+#' This function takes in a dataset and generates a bootstrapped dataset by randomly sampling
+#' unique IDs with replacement. For each ID and condition, it calculates the proportion of correct
+#' responses and then generates a new dataset by sampling from a binomial distribution with the
+#' calculated proportion of correct responses.
+#'
+#' @param data The input dataset
+#'
+#' @return A bootstrapped dataset with aggregated summary statistics
+#'
+#' @examples
+#' data <- read.csv("data.csv")
+#' boot_data <- gen_boot_dataset(data)
+#'
+#' @import dplyr
+#' @importFrom stats rbinom
+#' @export
+gen_boot_dataset <- function(data) {
+  suppressMessages({
+    unique_ids <- unique(data$id)
+    boot_ids <- sample(unique_ids, replace = TRUE)
+    boot_data <- data %>% filter(id %in% boot_ids)
+    boot_agg_subj <- boot_data |>
+      group_by(id) |>
+      do({
+        aggregate_data(.)
+      })
+    boot2lvl <- boot_agg_subj |>
+      mutate(
+        n_correct = rbinom(n(), size = n_total, prob = p_correct),
+        p_correct = n_correct / n_total
+      )
+    boot_agg <- boot2lvl |>
+      group_by(chunk, gap, itemtype, ISI, item_in_ltm) |>
+      summarize(
+        p_correct = mean(p_correct),
+        n_total = sum(n_total),
+        n_correct = sum(n_correct)
+      )
+  })
+  boot_agg
+}

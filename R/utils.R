@@ -151,3 +151,75 @@ rd2md_docs <- function(rd_dir = "man", md_dir = "quarto/reference") {
     writeLines(mdtext, file.path(md_dir, basename(md_file)))
   }
 }
+
+#' Perform bootstrapped estimation
+#'
+#' This function performs bootstrapped estimation using the provided data and parameters.
+#' It uses the serial recall model for estimation
+#'
+#' @param data The input data for estimation.
+#' @param start The starting values for estimation. If not provided, default values will be used.
+#' @param exclude_sp1 Logical value indicating whether to exclude the first item in the data. Default is TRUE.
+#' @param growth The growth type for estimation. Default is "asy".
+#' @param ... Additional arguments to be passed to the estimation function.
+#'
+#' @return A data frame containing the estimated model parameters.
+#'
+#' @examples
+#' data <- read.csv("data.csv")
+#' boot_est(data)
+#'
+#' @export
+boot_est <- function(data, start, exclude_sp1 = TRUE, growth = "asy", ...) {
+  if (missing(start)) {
+    start <- c(prop = 0.15, prop_ltm = 0.5, rate = 0.25, gain = 90, tau = 0.12)
+  }
+  boot_data <- gen_boot_dataset(data)
+  est <- estimate_model(start, data = boot_data, exclude_sp1 = exclude_sp1, growth = growth, ...)
+  optimfit_to_df(est)
+}
+
+
+
+#' @export
+#' Execute an expression and save the result to a file or load the result from a file if it already exists.
+#'
+#' This function allows you to either run an expression or load the result from a file.
+#'
+#' @param expression The expression to be evaluated or loaded.
+#' @param file The file path where the result will be saved or loaded from.
+#' @param ... Additional arguments to be passed to the expression.
+#' @param force Logical value indicating whether to force the evaluation of the expression, even if the file exists.
+#'
+#' @return The result of the expression.
+#'
+#' @examples
+#' # Run an expression and save the result to a file
+#' file <- tempfile(fileext = ".rds")
+#' run_or_load(rnorm(1e7), file)
+#' run_or_load(rnorm(1e7), file) # loads the result from the file
+#'
+run_or_load <- function(expression, file, ..., force = FALSE) {
+  if (file.exists(file) && !force) {
+    res <- readRDS(file)
+  } else {
+    res <- expression
+    saveRDS(res, file)
+  }
+  res
+}
+
+
+abc <- function(expr) {
+  print("hello")
+
+  start <- Sys.time()
+  print(expr)
+  end <- Sys.time()
+  print(end - start)
+
+  start <- Sys.time()
+  print(expr)
+  end <- Sys.time()
+  print(end - start)
+}

@@ -32,3 +32,32 @@ theme_pub <- function(base_size = 13, base_family = "") {
       strip.background = element_rect(fill = "white", colour = NA)
     )
 }
+
+#' Plot Bootstrap Results
+#'
+#' This function plots the bootstrap results for a given dataset.
+#'
+#' @param data The dataset containing the bootstrap results.
+#'
+#' @return A ggplot object displaying the histogram of the bootstrap results for each parameter.
+#'
+#' @import ggplot2
+#' @importFrom dplyr select everything
+#' @importFrom tidyr pivot_longer unnest
+#'
+#' @examples
+#' tar_load(exp1_data)
+#' data <- replicate(10, boot_est(exp1_data), simplify = FALSE)
+#' data <- do.call(rbind, data)
+#' plot_bootstrap_results(data)
+#'
+#' @export
+plot_bootstrap_results <- function(data) {
+  as.data.frame(data) |>
+    select(-convergence) |>
+    pivot_longer(cols = everything(), names_to = "param", values_to = "value") |>
+    unnest(value) |>
+    ggplot(aes(x = value)) +
+    geom_histogram(bins = 30) +
+    facet_wrap(~param, scales = "free")
+}
