@@ -74,6 +74,8 @@ website:
             - "quarto/notebooks/non_linear_recovery.qmd"
             - "quarto/notebooks/model3_basic_fits.qmd"
             - "quarto/notebooks/model3_bootstrap.qmd"
+            - "quarto/dev-notebooks/new_model_eq.qmd"
+            - "quarto/notebooks/linear-recovery-random-variable.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
   # drafts: 

@@ -1,9 +1,9 @@
 ---
-title: "Testing new model equation"
+title: "Extra primacy parameter"
 format: html
-draft: true
 ---
 
+TODO: Clean-up this notebook
 
 ```{r}
 #| label: init
