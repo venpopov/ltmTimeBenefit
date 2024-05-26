@@ -4,7 +4,31 @@ title: Notes
 
 # 2021-05-25
 
-- Added simulations with the non-linear recovery 
+## Next steps
+
+- [ ] Klaus suggests to fit the data with an extra parameter to absorb parts of the primacy effect. Maybe that will allow us to get a better estimate of the recovery rate without assuming that the primacy effect is entirely due to resource depletion. I'm worried that this will make the model too complex and we will not be able to estimate the parameters reliably. But I will try it.
+- [ ] I still want to fit the model I developed for Ma, Popov & Zhang (In press), in which I solved the likelihood function for the model with linear recovery and was able to fit it trial by trial. Perhaps slow recovery is not a problem if the depletion and recovery balance each other out over the course of the experiment (see [2021-05-16 Meeting Notes](dev-notebooks/2021-05-16-meeting.qmd#modeling-left-to-do))
+- [ ] Given that the non-linear recovery model predicts an interaction more reliably, can I also develop a trial-by-trial likelihood function for this model?
+
+## Non-linear recovery
+
+I added simulations with a non-linear recovery model. We still have the issue that parameter estimates are mostly driven by primacy, but there are a few novel results.
+ 
+The non-linear recovery model predicts an interaction more reliably, not just when resources become completely depleted in one condition. You can play around in an interactive app here to explore the model predictions: [here](https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/non_linear_recovery.html)
+ 
+The non-linear model estimates for the three experiments are [here](https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_basic_fits.html)
+ 
+Parameter estimates are very similar for the three experiments. I’m not sure why, but navigating the parameter space was much easier for this model, and these parameter estimates were reached from many more starting points relative to the linear recovery model
+ 
+Since the recovery is non-linear, we cannot calculate as easily how long it takes to recover all resources (that is in fact Infinite time!), we can ask how long it would take to recover a certain proportion of resources from baseline, e.g. 50%. Results are described in the link, but here’s the gist: based on the rates from the 3 experiments, it would take 5-10 seconds to recovery 50% of the resources.
+ 
+I did the bootstrapping simulations we discussed with this new model. Results are here: [here](https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_bootstrap.html)
+
+The bootstrap recovery rates indicate that we have 95% probability that the best fitting model is one in which we can recover 50% of the resources within 2.8-10 seconds
+ 
+In summary, the non-linear recovery model makes a stronger prediction for an interaction between the two effects, and tells us that recovery rates are not necessarily super slow.
+ 
+Is 2.8-10 seconds for 50% recovery fast enough for working memory? The same rates tell us that we would need between 1.2 and 4.4 seconds for 25% recovery. As we discussed last time, it might be the case that within a long experiment resources never fully recover, but the depletion and recovery rates stabilize. I still need to run that simulation. But at least to me these do not seem absurd estimates and we also still have the issue that this assumes that the primacy effect is 100% due to resource depletion.
 
 # 2021-05-17
 
