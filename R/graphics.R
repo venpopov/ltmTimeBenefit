@@ -61,3 +61,40 @@ plot_bootstrap_results <- function(data) {
     geom_histogram(bins = 30) +
     facet_wrap(~param, scales = "free")
 }
+
+#' Plot Linear RV Recovery
+#'
+#' This function plots the recovery of a linear random variable (RV) over time.
+#'
+#' @param r A vector representing the recovery rates sampled from some distribution.
+#' @param t A vector representing the time values.
+#' @param title The title of the plot (default is "Uniform distribution").
+#'
+#' @return A ggplot object representing the plot of linear RV recovery over time.
+#'
+#' @details Average recovery is given as a red line, while individual trajectories are given as black lines.
+#'
+#' @examples
+#' r <- runif(1000, 0, 1)
+#' t <- seq(0, 5, by = 0.01)
+#' plot_linear_rv_recovery(r, t, title = "Uniform distribution")
+#'
+#' @import ggplot2
+plot_linear_rv_recovery <- function(r, t, title = "Uniform distribution") {
+  recovery <- outer(r, t, function(r, t) pmin(r * t, 1))
+  recovery <- apply(recovery, 2, mean)
+  data <- data.frame(t = t, recovery = recovery)
+
+  g <- ggplot(data, aes(x = t, y = recovery)) +
+    geom_line(linewidth = 1, color = "red") +
+    labs(title = title)
+
+  # add black lines for each individual trajectory
+  for (i in 1:20) {
+    recovery <- pmin(r[i] * t, 1)
+    data <- data.frame(t = t, recovery = recovery, distribution = "Uniform")
+    g <- g + geom_line(data = data, aes(x = t, y = recovery), color = "black", alpha = 0.1)
+  }
+
+  g + theme_test()
+}

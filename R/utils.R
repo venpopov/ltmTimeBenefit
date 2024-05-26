@@ -81,12 +81,13 @@ optim2 <- function(par, fn, ..., lower = -Inf, upper = Inf, control = list()) {
   res
 }
 
-
+#' @export
 print.serial_recall_pars <- function(x, ...) {
   class(x) <- NULL
   print(x, ...)
 }
 
+#' @export
 print.serial_recall_fit <- function(x, ...) {
   class(x) <- NULL
   print(x, ...)
@@ -180,8 +181,6 @@ boot_est <- function(data, start, exclude_sp1 = TRUE, growth = "asy", ...) {
 }
 
 
-
-#' @export
 #' Execute an expression and save the result to a file or load the result from a file if it already exists.
 #'
 #' This function allows you to either run an expression or load the result from a file.
@@ -199,6 +198,7 @@ boot_est <- function(data, start, exclude_sp1 = TRUE, growth = "asy", ...) {
 #' run_or_load(rnorm(1e7), file)
 #' run_or_load(rnorm(1e7), file) # loads the result from the file
 #'
+#' @export
 run_or_load <- function(expression, file, ..., force = FALSE) {
   if (file.exists(file) && !force) {
     res <- readRDS(file)

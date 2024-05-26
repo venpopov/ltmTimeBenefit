@@ -241,7 +241,7 @@ estimate_model <- function(start, data, two_step = FALSE, priors = list(), simpl
 }
 
 
-
+#' @export
 predict.serial_recall_pars <- function(object, data, group_by, type = "response", ...) {
   if (missing(group_by)) {
     pred <- switch(type,
@@ -282,6 +282,7 @@ predict.serial_recall_pars <- function(object, data, group_by, type = "response"
 }
 
 
+#' @export
 predict.serial_recall_fit <- function(object, data, group_by, ...) {
   predict(object$par, data, group_by, ...)
 }

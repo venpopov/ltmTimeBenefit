@@ -26,8 +26,7 @@ extract_object_from_rdata <- function(path, object_name = "data_an") {
 #' @param longgap The value to use for the long gap in ms.
 #'
 #' @return The preprocessed data frame
-#'
-#' @examples
+#' @export
 preprocess_data <- function(data, longgap) {
   mutate <- dplyr::mutate
   case_when <- dplyr::case_when
