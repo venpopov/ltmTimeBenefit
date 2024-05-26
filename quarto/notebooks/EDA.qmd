@@ -103,3 +103,22 @@ exp3_data_agg |>
   facet_wrap(~itemtype) +
   theme_pub()
 ```
+
+## Recall times
+
+This is the distribution of total recall period duration for experiment 3:
+
+```{r}
+#| label: recall_times
+#| fig-width: 5
+#| fig-height: 4
+total_rts <- exp3_data |>
+  group_by(id, trial) |>
+  summarize(total_recall_duration = sum(rt) + 9 * 0.2) |>
+  pluck("total_recall_duration")
+
+hist(total_rts, breaks = 30, col = "grey", border = "white", xlab = "Total recall period duration (s.)", main = "")
+
+```
+
+

@@ -1,0 +1,564 @@
+---
+title: "Testing new model equation"
+format: html
+draft: true
+---
+
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+tar_source()
+tar_load(c(exp3_data_agg, exp3_data))
+```
+
+Define new model likelihood
+
+
+```{r, include = FALSE}
+serial_recall_v2 <- function(
+    setsize, ISI = rep(0.5, setsize), item_in_ltm = rep(TRUE, setsize),
+    prop = 0.2, prop_ltm = 0.5, tau = 0.15, gain = 25, rate = 0.1, prim_prop = 1,
+    r_max = 1, lambda = 1, growth = "linear") {
+  w1 <- 1 - (1 - prop_ltm) * item_in_ltm[1]
+  psq <- prop^2
+  tmp <- w1 * exp(-rate * ISI[1]) * psq
+  tmp2 <- exp(-rate * ISI[2])
+  s <- c(
+    prop,
+    (prop - tmp) * prim_prop,
+    (prop - tmp * (1 - prop) * tmp2 - psq * tmp2) * prim_prop^2
+  )
+
+  p_recall <- 1 / (1 + exp(-gain * (s - tau)))
+  p_recall
+}
+
+calcdev <- function(params, dat, exclude_sp1 = FALSE, version = 2, ...) {
+  if (version == 1) {
+    pred <- serial_recall(
+      setsize = 3,
+      ISI = dat$ISI,
+      item_in_ltm = dat$item_in_ltm,
+      prop = params["prop"],
+      prop_ltm = params["prop_ltm"],
+      tau = params["tau"],
+      gain = params["gain"],
+      rate = params["rate"],
+      ...
+    )
+  } else {
+    pred <- serial_recall_v2(
+      setsize = 3,
+      ISI = dat$ISI,
+      item_in_ltm = dat$item_in_ltm,
+      prop = params["prop"],
+      prop_ltm = params["prop_ltm"],
+      tau = params["tau"],
+      gain = params["gain"],
+      rate = params["rate"],
+      prim_prop = params["prim_prop"],
+      ...
+    )
+  }
+  log_lik <- dbinom(dat$n_correct, dat$n_total, prob = pred, log = TRUE)
+  if (exclude_sp1) {
+    log_lik <- log_lik[-1]
+  }
+  -sum(log_lik)
+}
+
+overall_deviance <- function(params, split_data, ...,
+                             priors = list()) {
+  dev <- unlist(lapply(split_data, function(x) calcdev(params, x, ...)))
+  out <- sum(dev)
+
+  if (length(priors) > 0) {
+    pnames <- names(priors)
+    for (i in seq_along(priors)) {
+      out <- out - dnorm(params[pnames[i]], mean = priors[[i]]$mean, sd = priors[[i]]$sd, log = TRUE)
+    }
+  }
+  out
+}
+
+estimate_model <- function(start, data, two_step = FALSE, priors = list(), simplify = FALSE, by = c("chunk", "gap"), ...) {
+  # internal helper functions
+  constrain_pars <- function(par) {
+    par[c("prop", "prop_ltm", "tau", "rate", "prim_prop")] <- inv_logit(par[c("prop", "prop_ltm", "tau", "rate", "prim_prop")])
+    par["gain"] <- inv_logit(par["gain"], lb = 0, ub = 100)
+    par
+  }
+
+  unconstrain_pars <- function(par) {
+    par[c("prop", "prop_ltm", "tau", "rate", "prim_prop")] <- logit(par[c("prop", "prop_ltm", "tau", "rate", "prim_prop")])
+    par["gain"] <- logit(par["gain"], lb = 0, ub = 100)
+    par
+  }
+
+  fn <- function(par, split_data, par2 = NULL, ...) {
+    par <- c(par, par2)
+    par <- constrain_pars(par)
+    overall_deviance(par, split_data, ...)
+  }
+
+  start_uc <- unconstrain_pars(start)
+
+  # if two_step is TRUE, nest the optimization (prop, prop_ltm, and rate) within the outer optimization (tau, gain)
+  if (two_step) {
+    start1 <- start_uc[c("prop", "prop_ltm", "rate", "prim_prop")]
+    start2 <- start_uc[c("tau", "gain")]
+
+    fn2 <- function(par, split_data, par2, ...) {
+      fit <- optim(
+        par = par2,
+        fn = fn,
+        split_data = split_data,
+        control = list(maxit = 1e6),
+        par2 = par,
+        ...
+      )
+      environment(fn)$fit_inner <- fit
+      fit$value
+    }
+  } else {
+    start1 <- start_uc
+    start2 <- NULL
+    fn2 <- fn
+  }
+
+  groups <- interaction(data[, by])
+  split_data <- split(data, groups)
+
+  fit <- optim(
+    par = start1,
+    fn = fn2,
+    split_data = split_data,
+    control = list(maxit = 1e6),
+    par2 = start2,
+    priors = priors,
+    ...
+  )
+
+  est <- fit$par
+  convergence <- fit$convergence
+  value <- fit$value
+  counts <- fit$counts
+  if (two_step) {
+    est <- c(est, fit_inner$par)
+    concergence <- convergence + fit_inner$convergence
+    counts <- counts + fit_inner$counts
+  }
+
+  # return the estimated parameters
+  est <- constrain_pars(est)
+  class(est) <- "serial_recall_pars"
+  fit <- structure(
+    list(
+      start = start,
+      par = est,
+      convergence = convergence,
+      counts = counts,
+      value = value
+    ),
+    class = "serial_recall_fit"
+  )
+
+  if (simplify) {
+    out <- optimfit_to_df(fit)
+    out$fit <- list(fit)
+    return(out)
+  }
+
+  fit
+}
+
+predict.serial_recall_pars <- function(object, data, group_by, type = "response", ...) {
+  if (missing(group_by)) {
+    pred <- switch(type,
+      "response" = serial_recall_v2(
+        setsize = nrow(data),
+        ISI = data$ISI,
+        item_in_ltm = data$item_in_ltm,
+        prop = object["prop"],
+        prop_ltm = object["prop_ltm"],
+        tau = object["tau"],
+        gain = object["gain"],
+        rate = object["rate"],
+        prim_prop = object["prim_prop"],
+        ...
+      ),
+      "strength" = serial_recall_strength(
+        setsize = nrow(data),
+        ISI = data$ISI,
+        item_in_ltm = data$item_in_ltm,
+        prop = object["prop"],
+        prop_ltm = object["prop_ltm"],
+        tau = object["tau"],
+        gain = object["gain"],
+        rate = object["rate"],
+        ...
+      )
+    )
+    return(pred)
+  }
+
+  by <- do.call(paste, c(data[, group_by], sep = "_"))
+  out <- lapply(split(data, by), function(x) {
+    x$pred_tmp_col295 <- predict(object, x, type = type, ...)
+    x
+  })
+  out <- do.call(rbind, out)
+  out <- suppressMessages(dplyr::left_join(data, out))
+  out$pred_tmp_col295
+}
+
+```
+
+One example fit:
+
+```{r}
+#| message: false
+set.seed(25)
+fit <- estimate_model(c(start_fun(), prim_prop = rbeta(1, 5, 2)), exp3_data_agg, version = 2, exclude_sp1 = T)
+kableExtra::kable(optimfit_to_df(fit))
+exp3_data_agg$pred <- predict(fit, exp3_data_agg, group_by = c("chunk", "gap"))
+
+exp3_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point(alpha = 0.5) +
+  stat_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+  geom_line(aes(y = pred), linetype = "dashed", linewidth = 1.1) +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+Run the estimation 100 times with different starting values:
+
+```{r}
+set.seed(18)
+fits <- run_or_load(
+  {
+    res <- replicate(
+      n = 100,
+      expr = estimate_model(
+        c(start_fun(), prim_prop = rbeta(1, 5, 2)),
+        exp3_data_agg,
+        version = 2, exclude_sp1 = T
+      ),
+      simplify = FALSE
+    )
+    res <- do.call(rbind, lapply(res, optimfit_to_df))
+    arrange(res, deviance)
+  },
+  file = "output/exp3_fits_100_prop_primacy.rds"
+)
+
+```
+
+Refine the fits with a second pass starting from the best fit:
+
+```{r}
+fits_refined <- run_or_load(
+  {
+    res <- apply(fits, 1, function(x) {
+      fit <- estimate_model(x, exp3_data_agg, version = 2, exclude_sp1 = T)
+      optimfit_to_df(fit)
+    })
+    do.call(rbind, res)
+  },
+  file = "output/exp3_fits_100_prop_primacy_refined.rds"
+)
+fits_refined$deviance <- 2 * fits_refined$deviance
+```
+
+Print fits sorted by deviance:
+
+```{r}
+kableExtra::kable(arrange(fits_refined, deviance))
+```
+
+Not as much variance as I thought there would be. Let's limit to the fits within 2 deviance units of the best fit:
+
+Here is the distribution of parameter values that are within 2 deviance units of the best fit:
+
+```{r}
+best_fits <- filter(fits_refined, deviance < min(deviance) + 2)
+
+best_fits |>
+  select(prop:prim_prop) |>
+  pivot_longer(cols = everything(), names_to = "parameter", values_to = "value") |>
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~parameter, scales = "free") +
+  theme_pub()
+```
+
+Here is the plot of the best fitting model:
+
+```{r}
+best_fit <- estimate_model(unlist(best_fits[1, 1:6]), exp3_data_agg, version = 2, exclude_sp1 = T)
+exp3_data_agg$pred <- predict(best_fit, exp3_data_agg, group_by = c("chunk", "gap"))
+
+exp3_data_agg |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point(alpha = 0.5) +
+  stat_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+  geom_line(aes(y = pred), linetype = "dashed", linewidth = 1.1) +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+and the parameter estimates:
+
+```{r}
+kableExtra::kable(t(as.data.frame(best_fit$par)))
+```
+
+with this rate, the resource recovery over time looks like this:
+
+```{r}
+resources <- function(R, rate, time, r_max = 1) {
+  (r_max - R) * (1 - exp(-rate * time))
+}
+
+time <- seq(0, 20, 0.1)
+tibble(time = time, resources = resources(0, best_fits[1, ]$rate, time)) |>
+  ggplot(aes(x = time, y = resources)) +
+  geom_line() +
+  theme_pub()
+```
+
+with 50% of the resource recovered after `r round(-log(0.5) / best_fits[1,]$rate, 2)` seconds
+
+and 25% of the resource recovered after `r round(-log(0.75) / best_fits[1,]$rate, 2)` seconds
+
+## Simulate full trial sequences
+
+### With recovery during entire recall period
+
+Calculate the total recall period duration on each trial:
+
+```{r}
+#| label: recall_times
+#| fig-width: 5
+#| fig-height: 4
+total_rts <- exp3_data |>
+  group_by(id, trial) |>
+  summarize(total_recall_duration = sum(rt) + 9 * 0.2 + 1)
+
+hist(total_rts$total_recall_duration, breaks = 30, col = "grey", border = "white", xlab = "Total recall period duration (s.)", main = "")
+```
+
+Create the trial structure for the simulation:
+
+```{r}
+#| label: trial_structure
+#| message: false
+exp3_trial_str <- run_or_load({
+  exp3_data |>
+  group_by(id, trial) |>
+  do({
+    aggregate_data(.)
+  })
+}, file = "output/exp3_trial_structure.rds")
+
+exp3_trial_str <- left_join(exp3_trial_str, total_rts) |> 
+  mutate(ISI = ifelse(itemtype == "SP7-9", total_recall_duration, ISI),
+         ser_pos = case_when(
+          itemtype == "SP1-3" ~ 1,
+          itemtype == "SP4-6" ~ 2,
+          itemtype == "SP7-9" ~ 3
+         ))
+```
+
+Run the model without resetting the resource at the start of each trial:
+
+```{r}
+#| label: sim_no_reset
+#| message: false
+
+serial_recall_full <- function(
+    setsize, ISI = rep(0.5, setsize), item_in_ltm = rep(TRUE, setsize), ser_pos = 1:setsize, 
+    prop = 0.2, prop_ltm = 0.5, tau = 0.15, gain = 25, rate = 0.1, prim_prop = 1,
+    r_max = 1, lambda = 1, growth = "linear") {
+  R <- r_max
+  p_recall <- vector("numeric", length = setsize)
+  prop_ltm <- ifelse(item_in_ltm, prop_ltm, 1)
+
+  for (item in 1:setsize) {
+    # strength of the item and recall probability
+    strength <- (prop * R)^lambda * prim_prop^(ser_pos[item] - 1)
+    p_recall[item] <- 1 / (1 + exp(-(strength - tau) * gain))
+
+    # amount of resources consumed by the item
+    r_cost <- strength^(1 / lambda) * prop_ltm[item]
+    R <- R - r_cost
+
+    # recover resources
+    R <- switch(growth,
+      "linear" = min(r_max, R + rate * ISI[item]),
+      "asy" = R + (r_max - R) * (1 - exp(-rate * ISI[item]))
+    )
+  }
+
+  p_recall
+}
+
+subj1 <- exp3_trial_str |>
+  filter(id == 44125)
+```
+
+Here it is for one example subject:
+
+::: {.column-screen}
+
+```{r}
+#| message: false
+#| fig-width: 12
+#| fig-height: 4
+subj1$pred <- serial_recall_full(
+  setsize = nrow(subj1),
+  ISI = subj1$ISI,
+  item_in_ltm = subj1$item_in_ltm,
+  ser_pos = subj1$ser_pos,
+  prop = best_fit$par["prop"],
+  prop_ltm = best_fit$par["prop_ltm"],
+  tau = best_fit$par["tau"],
+  gain = best_fit$par["gain"],
+  rate = best_fit$par["rate"],
+  prim_prop = best_fit$par["prim_prop"],
+  growth = "asy"
+)
+
+subj1 |>
+  ungroup() |>
+  mutate(absolute_position = 1:n()) |>
+  ggplot(aes(x = absolute_position, y = pred)) +
+  geom_point() +
+  geom_line() +
+  theme_pub()
+```
+
+:::
+
+Same, but collapsed over serial position (one value per trial):
+
+```{r}
+#| message: false
+
+subj1 |>
+  ungroup() |>
+  ggplot(aes(x = trial, y = pred)) +
+  stat_summary(geom = "point") +
+  geom_smooth() +
+  theme_pub()
+```
+
+Now simulate the full dataset:
+
+```{r}
+#| label: sim_no_reset_full
+#| message: false
+
+sim_no_reset_full <- function(data, best_fit) {
+  data |>
+    group_by(id) |>
+    mutate(pred = serial_recall_full(
+      setsize = n(),
+      ISI = ISI,
+      item_in_ltm = item_in_ltm,
+      ser_pos = ser_pos,
+      prop = best_fit$par["prop"],
+      prop_ltm = best_fit$par["prop_ltm"],
+      tau = best_fit$par["tau"],
+      gain = best_fit$par["gain"],
+      rate = best_fit$par["rate"],
+      prim_prop = best_fit$par["prim_prop"],
+      growth = "asy"
+    ))
+}
+
+full_sim <- sim_no_reset_full(exp3_trial_str, best_fit)
+
+ggplot(full_sim, aes(x = trial, y = pred)) +
+  stat_summary() +
+  geom_smooth() +
+  theme_pub()
+```
+
+Yes, the model predicts worsening performance over trials, but the effect is miniscule.
+
+Plot the original predictions recomputed with the full trial-by-trial model:
+
+```{r}
+#| message: false
+
+full_sim |>
+  group_by(chunk, gap, itemtype) |>
+  summarize(pred = mean(pred),
+            p_correct = mean(p_correct)) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point(alpha = 0.5) +
+  stat_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+  geom_line(aes(y = pred), linetype = "dashed", linewidth = 1.1) +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
+
+
+### No recovery during recall, except during empty screens
+
+```{r}
+exp3_trial_str <- run_or_load(
+  {
+    exp3_data |>
+      group_by(id, trial) |>
+      do({
+        aggregate_data(.)
+      })
+  },
+  file = "output/exp3_trial_structure.rds"
+)
+
+
+exp3_trial_str <- exp3_trial_str |>
+  mutate(
+    ISI = ifelse(itemtype == "SP7-9", 9 * 0.2 + 1, ISI),
+    ser_pos = case_when(
+      itemtype == "SP1-3" ~ 1,
+      itemtype == "SP4-6" ~ 2,
+      itemtype == "SP7-9" ~ 3
+    )
+  )
+
+full_sim_v2 <- sim_no_reset_full(exp3_trial_str, best_fit)
+
+ggplot(full_sim_v2, aes(x = trial, y = pred)) +
+  stat_summary() +
+  theme_pub()
+
+filter(full_sim_v2, id == 44125) |>
+  mutate(absolute_position = 1:n()) |>
+  ggplot(aes(x = absolute_position, y = pred)) +
+  geom_point() +
+  geom_line() +
+  theme_pub()
+```
+
+
+```{r}
+#| message: false
+full_sim_v2 |>
+  group_by(chunk, gap, itemtype) |>
+  summarize(pred = mean(pred),
+            p_correct = mean(p_correct)) |>
+  ggplot(aes(x = gap, y = p_correct, color = chunk)) +
+  geom_point(alpha = 0.5) +
+  stat_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+  geom_line(aes(y = pred), linetype = "dashed", linewidth = 1.1) +
+  scale_color_discrete("First chunk LTM?") +
+  facet_wrap(~itemtype)
+```
