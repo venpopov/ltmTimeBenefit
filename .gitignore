@@ -10,3 +10,4 @@ _site
 /.quarto/
 .vscode
 /**/*_cache
+/quarto/**/*_files

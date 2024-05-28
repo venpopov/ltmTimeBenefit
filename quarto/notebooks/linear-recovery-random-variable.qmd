@@ -147,20 +147,19 @@ $$
 
 where $\alpha$ is the shape parameter and $\lambda$ is the rate parameter. The average recovery over time is then given by
 
+$$
 \begin{aligned}
 R(t) &= \int_{0}^{1/t} r \cdot t \cdot \frac{\lambda^{\alpha} r^{\alpha - 1} e^{-\lambda r}}{\Gamma(\alpha)} \, dr + \int_{1/t}^{\infty} 1 \cdot \frac{\lambda^{\alpha} r^{\alpha - 1} e^{-\lambda r}}{\Gamma(\alpha)} \, dr \\
 &= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} \left( t \int_{0}^{1/t} r^{\alpha} e^{-\lambda r} \, dr + \int_{1/t}^{\infty} r^{\alpha - 1} e^{-\lambda r} \, dr \right) \\
-
 \end{aligned}
+$$
 
 which after some transformations can be written as
 
 $$
 \begin{aligned}
-R(t) &= \frac{\Gamma \left(\alpha ,\frac{\lambda }{t}\right)}{\Gamma (\alpha )}-\frac{\alpha t}{\lambda}\frac{\Gamma \left(\alpha +1,\frac{\lambda }{t}\right)}{\Gamma (\alpha +1)}+\frac{\alpha  t}{\lambda} \\
-&= \frac{\Gamma \left(\alpha ,\frac{\lambda }{t}\right)}{\Gamma (\alpha )}-\frac{\alpha t}{\lambda}\left(1-\frac{\Gamma \left(\alpha +1,\frac{\lambda }{t}\right)}{\Gamma (\alpha +1)}\right) \\
-&= \frac{\Gamma \left(\alpha ,\frac{\lambda }{t}\right)}{\Gamma (\alpha )}-\frac{\alpha t}{\lambda}\frac{\gamma \left(\alpha +1,\frac{\lambda }{t}\right)}{\Gamma (\alpha +1)} \\
-&= P(\alpha, \lambda / t) - \frac{\alpha t}{\lambda} Q(\alpha + 1, \lambda / t)
+R(t) &= \frac{\Gamma \left(\alpha ,\frac{\lambda }{t}\right)}{\Gamma (\alpha )}+\frac{\alpha t}{\lambda}\frac{\gamma \left(\alpha +1,\frac{\lambda }{t}\right)}{\Gamma (\alpha +1)} \\
+&= P(\alpha, \lambda / t) + \frac{\alpha t}{\lambda} Q(\alpha + 1, \lambda / t)
 \end{aligned}
 $$
 
