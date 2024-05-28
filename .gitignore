@@ -9,3 +9,4 @@ dev
 _site
 /.quarto/
 .vscode
+/**/*_cache

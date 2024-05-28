@@ -2478,6 +2478,16 @@
       ],
       "Hash": "be7a76845222ad20adb761f462eed3ea"
     },
+    "truncnorm": {
+      "Package": "truncnorm",
+      "Version": "1.0-9",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "ef5b32c5194351ff409dfb37ca9468f1"
+    },
     "tzdb": {
       "Package": "tzdb",
       "Version": "0.4.0",

@@ -2,6 +2,11 @@
 title: Notes
 ---
 
+# 2021-05-28
+
+- The exponential recovery corresponds to the CDF of an exponential distribution over time, with the proportion of resources recovered equals the CDF. Can this be given a nice interpretation? One possibility is that recovery is all or nothing, and the exponential distribution is the distribution of the time it takes to recover all resources. This is mathematically equivalent to a gradual exponential recovery of resources. Memoryless property of the exponential distribution is also interesting in this context. 
+- [ ] Try using the alternative exponential recovery I developed [here](notebooks/linear-recovery-random-variable.qmd)
+
 # 2021-05-25
 
 ## Next steps
