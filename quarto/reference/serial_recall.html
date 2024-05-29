@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../quarto/reference/preprocess_data.html" rel="prev">
+<link href="../../quarto/reference/run_or_load.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -345,6 +345,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/boot_est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Perform bootstrapped estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../quarto/reference/calcdev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Calculate the deviance of a model</span></a>
   </div>
@@ -353,6 +359,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../quarto/reference/extract_object_from_rdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Get data object from a file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/gen_boot_dataset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generate a bootstrapped dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -381,8 +393,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/plot_bootstrap_results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Bootstrap Results</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/plot_linear_rv_recovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Linear RV Recovery</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../quarto/reference/preprocess_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preprocesses the data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/run_or_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Execute an expression and save the result to a file or load the result from a file if it already exists.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -438,8 +468,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">tau =</span> <span class="fl">0.15</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">gain =</span> <span class="dv">25</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">rate =</span> <span class="fl">0.1</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">r_max =</span> <span class="dv">1</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">r_max =</span> <span class="dv">1</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">lambda =</span> <span class="dv">1</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">growth =</span> <span class="st">"linear"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="arguments" class="level2">
 <h2 class="anchored" data-anchor-id="arguments">Arguments</h2>
@@ -453,6 +485,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>gain</code>: The gain parameter for the recall probability function.</li>
 <li><code>rate</code>: The rate at which resources are recovered.</li>
 <li><code>r_max</code>: The maximum amount of resources.</li>
+<li><code>lambda</code>: The exponent converting resources to strength.</li>
+<li><code>growth</code>: The growth function for resource recovery. Either ‘linear’ or ‘asy’.</li>
 </ul>
 </section>
 <section id="details" class="level2">
@@ -947,8 +981,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../quarto/reference/preprocess_data.html" class="pagination-link" aria-label="Preprocesses the data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preprocesses the data</span>
+      <a href="../../quarto/reference/run_or_load.html" class="pagination-link" aria-label="Execute an expression and save the result to a file or load the result from a file if it already exists.">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Execute an expression and save the result to a file or load the result from a file if it already exists.</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -973,36 +1007,40 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">tau =</span> <span class="fl">0.15</span>,</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">gain =</span> <span class="dv">25</span>,</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">rate =</span> <span class="fl">0.1</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">r_max =</span> <span class="dv">1</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arguments</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">r_max =</span> <span class="dv">1</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">lambda =</span> <span class="dv">1</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">growth =</span> <span class="st">"linear"</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`setsize`</span>: The number of items in the set.</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`ISI`</span>: A numeric vector representing the inter-stimulus interval for each item.</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`item_in_ltm`</span>: A logical vector indicating whether each item is in LTM.</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`prop`</span>: The proportion of resources allocated to each item.</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`prop_ltm`</span>: Proportion by which the resources used by LTM items are multiplied.</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`tau`</span>: The threshold for recall probability.</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`gain`</span>: The gain parameter for the recall probability function.</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`rate`</span>: The rate at which resources are recovered.</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`r_max`</span>: The maximum amount of resources.</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Details</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>The function uses a simulation approach. It loops over trials</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arguments</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`setsize`</span>: The number of items in the set.</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`ISI`</span>: A numeric vector representing the inter-stimulus interval for each item.</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`item_in_ltm`</span>: A logical vector indicating whether each item is in LTM.</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`prop`</span>: The proportion of resources allocated to each item.</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`prop_ltm`</span>: Proportion by which the resources used by LTM items are multiplied.</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`tau`</span>: The threshold for recall probability.</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`gain`</span>: The gain parameter for the recall probability function.</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`rate`</span>: The rate at which resources are recovered.</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`r_max`</span>: The maximum amount of resources.</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`lambda`</span>: The exponent converting resources to strength.</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`growth`</span>: The growth function for resource recovery. Either 'linear' or 'asy'.</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Value</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Details</span></span>
 <span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>A numeric vector representing the recall probability for each item.</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>The function uses a simulation approach. It loops over trials</span>
 <span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Examples</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Value</span></span>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="fu">serial_recall</span>(<span class="at">setsize =</span> <span class="dv">3</span>, <span class="at">ISI =</span> <span class="fu">rep</span>(<span class="fl">0.5</span>, <span class="dv">3</span>))</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>A numeric vector representing the recall probability for each item.</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Examples</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">serial_recall</span>(<span class="at">setsize =</span> <span class="dv">3</span>, <span class="at">ISI =</span> <span class="fu">rep</span>(<span class="fl">0.5</span>, <span class="dv">3</span>))</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

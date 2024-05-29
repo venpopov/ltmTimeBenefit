@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.37">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Free time &amp; chunking modeling – Playground 1: Optim stuff</title>
+
+
+<title>Free time &amp; chunking modeling – Playground</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,13 +101,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><meta name="quarto:status" content="draft">
+}</script>
+<meta name="quarto:status" content="draft">
+
+
 <link rel="stylesheet" href="../../styles.css">
 </head>
+
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Free time &amp; chunking modeling</span>
@@ -112,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/venpopov/ltmTimeBenefit">
             Source Code
             </a>
@@ -123,23 +134,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
 </div>
           <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/notes.html">Development notes</a></li><li class="breadcrumb-item"><a href="../../quarto/dev-notebooks/playground.html">Playground 1: Optim stuff</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/notes.html">Development notes</a></li><li class="breadcrumb-item"><a href="../../quarto/dev-notebooks/playground.html">Playground</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -153,8 +170,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../quarto/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notes</span></a>
@@ -173,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -182,8 +199,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Data</span></a>
@@ -191,8 +208,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../quarto/notebooks/data_structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">View the data structure</span></a>
@@ -211,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -220,8 +237,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../quarto/notebooks/modelling_edas_approach.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Main results</span></a>
@@ -252,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
@@ -261,15 +278,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../quarto/notebooks/model_v2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Main results</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -278,8 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../quarto/notebooks/non_linear_recovery.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explore model predictions</span></a>
@@ -310,9 +327,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
@@ -321,11 +338,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../quarto/reference/aggregate_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Aggregate Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/boot_est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Perform bootstrapped estimation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -338,6 +361,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../quarto/reference/extract_object_from_rdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Get data object from a file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/gen_boot_dataset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generate a bootstrapped dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -366,8 +395,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/plot_bootstrap_results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Bootstrap Results</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/plot_linear_rv_recovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Linear RV Recovery</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../quarto/reference/preprocess_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preprocesses the data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../quarto/reference/run_or_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Execute an expression and save the result to a file or load the result from a file if it already exists.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -377,28 +424,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li><a href="#embed-a-chunk-from-another-notebook" id="toc-embed-a-chunk-from-another-notebook" class="nav-link active" data-scroll-target="#embed-a-chunk-from-another-notebook">Embed a chunk from another notebook</a></li>
-  <li><a href="#contraintunconstrain-vectorizing-tests" id="toc-contraintunconstrain-vectorizing-tests" class="nav-link" data-scroll-target="#contraintunconstrain-vectorizing-tests">Contraint/Unconstrain vectorizing tests</a></li>
-  <li><a href="#a-better-version-of-optim" id="toc-a-better-version-of-optim" class="nav-link" data-scroll-target="#a-better-version-of-optim">A better version of optim</a></li>
-  </ul><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="model_sqrt.embed-preview.html"><i class="bi bi-journal-code"></i>Model with sqrt scaled strength</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/notes.html">Development notes</a></li><li class="breadcrumb-item"><a href="../../quarto/dev-notebooks/playground.html">Playground 1: Optim stuff</a></li></ol></nav><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Playground 1: Optim stuff</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/notes.html">Development notes</a></li><li class="breadcrumb-item"><a href="../../quarto/dev-notebooks/playground.html">Playground</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Playground</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
-<div class="quarto-title-meta column-body">
+<div class="quarto-title-meta column-page-right">
 
     
   
@@ -407,196 +452,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="embed-a-chunk-from-another-notebook" class="level2"><h2 class="anchored" data-anchor-id="embed-a-chunk-from-another-notebook">Embed a chunk from another notebook</h2>
-<div class="quarto-embed-nb-cell">
-<div id="cell-fit_sqrt" class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 8
-   prop prop_ltm   rate   tau  gain deviance convergence fit       
-  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;list&gt;    
-1 0.490    0.662 0.0317 0.427  6.98     145.           0 &lt;srl_rcl_&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure"><p><img src="playground_files/figure-html/model_sqrt-fit_sqrt-output-2.png" id="fit_sqrt" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<a class="quarto-notebook-link" id="nblink-1" href="model_sqrt.embed-preview.html#cell-fit_sqrt">Source: Model with sqrt scaled strength</a></div>
-</section><section id="contraintunconstrain-vectorizing-tests" class="level2"><h2 class="anchored" data-anchor-id="contraintunconstrain-vectorizing-tests">Contraint/Unconstrain vectorizing tests</h2>
-<p>I want to build a constrain/unconstrain function. Here’ are two versions. The second one is vectorized</p>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"R/utils.R"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">constrain</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">lb</span>, <span class="va">ub</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">x</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">+</span> <span class="va">lb</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">ub</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>    <span class="fu">inv_logit</span><span class="op">(</span><span class="va">x</span>, lb <span class="op">=</span> <span class="va">lb</span>, ub <span class="op">=</span> <span class="va">ub</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">constrain_vec</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">lb</span>, <span class="va">ub</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span>, <span class="va">x</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">+</span> <span class="va">lb</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span>, <span class="va">ub</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
-<span>        <span class="fu">inv_logit</span><span class="op">(</span><span class="va">x</span>, lb <span class="op">=</span> <span class="va">lb</span>, ub <span class="op">=</span> <span class="va">ub</span><span class="op">)</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">constrain_vec2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">lb</span>, <span class="va">ub</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span> <span class="op">~</span> <span class="va">x</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">ub</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">+</span> <span class="va">lb</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">lb</span><span class="op">)</span> <span class="op">~</span> <span class="va">ub</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
-<span>    .default <span class="op">=</span> <span class="fu">inv_logit</span><span class="op">(</span><span class="va">x</span>, lb <span class="op">=</span> <span class="va">lb</span>, ub <span class="op">=</span> <span class="va">ub</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Let’s test them</p>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a></span><span class="op">)</span></span>
-<span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span>, <span class="fu">logit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">lb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">N</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">N</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="va">N</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">ub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="va">N</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">N</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="va">N</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap_dbl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">lb</span>, <span class="va">ub</span><span class="op">)</span>, <span class="va">constrain</span><span class="op">)</span>,</span>
-<span>  <span class="fu">constrain_vec</span><span class="op">(</span><span class="va">x</span>, <span class="va">lb</span>, <span class="va">ub</span><span class="op">)</span>,</span>
-<span>  <span class="fu">constrain_vec2</span><span class="op">(</span><span class="va">x</span>, <span class="va">lb</span>, <span class="va">ub</span><span class="op">)</span>,</span>
-<span>  times <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  check <span class="op">=</span> <span class="st">"equivalent"</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Warning in microbenchmark(pmap_dbl(list(x, lb, ub), constrain), constrain_vec(x, : less accurate nanosecond times to
-avoid potential integer overflows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Unit: microseconds
-                                 expr      min        lq      mean    median        uq      max neval
- pmap_dbl(list(x, lb, ub), constrain) 2660.777 2708.2755 2882.3939 2735.9505 2794.5600 6758.809   100
-             constrain_vec(x, lb, ub)  116.276  118.9205  145.8936  120.4785  129.9905 1911.092   100
-            constrain_vec2(x, lb, ub)  149.855  154.1805  181.5259  157.2760  165.2300 2173.738   100</code></pre>
-</div>
-</div>
-<p>Yes, the vectorized version is much faster. But it’s not as readable as the first one. The dplyr version is cleanest and just as fast.</p>
-<p>What about if the bounds were fixed?</p>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
-<span>  <span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">)</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap_dbl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="op">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span><span class="op">)</span>, <span class="va">constrain</span><span class="op">)</span>,</span>
-<span>  <span class="fu">constrain_vec2</span><span class="op">(</span><span class="va">x</span>, <span class="op">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span><span class="op">)</span>,</span>
-<span>  times <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  check <span class="op">=</span> <span class="st">"equivalent"</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>Unit: nanoseconds
-                                    expr     min      lq      mean  median      uq     max neval
-                      (function(x) x)(x)      82     123     155.8     123     164     738   100
- pmap_dbl(list(x, -Inf, Inf), constrain) 2183455 2219350 2333747.1 2245406 2293314 3556504   100
-            constrain_vec2(x, -Inf, Inf)     410     451     594.5     615     656    1558   100</code></pre>
-</div>
-</div>
-</section><section id="a-better-version-of-optim" class="level2"><h2 class="anchored" data-anchor-id="a-better-version-of-optim">A better version of optim</h2>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"R/utils.R"</span><span class="op">)</span></span>
-<span><span class="va">fn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">par</span>, <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span></span>
-<span>    <span class="op">{</span></span>
-<span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu">bmm</span><span class="fu">::</span><span class="fu"><a href="https://venpopov.github.io/bmm/reference/mixture2p_dist.html">dmixture2p</a></span><span class="op">(</span><span class="va">x</span>, mu <span class="op">=</span> <span class="fl">0</span>, kappa <span class="op">=</span> <span class="va">par</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, pMem <span class="op">=</span> <span class="va">par</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="op">}</span>,</span>
-<span>    error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="cn">NA</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">bmm</span><span class="fu">::</span><span class="fu"><a href="https://venpopov.github.io/bmm/reference/mixture2p_dist.html">rmixture2p</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/optim.html">optim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0.1</span><span class="op">)</span>, <span class="va">fn</span>, x <span class="op">=</span> <span class="va">x</span><span class="op">)</span>,</span>
-<span>  <span class="fu">optim2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0.1</span><span class="op">)</span>, <span class="va">fn</span>, x <span class="op">=</span> <span class="va">x</span>, lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  times <span class="op">=</span> <span class="fl">100</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>Unit: microseconds
-                                                                  expr      min        lq      mean   median       uq
-                                           optim(c(5, 0.1), fn, x = x)  670.596  687.3855  733.2112  699.911  729.103
- optim2(c(5, 0.1), fn, x = x, lower = c(0, 0), upper = c(Inf,      1)) 5914.414 6004.6550 6371.1249 6071.772 6285.485
-       max neval
-  2290.465   100
- 10633.637   100</code></pre>
-</div>
-</div>
-<p>How well does it work for different starting values?</p>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">optim3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">par</span>, <span class="va">fn</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">fn2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">par</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">par</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">par</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu">inv_logit</span><span class="op">(</span><span class="va">par</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="fu">fn</span><span class="op">(</span><span class="va">par</span>, <span class="va">...</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">par</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu">logit</span><span class="op">(</span><span class="va">par</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/optim.html">optim</a></span><span class="op">(</span><span class="va">start</span>, <span class="va">fn2</span>, <span class="va">...</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>parscale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">par</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu">inv_logit</span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">par</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">bmm</span><span class="fu">::</span><span class="fu"><a href="https://venpopov.github.io/bmm/reference/mixture2p_dist.html">rmixture2p</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
-<span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span></span>
-<span>  kappa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span>,</span>
-<span>  pMem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.6</span>, <span class="fl">0.9</span>, <span class="fl">0.99</span><span class="op">)</span></span>
-<span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">start</span>, <span class="fl">1</span>, <span class="va">optim3</span>, fn <span class="op">=</span> <span class="va">fn</span>, x <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span>
-<span><span class="va">res</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>           [,1]      [,2]      [,3]     [,4]      [,5]      [,6]      [,7]      [,8]      [,9]
-kappa 4.7261620 4.7263468 4.7270363 4.725718 4.7286134 4.7273205 4.7257450 4.7265932 4.7260440
-pMem  0.6122896 0.6123198 0.6122103 0.612269 0.6122014 0.6122376 0.6122722 0.6123254 0.6123247</code></pre>
-</div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mixtur</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mixtur/man/fit_mixtur.html">fit_mixtur</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>response <span class="op">=</span> <span class="va">x</span>, target <span class="op">=</span> <span class="fl">0</span>, id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, model <span class="op">=</span> <span class="st">"2_component"</span>, unit <span class="op">=</span> <span class="st">"radians"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Model fit running. Please wait...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Model fit finished.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  id kappa   p_t   p_u
-1  1 4.726 0.612 0.388</code></pre>
-</div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">start</span>, <span class="fl">1</span>, <span class="va">optim3</span>, fn <span class="op">=</span> <span class="va">fn</span>, x <span class="op">=</span> <span class="va">x</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">start</span>, <span class="fl">1</span>, <span class="va">optim2</span>, fn <span class="op">=</span> <span class="va">fn</span>, x <span class="op">=</span> <span class="va">x</span>, lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  times <span class="op">=</span> <span class="fl">100</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>Unit: milliseconds
-                                                                             expr      min       lq     mean   median
-                                          apply(start, 1, optim3, fn = fn, x = x) 12.57700 12.74460 13.43638 13.00477
- apply(start, 1, optim2, fn = fn, x = x, lower = c(0, 0), upper = c(Inf,      1)) 69.40168 72.31477 74.84556 73.47360
-       uq       max neval
- 13.38847  20.36634   100
- 74.62646 209.33829   100</code></pre>
-</div>
-</div>
+</header>
+
+
 
 
 <!-- -->
 
-</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1066,7 +931,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
       <a href="../../quarto/dev-notebooks/new_model_eq.html" class="pagination-link" aria-label="Extra primacy parameter">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Extra primacy parameter</span>
       </a>          
@@ -1077,150 +944,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Playground 1: Optim stuff"</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> true</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Embed a chunk from another notebook</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>{{&lt; embed model_sqrt.qmd#fit_sqrt &gt;}}</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contraint/Unconstrain vectorizing tests</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>I want to build a constrain/unconstrain function. Here' are two versions. The second one is vectorized</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/utils.R"</span>)</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>constrain <span class="ot">&lt;-</span> <span class="cf">function</span>(x, lb, ub) {</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.infinite</span>(lb) <span class="sc">&amp;&amp;</span> <span class="fu">is.infinite</span>(ub)) {</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    x</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.infinite</span>(ub)) {</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">exp</span>(x) <span class="sc">+</span> lb</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.infinite</span>(lb)) {</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    ub <span class="sc">-</span> <span class="fu">exp</span>(x)</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inv_logit</span>(x, <span class="at">lb =</span> lb, <span class="at">ub =</span> ub)</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>constrain_vec <span class="ot">&lt;-</span> <span class="cf">function</span>(x, lb, ub) {</span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(<span class="fu">is.infinite</span>(lb) <span class="sc">&amp;</span> <span class="fu">is.infinite</span>(ub), x,</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(<span class="fu">is.infinite</span>(ub), <span class="fu">exp</span>(x) <span class="sc">+</span> lb,</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(<span class="fu">is.infinite</span>(lb), ub <span class="sc">-</span> <span class="fu">exp</span>(x),</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">inv_logit</span>(x, <span class="at">lb =</span> lb, <span class="at">ub =</span> ub)</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>constrain_vec2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, lb, ub) {</span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(lb) <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(ub) <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> <span class="fu">is.infinite</span>(lb) <span class="sc">&amp;&amp;</span> <span class="fu">is.infinite</span>(ub)) {</span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x)</span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.infinite</span>(lb) <span class="sc">&amp;</span> <span class="fu">is.infinite</span>(ub) <span class="sc">~</span> x,</span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.infinite</span>(ub) <span class="sc">~</span> <span class="fu">exp</span>(x) <span class="sc">+</span> lb,</span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.infinite</span>(lb) <span class="sc">~</span> ub <span class="sc">-</span> <span class="fu">exp</span>(x),</span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="fu">inv_logit</span>(x, <span class="at">lb =</span> lb, <span class="at">ub =</span> ub)</span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>Let's test them</span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
-<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">log</span>(<span class="fu">rexp</span>(N)), <span class="fu">logit</span>(<span class="fu">runif</span>(N)), <span class="fu">rnorm</span>(N))</span>
-<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>lb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, N), <span class="fu">rep</span>(<span class="dv">0</span>, N), <span class="fu">rep</span>(<span class="sc">-</span><span class="cn">Inf</span>, N))</span>
-<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>ub <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">Inf</span>, N), <span class="fu">rep</span>(<span class="dv">1</span>, N), <span class="fu">rep</span>(<span class="cn">Inf</span>, N))</span>
-<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_dbl</span>(<span class="fu">list</span>(x, lb, ub), constrain),</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constrain_vec</span>(x, lb, ub),</span>
-<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constrain_vec2</span>(x, lb, ub),</span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">100</span>,</span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="st">"equivalent"</span></span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a>Yes, the vectorized version is much faster. But it's not as readable as the first one. The dplyr version is cleanest and just as fast.</span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>What about if the bounds were fixed?</span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>  (<span class="cf">function</span>(x) x)(x),</span>
-<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_dbl</span>(<span class="fu">list</span>(x, <span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>), constrain),</span>
-<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constrain_vec2</span>(x, <span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>),</span>
-<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">100</span>,</span>
-<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="st">"equivalent"</span></span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## A better version of optim</span></span>
-<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/utils.R"</span>)</span>
-<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="cf">function</span>(par, x) {</span>
-<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
-<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span><span class="fu">sum</span>(bmm<span class="sc">::</span><span class="fu">dmixture2p</span>(x, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">kappa =</span> par[<span class="dv">1</span>], <span class="at">pMem =</span> par[<span class="dv">2</span>], <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NA</span></span>
-<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> bmm<span class="sc">::</span><span class="fu">rmixture2p</span>(<span class="dv">100</span>)</span>
-<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">optim</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="fl">0.1</span>), fn, <span class="at">x =</span> x),</span>
-<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">optim2</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="fl">0.1</span>), fn, <span class="at">x =</span> x, <span class="at">lower =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">upper =</span> <span class="fu">c</span>(<span class="cn">Inf</span>, <span class="dv">1</span>)),</span>
-<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">100</span></span>
-<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>How well does it work for different starting values?</span>
-<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a>optim3 <span class="ot">&lt;-</span> <span class="cf">function</span>(par, fn, ...) {</span>
-<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a>  fn2 <span class="ot">&lt;-</span> <span class="cf">function</span>(par, ...) {</span>
-<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a>    par <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">exp</span>(par[<span class="dv">1</span>]), <span class="fu">inv_logit</span>(par[<span class="dv">2</span>]))</span>
-<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fn</span>(par, ...)</span>
-<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a>  start <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">log</span>(par[<span class="dv">1</span>]), <span class="fu">logit</span>(par[<span class="dv">2</span>]))</span>
-<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">optim</span>(start, fn2, ..., <span class="at">control =</span> <span class="fu">list</span>(<span class="at">parscale =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>)))</span>
-<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fu">exp</span>(res<span class="sc">$</span>par[<span class="dv">1</span>]), <span class="fu">inv_logit</span>(res<span class="sc">$</span>par[<span class="dv">2</span>]))</span>
-<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> bmm<span class="sc">::</span><span class="fu">rmixture2p</span>(<span class="dv">100</span>)</span>
-<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">expand.grid</span>(</span>
-<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>  <span class="at">kappa =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>),</span>
-<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>  <span class="at">pMem =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.9</span>, <span class="fl">0.99</span>)</span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">apply</span>(start, <span class="dv">1</span>, optim3, <span class="at">fn =</span> fn, <span class="at">x =</span> x)</span>
-<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a>res</span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a>mixtur<span class="sc">::</span><span class="fu">fit_mixtur</span>(<span class="fu">data.frame</span>(<span class="at">response =</span> x, <span class="at">target =</span> <span class="dv">0</span>, <span class="at">id =</span> <span class="dv">1</span>), <span class="at">model =</span> <span class="st">"2_component"</span>, <span class="at">unit =</span> <span class="st">"radians"</span>)</span>
-<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(start, <span class="dv">1</span>, optim3, <span class="at">fn =</span> fn, <span class="at">x =</span> x),</span>
-<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(start, <span class="dv">1</span>, optim2, <span class="at">fn =</span> fn, <span class="at">x =</span> x, <span class="at">lower =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">upper =</span> <span class="fu">c</span>(<span class="cn">Inf</span>, <span class="dv">1</span>)),</span>
-<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">100</span></span>
-<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Playground"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> true</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

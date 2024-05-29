@@ -2,38 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/aggregate_data.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <lastmod>2024-05-29T07:25:21.754Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/get_data.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/plot_linear_rv_recovery.html</loc>
+    <lastmod>2024-05-29T07:25:21.798Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/logit.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/extract_object_from_rdata.html</loc>
+    <lastmod>2024-05-29T07:25:21.769Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/preprocess_data.html</loc>
+    <lastmod>2024-05-29T07:25:21.801Z</lastmod>
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/overall_deviance.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <lastmod>2024-05-29T07:25:21.790Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/calcdev.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/serial_recall.html</loc>
+    <lastmod>2024-05-29T07:25:21.811Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model-explore.html</loc>
-    <lastmod>2024-05-21T16:14:03.856Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/plot_bootstrap_results.html</loc>
+    <lastmod>2024-05-29T07:25:21.793Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/data_structure.html</loc>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/modelling_edas_approach.html</loc>
+    <lastmod>2024-05-20T18:59:45.688Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_bootstrap.html</loc>
+    <lastmod>2024-05-25T17:25:58.065Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/sensitivity-to-tau.html</loc>
     <lastmod>2024-05-20T12:25:57.777Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/linear-recovery-random-variable.html</loc>
-    <lastmod>2024-05-28T22:32:42.292Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/exp3_model1.html</loc>
+    <lastmod>2024-05-26T05:01:43.234Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model_v2.html</loc>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/EDA.html</loc>
+    <lastmod>2024-05-26T10:53:45.454Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/non_linear_recovery.html</loc>
+    <lastmod>2024-05-26T19:54:54.611Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_basic_fits.html</loc>
+    <lastmod>2024-05-25T16:54:42.486Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/new_model_eq.html</loc>
+    <lastmod>2024-05-29T06:16:48.850Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notes.html</loc>
+    <lastmod>2024-05-28T00:33:18.738Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/index.html</loc>
+    <lastmod>2024-05-29T07:07:23.879Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/2021-05-16-meeting.html</loc>
+    <lastmod>2024-05-20T12:25:57.776Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/par_identifiability.html</loc>
     <lastmod>2024-05-20T12:25:57.777Z</lastmod>
   </url>
   <url>
@@ -41,67 +81,47 @@
     <lastmod>2024-05-20T12:25:57.777Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/par_identifiability.html</loc>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model_v2.html</loc>
     <lastmod>2024-05-20T12:25:57.777Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/2021-05-16-meeting.html</loc>
-    <lastmod>2024-05-20T12:25:57.776Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/linear-recovery-random-variable.html</loc>
+    <lastmod>2024-05-28T22:32:42.292Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/index.html</loc>
-    <lastmod>2024-05-29T07:07:23.879Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notes.html</loc>
-    <lastmod>2024-05-28T00:33:18.738Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/dev-notebooks/new_model_eq.html</loc>
-    <lastmod>2024-05-29T06:16:48.850Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_basic_fits.html</loc>
-    <lastmod>2024-05-25T16:54:42.486Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/non_linear_recovery.html</loc>
-    <lastmod>2024-05-26T19:54:54.611Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/EDA.html</loc>
-    <lastmod>2024-05-26T10:53:45.454Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/exp3_model1.html</loc>
-    <lastmod>2024-05-26T05:01:43.234Z</lastmod>
-  </url>
-  <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/sensitivity-to-tau.html</loc>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/data_structure.html</loc>
     <lastmod>2024-05-20T12:25:57.777Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_bootstrap.html</loc>
-    <lastmod>2024-05-25T17:25:58.065Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model-explore.html</loc>
+    <lastmod>2024-05-21T16:14:03.856Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/modelling_edas_approach.html</loc>
-    <lastmod>2024-05-20T18:59:45.688Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/boot_est.html</loc>
+    <lastmod>2024-05-29T07:25:21.760Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/serial_recall.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/calcdev.html</loc>
+    <lastmod>2024-05-29T07:25:21.765Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/preprocess_data.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/gen_boot_dataset.html</loc>
+    <lastmod>2024-05-29T07:25:21.773Z</lastmod>
   </url>
   <url>
-    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/extract_object_from_rdata.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/run_or_load.html</loc>
+    <lastmod>2024-05-29T07:25:21.805Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/logit.html</loc>
+    <lastmod>2024-05-29T07:25:21.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/get_data.html</loc>
+    <lastmod>2024-05-29T07:25:21.778Z</lastmod>
   </url>
   <url>
     <loc>https://venpopov.github.io/ltmTimeBenefit/quarto/reference/inv_logit.html</loc>
-    <lastmod>2024-05-20T12:25:57.778Z</lastmod>
+    <lastmod>2024-05-29T07:25:21.782Z</lastmod>
   </url>
 </urlset>

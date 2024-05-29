@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Free time &amp; chunking modeling – calcdev</title>
+<title>Free time &amp; chunking modeling – run_or_load</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../quarto/reference/extract_object_from_rdata.html" rel="next">
-<link href="../../quarto/reference/boot_est.html" rel="prev">
+<link href="../../quarto/reference/serial_recall.html" rel="next">
+<link href="../../quarto/reference/preprocess_data.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/reference/aggregate_data.html">Function reference</a></li><li class="breadcrumb-item"><a href="../../quarto/reference/calcdev.html">Calculate the deviance of a model</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/reference/aggregate_data.html">Function reference</a></li><li class="breadcrumb-item"><a href="../../quarto/reference/run_or_load.html">Execute an expression and save the result to a file or load the result from a file if it already exists.</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -352,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../quarto/reference/calcdev.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../quarto/reference/calcdev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Calculate the deviance of a model</span></a>
   </div>
 </li>
@@ -412,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../quarto/reference/run_or_load.html" class="sidebar-item-text sidebar-link">
+  <a href="../../quarto/reference/run_or_load.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Execute an expression and save the result to a file or load the result from a file if it already exists.</span></a>
   </div>
 </li>
@@ -434,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#calculate-the-deviance-of-a-model" id="toc-calculate-the-deviance-of-a-model" class="nav-link active" data-scroll-target="#calculate-the-deviance-of-a-model">Calculate the deviance of a model</a>
+  <li><a href="#execute-an-expression-and-save-the-result-to-a-file-or-load-the-result-from-a-file-if-it-already-exists." id="toc-execute-an-expression-and-save-the-result-to-a-file-or-load-the-result-from-a-file-if-it-already-exists." class="nav-link active" data-scroll-target="#execute-an-expression-and-save-the-result-to-a-file-or-load-the-result-from-a-file-if-it-already-exists.">Execute an expression and save the result to a file or load the result from a file if it already exists.</a>
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
@@ -446,41 +446,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content"><div class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/reference/aggregate_data.html">Function reference</a></li><li class="breadcrumb-item"><a href="../../quarto/reference/calcdev.html">Calculate the deviance of a model</a></li></ol></nav><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<main class="content column-body" id="quarto-document-content"><div class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../quarto/reference/aggregate_data.html">Function reference</a></li><li class="breadcrumb-item"><a href="../../quarto/reference/run_or_load.html">Execute an expression and save the result to a file or load the result from a file if it already exists.</a></li></ol></nav><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 
 
 
 
-<section id="calculate-the-deviance-of-a-model" class="level1">
-<h1>Calculate the deviance of a model</h1>
+<section id="execute-an-expression-and-save-the-result-to-a-file-or-load-the-result-from-a-file-if-it-already-exists." class="level1">
+<h1>Execute an expression and save the result to a file or load the result from a file if it already exists.</h1>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>This function calculates the deviance of a serial_recall model given a set of parameters and data. The deviance is a measure of how well the model fits the data.</p>
+<p>This function allows you to either run an expression or load the result from a file.</p>
 </section>
 <section id="usage" class="level2">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calcdev</span>(params, dat, <span class="at">exclude_sp1 =</span> <span class="cn">FALSE</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">run_or_load</span>(expression, file, ..., <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="arguments" class="level2">
 <h2 class="anchored" data-anchor-id="arguments">Arguments</h2>
 <ul>
-<li><code>params</code>: A named vector of model parameters</li>
-<li><code>dat</code>: A data frame containing the data</li>
-<li><code>exclude_sp1</code>: A logical indicating whether to exclude the first item from the likelihood calculation</li>
+<li><code>expression</code>: The expression to be evaluated or loaded.</li>
+<li><code>file</code>: The file path where the result will be saved or loaded from.</li>
+<li><code>...</code>: Additional arguments to be passed to the expression.</li>
+<li><code>force</code>: Logical value indicating whether to force the evaluation of the expression, even if the file exists.</li>
 </ul>
 </section>
 <section id="value" class="level2">
 <h2 class="anchored" data-anchor-id="value">Value</h2>
-<p>The deviance of the model</p>
+<p>The result of the expression.</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">prop =</span> <span class="fl">0.5</span>, <span class="at">prop_ltm =</span> <span class="fl">0.3</span>, <span class="at">tau =</span> <span class="fl">0.2</span>, <span class="at">gain =</span> <span class="dv">1</span>, <span class="at">rate =</span> <span class="fl">0.4</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ISI =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>), <span class="at">item_in_ltm =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_correct =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>), <span class="at">n_total =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">calcdev</span>(params, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run an expression and save the result to a file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".rds"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">run_or_load</span>(<span class="fu">rnorm</span>(<span class="fl">1e7</span>), file)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">run_or_load</span>(<span class="fu">rnorm</span>(<span class="fl">1e7</span>), file) <span class="co"># loads the result from the file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <!-- -->
@@ -962,50 +961,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../quarto/reference/boot_est.html" class="pagination-link" aria-label="Perform bootstrapped estimation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Perform bootstrapped estimation</span>
+      <a href="../../quarto/reference/preprocess_data.html" class="pagination-link" aria-label="Preprocesses the data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preprocesses the data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../quarto/reference/extract_object_from_rdata.html" class="pagination-link" aria-label="Get data object from a file">
-        <span class="nav-page-text">Get data object from a file</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../quarto/reference/serial_recall.html" class="pagination-link" aria-label="Serial Recall Model">
+        <span class="nav-page-text">Serial Recall Model</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Calculate the deviance of a model</span></span>
+<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Execute an expression and save the result to a file or load the result from a file if it already exists.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Description</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>This function calculates the deviance of a serial_recall model given a set of parameters and data.</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>The deviance is a measure of how well the model fits the data.</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Usage</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">calcdev</span>(params, dat, <span class="at">exclude_sp1 =</span> <span class="cn">FALSE</span>, ...)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arguments</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`params`</span>: A named vector of model parameters</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`dat`</span>: A data frame containing the data</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`exclude_sp1`</span>: A logical indicating whether to exclude the first item from the likelihood calculation</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>This function allows you to either run an expression or load the result from a file.</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Usage</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">run_or_load</span>(expression, file, ..., <span class="at">force =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arguments</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`expression`</span>: The expression to be evaluated or loaded.</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`file`</span>: The file path where the result will be saved or loaded from.</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`...`</span>: Additional arguments to be passed to the expression.</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`force`</span>: Logical value indicating whether to force the evaluation of the expression, even if the file exists.</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Value</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>The deviance of the model</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>The result of the expression.</span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Examples</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">prop =</span> <span class="fl">0.5</span>, <span class="at">prop_ltm =</span> <span class="fl">0.3</span>, <span class="at">tau =</span> <span class="fl">0.2</span>, <span class="at">gain =</span> <span class="dv">1</span>, <span class="at">rate =</span> <span class="fl">0.4</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">ISI =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>), <span class="at">item_in_ltm =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_correct =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>), <span class="at">n_total =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>)</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">calcdev</span>(params, data)</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Run an expression and save the result to a file</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".rds"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">run_or_load</span>(<span class="fu">rnorm</span>(<span class="fl">1e7</span>), file)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">run_or_load</span>(<span class="fu">rnorm</span>(<span class="fl">1e7</span>), file) <span class="co"># loads the result from the file</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
