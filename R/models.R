@@ -118,7 +118,7 @@ calcdev <- function(params, dat, exclude_sp1 = FALSE, ...) {
   if (exclude_sp1) {
     log_lik <- log_lik[-1]
   }
-  -sum(log_lik)
+  -2 * sum(log_lik)
 }
 
 

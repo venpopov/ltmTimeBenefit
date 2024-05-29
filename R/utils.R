@@ -224,18 +224,3 @@ run_or_load <- function(expression, file, ..., force = FALSE) {
   }
   res
 }
-
-
-abc <- function(expr) {
-  print("hello")
-
-  start <- Sys.time()
-  print(expr)
-  end <- Sys.time()
-  print(end - start)
-
-  start <- Sys.time()
-  print(expr)
-  end <- Sys.time()
-  print(end - start)
-}
