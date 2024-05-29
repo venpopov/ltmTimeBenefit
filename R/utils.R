@@ -127,6 +127,22 @@ start_fun <- function(seed = sample(1:1e6)) {
   )
 }
 
+start_fun2 <- function(seed = sample(1:1e6)) {
+  withr::with_seed(
+    seed,
+    {
+      par <- c(
+        prop = runif(1, 0.1, 0.5),
+        prop_ltm = runif(1, 0.3, 0.8),
+        gain = runif(1, 1, 30)
+      )
+      par["tau"] <- par["prop"] * 0.5
+      par["rate"] <- runif(1, 0.01, par["prop"] / 6)
+      par
+    }
+  )
+}
+
 
 optimfit_to_df <- function(fit) {
   par <- fit$par
