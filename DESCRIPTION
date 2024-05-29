@@ -12,5 +12,12 @@ RoxygenNote: 7.3.1
 depends:
     devtools,
     jsonlite
+Imports:
+    rprofile,
+    dplyr,
+    ggplot2,
+    tidyr
+Suggests:
+    testthat
 URL: https://github.com/venpopov/ltmTimeBenefit
 BugReports: https://github.com/venpopov/ltmTimeBenefit/issues

@@ -8,7 +8,7 @@ The deviance is a measure of how well the model fits the data.
 ## Usage
 
 ```r
-calcdev(params, dat, exclude_sp1 = FALSE)
+calcdev(params, dat, exclude_sp1 = FALSE, ...)
 ```
 
 ## Arguments

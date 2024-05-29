@@ -17,7 +17,9 @@ serial_recall(
   tau = 0.15,
   gain = 25,
   rate = 0.1,
-  r_max = 1
+  r_max = 1,
+  lambda = 1,
+  growth = "linear"
 )
 ```
 
@@ -32,6 +34,8 @@ serial_recall(
 * `gain`: The gain parameter for the recall probability function.
 * `rate`: The rate at which resources are recovered.
 * `r_max`: The maximum amount of resources.
+* `lambda`: The exponent converting resources to strength.
+* `growth`: The growth function for resource recovery. Either 'linear' or 'asy'.
 
 ## Details
 
