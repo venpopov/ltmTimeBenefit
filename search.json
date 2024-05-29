@@ -690,7 +690,47 @@
     "href": "index.html",
     "title": "About",
     "section": "",
-    "text": "The current website is a collection of development notes and reports related to the modelling of free time and chunking.\nIn the side bar you will find:\n\nDevelopment notes: an unorganized collection of notebooks. These are mostly for my own reference during model development.\nNotebooks: a collection of notebooks that are more organized and presentable. These are intended to be shared with others.\nReports: a collection of reports that summarize the development of the model and the results of the model.\nFunction reference: documentation of custom functions used in the project.\n\nPS: I am experimenting with quarto websites for project documentation and reporting. This is a first attempt!\n\n\n\n\n\n Back to top",
+    "text": "This is a collection of development notes and reports related to the modelling of free time and chunking proactive benefits in working memory.\nWorking title: How does long-term memory help working memory? A comparison of long-term memory and free time benefitson working memory\nAuthors: Eda Mizrak, Vencislav Popov and Klaus Oberauer",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "index.html#project-information",
+    "href": "index.html#project-information",
+    "title": "About",
+    "section": "",
+    "text": "This is a collection of development notes and reports related to the modelling of free time and chunking proactive benefits in working memory.\nWorking title: How does long-term memory help working memory? A comparison of long-term memory and free time benefitson working memory\nAuthors: Eda Mizrak, Vencislav Popov and Klaus Oberauer",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-download-and-reproduce-the-analyses",
+    "href": "index.html#how-to-download-and-reproduce-the-analyses",
+    "title": "About",
+    "section": "How to download and reproduce the analyses",
+    "text": "How to download and reproduce the analyses\nAll the code and data used in this project can be found in the GitHub repository. You can download the repository as a zip file and extract it on your computer, or you can clone the repository using git by running the following command in your terminal:\ngit clone https://github.com/venpopov/ltmTimeBenefit.git\nTo reproduce the analyses in this project, you will need to have R and maybe RStudio installed on your computer. You can download R from the Comprehensive R Archive Network (CRAN), and RStudio from the RStudio website. If you are not using RStudio, you need to install Quarto to render the quarto reports (this website).\nThe project is structured so that you can replicate it on any machine without having to worry about R package versions, file paths, etc. Once you have R and RStudio installed, you can open the ltmTimeBenefit.Rproj file in RStudio, which will set the working directory to the base directory of the project. We use the renv package to record the specific R packages and their versions necessary for this project. When you open the project in RStudio, the renv will first install itself (if it is not already installed). If for some reason the renv package is not installed, you can install it by running install.packages(\"renv\") in the R console.\nAfter the renv package is installed, you can install all the packages used in the project by running renv::restore(). This will install all the packages listed in the renv.lock file in a separate library specific to this project.\nWe use the targets package to manage the workflow of the project. You can run the entire workflow by running targets::tar_make(). This will generate all computational outputs in the projectm which can then be used to generate the reports or do further analyses.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "index.html#folder-structure",
+    "href": "index.html#folder-structure",
+    "title": "About",
+    "section": "Folder structure",
+    "text": "Folder structure\nThe project is organized in the following main folders:\n\ndata-raw: raw data files\noutput: .rds files containing computational outputs\nquarto: source files for the quarto reports. This entire website is generated from these files.\nR: custom R functions (no interactive code)",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "index.html#website-navigation",
+    "href": "index.html#website-navigation",
+    "title": "About",
+    "section": "Website navigation",
+    "text": "Website navigation\nIn the side bar you will find:\n\nDevelopment notes: an unorganized collection of notebooks. These are mostly for my own reference during model development.\nNotebooks: a collection of notebooks that are more organized and presentable. These are intended to be shared with others.\nReports: a collection of reports that summarize the development of the model and the results of the model.\nFunction reference: documentation of custom functions used in the project.\n\nPS: I am experimenting with quarto websites for project documentation and reporting. This is a first attempt!",
     "crumbs": [
       "About"
     ]

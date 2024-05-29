@@ -398,11 +398,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-information" id="toc-project-information" class="nav-link active" data-scroll-target="#project-information">Project information</a></li>
+  <li><a href="#how-to-download-and-reproduce-the-analyses" id="toc-how-to-download-and-reproduce-the-analyses" class="nav-link" data-scroll-target="#how-to-download-and-reproduce-the-analyses">How to download and reproduce the analyses</a></li>
+  <li><a href="#folder-structure" id="toc-folder-structure" class="nav-link" data-scroll-target="#folder-structure">Folder structure</a></li>
+  <li><a href="#website-navigation" id="toc-website-navigation" class="nav-link" data-scroll-target="#website-navigation">Website navigation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -411,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -423,7 +432,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The current website is a collection of development notes and reports related to the modelling of free time and chunking.</p>
+<section id="project-information" class="level2">
+<h2 class="anchored" data-anchor-id="project-information">Project information</h2>
+<p>This is a collection of development notes and reports related to the modelling of free time and chunking proactive benefits in working memory.</p>
+<p><strong>Working title:</strong> How does long-term memory help working memory? A comparison of long-term memory and free time benefitson working memory</p>
+<p><strong>Authors:</strong> Eda Mizrak, Vencislav Popov and Klaus Oberauer</p>
+</section>
+<section id="how-to-download-and-reproduce-the-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-download-and-reproduce-the-analyses">How to download and reproduce the analyses</h2>
+<p>All the code and data used in this project can be found in the <a href="https://github.com/venpopov/ltmTimeBenefit">GitHub repository</a>. You can <a href="https://github.com/venpopov/ltmTimeBenefit/archive/refs/heads/main.zip">download the repository as a zip file</a> and extract it on your computer, or you can clone the repository using git by running the following command in your terminal:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/venpopov/ltmTimeBenefit.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To reproduce the analyses in this project, you will need to have R and maybe RStudio installed on your computer. You can download R from the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a>, and RStudio from the <a href="https://www.rstudio.com/products/rstudio/download/">RStudio website</a>. If you are not using RStudio, you need to install <a href="https://quarto.org/docs/get-started/">Quarto</a> to render the quarto reports (this website).</p>
+<p>The project is structured so that you can replicate it on any machine without having to worry about R package versions, file paths, etc. Once you have R and RStudio installed, you can open the <code>ltmTimeBenefit.Rproj</code> file in RStudio, which will set the working directory to the base directory of the project. We use the <code>renv</code> package to record the specific R packages and their versions necessary for this project. When you open the project in RStudio, the <code>renv</code> will first install itself (if it is not already installed). If for some reason the <code>renv</code> package is not installed, you can install it by running <code>install.packages("renv")</code> in the R console.</p>
+<p>After the <code>renv</code> package is installed, you can install all the packages used in the project by running <code>renv::restore()</code>. This will install all the packages listed in the <code>renv.lock</code> file in a separate library specific to this project.</p>
+<p>We use the <a href="https://docs.ropensci.org/targets/"><code>targets</code></a> package to manage the workflow of the project. You can run the entire workflow by running <code>targets::tar_make()</code>. This will generate all computational outputs in the projectm which can then be used to generate the reports or do further analyses.</p>
+</section>
+<section id="folder-structure" class="level2">
+<h2 class="anchored" data-anchor-id="folder-structure">Folder structure</h2>
+<p>The project is organized in the following main folders:</p>
+<ul>
+<li><strong>data-raw:</strong> raw data files</li>
+<li><strong>output:</strong> <em>.rds</em> files containing computational outputs</li>
+<li><strong>quarto:</strong> source files for the quarto reports. This entire website is generated from these files.</li>
+<li><strong>R:</strong> custom R functions (no interactive code)</li>
+</ul>
+</section>
+<section id="website-navigation" class="level2">
+<h2 class="anchored" data-anchor-id="website-navigation">Website navigation</h2>
 <p>In the side bar you will find:</p>
 <ul>
 <li><strong>Development notes:</strong> an unorganized collection of notebooks. These are mostly for my own reference during model development.</li>
@@ -436,6 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -909,7 +945,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
@@ -918,21 +954,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "About"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>The current website is a collection of development notes and reports related to the modelling of free time and chunking.</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>In the side bar you will find:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Development notes:** an unorganized collection of notebooks. These are mostly for my own reference during model development.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Notebooks:** a collection of notebooks that are more organized and presentable. These are intended to be shared with others.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Reports:** a collection of reports that summarize the development of the model and the results of the model.</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Function reference:** documentation of custom functions used in the project.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>PS: I am experimenting with quarto websites for project documentation and reporting. This is a first attempt!</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "About"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Project information</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>This is a collection of development notes and reports related to the modelling of free time and chunking proactive benefits in working memory.</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>**Working title:** How does long-term memory help working memory? A comparison of long-term memory and free time benefitson working memory</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>**Authors:** Eda Mizrak, Vencislav Popov and Klaus Oberauer</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## How to download and reproduce the analyses</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>All the code and data used in this project can be found in the <span class="co">[</span><span class="ot">GitHub repository</span><span class="co">](https://github.com/venpopov/ltmTimeBenefit)</span>. You can <span class="co">[</span><span class="ot">download the repository as a zip file</span><span class="co">](https://github.com/venpopov/ltmTimeBenefit/archive/refs/heads/main.zip)</span> and extract it on your computer, or you can clone the repository using git by running the following command in your terminal:</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/venpopov/ltmTimeBenefit.git</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>To reproduce the analyses in this project, you will need to have R and maybe RStudio installed on your computer. You can download R from the <span class="co">[</span><span class="ot">Comprehensive R Archive Network (CRAN)</span><span class="co">](https://cran.r-project.org/)</span>, and RStudio from the <span class="co">[</span><span class="ot">RStudio website</span><span class="co">](https://www.rstudio.com/products/rstudio/download/)</span>. If you are not using RStudio, you need to install <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/docs/get-started/)</span> to render the quarto reports (this website).</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>The project is structured so that you can replicate it on any machine without having to worry about R package versions, file paths, etc. Once you have R and RStudio installed, you can open the <span class="in">`ltmTimeBenefit.Rproj`</span> file in RStudio, which will set the working directory to the base directory of the project. We use the <span class="in">`renv`</span> package to record the specific R packages and their versions necessary for this project. When you open the project in RStudio, the <span class="in">`renv`</span> will first install itself (if it is not already installed). If for some reason the <span class="in">`renv`</span> package is not installed, you can install it by running <span class="in">`install.packages("renv")`</span> in the R console.</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>After the <span class="in">`renv`</span> package is installed, you can install all the packages used in the project by running <span class="in">`renv::restore()`</span>. This will install all the packages listed in the <span class="in">`renv.lock`</span> file in a separate library specific to this project.</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>We use the <span class="co">[</span><span class="ot">`targets`</span><span class="co">](https://docs.ropensci.org/targets/)</span> package to manage the workflow of the project. You can run the entire workflow by running <span class="in">`targets::tar_make()`</span>. This will generate all computational outputs in the projectm which can then be used to generate the reports or do further analyses.</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Folder structure</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>The project is organized in the following main folders:</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**data-raw:** raw data files</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**output:** *.rds* files containing computational outputs</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**quarto:** source files for the quarto reports. This entire website is generated from these files.</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**R:** custom R functions (no interactive code)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Website navigation</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>In the side bar you will find:</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Development notes:** an unorganized collection of notebooks. These are mostly for my own reference during model development.</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Notebooks:** a collection of notebooks that are more organized and presentable. These are intended to be shared with others.</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Reports:** a collection of reports that summarize the development of the model and the results of the model.</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Function reference:** documentation of custom functions used in the project.</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>PS: I am experimenting with quarto websites for project documentation and reporting. This is a first attempt!</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
