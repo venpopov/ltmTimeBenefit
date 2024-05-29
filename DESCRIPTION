@@ -18,6 +18,7 @@ Imports:
     ggplot2,
     tidyr
 Suggests:
-    testthat
+    testthat,
+    vscDebugger
 URL: https://github.com/venpopov/ltmTimeBenefit
 BugReports: https://github.com/venpopov/ltmTimeBenefit/issues

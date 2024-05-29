@@ -79,7 +79,6 @@ website:
             - "quarto/notebooks/linear-recovery-random-variable.qmd"
      - section: "Function reference"
        contents: quarto/reference/*
-  # drafts: 
   draft-mode: unlinked
 
 editor:
