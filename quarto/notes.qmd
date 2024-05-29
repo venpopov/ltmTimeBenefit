@@ -2,16 +2,20 @@
 title: Notes
 ---
 
-# 2021-05-28
+# 2024-05-29
+
+- Cleaning up the notebooks and targets pipeline.
+
+# 2024-05-28
 
 - The exponential recovery corresponds to the CDF of an exponential distribution over time, with the proportion of resources recovered equals the CDF. Can this be given a nice interpretation? One possibility is that recovery is all or nothing, and the exponential distribution is the distribution of the time it takes to recover all resources. This is mathematically equivalent to a gradual exponential recovery of resources. Memoryless property of the exponential distribution is also interesting in this context. 
 - [ ] Try using the alternative exponential recovery I developed [here](notebooks/linear-recovery-random-variable.qmd)
 
-# 2021-05-25
+# 2024-05-25
 
 ## Next steps
 
-- [ ] Klaus suggests to fit the data with an extra parameter to absorb parts of the primacy effect. Maybe that will allow us to get a better estimate of the recovery rate without assuming that the primacy effect is entirely due to resource depletion. I'm worried that this will make the model too complex and we will not be able to estimate the parameters reliably. But I will try it.
+- [X] Klaus suggests to fit the data with an extra parameter to absorb parts of the primacy effect. Maybe that will allow us to get a better estimate of the recovery rate without assuming that the primacy effect is entirely due to resource depletion. I'm worried that this will make the model too complex and we will not be able to estimate the parameters reliably. But I will try it. Update: actually works.
 - [ ] I still want to fit the model I developed for Ma, Popov & Zhang (In press), in which I solved the likelihood function for the model with linear recovery and was able to fit it trial by trial. Perhaps slow recovery is not a problem if the depletion and recovery balance each other out over the course of the experiment (see [2021-05-16 Meeting Notes](dev-notebooks/2021-05-16-meeting.qmd#modeling-left-to-do))
 - [ ] Given that the non-linear recovery model predicts an interaction more reliably, can I also develop a trial-by-trial likelihood function for this model?
 
@@ -35,7 +39,7 @@ In summary, the non-linear recovery model makes a stronger prediction for an int
  
 Is 2.8-10 seconds for 50% recovery fast enough for working memory? The same rates tell us that we would need between 1.2 and 4.4 seconds for 25% recovery. As we discussed last time, it might be the case that within a long experiment resources never fully recover, but the depletion and recovery rates stabilize. I still need to run that simulation. But at least to me these do not seem absurd estimates and we also still have the issue that this assumes that the primacy effect is 100% due to resource depletion.
 
-# 2021-05-17
+# 2024-05-17
 
 - Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:
    - `prop` is determined by the effect size of the proactive benefit at the second vs third chunk. With `prop = 1`, the effect is entirely local
@@ -54,12 +58,12 @@ Is 2.8-10 seconds for 50% recovery fast enough for working memory? The same rate
 
 - I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, *unless* resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)
 
-# 2021-05-16
+# 2024-05-16
 
 - add the `sqrt` relation between resources and memory strength does not change much the outcome
-- more extensive notes transfered to [2021-05-16 Meeting Notes](dev-notebooks/2021-05-16-meeting.qmd)
+- more extensive notes transfered to [2024-05-16 Meeting Notes](dev-notebooks/2024-05-16-meeting.qmd)
 
-# 2021-05-13
+# 2024-05-13
 
 - Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.
 - I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.
