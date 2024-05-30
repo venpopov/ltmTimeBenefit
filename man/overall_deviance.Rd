@@ -4,20 +4,21 @@
 \alias{overall_deviance}
 \title{Calculate the overall deviance}
 \usage{
-overall_deviance(params, data, by = c("chunk", "gap"), ..., priors = list())
+overall_deviance(params, split_data, ..., priors = list())
 }
 \arguments{
 \item{params}{A vector of parameters.}
 
-\item{data}{A data frame containing the data.}
+\item{split_data}{a data.frame split by \code{split()}}
 
-\item{by}{The column(s) to split the data by.}
+\item{...}{additional arguments to pass to calcdev()}
+
+\item{priors}{a named list}
 }
 \value{
 The overall deviance.
 }
 \description{
 This function calculates the overall deviance for a given set of parameters and data.
-It splits the dataset by the given column and calculates the deviance for each subset.
-The overall deviance is the sum of the deviances for each subset.
+It calculates the deviance for each list entry of split_data and then sums them
 }

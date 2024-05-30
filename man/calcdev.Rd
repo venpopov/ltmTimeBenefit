@@ -12,6 +12,8 @@ calcdev(params, dat, exclude_sp1 = FALSE, ...)
 \item{dat}{A data frame containing the data}
 
 \item{exclude_sp1}{A logical indicating whether to exclude the first item from the likelihood calculation}
+
+\item{...}{Additional arguments to pass to \code{serial_recall()}}
 }
 \value{
 The deviance of the model

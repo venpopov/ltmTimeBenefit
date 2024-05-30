@@ -90,6 +90,9 @@ print.serial_recall_pars <- function(x, ...) {
 #' @export
 print.serial_recall_fit <- function(x, ...) {
   class(x) <- NULL
+  names <- names(x)
+  attributes(x) <- NULL
+  names(x) <- names
   print(x, ...)
 }
 
@@ -127,21 +130,34 @@ start_fun <- function(seed = sample(1:1e6)) {
   )
 }
 
-start_fun2 <- function(seed = sample(1:1e6)) {
+start_fun2 <- function(
+    seed = sample(1:1e6),
+    pars = c("prop", "prop_ltm", "rate", "gain", "tau"),
+    growth = "linear", ...) {
+
   withr::with_seed(
     seed,
     {
+      dots <- list(...)
       par <- c(
-        prop = runif(1, 0.1, 0.5),
-        prop_ltm = runif(1, 0.3, 0.8),
-        gain = runif(1, 1, 30)
+        prop = runif(1, 0.1, 0.3),
+        prop_ltm = runif(1, 0.4, 0.8),
+        gain = runif(1, 0.8, 1.2),
+        prop_prim = runif(1, 0.9, 0.99)
       )
       par["tau"] <- par["prop"] * 0.5
-      par["rate"] <- runif(1, 0.01, par["prop"] / 6)
-      par
+      par["gain"] <- min(par["gain"] / par["prop"]^2, 99)
+      if (growth == "linear") {
+        par["rate"] <- runif(1, 0.01, par["prop"] / 6)
+      } else {
+        par["rate"] <- runif(1, 0.05, 0.3)
+      }
+      par[names(dots)] <- unlist(dots)
+      par[c(pars, names(dots))]
     }
   )
 }
+
 
 
 optimfit_to_df <- function(fit) {

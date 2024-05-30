@@ -13,9 +13,11 @@ serial_recall(
   tau = 0.15,
   gain = 25,
   rate = 0.1,
+  prop_prim = 1,
   r_max = 1,
   lambda = 1,
-  growth = "linear"
+  growth = "linear",
+  ...
 )
 }
 \arguments{
@@ -34,6 +36,8 @@ serial_recall(
 \item{gain}{The gain parameter for the recall probability function.}
 
 \item{rate}{The rate at which resources are recovered.}
+
+\item{prop_prim}{The output interference primacy parameter}
 
 \item{r_max}{The maximum amount of resources.}
 
