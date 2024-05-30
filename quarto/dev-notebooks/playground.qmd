@@ -3,3 +3,123 @@ title: "Playground"
 format: html
 draft: true
 ---
+
+TODO: Make a shiny app for general recovery model - add ability to change setsize, ISI, etc.
+
+Here's a simple plot of the primacy effect interaction with ISI.
+
+```{r}
+#| message: false
+library(ggplot2)
+library(dplyr)
+library(purrr)
+library(tibble)
+library(tidyr)
+library(targets)
+tar_source()
+
+setsize <- 30
+pars <- tibble(ISI = seq(0.25, 2, 0.25))
+sim <- pars %>%
+  mutate(strength = map(ISI, \(x) serial_recall(
+    setsize,
+    ISI = rep(x, setsize),
+    growth = "asy",
+    return = "strength"
+  ))) |>
+  unnest(strength) |>
+  group_by(ISI) |>
+  mutate(position = row_number())
+
+sim |>
+  ggplot(aes(x = position, y = strength, color = as.factor(ISI))) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+
+sim <- pars %>%
+  mutate(strength = map(ISI, \(x) serial_recall(
+    setsize,
+    ISI = rep(x, setsize),
+    rate = 0.03,
+    growth = "linear",
+    return = "strength"
+  ))) |>
+  unnest(strength) |>
+  group_by(ISI) |>
+  mutate(position = row_number())
+
+sim |>
+  ggplot(aes(x = position, y = strength, color = as.factor(ISI))) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+
+sim <- pars %>%
+  mutate(strength = map(ISI, \(x) serial_recall(
+    setsize,
+    ISI = rep(x, setsize),
+    prop = 0.4,
+    rate = 0.03,
+    lambda = 0.5,
+    growth = "linear",
+    return = "strength"
+  ))) |>
+  unnest(strength) |>
+  group_by(ISI) |>
+  mutate(position = row_number())
+
+sim |>
+  ggplot(aes(x = position, y = strength, color = as.factor(ISI))) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+
+sim <- pars %>%
+  mutate(strength = map(ISI, \(x) serial_recall(
+    setsize,
+    ISI = rep(x, setsize),
+    growth = "asy",
+    return = "strength",
+    lambda = 0.5
+  ))) |>
+  unnest(strength) |>
+  group_by(ISI) |>
+  mutate(position = row_number())
+
+sim |>
+  ggplot(aes(x = position, y = strength, color = as.factor(ISI))) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+```
+
+
+model for Ma, Popov and Zhang:
+
+```{r}
+run_model <- function(data, tau=0.2, delta=0.144, r_rate=0.053, theta=0.27, sigma=0.14, isi=2.6,  W1 = 1) {
+  f <- 1-tau*(1-data$B_prior)**2
+  f_mat <- matrix(rep(f,length(f)), nrow=length(f), ncol=length(f))
+  f_mat[upper.tri(f_mat)] <- 1
+  f_cum_prod_mat <- matrixStats::colCumprods(f_mat)
+  f_cum_prod_mat <- f_cum_prod_mat[,-1]
+  f_cum_prod_mat[upper.tri(f_cum_prod_mat, diag=T)] <- 0
+  
+  D_mat <- matrix(0:nrow(f_cum_prod_mat), nrow=nrow(f_cum_prod_mat), ncol=ncol(f_cum_prod_mat)+2)[,-c(ncol(f_cum_prod_mat)+1, ncol(f_cum_prod_mat)+2)]
+  D_mat[upper.tri(D_mat)] <- 0
+  
+  
+  Ws <- W1*(1-delta)**(1:length(f))*cumprod(f) + r_rate*isi*rowSums((1-delta)**D_mat*f_cum_prod_mat) + r_rate*isi  #0.179
+  
+  data$res_av_st <- c(1,Ws[-nrow(data)])
+  data$epi_B <- sqrt(delta*data$res_av_st*f) 
+  data$prob <- pnorm(data$epi_B, theta, sigma)
+  return(data)
+}
+
+tar_load(exp1_data_agg)
+exp1_data_agg$B_prior <- ifelse(exp1_data_agg$item_in_ltm, 0.4, 0.2)
+
+run_model(filter(exp1_data_agg, gap == 500, chunk == "known"), isi=0.5)
+```

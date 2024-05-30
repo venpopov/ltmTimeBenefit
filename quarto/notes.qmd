@@ -2,9 +2,17 @@
 title: Notes
 ---
 
-# 2024-05-29
+# 2024-05-30
 
 - Cleaning up the notebooks and targets pipeline.
+
+What is the plan? We have a recovery model that varies along the following dimensions:
+
+1. Recovery type: linear vs non-linear recovery
+2. Primacy: resource only vs resource + output interference
+3. Effect of LTM chunk: single vs double step depletion
+4. Recovery during encoding: free time only vs entire encoding period
+5. Recovery during recall: free time only vs entire recall period
 
 # 2024-05-28
 
