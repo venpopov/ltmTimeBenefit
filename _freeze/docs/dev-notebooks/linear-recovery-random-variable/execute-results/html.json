@@ -1,0 +1,17 @@
+{
+  "hash": "0a5740317949d0e54a8960fee9a49625",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Linear recovery as a random variable\"\nformat: html\n---\n\n\n\n\n## Overview\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(targets)\ntar_source()\n```\n:::\n\n\n\n\nAssume that resource recover linearly over time at a constant rate `r` until they reach a maximum value of 1. Assume that `r` is a random variable. Let's plot the average resource recovery over time under different assumptions about the distribution of `r`.\n\n## Assumptions\n\n1. `r` is uniformly distributed between 0 and 1.\n2. `r` is distributed as a truncated normal distribution with mean 0.5 and standard deviation 0.3\n3. `r` is distributed as an exponential distribution with rate 1\n\n### Uniform distribution\n\nRed line shows the average recovery over time. Black lines show individual trajectories of a few random samples of `r`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(2)\nn <- 1000\nr <- runif(n, 0, 1)\nt <- seq(0, 5, length.out = 100)\n\nplot_linear_rv_recovery(r, t)\n```\n\n::: {.cell-output-display}\n![](linear-recovery-random-variable_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n\n\n### Truncated normal distribution\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(2)\nn <- 1000\nr <- truncnorm::rtruncnorm(n, a = 0, mean = 0.5, sd = 0.3)\nt <- seq(0, 5, length.out = 100)\n\nplot_linear_rv_recovery(r, t, title = \"Truncated normal distribution\")\n```\n\n::: {.cell-output-display}\n![](linear-recovery-random-variable_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\n\n\n### Exponential distribution\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(2)\nn <- 1000\nr <- rgamma(n, shape = 1, scale = 1)\nt <- seq(0, 5, length.out = 100)\n\nplot_linear_rv_recovery(r, t, title = \"Exponential distribution\")\n```\n\n::: {.cell-output-display}\n![](linear-recovery-random-variable_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "linear-recovery-random-variable_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

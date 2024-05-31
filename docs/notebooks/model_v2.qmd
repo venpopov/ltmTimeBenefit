@@ -1,0 +1,77 @@
+---
+title: "Main results"
+format: html
+---
+
+## Overview
+
+```{r}
+#| label: init
+#| message: false
+library(tidyverse)
+library(targets)
+library(GGally)
+library(kableExtra)
+# load "R/*" scripts and saved R objects from the targets pi
+tar_source()
+tar_load(c(exp1_data_agg_enc, exp2_data_agg_enc, fits3))
+```
+
+
+Here I employ the same model as in [Model 1](modelling_edas_approach.qmd) with one difference. In the previous model, the encoding time was not included. It assumed that during encoding of the triplets (0.9 seconds), nothing happened, and recovery of resources only started after the encoding was completed. In Popov & Reder (2020), we assumed that depletion happens instantaneously, and recovery continuous thoughout the encoding and inter-stimulus interval.
+
+So here we just add the 0.9 seconds of encoding time to the ISI. For example, this is coded in the ISI column:
+
+```{r}
+exp1_data_agg_enc |>
+  kbl() |>
+  kable_styling()
+```
+
+```{r}
+# calculate deviance and predictions
+fits3 <- fits3 |>
+  mutate(
+    deviance = pmap_dbl(
+      list(fit, data, exclude_sp1),
+      ~ overall_deviance(params = `..1`$par, data = `..2`, exclude_sp1 = `..3`)
+    ),
+    pred = map2(fit, data, ~ predict(.x, .y, group_by = c("chunk", "gap")))
+  )
+```
+
+(just like in [Model 1](modelling_edas_approach.qmd), I fit the data by either excluding the first serial position or not, and including priors on the gain and rate parameters or not).
+
+## Overall best parameters by experiment and scenarious
+
+These are the best fitting parameters for each experiment, prior scenario, and whether the first serial position was excluded or not:
+
+```{r}
+#| message: false
+final3 <- fits3 |>
+  filter(convergence == 0) |>
+  group_by(exp, priors_scenario, exclude_sp1) |>
+  arrange(deviance) |>
+  slice(1) |>
+  arrange(desc(exclude_sp1), exp, priors_scenario) |>
+  mutate(
+    deviance = round(deviance, 1),
+    priors_scenario = case_when(
+      priors_scenario == "none" ~ "None",
+      priors_scenario == "gain" ~ "Gain ~ N(25, 0.1)",
+      priors_scenario == "rate" ~ "Rate ~ N(0.1, 0.01)"
+    )
+  )
+
+final3 |>
+  select(exp, priors_scenario, exclude_sp1, prop:gain, deviance) |>
+  mutate_all(round, 3) |>
+  kbl() |>
+  kable_styling()
+```
+
+for comparison, here are the results of [Model 1](modelling_edas_approach.qmd)
+
+![Model 1 Results](20240550-155053.png)
+
+Doesn't make much of a difference. Do not pursue further.

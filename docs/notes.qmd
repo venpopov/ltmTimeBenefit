@@ -1,0 +1,80 @@
+---
+title: Notes
+---
+
+# 2024-05-30
+
+- Cleaning up the notebooks and targets pipeline.
+
+What is the plan? We have a recovery model that varies along the following dimensions:
+
+1. Recovery type: linear vs non-linear recovery
+2. Primacy: resource only vs resource + output interference
+3. Effect of LTM chunk: single vs double step depletion
+4. Recovery during encoding: free time only vs entire encoding period
+5. Recovery during recall: free time only vs entire recall period
+
+# 2024-05-28
+
+- The exponential recovery corresponds to the CDF of an exponential distribution over time, with the proportion of resources recovered equals the CDF. Can this be given a nice interpretation? One possibility is that recovery is all or nothing, and the exponential distribution is the distribution of the time it takes to recover all resources. This is mathematically equivalent to a gradual exponential recovery of resources. Memoryless property of the exponential distribution is also interesting in this context. 
+- [ ] Try using the alternative exponential recovery I developed [here](notebooks/linear-recovery-random-variable.qmd)
+
+# 2024-05-25
+
+## Next steps
+
+- [X] Klaus suggests to fit the data with an extra parameter to absorb parts of the primacy effect. Maybe that will allow us to get a better estimate of the recovery rate without assuming that the primacy effect is entirely due to resource depletion. I'm worried that this will make the model too complex and we will not be able to estimate the parameters reliably. But I will try it. Update: actually works.
+- [ ] I still want to fit the model I developed for Ma, Popov & Zhang (In press), in which I solved the likelihood function for the model with linear recovery and was able to fit it trial by trial. Perhaps slow recovery is not a problem if the depletion and recovery balance each other out over the course of the experiment (see [2024-05-16 Meeting Notes](dev-notebooks/2024-05-16-meeting.qmd#modeling-left-to-do))
+- [ ] Given that the non-linear recovery model predicts an interaction more reliably, can I also develop a trial-by-trial likelihood function for this model?
+
+## Non-linear recovery
+
+I added simulations with a non-linear recovery model. We still have the issue that parameter estimates are mostly driven by primacy, but there are a few novel results.
+ 
+The non-linear recovery model predicts an interaction more reliably, not just when resources become completely depleted in one condition. You can play around in an interactive app here to explore the model predictions: [here](https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/non_linear_recovery.html)
+ 
+The non-linear model estimates for the three experiments are [here](https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_basic_fits.html)
+ 
+Parameter estimates are very similar for the three experiments. I’m not sure why, but navigating the parameter space was much easier for this model, and these parameter estimates were reached from many more starting points relative to the linear recovery model
+ 
+Since the recovery is non-linear, we cannot calculate as easily how long it takes to recover all resources (that is in fact Infinite time!), we can ask how long it would take to recover a certain proportion of resources from baseline, e.g. 50%. Results are described in the link, but here’s the gist: based on the rates from the 3 experiments, it would take 5-10 seconds to recovery 50% of the resources.
+ 
+I did the bootstrapping simulations we discussed with this new model. Results are here: [here](https://venpopov.github.io/ltmTimeBenefit/quarto/notebooks/model3_bootstrap.html)
+
+The bootstrap recovery rates indicate that we have 95% probability that the best fitting model is one in which we can recover 50% of the resources within 2.8-10 seconds
+ 
+In summary, the non-linear recovery model makes a stronger prediction for an interaction between the two effects, and tells us that recovery rates are not necessarily super slow.
+ 
+Is 2.8-10 seconds for 50% recovery fast enough for working memory? The same rates tell us that we would need between 1.2 and 4.4 seconds for 25% recovery. As we discussed last time, it might be the case that within a long experiment resources never fully recover, but the depletion and recovery rates stabilize. I still need to run that simulation. But at least to me these do not seem absurd estimates and we also still have the issue that this assumes that the primacy effect is 100% due to resource depletion.
+
+# 2024-05-17
+
+- Playing with the shiny app is very useful for understanding the model. I should have done this earlier. For example:
+   - `prop` is determined by the effect size of the proactive benefit at the second vs third chunk. With `prop = 1`, the effect is entirely local
+   - `prop` needs to be low to allow for a global proactive benefit. But then the resource recovery rate also needs to be slow to allow for a primacy effect
+   - the model does not actually predict an interaction at the latent variable level unless resources completely recovered
+
+- Example for the four conditions:
+
+   1. 0.5 * (0.5 + r * t1)    // random, shortgap 
+   2. 0.5 * (0.75 + r * t1)   // known, shortgap
+   3. 0.5 * (0.5 + r * t2)    // random, longgap
+   4. 0.5 * (0.75 + r * t2)   // known, longgap
+
+   - KS-RS: 0.5 * 0.25 
+   - KL-RL: 0.5 * 0.25
+
+- I could have saved myself so much modeling effort by doing the simple math. The model does not predict an interaction, *unless* resources recover fully in one of the conditions! I should use this as a teaching example (why is modeling useful - learn about the theory; parameter fitting should not be the first step, etc.)
+
+# 2024-05-16
+
+- add the `sqrt` relation between resources and memory strength does not change much the outcome
+- more extensive notes transfered to [2024-05-16 Meeting Notes](dev-notebooks/2024-05-16-meeting.qmd)
+
+# 2024-05-13
+
+- Discovered that there is one subject in Experiment 2 with 0 accuracy. Need to redo all the E2 modeling.
+- I took a chance to expand the serial_recall function for future modeling with a lambda and growth parameters.
+- I tagged the main branch with v0.0.2 to mark the big transition to redoing the modeling. There is also a v0.0.2 branch with a copy
+- The _targets folder is not tracked by git, so I backed it up and tagged it manually under `~/_targets_backup`
+

@@ -4,10 +4,10 @@
 .httr-oauth
 .DS_Store
 .quarto
-docs
+docx
 dev
 _site
 /.quarto/
 .vscode
 /**/*_cache
-/quarto/**/*_files
+/docs/**/*_files
