@@ -1,0 +1,15 @@
+{
+  "hash": "b95742afbadbedd7b46c681d17646bbc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Bootstrap fits to estimate uncertainty\"\nformat: html\ndraft: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(targets)\nlibrary(GGally)\nlibrary(kableExtra)\n\n# load \"R/*\" scripts and saved R objects from the targets pipeline\ntar_source()\ntar_load(c(exp1_data, exp2_data, exp1_data_agg, exp2_data_agg, exp3_data_agg))\nset.seed(213)\n\n# make sure that if the model fails to converge, it doesn't stop the whole process\nsafe_boot_est <- purrr::safely(boot_est)\n```\n:::\n\n\n\n\n## Bootstrap the original model\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nres_asy <- run_or_load(\n  t(replicate(1000, safe_boot_est(exp1_data)$result))[1, , ],\n  \"output/res_boot1000_asy.rds\")\nres_asy_exp2 <- run_or_load(\n  t(replicate(1000, safe_boot_est(exp2_data)$result))[1, , ],\n  \"output/res_boot1000_asy_exp2.rds\"\n  )\nres_lin <- run_or_load(\n  t(replicate(1000, safe_boot_est(exp1_data, model = \"linear\")$result))[1, , ],\n  \"output/res_boot1000_lin.rds\"\n  )\nres_lin_exp2 <- run_or_load(\n  t(replicate(1000, safe_boot_est(exp2_data, model = \"linear\")$result))[1, , ],\n  \"output/res_boot1000_lin_exp2.rds\"\n  )\n```\n:::\n\n\n\nplot the results\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot_bootstrap_results(res_asy)\n```\n\n::: {.cell-output-display}\n![](bootstrap_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n\n```{.r .cell-code}\nplot_bootstrap_results(res_asy_exp2)\n```\n\n::: {.cell-output-display}\n![](bootstrap_files/figure-html/unnamed-chunk-3-2.png){width=672}\n:::\n\n```{.r .cell-code}\nplot_bootstrap_results(res_lin)\n```\n\n::: {.cell-output-display}\n![](bootstrap_files/figure-html/unnamed-chunk-3-3.png){width=672}\n:::\n\n```{.r .cell-code}\nplot_bootstrap_results(res_lin_exp2)\n```\n\n::: {.cell-output-display}\n![](bootstrap_files/figure-html/unnamed-chunk-3-4.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(HDInterval)\nhdi(unlist(res_asy[,'rate']))\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n     lower      upper \n0.05588434 0.21303652 \nattr(,\"credMass\")\n[1] 0.95\n```\n\n\n:::\n\n```{.r .cell-code}\nhdi(unlist(res_asy_exp2[,'rate']))\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n     lower      upper \n0.05242345 0.21291100 \nattr(,\"credMass\")\n[1] 0.95\n```\n\n\n:::\n\n```{.r .cell-code}\nhdi(unlist(res_lin[,'rate']))\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n      lower       upper \n0.005521282 0.031903235 \nattr(,\"credMass\")\n[1] 0.95\n```\n\n\n:::\n\n```{.r .cell-code}\nhdi(unlist(res_lin_exp2[,'rate'])) \n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n      lower       upper \n0.003978507 0.061735364 \nattr(,\"credMass\")\n[1] 0.95\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

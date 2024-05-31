@@ -4,12 +4,10 @@ project:
   
 
 execute: 
-  freeze: true
+  freeze: auto
   engine: knitr
   port: 8877
   cache: true
-
-freeze: true
 
 knitr:
   opts_chunk:
@@ -20,7 +18,6 @@ format:
   html:
     theme: cosmo
     toc: true
-    code-link: true
     code-copy: true
     code-tools: true
     code-fold: true
@@ -35,8 +32,14 @@ website:
   page-navigation: true
   repo-url: "https://github.com/venpopov/ltmTimeBenefit"
   search: true
-  repo-subdir: quarto
   navbar: 
+    left: 
+      - text: "Versions"
+        menu:
+          - text: "Latest"
+            href: "https://venpopov.github.io/ltmTimeBenefit/index.html"
+          - text: "v0.1"
+            href: "https://venpopov.github.io/ltmTimeBenefit/v0.1/index.html"
     tools:
       - icon: github
         menu:
@@ -47,38 +50,40 @@ website:
   sidebar: 
    collapse-level: 1
    contents: 
+     - section: "<i>Version {{< env DOCS_VERSION >}}</i>"
+     - section: "&nbsp;"
      - index.qmd
      - section: "Development notes"
        contents: 
-       - "quarto/notes.qmd"
-       - auto: "quarto/dev-notebooks/*"
+       - "docs/notes.qmd"
+       - auto: "docs/dev-notebooks/*"
      - section: "Notebooks"
        contents: 
          - section: "Data"
            contents:
-             - "quarto/notebooks/data_structure.qmd"
-             - "quarto/notebooks/EDA.qmd"
-             - "quarto/notebooks/subject_data.qmd"
+             - "docs/notebooks/data_structure.qmd"
+             - "docs/notebooks/EDA.qmd"
+             - "docs/notebooks/subject_data.qmd"
          - section: "Model 1: Original model"
            contents:
-            - "quarto/notebooks/modelling_edas_approach.qmd"
-            - "quarto/notebooks/par_identifiability.qmd"
-            - "quarto/notebooks/sensitivity-to-tau.qmd"
-            - "./quarto/notebooks/exp3_model1.qmd"
-            - "quarto/notebooks/model-explore.qmd"
+            - "docs/notebooks/modelling_edas_approach.qmd"
+            - "docs/notebooks/par_identifiability.qmd"
+            - "docs/notebooks/sensitivity-to-tau.qmd"
+            - "docs/notebooks/exp3_model1.qmd"
+            - "docs/notebooks/model-explore.qmd"
          - section: "Model 2: Include encoding time"
            contents:
-            - "quarto/notebooks/model_v2.qmd"
+            - "docs/notebooks/model_v2.qmd"
          
          - section: "Model 3: Non-linear recovery"
            contents:
-            - "quarto/notebooks/non_linear_recovery.qmd"
-            - "quarto/notebooks/model3_basic_fits.qmd"
-            - "quarto/notebooks/model3_bootstrap.qmd"
-            - "quarto/dev-notebooks/new_model_eq.qmd"
-            - "quarto/notebooks/linear-recovery-random-variable.qmd"
+            - "docs/notebooks/non_linear_recovery.qmd"
+            - "docs/notebooks/model3_basic_fits.qmd"
+            - "docs/notebooks/model3_bootstrap.qmd"
+            - "docs/dev-notebooks/new_model_eq.qmd"
+            - "docs/notebooks/linear-recovery-random-variable.qmd"
      - section: "Function reference"
-       contents: quarto/reference/*
+       contents: docs/reference/*
   draft-mode: unlinked
 
 editor:
