@@ -2,7 +2,11 @@
 title: Notes
 ---
 
-# 2024-05-30
+# 2024-05-31
+
+Next steps:
+
+- [ ] archive old notebooks and set freeze: true for the archived folder
 
 - Cleaning up the notebooks and targets pipeline.
 

@@ -11,3 +11,5 @@
 ^_quarto.yml$
 ^.Rprofile$
 ^quarto$
+^.*\.Rproj$
+^\.Rproj\.user$

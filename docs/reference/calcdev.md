@@ -16,6 +16,7 @@ calcdev(params, dat, exclude_sp1 = FALSE, ...)
 * `params`: A named vector of model parameters
 * `dat`: A data frame containing the data
 * `exclude_sp1`: A logical indicating whether to exclude the first item from the likelihood calculation
+* `...`: Additional arguments to pass to `serial_recall()`
 
 ## Value
 
